@@ -1,5 +1,10 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 
 export const DashBoardWrapper: React.FC = () => {
-  return <div>DashBoardWrapper</div>;
+  return (
+    <>
+      <Outlet />
+    </>
+  );
 };

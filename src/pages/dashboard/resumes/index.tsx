@@ -1,5 +1,7 @@
 import React from "react";
 
-export const Resumes: React.FC = () => {
-  return <div>resumes</div>;
+const Resumes: React.FC = () => {
+  return <div>Resumes</div>;
 };
+
+export default Resumes;
