@@ -1,10 +1,12 @@
 import React from "react";
+import SectionHeader from "../../components/common/SectionHeader";
 
 const PricingSection: React.FC = () => {
   return (
     <>
       <div className="py-16 w-[45%] mx-auto space-y-3">
-        <h1 className="text-center text-4xl font-extrabold">PRICING PLAN</h1>
+        <SectionHeader>Pricing Plan</SectionHeader>
+        <h1 className="text-center text-4xl font-extrabold"></h1>
         <p className="text-center text-inherit">
           Introducing our Resume Builder – an essential tool designed for modern
           job seekers seeking to make a lasting impression in today's

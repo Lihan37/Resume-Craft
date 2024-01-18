@@ -14,7 +14,6 @@ const HeroSection: React.FC = () => {
           </h1>
           {/* fgfj */}
           <p className="text-lg">
-            
             Introducing our Resume Builder – an essential tool designed for
             modern job seekers seeking to make a lasting impression in today's
             competitive job market. Crafted with simplicity and efficiency in
