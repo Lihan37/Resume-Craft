@@ -2,7 +2,7 @@ import React from "react";
 
 const PricingSection: React.FC = () => {
   return <div>
-    <h1></h1>
+    <h1 className="text-center text-5xl font-extrabold">PRICING PLAN</h1>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <div className="max-w-[350px] my-20 shadow-md py-8 pl-8 rounded-lg border-t border-l border-l-[#005eb6] border-t-[#005eb6] border-b-2 border-r-2 border-b-[#0084ff] border-r-[#0084ff] space-y-6 absolate">
         <div className="flex justify-between items-center relative -top-16 pl-8">
@@ -20,7 +20,7 @@ const PricingSection: React.FC = () => {
       </div>
       <div className="max-w-[350px] my-20 shadow-md py-8 pl-8 rounded-lg border-t border-l border-l-[#005eb6] border-t-[#005eb6] border-b-2 border-r-2 border-b-[#0084ff] border-r-[#0084ff] space-y-6 absolate">
         <div className="flex justify-between items-center relative -top-16 pl-8">
-          <div className="py-4 w-[80%] text-center bg-gradient-to-r from-[#52b7ff] to-[#0084ff] rounded-full uppercase text-white font-semibold text-lg tracking-wider">Basic</div>
+          <div className="py-4 w-[80%] text-center bg-gradient-to-r from-[#52b7ff] to-[#0084ff] rounded-full uppercase text-white font-semibold text-lg tracking-wider">standart</div>
         </div>
         <p className="text-sky-900 font-semibold">Enjoy limitless use with interactive export use</p>
         <ul className="space-y-3">
@@ -34,7 +34,7 @@ const PricingSection: React.FC = () => {
       </div>
       <div className="max-w-[350px] my-20 shadow-md py-8 pl-8 rounded-lg border-t border-l border-l-[#005eb6] border-t-[#005eb6] border-b-2 border-r-2 border-b-[#0084ff] border-r-[#0084ff] space-y-6 absolate">
         <div className="flex justify-between items-center relative -top-16 pl-8">
-          <div className="py-4 w-[80%] text-center bg-gradient-to-r from-[#52b7ff] to-[#0084ff] rounded-full uppercase text-white font-semibold text-lg tracking-wider"></div>
+          <div className="py-4 w-[80%] text-center bg-gradient-to-r from-[#52b7ff] to-[#0084ff] rounded-full uppercase text-white font-semibold text-lg tracking-wider">Professional</div>
         </div>
         <p className="text-sky-900 font-semibold">Enjoy limitless use with interactive export use</p>
         <ul className="space-y-3">
