@@ -31,12 +31,10 @@ const FaqSection: React.FC = () => {
         {faqData.map((item, index) => (
           <div
             key={item.id}
-            className={`border p-6 rounded shadow-md shadow-c-primary-light transition-transform transform hover:scale-101`}
-          >
+            className={`border p-6 rounded shadow-md shadow-c-primary-light transition-transform transform hover:scale-101`}>
             <button
               onClick={() => toggleAccordion(index)}
-              className="flex items-center justify-between w-full focus:outline-none"
-            >
+              className="flex items-center justify-between w-full focus:outline-none">
               <div className="text-lg font-semibold">{item.question}</div>
               {openIndex === index ? (
                 <FaChevronUp size={20} className="text-c-primary" />
