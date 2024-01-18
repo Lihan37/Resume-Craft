@@ -2,7 +2,7 @@ import React from "react";
 
 const PricingSection: React.FC = () => {
   return <div>
-    <div className="py-20 w-[45%] mx-auto space-y-3">
+    <div className="py-16 w-[45%] mx-auto space-y-3">
       <h1 className="text-center text-4xl font-extrabold">PRICING PLAN</h1>
       <p className="text-center text-inherit">Introducing our Resume Builder – an essential tool designed for modern job seekers seeking to make a lasting impression in today's</p>
     </div>
