@@ -6,6 +6,7 @@ import HowToUseSection from "./HowToUseSection";
 import FaqSection from "./FaqSection";
 import PricingSection from "./PricingSection";
 import { Container } from "../../components/common/Container";
+import Testimonials from "./Testimonials";
 
 export const Home: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ export const Home: React.FC = () => {
       <BenefitSection />
       <HowToUseSection />
       <PricingSection />
+      <Testimonials />
       <FaqSection />
     </Container>
   );
