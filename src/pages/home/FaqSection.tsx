@@ -24,14 +24,14 @@ const FaqSection: React.FC = () => {
 
   return (
     <div className="max-w-screen-lg mx-auto py-12">
-      <h2 className="text-4xl my-6 text-center font-bold">
+      <h2 className="text-4xl my-5 text-center font-bold">
         Frequently Asked Questions
       </h2>
       <div className="space-y-4">
         {faqData.map((item, index) => (
           <div
             key={item.id}
-            className="border p-6 rounded shadow-md transition-transform transform hover:scale-105"
+            className={`border p-6 rounded shadow-md shadow-c-primary-light transition-transform transform hover:scale-101`}
           >
             <button
               onClick={() => toggleAccordion(index)}
@@ -39,13 +39,13 @@ const FaqSection: React.FC = () => {
             >
               <div className="text-lg font-semibold">{item.question}</div>
               {openIndex === index ? (
-                <FaChevronUp size={20} className="text-indigo-600" />
+                <FaChevronUp size={20} className="text-c-primary" />
               ) : (
-                <FaChevronDown size={20} className="text-indigo-600" />
+                <FaChevronDown size={20} className="text-c-primary" />
               )}
             </button>
             {openIndex === index && (
-              <div className="mt-4 text-gray-700">{item.answer}</div>
+              <div className="mt-4 text-c-dark-light">{item.answer}</div>
             )}
           </div>
         ))}

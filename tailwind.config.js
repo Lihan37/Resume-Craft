@@ -4,11 +4,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        "c-primary": "#",
-        "c-secondary": "#",
-        "c-success": "#",
-        "c-dark": "#",
-        "c-info": "#",
+        "c-primary": "#3b82f6",
+        "c-primary-light": "#4a8fff",
+        "c-dark": "#262626",
+        "c-dark-light": "#525252",
       },
       fontFamily: {
         "f-mono": "Sometype Mono",
