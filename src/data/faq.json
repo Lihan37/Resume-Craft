@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "question": "How do I get started with building my resume on your website?",
+      "answer": "To get started, simply sign up for an account on our website. Once registered, you can navigate to the 'Resume Builder' section and follow the step-by-step guide to input your information and create a professional resume."
+    },
+    {
+      "id": 2,
+      "question": "What types of resume templates do you offer?",
+      "answer": "We offer a diverse range of professionally designed resume templates to suit various industries and preferences. You can choose from modern, classic, creative, and other styles to make your resume stand out."
+    },
+    {
+      "id": 3,
+      "question": "Is my personal information secure on your platform?",
+      "answer": "Yes, we prioritize the security of your personal information. Our website employs industry-standard encryption and security measures to safeguard your data. Rest assured that your privacy is our top priority."
+    },
+    {
+      "id": 4,
+      "question": "Can I download my resume in different formats?",
+      "answer": "Certainly! After creating your resume, you can download it in various formats such as PDF, Word, or plain text. This flexibility ensures compatibility with different application processes."
+    },
+    {
+      "id": 5,
+      "question": "Do you provide any tips for improving my resume?",
+      "answer": "Absolutely! Our website includes a 'Resume Tips' section, offering valuable advice on crafting an effective resume. You can find guidance on formatting, content, and highlighting your strengths to increase your chances of success."
+    }
+  ]
