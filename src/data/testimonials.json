@@ -3,35 +3,28 @@
     "id": 1,
     "name": "John Doe",
     "image": "https://i.ibb.co/Kzfrv7D/555.jpg",
-    "review": "Excellent resume builder! Highly recommended.",
+    "review": "Resume Cruft is an exceptional platform! The intuitive interface, diverse templates, and extensive customization options made crafting my resume a breeze. The outcome was a professional document that truly reflected my skills. Kudos to the team for creating such a valuable tool!",
     "star": 5
   },
   {
     "id": 2,
     "name": "Jane Smith",
     "image": "https://i.ibb.co/7QwQZHN/666.jpg",
-    "review": "Easy to use and professional templates.",
+    "review": "Efficient and user-friendly. Great tool for creating standout resumes quickly.",
     "star": 4
   },
   {
     "id": 3,
     "name": "Bob Johnson",
     "image": "https://i.ibb.co/HxJ117r/444.jpg",
-    "review": "Great features for customizing resumes.",
+    "review": "Resume Cruft made job hunting easier! Simple, effective, and professional results.",
     "star": 4.5
   },
   {
     "id": 4,
     "name": "Alice Brown",
     "image": "https://i.ibb.co/7QwQZHN/666.jpg",
-    "review": "Helped me land my dream job!",
+    "review": "I can't express how grateful I am for Resume Cruft! It not only streamlined the resume-building process but also helped me discover my unique strengths. The result was a standout resume that caught the attention of employers. A game-changer for anyone serious about their career!",
     "star": 5
-  },
-  {
-    "id": 5,
-    "name": "Michael White",
-    "image": "https://i.ibb.co/YB29LNL/111.jpg",
-    "review": "User-friendly interface and quick results.",
-    "star": 4.7
   }
 ]
