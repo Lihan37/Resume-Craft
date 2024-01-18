@@ -24,4 +24,8 @@ info.txt
 *.sw?
 
 yarn.lock
+<<<<<<< HEAD
 package-lock.json
+=======
+package-lock.json
+>>>>>>> c7e3d2898587601bf24a587097c740dc88fe7269
