@@ -9,7 +9,7 @@ interface ICard {
   description: string;
   image: string;
 }
-const HowToUseSection = () => {
+const HowToUseSection: React.FC = () => {
   const [data, setData] = useState<ICard[]>([]);
 
   useEffect(() => {
