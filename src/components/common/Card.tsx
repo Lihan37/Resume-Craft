@@ -9,7 +9,7 @@ interface ICard {
 const Card  = ({id,title,description,image}:ICard) => {
     return (
         <div key={id} className="flex 
-        bg-blue-100 p-5 rounded-lg shadow-lg
+        bg-[#C8D7EF] p-5 rounded-lg shadow-lg
         flex-col">
         <dt className="text-base font-semibold leading-7 text-gray-900">
     <div className="flex  gap-2  items-center">
