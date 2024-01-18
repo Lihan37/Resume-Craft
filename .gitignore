@@ -22,3 +22,5 @@ info.txt
 *.njsproj
 *.sln
 *.sw?
+
+yarn.lock
