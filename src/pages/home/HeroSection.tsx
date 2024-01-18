@@ -12,7 +12,9 @@ const HeroSection: React.FC = () => {
           <h1 className="text-5xl font-bold mb-4">
             Free Resume Builder <br /> for modern job seekers
           </h1>
+          {/* fgfj */}
           <p className="text-lg">
+            
             Introducing our Resume Builder – an essential tool designed for
             modern job seekers seeking to make a lasting impression in today's
             competitive job market. Crafted with simplicity and efficiency in
