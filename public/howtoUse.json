@@ -1,18 +1,22 @@
 [
     {  "id": 1,
+      "image":"https://i.ibb.co/q7kV8X9/power.png",
       "title": "Get Started",
       "description": "Click on the 'Get Started' button to initiate the resume-building process."
     },
     {
         "id": 2,
+      "image":"https://i.ibb.co/nCBpKHM/form.png",
       "title": "Fill in Details",
       "description": "Provide your personal details, education, work experience, and skills in the respective forms."
     },
     { "id": 3,
+      "image":"https://i.ibb.co/tChxNYj/choice.png",
       "title": "Customize Layout",
       "description": "Utilize the drag-and-drop feature to customize the layout and order of your resume sections."
     },
     { "id": 4,
+      "image":"https://i.ibb.co/r4s1CZJ/arrow.png",
       "title": "Preview and Download",
       "description": "Preview your finished resume, make any necessary edits, and then download or share it directly."
     }
