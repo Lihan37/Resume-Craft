@@ -2,7 +2,7 @@
 const HeroSection: React.FC = () => {
   return (
     <div>
-      <div className=" text-black lg:flex lg:flex-row flex flex-col-reverse gap-10 items-center justify-center bg-cover bg-center" style={{ backgroundImage: 'url("https://i.ibb.co/NNZ8RQr/hero-bg.png")' }}>
+      <div className=" text-black lg:flex lg:flex-row flex flex-col-reverse gap-10 items-center justify-between bg-cover bg-center" style={{ backgroundImage: 'url("https://i.ibb.co/NNZ8RQr/hero-bg.png")' }}>
         <div className=" flex-1">
           <h1 className="text-5xl font-bold mb-4">Free Resume Builder <br /> for modern job seekers</h1>
           <p className="text-lg">Introducing our Resume Builder – an essential tool designed for modern job seekers seeking to make a lasting impression in today's competitive job market. Crafted with simplicity and efficiency in mind, our resume builder empowers you to create a professional and eye-catching resume effortlessly.</p>
