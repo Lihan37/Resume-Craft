@@ -3,7 +3,12 @@ import AppWrapper from "../layouts/AppWrapper";
 import NotFound from "../pages/notfound";
 import { Home } from "../pages/home";
 import { DashBoardWrapper } from "../layouts/DashBoardWrapper";
-import Resumes from "../pages/dashboard/resumes";
+import Blog from "../pages/blog";
+import Faq from "../pages/faq";
+import Login from "../pages/auth/Login";
+import SignUp from "../pages/auth/SignUp";
+import ResumesTemplates from "../pages/resumes/ResumesTemplates";
+import CoverLetterTemplates from "../pages/coverletter/CoverLetterTemplates";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +20,30 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
+      {
+        path: "/blog",
+        element: <Blog />,
+      },
+      {
+        path: "/faq",
+        element: <Faq />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/sign-up",
+        element: <SignUp />,
+      },
+      {
+        path: "/resumes-template",
+        element: <ResumesTemplates />,
+      },
+      {
+        path: "/cover-latter-template",
+        element: <CoverLetterTemplates />,
+      },
     ],
   },
   {
@@ -22,8 +51,8 @@ const router = createBrowserRouter([
     element: <DashBoardWrapper />,
     children: [
       {
-        path: "resumes",
-        element: <Resumes />,
+        path: "cover-latter",
+        element: <CoverLetterTemplates />,
       },
     ],
   },

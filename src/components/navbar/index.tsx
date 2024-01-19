@@ -11,10 +11,10 @@ interface MenuItem {
 }
 
 const menu: MenuItem[] = [
-  { link: "/", label: "Resume" },
-  { link: "/", label: "Cover" },
-  { link: "/", label: "Blog" },
-  { link: "/", label: "FAQ" },
+  { link: "/resumes-template", label: "Resume" },
+  { link: "/cover-latter-template", label: "Cover" },
+  { link: "/blog", label: "Blog" },
+  { link: "/faq", label: "FAQ" },
 ];
 
 const Navbar: React.FC = () => {
@@ -30,9 +30,11 @@ const Navbar: React.FC = () => {
               <Link to={item.link}>{item.label}</Link>
             ))}
           </div>
-          <Button size={windowWidth > 1025 ? ButtonSize.LG : ButtonSize.MD}>
-            Start Free
-          </Button>
+          <Link to="/login">
+            <Button size={windowWidth > 1025 ? ButtonSize.LG : ButtonSize.MD}>
+              Start Free
+            </Button>
+          </Link>
         </div>
       </Container>
     </div>

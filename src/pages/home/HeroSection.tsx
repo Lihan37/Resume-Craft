@@ -1,4 +1,5 @@
 import React from "react";
+import { images } from "../../constant";
 
 const HeroSection: React.FC = () => {
   return (
@@ -32,7 +33,7 @@ const HeroSection: React.FC = () => {
             backgroundImage:
               'url("https://i.ibb.co/K9h660B/Untitled-design-1.png")',
           }}>
-          <img src="/src/assets/images/heroSection.png" alt="" />
+          <img src={images.heroSection} alt="heroSection" />
         </div>
       </div>
     </div>
