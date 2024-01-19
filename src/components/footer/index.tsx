@@ -12,20 +12,17 @@ const Footer: React.FC = () => {
         <div className="flex items-center space-x-4">
           <a
             href="#"
-            className="hover:text-gray-300 transition duration-300 text-2xl"
-          >
+            className="hover:text-gray-300 transition duration-300 text-2xl">
             <FaLinkedin />
           </a>
           <a
             href="#"
-            className="hover:text-gray-300 transition duration-300 text-2xl"
-          >
+            className="hover:text-gray-300 transition duration-300 text-2xl">
             <FaTwitter />
           </a>
           <a
             href="#"
-            className="hover:text-gray-300 transition duration-300 text-2xl"
-          >
+            className="hover:text-gray-300 transition duration-300 text-2xl">
             <FaGithub />
           </a>
         </div>

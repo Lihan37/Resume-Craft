@@ -1,3 +1,9 @@
+/**
+ * The `useDisplay` hook returns the current window width and scroll position as state variables, and
+ * updates them whenever the window is resized or scrolled.
+ * @returns The useDisplay custom hook returns an array containing the current window width and scroll
+ * position.
+ */
 import { useLayoutEffect, useState } from "react";
 
 const useDisplay = () => {
