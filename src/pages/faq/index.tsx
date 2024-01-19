@@ -1,6 +1,6 @@
 import React from "react";
 import useTitleSet from "../../hooks/useTitleSet";
-import FaqSection from "../home/FaqSection"; 
+import FaqSection from "../home/FaqSection";
 
 const Faq: React.FC = () => {
   useTitleSet("Faq");

@@ -13,7 +13,7 @@ const FaqSection: React.FC = () => {
   return (
     <div className="max-w-screen-lg mx-auto py-12">
       <SectionHeader> Frequently Asked Questions</SectionHeader>
-      <div className="space-y-4">
+      <div className="space-y-4 mt-8">
         {data.faqs.map((item, index) => (
           <div
             key={item.id}
@@ -33,7 +33,6 @@ const FaqSection: React.FC = () => {
             )}
           </div>
         ))}
-        
       </div>
     </div>
   );
