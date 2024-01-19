@@ -13,7 +13,7 @@ interface TestimonialsItem {
 }
 
 const Testimonials: React.FC = () => {
-  const [testimonials, setTestimonials] = useState<TestimonialsItem[]>([]);
+  // const [testimonials, setTestimonials] = useState<TestimonialsItem[]>([]);
 
   useEffect(() => {
     fetch("/src/data/testimonials.json")
