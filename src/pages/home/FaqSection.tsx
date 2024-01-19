@@ -46,7 +46,7 @@ const FaqSection: React.FC = () => {
             )}
           </div>
         ))}
-        S
+        
       </div>
     </div>
   );
