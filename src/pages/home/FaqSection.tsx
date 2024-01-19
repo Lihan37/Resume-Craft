@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import SectionHeader from "../../components/common/SectionHeader";
 
 interface FaqItem {
   id: number;
@@ -24,9 +25,7 @@ const FaqSection: React.FC = () => {
 
   return (
     <div className="max-w-screen-lg mx-auto py-12">
-      <h2 className="text-4xl my-5 text-center font-bold">
-        Frequently Asked Questions
-      </h2>
+      <SectionHeader> Frequently Asked Questions</SectionHeader>
       <div className="space-y-4">
         {faqData.map((item, index) => (
           <div
@@ -47,6 +46,7 @@ const FaqSection: React.FC = () => {
             )}
           </div>
         ))}
+        S
       </div>
     </div>
   );
