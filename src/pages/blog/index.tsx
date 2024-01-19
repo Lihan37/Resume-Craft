@@ -9,7 +9,7 @@ const Blog: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/src/data/blogs.json"); // Replace with the actual path
+        const response = await fetch("/src/data/blogs.json");
         const data = await response.json();
         setBlogs(data);
       } catch (error) {
