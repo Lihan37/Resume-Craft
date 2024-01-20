@@ -6,7 +6,7 @@ export default {
       colors: {
         "c-bg": "#fffef9",
         "c-primary": "#fbbf24",
-        "c-primary-light": "#4a8fff",
+        "c-primary-light": "#fbbf24b3",
         "c-dark": "#010101",
         "c-dark-light": "#525252",
       },

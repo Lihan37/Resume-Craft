@@ -1,6 +1,5 @@
 import React from "react";
 import { images } from "../../constant";
-import Button from "../../components/common/Button";
 import { FaArrowRightLong } from "react-icons/fa6";
 
 const HeroSection: React.FC = () => {
@@ -38,12 +37,17 @@ const HeroSection: React.FC = () => {
           professional and eye-catching resume.
         </p>
         {/* <Button>Build Your Resume</Button> */}
-        <button className="flex justify-start items-center gap-5 uppercase px-8 xl:px-10 py-2 xl:py-3 rounded-full bg-c-dark text-white font-semibold text-base xl:text-lg">
-          <span> GET START</span>
-          <span className=" border-2 rounded-full p-2 xl:p-3 border-c-primary">
-            <FaArrowRightLong />
-          </span>
-        </button>
+        <div className=" flex justify-start items-center gap-10">
+          <button className="flex justify-start items-center gap-8 uppercase font-mono hover:gap-10 transition-all duration-300 px-8  pl-10 pr-2 py-2 xl:py-3 rounded-full bg-c-dark text-white font-semibold tracking-widest	 text-base xl:text-lg">
+            <span> GET started</span>
+            <span className=" border-2 rounded-full p-2 xl:p-3 border-c-primary">
+              <FaArrowRightLong />
+            </span>
+          </button>
+          <button className=" tracking-widest text-lg text-c-dark-light cursor-pointer font-bold uppercase font-mono">
+            Learn More
+          </button>
+        </div>
       </div>
       <div className="hidden  lg:block absolute bottom-10 xl:bottom-28 2xl:bottom-10 right-0 z-0">
         <img
@@ -52,14 +56,6 @@ const HeroSection: React.FC = () => {
           alt="heroSection"
         />
       </div>
-
-      {/* <div className="absolute right-0 top-0">
-        <div
-          className="w-0 h-0  
-  border-t-[150px] border-t-transparent rounded-t-xl rounded-b-xl
-  border-r-[250px] border-r-blue-100
-  border-b-[170px] border-b-transparent"></div>
-      </div> */}
     </div>
   );
 };
