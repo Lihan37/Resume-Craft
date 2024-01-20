@@ -4,7 +4,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 
 const HeroSection: React.FC = () => {
   return (
-    <div className=" md:py-16 xl:py-24 text-c-dark relative">
+    <div className=" select-none    md:py-16 xl:py-24 text-c-dark relative">
       <div className="lg:w-10/12 space-y-5 md:space-y-8 ">
         <img
           className=" md:hidden"
@@ -22,7 +22,7 @@ const HeroSection: React.FC = () => {
           Builder <br className=" hidden lg:block" /> for modern job
           <br className=" hidden lg:block" />
           seekers
-          <div className=" absolute hidden lg:block -bottom-20 lg:-bottom-10 xl:-bottom-16 ">
+          <div className=" pointer-events-none absolute hidden lg:block -bottom-20 lg:-bottom-10 xl:-bottom-16 ">
             <img
               className=" w-full"
               src={images.heroSectionLine}
@@ -44,12 +44,14 @@ const HeroSection: React.FC = () => {
               <FaArrowRightLong />
             </span>
           </button>
-          <button className=" tracking-widest text-lg text-c-dark-light cursor-pointer font-bold uppercase font-mono">
+
+          {/* TODO: optional */}
+          {/* <button className=" tracking-widest text-lg text-c-dark-light cursor-pointer font-bold uppercase font-mono">
             Learn More
-          </button>
+          </button> */}
         </div>
       </div>
-      <div className="hidden  lg:block absolute bottom-10 xl:bottom-28 2xl:bottom-10 right-0 z-0">
+      <div className="hidden pointer-events-none lg:block absolute bottom-10 xl:bottom-28 2xl:bottom-10 right-0 z-0">
         <img
           className=" w-[450px] xl:w-[550px] 2xl:w-[650px]"
           src={images.heroSection}
