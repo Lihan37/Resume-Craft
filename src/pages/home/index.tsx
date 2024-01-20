@@ -5,12 +5,11 @@ import HeroSection from "./HeroSection";
 import HowToUseSection from "./HowToUseSection";
 import FaqSection from "./FaqSection";
 import PricingSection from "./PricingSection";
-import { Container } from "../../components/common/Container";
 import Testimonials from "./Testimonials";
 
 export const Home: React.FC = () => {
   return (
-    <Container>
+    <>
       <HeroSection />
       {/* <FeatureSection /> */}
       {/* <BenefitSection /> */}
@@ -18,6 +17,6 @@ export const Home: React.FC = () => {
       <PricingSection />
       <Testimonials />
       <FaqSection />
-    </Container>
+    </>
   );
 };
