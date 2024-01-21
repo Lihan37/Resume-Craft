@@ -63,10 +63,10 @@ const Achievement: React.FC = () => {
   return (
     <div
       ref={targetNodeRef}
-      className=" py-12 xl:py-16 px-5 lg:px-10 xl:px-20  bg-gradient-to-r  from-[#e2ebe8] to-[#f1eedd]  rounded-2xl my-16">
+      className=" py-12 xl:py-16 px-5 lg:px-10 xl:px-20  bg-gradient-to-r from-blue-50 to-[#eff6ffea] text-c-dark  rounded-2xl my-16">
       <div className=" grid grid-cols-1 md:grid-cols-4 gap-5 lg:gap-10 xl:gap-16">
         <div className=" relative h-48 xl:h-56 border-2 border-c-dark rounded-lg flex justify-center items-center">
-          <span className=" text-[10rem] text-[#fbbe2447] font-mono font-bold">
+          <span className=" text-[10rem] text-violet-200 font-mono font-bold">
             R
           </span>
           <div className=" absolute top-0 left-0 right-0 bottom-0 text-center py-4">
@@ -82,7 +82,7 @@ const Achievement: React.FC = () => {
           </div>
         </div>
         <div className=" relative h-36 xl:h-40 border-2 border-c-dark rounded-lg flex justify-center items-center">
-          <span className=" text-[10rem] text-[#fbbe2447] font-mono font-bold">
+          <span className=" text-[10rem] text-violet-200 font-mono font-bold">
             C
           </span>
           <div className=" absolute top-0 left-0 right-0 bottom-0 text-center py-4">
@@ -100,7 +100,7 @@ const Achievement: React.FC = () => {
           </div>
         </div>
         <div className=" relative h-36 xl:h-40 border-2 border-c-dark rounded-lg flex justify-center items-center">
-          <span className=" text-[10rem] text-[#fbbe2447] font-mono font-bold">
+          <span className=" text-[10rem] text-violet-200 font-mono font-bold">
             W
           </span>
           <div className=" absolute top-0 left-0 right-0 bottom-0 text-center py-4">
@@ -118,7 +118,7 @@ const Achievement: React.FC = () => {
           </div>
         </div>
         <div className=" relative h-48 xl:h-56  border-2 border-c-dark rounded-lg flex justify-center items-center">
-          <span className=" text-[10rem] text-[#fbbe2447] font-mono font-bold">
+          <span className=" text-[10rem] text-violet-200 font-mono font-bold">
             R
           </span>
           <div className=" absolute top-0 left-0 right-0 bottom-0 text-center py-4">

@@ -64,9 +64,9 @@ const Suggestion: React.FC = () => {
         <h1 className="uppercase text-xl font-mono text-c-primary font-bold">
           optimized designs
         </h1>
-        <h1 className="mt-5 md:mt-8 lg:mt-10  font-semibold text-xl md:text-5xl lg:text-6xl xl:text-7xl">
+        <h1 className="mt-5 md:mt-8 lg:mt-10 text-c-dark font-semibold text-xl md:text-5xl lg:text-6xl xl:text-7xl">
           Make Your{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#aed5d0] to-[#dccc9b]">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
             Resume/CV
           </span>{" "}
           With <br className=" hidden md:block" /> Proven Professional Templates

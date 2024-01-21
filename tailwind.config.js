@@ -4,10 +4,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        "c-bg": "#fffef9",
-        "c-primary": "#fbbf24",
-        "c-primary-light": "#fbbf24b3",
-        "c-dark": "#010101",
+        "c-bg": "#eff6ff40",
+        "c-primary": "#3b82f6",
+        "c-primary-light": "#60a5fa",
+        "c-dark": "#172554",
         "c-dark-light": "#525252",
       },
       fontFamily: {
