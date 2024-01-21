@@ -4,7 +4,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 
 const HeroSection: React.FC = () => {
   return (
-    <div className=" select-none    md:py-16 xl:py-24 text-c-dark relative">
+    <div className="select-none md:py-16 xl:py-24 text-c-dark relative">
       <div className="lg:w-10/12 space-y-5 md:space-y-8 ">
         <img
           className=" md:hidden"

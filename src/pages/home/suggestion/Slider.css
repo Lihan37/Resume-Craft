@@ -1,0 +1,23 @@
+.swiper-slide {
+  pointer-events: none;
+}
+.swiper-slide img {
+  height: 400px;
+  width: 100%;
+  transition: all 200ms linear;
+  transform: scale(0.8);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+@media screen and (min-width: 1025px) {
+  .swiper-slide img {
+    height: 700px;
+  }
+}
+
+.swiper-slide.swiper-slide-active img {
+  transform: scale(1);
+  transform: scaleX(1.2);
+  opacity: 1000 !important;
+}
