@@ -59,7 +59,7 @@ const Suggestion: React.FC = () => {
   });
 
   return (
-    <div className=" py-8 md:py-16">
+    <div className=" py-8 md:py-16 ">
       <div className=" text-center w-full">
         <h1 className="uppercase text-xl font-mono text-c-primary font-bold">
           optimized designs

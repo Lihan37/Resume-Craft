@@ -11,7 +11,7 @@ const HeroSection: React.FC = () => {
           src={images.heroSectionMobile}
           alt="heroSectionMobile"
         />
-        <h1 className="z-50 text-lg px-6 py-1 uppercase bg-[#fbbf24] font-bold w-max rounded-full">
+        <h1 className="z-50 text-lg px-6 py-1 uppercase bg-c-primary font-bold w-max rounded-full">
           We can help you
         </h1>
         <h1 className="text-3xl md:text-6xl xl:text-7xl 2xl:text-8xl font-semibold  relative">
