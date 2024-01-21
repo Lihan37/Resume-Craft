@@ -14,29 +14,18 @@ interface ISlider {
   resumes: IResume[];
 }
 
-const buttonStyles: React.CSSProperties = {
-  position: "absolute",
-  top: "50%",
-  transform: "translateY(-50%)",
-};
-
 // Custom component for the previous button
-const PrevButton: React.FC<{ onClick: () => void }> = ({ onClick }) => (
+const Button: React.FC<{
+  left?: string;
+  right?: string;
+  onClick: () => void;
+  children: React.ReactNode;
+}> = ({ onClick, left, right, children }) => (
   <button
-    className="p-2 text-white flex justify-center items-center z-50 text-4xl bg-c-primary rounded-full"
-    style={{ ...buttonStyles, left: "15%" }}
+    className="p-2 absolute top-3/4 md:top-1/2 transform -translate-y-1/2 text-white flex justify-center items-center z-50 text-4xl bg-c-primary rounded-full"
+    style={{ left: left, right: right }}
     onClick={onClick}>
-    <IoArrowBack />
-  </button>
-);
-
-// Custom component for the next button
-const NextButton: React.FC<{ onClick: () => void }> = ({ onClick }) => (
-  <button
-    className="p-2 text-white flex justify-center items-center z-50 text-4xl bg-c-primary rounded-full"
-    style={{ ...buttonStyles, right: "15%" }}
-    onClick={onClick}>
-    <IoArrowForward />
+    {children}
   </button>
 );
 
@@ -56,7 +45,6 @@ const Slider: React.FC<ISlider> = ({ resumes = [] }) => {
       <div>
         <Swiper
           ref={sliderRef as React.RefObject<SwiperRef>}
-          // modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={50}
           centeredSlides={true}
           loop={true}
@@ -84,8 +72,12 @@ const Slider: React.FC<ISlider> = ({ resumes = [] }) => {
               />
             </SwiperSlide>
           ))}
-          <PrevButton onClick={handleSlidePrev} />
-          <NextButton onClick={handleSlideNext} />
+          <Button onClick={handleSlidePrev} left="15%">
+            <IoArrowBack />
+          </Button>
+          <Button onClick={handleSlideNext} right="15%">
+            <IoArrowForward />
+          </Button>
         </Swiper>
       </div>
     )

@@ -1,8 +1,9 @@
 .swiper-slide {
   pointer-events: none;
 }
+
 .swiper-slide img {
-  height: 400px;
+  height: 500px;
   width: 100%;
   transition: all 200ms linear;
   transform: scale(0.8);
@@ -10,14 +11,25 @@
   pointer-events: none;
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 768px) {
+  .swiper-slide img {
+    height: 550px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .swiper-slide img {
+    height: 500px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
   .swiper-slide img {
     height: 700px;
   }
 }
 
 .swiper-slide.swiper-slide-active img {
-  transform: scale(1);
-  transform: scaleX(1.2);
-  opacity: 1000 !important;
+  transform: scale(1) scaleX(1.2);
+  opacity: 1; /* Use a value between 0 and 1 for opacity */
 }
