@@ -8,20 +8,22 @@ import PricingSection from "./PricingSection";
 import Testimonials from "./Testimonials";
 import Achievement from "./Achievement";
 import Suggestion from "./suggestion/Suggestion";
+import Companies from "./Companies";
 
 export const Home: React.FC = () => {
   return (
     <>
       <HeroSection />
-      <Achievement />
+      <Companies />
       <Suggestion />
+      <Achievement />
 
       {/* <FeatureSection /> */}
       {/* <BenefitSection /> */}
-      <HowToUseSection />
-      <PricingSection />
-      <Testimonials />
-      <FaqSection />
+      {/* <HowToUseSection /> */}
+      {/* <PricingSection /> */}
+      {/* <Testimonials /> */}
+      {/* <FaqSection /> */}
     </>
   );
 };

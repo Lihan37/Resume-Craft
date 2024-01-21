@@ -8,6 +8,12 @@ import resume3 from "../assets/resumes/resume3.webp";
 import resume4 from "../assets/resumes/resume4.webp";
 import resume5 from "../assets/resumes/resume5.webp";
 import resume6 from "../assets/resumes/resume6.webp";
+import amazon from "../assets/companies/amazon.png";
+import drillle from "../assets/companies/drillle.png";
+import hubspot from "../assets/companies/hubspot.png";
+import notion from "../assets/companies/notion.png";
+import netflix from "../assets/companies/netflix.png";
+import zoom from "../assets/companies/zoom.png";
 
 const images = {
   logo,
@@ -20,6 +26,12 @@ const images = {
   resume4,
   resume5,
   resume6,
+  amazon,
+  drillle,
+  hubspot,
+  notion,
+  netflix,
+  zoom,
 };
 
 export default images;
