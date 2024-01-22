@@ -4,6 +4,8 @@ import { images } from "../../../constant";
 import { AnimatePresence, motion } from "framer-motion";
 import Tab from "../../../components/common/Tab";
 import Slider from "./Slider";
+import SectionHeader from "../../../components/common/SectionHeader";
+import TextGradient from "../../../components/common/TextGradient";
 
 const tabs = [
   {
@@ -61,16 +63,10 @@ const Suggestion: React.FC = () => {
   return (
     <div className=" py-8 md:py-16 ">
       <div className=" text-center w-full">
-        <h1 className="uppercase text-xl font-mono text-c-primary font-bold">
-          optimized designs
-        </h1>
-        <h1 className="mt-5 md:mt-8 lg:mt-10 text-c-dark font-semibold text-xl md:text-5xl lg:text-6xl xl:text-7xl">
-          Make Your{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
-            Resume/CV
-          </span>{" "}
-          With <br className=" hidden md:block" /> Proven Professional Templates
-        </h1>
+        <SectionHeader label="optimized designs">
+          Make Your <TextGradient>Resume/CV</TextGradient> With{" "}
+          <br className=" hidden md:block" /> Proven Professional Templates
+        </SectionHeader>
         <h3 className=" mt-5 text-sm md:text-xl text-c-dark-light">
           Use one of our field-tested resume templates, designed by <br /> a
           team of HR experts and typographers

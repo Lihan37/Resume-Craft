@@ -31,5 +31,5 @@
 
 .swiper-slide.swiper-slide-active img {
   transform: scale(1) scaleX(1.2);
-  opacity: 1; /* Use a value between 0 and 1 for opacity */
+  opacity: 1;
 }

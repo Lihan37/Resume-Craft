@@ -1,10 +1,10 @@
 import faqs from "../data/faq.json";
-import testimonials from "../data/testimonials.json";
+import reviews from "../data/reviews.json";
 import blogs from "../data/blogs.json";
 
 const data = {
   faqs,
-  testimonials,
+  reviews,
   blogs,
 };
 

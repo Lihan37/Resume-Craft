@@ -32,7 +32,7 @@ const HeroSection: React.FC = () => {
             />
           </div>
         </h1>
-        <p className="text-sm md:text-base xl:text-lg max-w-md xl:max-w-xl text-c-dark-light  lg:pt-7 xl:pt-14">
+        <p className="font-mono text-sm md:text-base xl:text-lg max-w-md xl:max-w-xl text-c-dark-light  lg:pt-7 xl:pt-14">
           Introducing our Resume Builder – a user-friendly tool for today's job
           seekers looking to stand out in the competitive market. Crafted for
           simplicity and efficiency, it enables you to effortlessly create a

@@ -22,7 +22,7 @@ const Button: React.FC<{
   children: React.ReactNode;
 }> = ({ onClick, left, right, children }) => (
   <button
-    className="p-2 absolute top-3/4 md:top-1/2 transform -translate-y-1/2 text-white flex justify-center items-center z-50 text-4xl bg-c-primary rounded-full"
+    className="p-2 absolute top-3/4 md:top-1/2 transform -translate-y-1/2 text-white flex justify-center items-center z-50 text-4xl bg-c-primary-light hover:bg-c-primary duration-300 transition-colors rounded-full"
     style={{ left: left, right: right }}
     onClick={onClick}>
     {children}
