@@ -1,0 +1,10 @@
+.swiper-wrapper {
+  margin-bottom: 100px !important;
+}
+
+.swiper-horizontal > .swiper-scrollbar,
+.swiper-scrollbar.swiper-scrollbar-horizontal {
+  left: 25%;
+  width: 80%;
+  bottom: 15%;
+}
