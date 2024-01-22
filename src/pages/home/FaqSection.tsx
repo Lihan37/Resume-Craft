@@ -33,7 +33,9 @@ const FaqSection: React.FC = () => {
                 className={` ${
                   isActive && "pb-3"
                 } flex py-6 cursor-pointer  items-center justify-between w-full focus:outline-none`}>
-                <div className="text-xl font-semibold">{item.question}</div>
+                <div className=" text-base md:text-xl font-semibold capitalize">
+                  {item.question}
+                </div>
                 {isActive ? (
                   <FaMinus size={20} className="text-c-primary" />
                 ) : (
@@ -41,7 +43,7 @@ const FaqSection: React.FC = () => {
                 )}
               </div>
               {isActive && (
-                <div className="pb-6 text-lg text-c-dark font-mono">
+                <div className="pb-6 text-sm md:text-lg text-c-dark font-mono">
                   {item.answer}
                 </div>
               )}

@@ -16,12 +16,11 @@ export const Home: React.FC = () => {
       <HeroSection />
       <Companies />
       <Testimonials />
-      <Achievement />
+      <FeatureSection />
       <Suggestion />
+      <Achievement />
       <FaqSection />
-
-      <BenefitSection />
-      {/* <FeatureSection /> */}
+      {/* <BenefitSection /> */}
       {/* <HowToUseSection /> */}
       {/* <PricingSection /> */}
     </>

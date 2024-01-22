@@ -12,7 +12,7 @@ const SectionHeader: React.FC<ISectionHeader> = ({ children, label }) => {
           {label}
         </h1>
       )}
-      <h2 className="mt-5 text-center md:mt-8 lg:mt-10 text-c-dark font-semibold text-xl md:text-5xl lg:text-6xl xl:text-7xl">
+      <h2 className="mt-5 capitalize text-center md:mt-8 lg:mt-10 text-c-dark font-semibold text-xl md:text-5xl xl:text-6xl ">
         {children}
       </h2>
     </>

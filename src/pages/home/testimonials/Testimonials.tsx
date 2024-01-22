@@ -9,8 +9,8 @@ const Testimonials: React.FC = () => {
   return (
     <div className="my-20 text-c-dark">
       <SectionHeader label="Testimonials">
-        Reviewed by the <TextGradient>community</TextGradient>{" "}
-        <br className=" hidden md:block" /> Trusted by professionals
+        Reviewed By The <TextGradient>Community</TextGradient>{" "}
+        <br className=" hidden md:block" /> Trusted By Professionals
       </SectionHeader>
 
       <div className=" my-16">
