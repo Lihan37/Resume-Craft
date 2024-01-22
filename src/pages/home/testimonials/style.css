@@ -8,3 +8,6 @@
   width: 80%;
   bottom: 15%;
 }
+.swiper-scrollbar-drag {
+  background: #3b82f6;
+}

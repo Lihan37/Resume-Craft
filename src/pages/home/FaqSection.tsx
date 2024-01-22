@@ -1,38 +1,53 @@
 import React, { useState } from "react";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import SectionHeader from "../../components/common/SectionHeader";
 import { data } from "../../constant";
+import TextGradient from "../../components/common/TextGradient";
+import { FaMinus, FaPlus } from "react-icons/fa";
 
 const FaqSection: React.FC = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number>(1);
 
   const toggleAccordion = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+    setOpenIndex(index);
   };
 
   return (
     <div className="max-w-screen-lg mx-auto py-12">
-      <SectionHeader> Frequently Asked Questions</SectionHeader>
-      <div className="space-y-4 mt-8">
-        {data.faqs.map((item, index) => (
-          <div
-            key={item.id}
-            className={`border p-6 rounded shadow-md shadow-c-primary-light transition-transform transform hover:scale-101`}>
-            <button
+      <SectionHeader label="faq">
+        Frequently Asked <TextGradient>Questions</TextGradient> About Resume
+        Builder
+      </SectionHeader>
+      <div className="mt-16 text-c-dark">
+        {data.faqs.map((item, index) => {
+          const isActive = openIndex === index;
+          const lastFaqIsTrue = index + 1 === data?.faqs.length;
+          const nextBorderActive = index === openIndex + 1;
+          return (
+            <div
               onClick={() => toggleAccordion(index)}
-              className="flex items-center justify-between w-full focus:outline-none">
-              <div className="text-lg font-semibold">{item.question}</div>
-              {openIndex === index ? (
-                <FaChevronUp size={20} className="text-c-primary" />
-              ) : (
-                <FaChevronDown size={20} className="text-c-primary" />
+              key={item.id}
+              className={`border-t-2 ${lastFaqIsTrue && "border-b-2"} ${
+                isActive && " border-c-primary-light text-c-primary"
+              } ${nextBorderActive && "border-t-c-primary-light"}`}>
+              <div
+                className={` ${
+                  isActive && "pb-3"
+                } flex py-6 cursor-pointer  items-center justify-between w-full focus:outline-none`}>
+                <div className="text-xl font-semibold">{item.question}</div>
+                {isActive ? (
+                  <FaMinus size={20} className="text-c-primary" />
+                ) : (
+                  <FaPlus size={20} className="text-c-primary" />
+                )}
+              </div>
+              {isActive && (
+                <div className="pb-6 text-lg text-c-dark font-mono">
+                  {item.answer}
+                </div>
               )}
-            </button>
-            {openIndex === index && (
-              <div className="mt-4 text-c-dark-light">{item.answer}</div>
-            )}
-          </div>
-        ))}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

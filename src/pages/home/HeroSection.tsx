@@ -40,7 +40,7 @@ const HeroSection: React.FC = () => {
         </p>
         {/* <Button>Build Your Resume</Button> */}
         <div className=" flex justify-center md:justify-start items-center gap-10">
-          <button className="flex justify-start items-center gap-8 uppercase font-mono hover:gap-10 transition-all duration-300 px-8  pl-10 pr-2 py-2 xl:py-3 rounded-full bg-c-primary text-white font-semibold tracking-widest	hover:bg-c-primary-light  text-base xl:text-lg">
+          <button className="shadow-2xl shadow-blue-200 flex justify-start items-center gap-8 uppercase font-mono hover:gap-10 transition-all duration-300 px-8  pl-10 pr-2 py-2 xl:py-3 rounded-full bg-c-primary text-white font-semibold tracking-widest	hover:bg-c-primary-light  text-base xl:text-lg">
             <span> GET started</span>
             <span className=" border-2 rounded-full p-2 xl:p-3 border-white">
               <FaArrowRightLong />
