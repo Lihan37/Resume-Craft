@@ -3,6 +3,7 @@ import TextGradient from "../../components/common/TextGradient";
 import { SiReadthedocs } from "react-icons/si";
 import { MdAutoAwesome } from "react-icons/md";
 import { MdAutoStories } from "react-icons/md";
+import { Container } from "../../components/common/Container";
 
 const data = [
   {
@@ -27,30 +28,32 @@ const data = [
 
 const FeatureSection = () => {
   return (
-    <div>
-      <SectionHeader label="Features">
-        Features <TextGradient>Designed</TextGradient> To Help You Win{" "}
-        <br className="hidden md:block" />
-        Your Dream Job
-      </SectionHeader>
-      <div className=" grid grid-cols-1 md:grid-cols-3 w-full gap-10 my-16">
-        {data.map((item) => (
-          <div
-            key={item.id}
-            className="bg-slate-50 flex flex-col justify-start items-center gap-5 py-10 rounded-lg">
-            <div className="p-3 bg-c-primary text-white text-2xl lg:text-3xl rounded-xl">
-              {item.icon}
+    <Container>
+      <div>
+        <SectionHeader label="Features">
+          Features <TextGradient>Designed</TextGradient> To Help You Win{" "}
+          <br className="hidden md:block" />
+          Your Dream Job
+        </SectionHeader>
+        <div className=" grid grid-cols-1 md:grid-cols-3 w-full gap-10 my-16">
+          {data.map((item) => (
+            <div
+              key={item.id}
+              className="bg-slate-50 flex flex-col justify-start items-center gap-5 py-10 rounded-lg">
+              <div className="p-3 bg-c-primary text-white text-2xl lg:text-3xl rounded-xl">
+                {item.icon}
+              </div>
+              <h1 className="max-w-xs capitalize lg:px-10 text-xl font-semibold text-center">
+                {item.title}
+              </h1>
+              <h2 className="max-w-xs text-center text-base md:text-sm lg:text-base">
+                {item.doc}
+              </h2>
             </div>
-            <h1 className="max-w-xs capitalize lg:px-10 text-xl font-semibold text-center">
-              {item.title}
-            </h1>
-            <h2 className="max-w-xs text-center text-base md:text-sm lg:text-base">
-              {item.doc}
-            </h2>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </Container>
   );
 };
 
