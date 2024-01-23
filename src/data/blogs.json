@@ -1,39 +1,62 @@
 [
-    {
-      "title": "Crafting the Perfect Resume: A Step-by-Step Guide",
-      "author": "Eanur",
-      "date": "2024-01-19",
-      "content": "In today's competitive job market, a well-crafted resume is crucial. This blog post walks you through the step-by-step process of creating a resume that stands out. From choosing the right format to highlighting your achievements, discover the secrets to crafting the perfect resume that gets noticed by employers."
-    },
-    {
-      "title": "Unlocking the Power of Cover Letters: Dos and Don'ts",
-      "author": "Satya",
-      "date": "2024-01-20",
-      "content": "While a resume provides a snapshot of your professional experience, a cover letter allows you to showcase your personality and explain why you're the ideal candidate. Learn the dos and don'ts of writing a compelling cover letter that captivates hiring managers. Dive into the art of personalization and discover how to make your cover letter a powerful tool in your job application arsenal."
-    },
-    {
-      "title": "The Role of Keywords in Applicant Tracking Systems",
-      "author": "Nisma",
-      "date": "2024-01-21",
-      "content": "With the prevalence of Applicant Tracking Systems (ATS), understanding the importance of keywords in your resume is vital. This blog post explores how ATS works, why keywords matter, and provides practical tips on optimizing your resume for these systems. Elevate your chances of passing through the initial screening process and landing that interview with this insightful guide."
-    },
-    {
-      "title": "Building an Online Portfolio: Showcasing Your Professional Journey",
-      "author": "Bikash",
-      "date": "2024-01-22",
-      "content": "In the digital age, having an online portfolio is a game-changer. This blog delves into the benefits of creating a professional online presence and guides you through the process of building a compelling portfolio. From choosing the right platform to showcasing your work, learn how to leave a lasting impression on potential employers and clients with a visually appealing and informative online portfolio."
-    },
-    {
-      "title": "Navigating Career Changes: Adapting Your Resume and Cover Letter",
-      "author": "Shahriar",
-      "date": "2024-01-23",
-      "content": "Changing careers can be a daunting task, but with the right approach, you can make a seamless transition. This blog post provides practical tips on adapting your resume and cover letter when switching industries. Explore how to highlight transferable skills, emphasize relevant experience, and present yourself as the perfect candidate for your new career path. Embrace change with confidence and navigate your way to a successful career transition."
-    },
-    {
-      "title": "Mastering Job Interviews: A Comprehensive Guide",
-      "author": "Hridoy",
-      "date": "2024-01-24",
-      "content": "Preparing for a job interview? This comprehensive guide covers everything you need to know to master the interview process. From common interview questions to effective strategies for showcasing your skills, elevate your interview game and increase your chances of landing that dream job."
-    }
-  ]
-  
+  {
+    "id": 1,
+    "title": "Crafting the Perfect Resume: Essential Steps",
+    "author": "Ella Rose",
+    "authorImage": "https://i.ibb.co/Kzfrv7D/555.jpg",
+    "company": "Apple",
+    "image": "https://i.ibb.co/6JrcHvW/re2.png",
+    "date": "2024-01-25",
+    "content": "Crafting a stellar resume involves essential steps. Learn how to showcase your professional experience effectively, tailor your content to the job, and grab employers' attention. This comprehensive guide will help you craft a winning resume that stands out in the competitive job market."
+  },
+  {
+    "id": 2,
+    "title": "Writing an Impactful Cover Letter: A Guide",
+    "author": "Seth Mason",
+    "authorImage": "https://i.ibb.co/Kzfrv7D/555.jpg",
+    "company": "Apple",
+    "image": "https://i.ibb.co/6JrcHvW/re2.png",
+    "date": "2024-01-26",
+    "content": "Your cover letter is your first impression. Dive into this guide to learn how to write an impactful cover letter. From addressing hiring managers to highlighting your unique strengths, discover the key elements that make your cover letter compelling and increase your chances of landing the job."
+  },
+  {
+    "id": 3,
+    "title": "Networking Strategies for Career Success",
+    "author": "Nina Grace",
+    "authorImage": "https://i.ibb.co/Kzfrv7D/555.jpg",
+    "company": "Apple",
+    "image": "https://i.ibb.co/6JrcHvW/re2.png",
+    "date": "2024-01-27",
+    "content": "Effective networking is crucial for career success. Uncover practical strategies to build and leverage professional connections. From networking events to online platforms, learn how to create meaningful relationships that open doors to new opportunities and enhance your career growth."
+  },
+  {
+    "id": 4,
+    "title": "Showcasing Your Professional Journey: Online Portfolios",
+    "author": "Blake Ellis",
+    "authorImage": "https://i.ibb.co/Kzfrv7D/555.jpg",
+    "company": "Apple",
+    "image": "https://i.ibb.co/6JrcHvW/re2.png",
+    "date": "2024-01-28",
+    "content": "Explore the benefits of creating an online portfolio. From selecting the right platform to presenting your work effectively, this blog guides you in building a compelling online presence. Elevate your professional journey by showcasing your skills, projects, and achievements through a visually appealing portfolio."
+  },
+  {
+    "id": 5,
+    "title": "Navigating Career Changes: Reshaping Your Narrative",
+    "author": "Sam Cole",
+    "authorImage": "https://i.ibb.co/Kzfrv7D/555.jpg",
+    "company": "Apple",
+    "image": "https://i.ibb.co/6JrcHvW/re2.png",
+    "date": "2024-01-29",
+    "content": "Embarking on a career change? Reshape your narrative with this guide. Discover practical tips on adapting your resume and cover letter, emphasizing transferable skills, and positioning yourself as the ideal candidate in your new field. Navigate career changes with confidence and success."
+  },
+  {
+    "id": 6,
+    "title": "Mastering Job Interviews: Your Comprehensive Guide",
+    "author": "Holly Scott",
+    "authorImage": "https://i.ibb.co/Kzfrv7D/555.jpg",
+    "company": "Apple",
+    "image": "https://i.ibb.co/6JrcHvW/re2.png",
+    "date": "2024-01-30",
+    "content": "Ace your job interviews with this comprehensive guide. From common questions to showcasing your skills, elevate your interview game. Gain insights into effective strategies, body language, and preparation techniques. Boost your confidence and increase your chances of landing your dream job."
+  }
+]

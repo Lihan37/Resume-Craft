@@ -9,6 +9,7 @@ import Testimonials from "./testimonials/Testimonials";
 import Achievement from "./Achievement";
 import Suggestion from "./suggestion/Suggestion";
 import Companies from "./Companies";
+import BlogsSection from "./BlogsSection";
 
 export const Home: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ export const Home: React.FC = () => {
       <FeatureSection />
       <Suggestion />
       <Achievement />
+      <BlogsSection/>
       <FaqSection />
       {/* <BenefitSection /> */}
       {/* <HowToUseSection /> */}
