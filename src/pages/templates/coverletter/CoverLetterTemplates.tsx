@@ -1,5 +1,5 @@
 import React from "react";
-import useTitleSet from "../../hooks/useTitleSet";
+import useTitleSet from "../../../hooks/useTitleSet";
 
 const CoverLetterTemplates: React.FC = () => {
   useTitleSet("Cover letter templates");

@@ -1,5 +1,5 @@
 import React from "react";
-import useTitleSet from "../../hooks/useTitleSet";
+import useTitleSet from "../../../hooks/useTitleSet";
 
 const ResumesTemplates: React.FC = () => {
   useTitleSet("Resume Templates");
@@ -7,3 +7,5 @@ const ResumesTemplates: React.FC = () => {
 };
 
 export default ResumesTemplates;
+
+// https://resume.io/resume-examples

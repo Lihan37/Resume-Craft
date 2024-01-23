@@ -7,8 +7,8 @@ import Blog from "../pages/blog";
 import Faq from "../pages/faq";
 import Login from "../pages/auth/Login";
 import SignUp from "../pages/auth/SignUp";
-import ResumesTemplates from "../pages/resumes/ResumesTemplates";
-import CoverLetterTemplates from "../pages/coverletter/CoverLetterTemplates";
+import ResumesTemplates from "../pages/templates/resumes/ResumesTemplates";
+import CoverLetterTemplates from "../pages/templates/coverletter/CoverLetterTemplates";
 
 const router = createBrowserRouter([
   {
