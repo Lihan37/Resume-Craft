@@ -14,8 +14,8 @@ const FaqSection: React.FC = () => {
   return (
     <div className="max-w-screen-lg mx-auto py-12">
       <SectionHeader label="faq">
-        Frequently Asked <TextGradient>Questions</TextGradient> About Resume
-        Builder
+        Frequently Asked <TextGradient>Questions</TextGradient> <br /> About
+        Resume Builder
       </SectionHeader>
       <div className="mt-16 text-c-dark">
         {data.faqs.map((item, index) => {
@@ -33,7 +33,7 @@ const FaqSection: React.FC = () => {
                 className={` ${
                   isActive && "pb-3"
                 } flex py-6 cursor-pointer  items-center justify-between w-full focus:outline-none`}>
-                <div className=" text-base md:text-xl font-semibold capitalize">
+                <div className=" text-base xl:text-xl font-semibold capitalize">
                   {item.question}
                 </div>
                 {isActive ? (
@@ -43,7 +43,7 @@ const FaqSection: React.FC = () => {
                 )}
               </div>
               {isActive && (
-                <div className="pb-6 text-sm md:text-lg text-c-dark font-mono">
+                <div className="pb-6 text-sm xl:text-lg text-c-dark font-mono">
                   {item.answer}
                 </div>
               )}

@@ -65,7 +65,7 @@ const Slider: React.FC = () => {
                 rating={review.star}
                 activeColor={review.color}
               />
-              <h1 className=" font-semibold text-xl">
+              <h1 className=" font-semibold xl:text-xl">
                 {review.title.slice(0, 22)}
                 {review.title.length > 22 && " ..."}
               </h1>

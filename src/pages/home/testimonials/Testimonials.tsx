@@ -10,7 +10,7 @@ const Testimonials: React.FC = () => {
     <div className="my-20 text-c-dark">
       <SectionHeader label="Testimonials">
         Reviewed By The <TextGradient>Community</TextGradient>{" "}
-        <br className=" hidden md:block" /> Trusted By Professionals
+        <br className="hidden md:block" /> Trusted By Professionals
       </SectionHeader>
 
       <div className=" my-16">
@@ -35,33 +35,6 @@ const Testimonials: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-16 ">
-        {data.testimonials.map((testimonial) => (
-          <div
-            key={testimonial.id}
-            // testimonial={testimonial}
-            className="bg-[#C8D7EF] p-8 rounded-xl">
-            <Rating
-              style={{ maxWidth: 120 }}
-              value={testimonial.star}
-              readOnly
-            />
-            <h2 className="text-justify my-8">{testimonial.review}</h2>
-            <div className="flex gap-5 items-center ">
-              <img
-                className="w-[60px] rounded-full"
-                src={testimonial.image}
-                alt=""
-              />
-              <div>
-                <h3 className="font-semibold">{testimonial.name}</h3>
-                <p className="text-sm">{testimonial.date}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div> */}
     </div>
   );
 };

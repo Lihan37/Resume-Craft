@@ -12,7 +12,7 @@ const companies = [
 
 const Companies: React.FC = () => {
   return (
-    <div className=" my-6 py-7 lg:py-14 gap-5  grid grid-cols-3 md:grid-cols-6 border border-blue-100 rounded-xl">
+    <div className=" my-16 md:my-6 py-7 lg:py-14 gap-5  grid grid-cols-3 md:grid-cols-6 border border-blue-100 rounded-xl">
       {companies.map((item, index) => (
         <div
           key={index}

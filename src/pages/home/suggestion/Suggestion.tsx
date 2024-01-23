@@ -66,9 +66,9 @@ const Suggestion: React.FC = () => {
       <div className=" text-center w-full">
         <SectionHeader label="optimized designs">
           Make Your <TextGradient>Resume/CV</TextGradient> With Proven{" "}
-          <br className=" hidden xl:block" /> Professional Templates
+          <br className=" hidden lg:block" /> Professional Templates
         </SectionHeader>
-        <h3 className=" mt-5 text-sm md:text-xl text-c-dark-light">
+        <h3 className=" mt-5 text-sm md:text-lg text-c-dark-light">
           Use one of our field-tested resume templates, designed by <br /> a
           team of HR experts and typographers
         </h3>

@@ -15,9 +15,9 @@ export const Home: React.FC = () => {
     <>
       <HeroSection />
       <Companies />
-      <Testimonials />
       <FeatureSection />
       <Suggestion />
+      <Testimonials />
       <Achievement />
       <FaqSection />
       {/* <BenefitSection /> */}

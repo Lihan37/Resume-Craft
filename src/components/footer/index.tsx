@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
   const dateTime = new Date().getFullYear();
 
   return (
-    <footer className=" py-10 bg-gradient-to-r from-blue-50 to-[#eff6ffea] rounded-tl-[5rem] rounded-tr-[5rem]">
+    <footer className=" py-10 bg-gradient-to-r from-blue-50 to-violet-100">
       <Container>
         <div className="flex gap-10 flex-col md:flex-row justify-between items-center">
           <Logo />

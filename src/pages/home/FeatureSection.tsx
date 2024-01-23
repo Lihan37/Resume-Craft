@@ -30,7 +30,7 @@ const FeatureSection = () => {
     <div>
       <SectionHeader label="Features">
         Features <TextGradient>Designed</TextGradient> To Help You Win{" "}
-        <br className="hidden lg:block" />
+        <br className="hidden md:block" />
         Your Dream Job
       </SectionHeader>
       <div className=" grid grid-cols-1 md:grid-cols-3 w-full gap-10 my-16">

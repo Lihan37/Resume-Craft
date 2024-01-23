@@ -16,7 +16,7 @@ const HeroSection: React.FC = () => {
             We can help you
           </h1>
         </div>
-        <h1 className="text-3xl md:text-6xl xl:text-7xl 2xl:text-8xl font-semibold  relative">
+        <h1 className="text-3xl md:text-6xl lg:text-5xl xl:text-6xl 2xl:text-8xl font-semibold  relative">
           Free{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
             Resume
