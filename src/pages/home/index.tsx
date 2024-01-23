@@ -9,6 +9,7 @@ import Testimonials from "./testimonials/Testimonials";
 import Achievement from "./Achievement";
 import Suggestion from "./suggestion/Suggestion";
 import Companies from "./Companies";
+import BlogsSection from "./BlogsSection";
 import Action from "./Action";
 
 export const Home: React.FC = () => {
@@ -21,6 +22,7 @@ export const Home: React.FC = () => {
       <Testimonials />
       <Achievement />
       <Action />
+      <BlogsSection />
       <FaqSection />
       {/* <BenefitSection /> */}
       {/* <HowToUseSection /> */}

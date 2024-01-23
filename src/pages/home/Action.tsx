@@ -3,7 +3,7 @@ import { Container } from "../../components/common/Container";
 import { images } from "../../constant";
 import { FaArrowRightLong } from "react-icons/fa6";
 
-const Action = () => {
+const Action: React.FC = () => {
   return (
     <div className=" w-full py-32 bg-[#282b8f]">
       <Container>
