@@ -6,8 +6,8 @@ import Tab from "../../../components/common/Tab";
 import Slider from "./Slider";
 import SectionHeader from "../../../components/common/SectionHeader";
 import TextGradient from "../../../components/common/TextGradient";
-import { FaArrowRightLong } from "react-icons/fa6";
 import { Container } from "../../../components/common/Container";
+import Button from "../../../components/common/Button";
 
 const tabs = [
   {
@@ -107,12 +107,7 @@ const Suggestion: React.FC = () => {
           </AnimatePresence>
         </main>
         <div className="flex justify-center items-center w-full">
-          <button className="flex justify-start items-center gap-8 uppercase font-mono hover:gap-10 transition-all duration-300 px-8  pl-10 pr-2 py-2 xl:py-3 rounded-full text-c-primary  font-semibold tracking-widest	  text-base xl:text-lg border-2 border-c-primary shadow-2xl shadow-blue-100">
-            <span> See More Templates</span>
-            <span className=" border-2 rounded-full p-2 xl:p-3 border-c-primary">
-              <FaArrowRightLong />
-            </span>
-          </button>
+          <Button>See More Templates</Button>
         </div>
       </div>
     </Container>
