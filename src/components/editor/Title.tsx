@@ -1,10 +1,12 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import useOutsideClick from "../../hooks/useOutsideClick";
+import useDisplay from "../../hooks/useDisplay";
 
 const Title: React.FC = () => {
   const [title, setTitle] = useState<string>("Untitled");
   const [inputWidth, setInputWidth] = useState<string>("0px");
   const inputRef = useRef<HTMLInputElement>(null);
+  const [windowWidth] = useDisplay();
 
   useLayoutEffect(() => {
     const uppercaseLetters = title?.match(/[A-Z]/g)?.length || 0; // width 14px
@@ -24,9 +26,16 @@ const Title: React.FC = () => {
   });
 
   return (
-    <div className="text-xl font-semibold">
+    <div className=" text-base lg:text-xl font-semibold">
       <input
-        style={{ width: title?.length > 8 ? inputWidth : "80px" }}
+        style={{
+          maxWidth:
+            title?.length > 8 && windowWidth > 769
+              ? inputWidth
+              : windowWidth > 769
+              ? "80px"
+              : "70px",
+        }}
         ref={inputRef}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Untitled"
