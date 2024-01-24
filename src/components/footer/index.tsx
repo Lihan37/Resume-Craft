@@ -20,26 +20,22 @@ const Footer: React.FC = () => {
           <div className="flex items-center space-x-4">
             <a
               href="#"
-              className="bg-c-primary rounded-full p-3 hover:bg-c-primary-light transition duration-300"
-            >
+              className="bg-c-primary rounded-full p-3 hover:bg-c-primary-light transition duration-300">
               <FaFacebookF className="text-xl text-white" />
             </a>
             <a
               href="#"
-              className="bg-c-primary rounded-full p-3 hover:bg-c-primary-light transition duration-300"
-            >
+              className="bg-c-primary rounded-full p-3 hover:bg-c-primary-light transition duration-300">
               <FaInstagram className="text-xl text-white" />
             </a>
             <a
               href="#"
-              className="bg-c-primary rounded-full p-3 hover:bg-c-primary-light transition duration-300"
-            >
+              className="bg-c-primary rounded-full p-3 hover:bg-c-primary-light transition duration-300">
               <FaLinkedinIn className="text-xl text-white" />
             </a>
             <a
               href="#"
-              className="bg-c-primary rounded-full p-3 hover:bg-c-primary-light transition duration-300"
-            >
+              className="bg-c-primary rounded-full p-3 hover:bg-c-primary-light transition duration-300">
               <FaTwitter className="text-xl text-white" />
             </a>
           </div>
@@ -52,15 +48,15 @@ const Footer: React.FC = () => {
               Join our newsletter to stay up to date on features and <br />{" "}
               releases
             </p>
-            <div className="flex lg:gap-5 justify-between border border-gray-600 bg-white py-[2px] lg:py-2 my-4 rounded-full">
+            <div className="flex lg:gap-5  justify-between border border-gray-600 bg-white py-2 my-4 rounded-full">
               <input
                 type="text"
                 name=""
                 id=""
-                className=" px-4 py-2 mr-0 md:mr-2 mb-2 lg:mb-0 outline-none bg-transparent"
+                className=" px-4 py-2 mr-0 md:mr-2 lg:mb-0 outline-none bg-transparent"
                 placeholder="ENTER YOUR EMAIL"
               />
-              <button className="text-white bg-c-primary px-4 lg:p-3 rounded-full mr-4">
+              <button className="text-white bg-c-primary h-10 w-10 flex justify-center items-center text-xl p-1 rounded-full mr-4">
                 <IoArrowForward />
               </button>
             </div>
