@@ -9,6 +9,8 @@ import Login from "../pages/auth/Login";
 import SignUp from "../pages/auth/SignUp";
 import ResumesTemplates from "../pages/templates/resumes/ResumesTemplates";
 import CoverLetterTemplates from "../pages/templates/coverletter/CoverLetterTemplates";
+import EditorWrapper from "../layouts/EditorWrapper";
+import ResumeEditor from "../pages/editor/resume";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +49,16 @@ const router = createBrowserRouter([
       {
         path: "/cover-latter-template",
         element: <CoverLetterTemplates />,
+      },
+    ],
+  },
+  {
+    path: "edit",
+    element: <EditorWrapper />,
+    children: [
+      {
+        path: "resume",
+        element: <ResumeEditor />,
       },
     ],
   },

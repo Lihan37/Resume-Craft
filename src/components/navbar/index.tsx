@@ -62,14 +62,14 @@ const Navbar: React.FC = () => {
               ))}
             </div>
           )}
-
-          <button className=" hidden lg:flex font-mono justify-start items-center gap-2 xl:gap-5  uppercase  rounded-full text-c-dark font-semibold text-lg">
-            <span> GET START</span>
-            <span className=" border-2 rounded-full p-2 xl:p-3 border-c-primary">
-              <FaArrowRightLong />
-            </span>
-          </button>
-
+          <NavLink to="edit/resume">
+            <button className=" hidden lg:flex font-mono justify-start items-center gap-2 xl:gap-5  uppercase  rounded-full text-c-dark font-semibold text-lg">
+              <span> GET START</span>
+              <span className=" border-2 rounded-full p-2 xl:p-3 border-c-primary">
+                <FaArrowRightLong />
+              </span>
+            </button>
+          </NavLink>
           <button
             className="text-3xl lg:hidden w-fit"
             onClick={handleMobileMenu}>
