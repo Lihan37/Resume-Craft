@@ -22,7 +22,7 @@ const BlogsSection: React.FC = () => {
             Timely Content
           </h3>
         </div>
-        <div className="grid gap-5 lg:gap-8 grid-cols-1 md:grid-cols-3 justify-between my-20">
+        <div className="grid gap-8 md:gap-5 lg:gap-8 grid-cols-1 md:grid-cols-3 justify-between my-20">
           {data.blogs.slice(0, 3).map((blog) => (
             <BlogCard key={blog.id} blog={blog}></BlogCard>
           ))}

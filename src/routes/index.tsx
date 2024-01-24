@@ -9,6 +9,7 @@ import Login from "../pages/auth/Login";
 import SignUp from "../pages/auth/SignUp";
 import ResumesTemplates from "../pages/templates/resumes/ResumesTemplates";
 import CoverLetterTemplates from "../pages/templates/coverletter/CoverLetterTemplates";
+import Pricing from "../pages/pricing";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/pricing",
-        element: <Blog />,
+        element: <Pricing/>,
       },
       {
         path: "/faq",
