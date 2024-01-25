@@ -24,7 +24,7 @@ const Login: React.FC = () => {
     <div className="flex items-center justify-center my-20">
       <div className="flex min-h-full mx-auto max-w-screen-md bg-white rounded-2xl shadow-xl w-full">
         <div className="w-2/3 p-8 text-center">
-          <h2 className="font-bold text-left ml-2 text-c-dark mb-6 text-xl">Resume<span className="text-c-primary">Craft</span></h2>
+          <Link to='/'><h2 className="font-bold text-left ml-2 text-c-dark mb-6 text-xl">Resume<span className="text-c-primary">Craft</span></h2></Link>
           <h2 className="text-2xl text-c-primary font-bold mb-4">Sign In to your account</h2>
 
           {/* Social Media Icons */}
