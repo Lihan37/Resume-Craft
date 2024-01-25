@@ -17,7 +17,6 @@ const menu: MenuItem[] = [
   { link: "/cover-latter-template", label: "Cover letter" },
   { link: "/pricing", label: "Pricing" },
   { link: "/blog", label: "Blog" },
-  { link: "/faq", label: "FAQ" },
 ];
 
 const Navbar: React.FC = () => {
@@ -62,9 +61,9 @@ const Navbar: React.FC = () => {
               ))}
             </div>
           )}
-          <NavLink to="edit/resume">
+          <NavLink to="/login">
             <button className=" hidden lg:flex font-mono justify-start items-center gap-2 xl:gap-5  uppercase  rounded-full text-c-dark font-semibold text-lg">
-              <span> GET START</span>
+              <span> Login</span>
               <span className=" border-2 rounded-full p-2 xl:p-3 border-c-primary">
                 <FaArrowRightLong />
               </span>
