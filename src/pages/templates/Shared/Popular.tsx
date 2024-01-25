@@ -5,6 +5,8 @@ import "swiper/swiper-bundle.css";
 import { Container } from "../../../components/common/Container";
 import { PiGlobeStand } from "react-icons/pi";
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
+import { images } from "../../../constant";
+import "swiper/swiper-bundle.css";
 
 
 const Popular: React.FC = () => {
@@ -33,6 +35,7 @@ const Popular: React.FC = () => {
                     <IoArrowForward />
                 </button>
             </div>
+            
             </div>
             <Swiper
                 ref={sliderRef as React.RefObject<SwiperRef>}
@@ -55,14 +58,14 @@ const Popular: React.FC = () => {
                 }}
                 className="mySwiper">
 
-                <SwiperSlide>Slide 1</SwiperSlide>
-                <SwiperSlide>Slide 2</SwiperSlide>
-                <SwiperSlide>Slide 3</SwiperSlide>
-                <SwiperSlide>Slide 4</SwiperSlide>
-                <SwiperSlide>Slide 1</SwiperSlide>
-                <SwiperSlide>Slide 2</SwiperSlide>
-                <SwiperSlide>Slide 3</SwiperSlide>
-                <SwiperSlide>Slide 4</SwiperSlide>
+                <SwiperSlide><img src={images.resume1} alt="" /></SwiperSlide>
+                <SwiperSlide><img src={images.resume2} alt="" /></SwiperSlide>
+                <SwiperSlide><img src={images.resume3} alt="" /></SwiperSlide>
+                <SwiperSlide><img src={images.resume4} alt="" /></SwiperSlide>
+                <SwiperSlide><img src={images.resume5} alt="" /></SwiperSlide>
+                <SwiperSlide><img src={images.resume6} alt="" /></SwiperSlide>
+               
+                
 
 
 

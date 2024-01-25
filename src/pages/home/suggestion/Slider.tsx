@@ -65,7 +65,7 @@ const Slider: React.FC<ISlider> = ({ resumes = [] }) => {
           }}>
           {resumes.map((item, index) => (
             <SwiperSlide key={index}>
-              <img
+              <img id="image"
                 src={item.url}
                 alt="resumes"
                 className="pointer-events-none select-none rounded-xl"
