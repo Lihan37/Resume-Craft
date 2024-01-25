@@ -54,6 +54,7 @@ const ResumesTemplates: React.FC = () => {
             placeholder="Type Your Job Title"
             list="select"
           />
+
           <datalist className="bg-white text-black" id="select">
             <option value="Architect" />
             <option value="Civil Engineer" />

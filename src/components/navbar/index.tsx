@@ -43,7 +43,7 @@ const Navbar: React.FC = () => {
             <div
               className={`${
                 windowWidth < 769 &&
-                "absolute  bg-gradient-to-r  from-[#e2ebe8] to-[#f1eedd] "
+                "absolute  bg-gradient-to-r  from-blue-50 to-violet-100 "
               } top-20 right-10 py-5 rounded-xl lg:rounded-none w-72 lg:w-fit  uppercase flex flex-col lg:flex-row z-50 justify-start items-center gap-4 xl:gap-12 font-semibold text-lg text-c-dark font-mono`}>
               <div className="lg:hidden px-5 text-3xl w-full ">
                 <button onClick={handleMobileMenu} className="w-fit">
@@ -62,14 +62,14 @@ const Navbar: React.FC = () => {
               ))}
             </div>
           )}
-
-          <button className=" hidden lg:flex font-mono justify-start items-center gap-2 xl:gap-5  uppercase  rounded-full text-c-dark font-semibold text-lg">
-            <span> GET START</span>
-            <span className=" border-2 rounded-full p-2 xl:p-3 border-c-primary">
-              <FaArrowRightLong />
-            </span>
-          </button>
-
+          <NavLink to="edit/resume">
+            <button className=" hidden lg:flex font-mono justify-start items-center gap-2 xl:gap-5  uppercase  rounded-full text-c-dark font-semibold text-lg">
+              <span> GET START</span>
+              <span className=" border-2 rounded-full p-2 xl:p-3 border-c-primary">
+                <FaArrowRightLong />
+              </span>
+            </button>
+          </NavLink>
           <button
             className="text-3xl lg:hidden w-fit"
             onClick={handleMobileMenu}>

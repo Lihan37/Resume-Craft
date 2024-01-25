@@ -11,7 +11,7 @@ const Testimonials: React.FC = () => {
     <Container>
       <div className="my-20 text-c-dark">
         <SectionHeader label="Testimonials">
-          Reviewed By The <TextGradient>Community</TextGradient>{" "}
+          Reviewed By The <TextGradient>Community</TextGradient>
           <br className="hidden md:block" /> Trusted By Professionals
         </SectionHeader>
 
