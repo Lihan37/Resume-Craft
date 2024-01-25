@@ -2,7 +2,7 @@
   pointer-events: none;
 }
 
-.swiper-slide img {
+.swiper-slide #image {
   height: 500px;
   width: 100%;
   transition: all 200ms linear;
@@ -12,24 +12,24 @@
 }
 
 @media screen and (min-width: 768px) {
-  .swiper-slide img {
+  .swiper-slide #image {
     height: 550px;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .swiper-slide img {
+  .swiper-slide #image {
     height: 500px;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .swiper-slide img {
+  .swiper-slide #image {
     height: 700px;
   }
 }
 
-.swiper-slide.swiper-slide-active img {
+.swiper-slide.swiper-slide-active #image {
   transform: scale(1) scaleX(1.2);
   opacity: 1;
 }
