@@ -1,7 +1,12 @@
 import React from "react";
+import LeftSideBar from "./LeftSideBar";
 
 const ResumeEditor: React.FC = () => {
-  return <div>ResumeEditor</div>;
+  return (
+    <>
+      <LeftSideBar />
+    </>
+  );
 };
 
 export default ResumeEditor;

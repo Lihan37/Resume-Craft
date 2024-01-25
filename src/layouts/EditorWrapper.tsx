@@ -7,7 +7,9 @@ const EditorWrapper: React.FC = () => {
     <div>
       <>
         <EditorNavbar />
-        <Outlet />
+        <div className="2xl:max-w-[1900px] mx-auto px-10 2xl:px-0">
+          <Outlet />
+        </div>
       </>
     </div>
   );
