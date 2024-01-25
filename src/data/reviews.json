@@ -1,61 +1,61 @@
 [
   {
     "id": 1,
-    "title": "Need more flexibility with spacing",
+    "title": "Enhanced Spacing",
     "name": "Ishan S.M.",
     "image": "https://i.ibb.co/Kzfrv7D/555.jpg",
-    "review": "Excellent Application! Only issue I faced was that I could not use page breaks or spacing to my convenience. Some places I'd prefer if one section did not spill over to the other page, which makes it harder to read. It would be great if we had more flexibility to choose the spacing and gaps between each section.",
-    "star": 5,
+    "review": "Great Application! I found the spacing a bit rigid. It would be fantastic if there's more flexibility in adjusting spacing and gaps between sections. The overall experience is excellent!",
+    "star": 4,
     "date": "4 days ago",
     "color": "#73ce11"
   },
   {
     "id": 2,
-    "title": "Excellent user interface",
+    "title": "Intuitive UI Design",
     "name": "Jon Agnar Olason",
     "image": "https://i.ibb.co/7QwQZHN/666.jpg",
-    "review": "Excellent Application! Only issue I faced was that I could not use page breaks or spacing to my convenience. Some places I'd prefer if one section did not spill over to the other page, which makes it harder to read. It would be great if we had more flexibility to choose the spacing and gaps between each section.",
-    "star": 4,
+    "review": "Fantastic Application! While using it, I realized a limitation with spacing. It would be awesome to have more control over page breaks and spacing. Nonetheless, the UI design is excellent!",
+    "star": 5,
     "date": "5 days ago",
     "color": "#00b67a"
   },
   {
     "id": 3,
-    "title": "Need more flexibility with spacing",
+    "title": "Spacing Customization",
     "name": "Ishan S.M.",
     "image": "https://i.ibb.co/Kzfrv7D/555.jpg",
-    "review": "Excellent Application! Only issue I faced was that I could not use page breaks or spacing to my convenience. Some places I'd prefer if one section did not spill over to the other page, which makes it harder to read. It would be great if we had more flexibility to choose the spacing and gaps between each section.",
+    "review": "Awesome Application! The spacing could use more flexibility. It would greatly improve readability if there were options to control spacing between sections. Overall, it's an outstanding application!",
     "star": 5,
     "date": "4 days ago",
     "color": "#73ce11"
   },
   {
     "id": 4,
-    "title": "Excellent user interface",
+    "title": "User-Friendly Interface",
     "name": "Jon Agnar Olason",
     "image": "https://i.ibb.co/7QwQZHN/666.jpg",
-    "review": "Excellent Application! Only issue I faced was that I could not use page breaks or spacing to my convenience. Some places I'd prefer if one section did not spill over to the other page, which makes it harder to read. It would be great if we had more flexibility to choose the spacing and gaps between each section.",
-    "star": 4,
+    "review": "Outstanding Application! The only hiccup I encountered was the spacing. A more customizable approach to spacing and page breaks would be appreciated. Nevertheless, the interface is fantastic!",
+    "star": 3,
     "date": "5 days ago",
     "color": "#00b67a"
   },
   {
     "id": 5,
-    "title": "Need more flexibility with spacing",
+    "title": "Adjustable Spacing",
     "name": "Ishan S.M.",
     "image": "https://i.ibb.co/Kzfrv7D/555.jpg",
-    "review": "Excellent Application! Only issue I faced was that I could not use page breaks or spacing to my convenience. Some places I'd prefer if one section did not spill over to the other page, which makes it harder to read. It would be great if we had more flexibility to choose the spacing and gaps between each section.",
+    "review": "Amazing Application! The spacing needs more customization options. It would be fantastic if users could control the gaps between sections. Despite this, it's an exceptional application!",
     "star": 5,
     "date": "4 days ago",
     "color": "#73ce11"
   },
   {
     "id": 6,
-    "title": "Excellent user interface",
+    "title": "Intuitive UI Design",
     "name": "Jon Agnar Olason",
     "image": "https://i.ibb.co/7QwQZHN/666.jpg",
-    "review": "Excellent Application! Only issue I faced was that I could not use page breaks or spacing to my convenience. Some places I'd prefer if one section did not spill over to the other page, which makes it harder to read. It would be great if we had more flexibility to choose the spacing and gaps between each section.",
-    "star": 4,
+    "review": "Superb Application! The spacing limitation was noticeable. Having more control over spacing and page breaks would enhance the user experience. Nevertheless, the UI design is top-notch!",
+    "star": 3,
     "date": "5 days ago",
     "color": "#00b67a"
   }
