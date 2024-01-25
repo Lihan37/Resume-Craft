@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const SignUp: React.FC = () => {
-  const authContext = useContext(AuthContext); 
+  const authContext = useContext(AuthContext);
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -33,7 +33,7 @@ const SignUp: React.FC = () => {
 
   const handleSocialSignIn = async (provider: string) => {
     try {
-      if (provider === 'google') {
+      if (provider === "google") {
         await authContext?.googleSignIn();
       } else {
         // Handle other social sign-in methods
@@ -43,41 +43,41 @@ const SignUp: React.FC = () => {
     }
   };
 
-
   return (
     <div className="flex items-center justify-center my-20">
       <div className="flex min-h-full mx-auto max-w-screen-md bg-white rounded-2xl shadow-xl w-full">
         <div className="w-2/3 p-8 text-center">
-          <Link to='/'>
+          <Link to="/">
             <h2 className="font-bold text-left ml-2 text-c-dark mb-6 text-xl">
               Resume<span className="text-c-primary">Craft</span>
             </h2>
           </Link>
-          <h2 className="text-2xl text-c-primary font-bold mb-4">Sign Up for an account</h2>
+          <h2 className="text-2xl text-c-primary font-bold mb-4">
+            Sign Up for an account
+          </h2>
 
           {/* Social Media Icons */}
           <div className="flex justify-center mb-4">
             <button
               className="bg-red-500 text-white p-4 rounded-full mx-2"
-              onClick={() => handleSocialSignIn('google')}
-            >
+              onClick={() => handleSocialSignIn("google")}>
               <FaGoogle size={18} />
             </button>
             <button
               className="bg-blue-500 text-white p-4 rounded-full mx-2"
-              onClick={() => console.log("LinkedIn clicked")}
-            >
+              onClick={() => console.log("LinkedIn clicked")}>
               <FaLinkedin size={18} />
             </button>
             <button
               className="bg-black text-white p-4 rounded-full mx-2"
-              onClick={() => console.log("GitHub clicked")}
-            >
+              onClick={() => console.log("GitHub clicked")}>
               <FaGithub size={18} />
             </button>
           </div>
 
-          <p className="my-4 text-gray-700">Or, sign up using your email account.</p>
+          <p className="my-4 text-gray-700">
+            Or, sign up using your email account.
+          </p>
 
           {/* Sign Up Form */}
           <form onSubmit={handleSignUp} className="mx-auto">
@@ -119,8 +119,7 @@ const SignUp: React.FC = () => {
             </div>
             <button
               className="bg-blue-500 w-2/4 text-white px-4 py-2 rounded-3xl"
-              type="submit"
-            >
+              type="submit">
               Sign Up
             </button>
           </form>
