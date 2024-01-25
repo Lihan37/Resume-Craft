@@ -10,11 +10,10 @@ import {
   updateProfile,
   Auth,
   User,
-  
 } from 'firebase/auth';
 import app from '../firebase/firebase.config';
 
-interface AuthContextProps {
+export interface AuthContextProps {
   user: Auth | null;
   loading: boolean;
   createUser: (email: string, password: string) => Promise<void>;
@@ -31,6 +30,7 @@ const auth = getAuth(app);
 interface AuthProviderProps {
   children: ReactNode;
 }
+
 
 const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<Auth | null>(null);

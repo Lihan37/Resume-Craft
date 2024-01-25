@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FaGoogle, FaLinkedin, FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../providers/AuthProvider";
+import { AuthContext, AuthContextProps } from "../../providers/AuthProvider";
 
 const Login: React.FC = () => {
   const { googleSignIn, signIn } = useContext(AuthContext) as AuthContextProps;
@@ -30,7 +30,6 @@ const Login: React.FC = () => {
   useEffect(() => {
     handleGoogleSignIn();
   }, []);
-
   return (
     <div className="flex items-center justify-center my-20">
       <div className="flex min-h-full mx-auto max-w-screen-md bg-white rounded-2xl shadow-xl w-full">
@@ -44,7 +43,7 @@ const Login: React.FC = () => {
           <div className="flex justify-center mb-4">
             <button
               className="bg-red-500 text-white p-4 rounded-full mx-2"
-              onClick={handleGoogleSignIn} // Use handleGoogleSignIn on Google button click
+              onClick={handleGoogleSignIn} 
             >
               <FaGoogle size={18} />
             </button>
