@@ -24,7 +24,7 @@ const HeaderResume: React.FC<HeaderForCV> = ({ sectionHeader, description,button
                     <p className="font-mono text-sm md:text-base xl:text-lg max-w-md xl:max-w-xl text-c-dark-light  lg:pt-7 xl:pt-14">
                        {description}
                     </p>
-                    <div className=" flex justify-center md:justify-start items-center gap-10 py-5 pb-10">
+                    <div className=" flex justify-center md:justify-start items-center gap-10 py-10 pb-14">
                         <Button>
                             {button}
                         </Button>

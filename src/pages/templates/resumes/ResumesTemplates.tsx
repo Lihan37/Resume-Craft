@@ -2,6 +2,7 @@ import React from "react";
 import useTitleSet from "../../../hooks/useTitleSet";
 import HeaderResume from "../Shared/Header";
 import Search from "../Shared/Search";
+import Popular from "../Shared/Popular";
 
 const ResumesTemplates: React.FC = () => {
   useTitleSet("Resume Templates");
@@ -18,6 +19,7 @@ const ResumesTemplates: React.FC = () => {
         </div>
 
        <Search/>
+       <Popular></Popular>
       </div>
     
   );
