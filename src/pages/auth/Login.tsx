@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaGoogle, FaLinkedin, FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext, AuthContextProps } from "../../providers/AuthProvider";
@@ -27,9 +27,9 @@ const Login: React.FC = () => {
   };
 
   // Using handleGoogleSignIn somewhere in the component
-  useEffect(() => {
-    handleGoogleSignIn();
-  }, []);
+  // useEffect(() => {
+  //   handleGoogleSignIn();
+  // }, []);
 
   return (
     <div className="flex items-center justify-center my-20">
