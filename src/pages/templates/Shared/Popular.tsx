@@ -3,8 +3,8 @@ import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import {  Navigation, Pagination } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 import { Container } from "../../../components/common/Container";
-import { MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from "react-icons/md";
 import { PiGlobeStand } from "react-icons/pi";
+import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 
 
 const Popular: React.FC = () => {
@@ -23,14 +23,14 @@ const Popular: React.FC = () => {
         <Container>
             <div className="flex justify-between items-center py-16">
                <div className="flex gap-3 items-center">
-               <PiGlobeStand className="text-3xl" /> <h1 className="text-3xl font-semibold">  Most Popular</h1>
+               <PiGlobeStand className="text-4xl text-c-primary" /> <h1 className="text-4xl font-bold text-c-dark">  Most Popular</h1>
                </div>
             <div className="flex justify-end gap-2 pb-10">
-                <button className=" bg-c-primary  text-white px-5 py-3 rounded-2xl text-2xl" onClick={handleSlidePrev} >
-                    <MdOutlineArrowBackIos />
+                <button className=" bg-c-primary  text-white  p-3    rounded-full text-2xl" onClick={handleSlidePrev} >
+                    <IoArrowBack/>
                 </button>
-                <button className="bg-c-primary text-white px-5 py-3 rounded-2xl text-2xl" onClick={handleSlideNext}>
-                    <MdOutlineArrowForwardIos  />
+                <button className="bg-c-primary text-white p-3  rounded-full text-2xl" onClick={handleSlideNext}>
+                    <IoArrowForward />
                 </button>
             </div>
             </div>
