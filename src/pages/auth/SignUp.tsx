@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FaGoogle, FaLinkedin, FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const SignUp: React.FC = () => {
+  const authContext = useContext(AuthContext); 
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
 
-  const handleSignUp = (e: React.FormEvent) => {
+  const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
 
     console.log("Name:", name);
@@ -16,25 +18,48 @@ const SignUp: React.FC = () => {
     console.log("Password:", password);
     console.log("Confirm Password:", confirmPassword);
 
-    // Clear input fields after sign up
-    setName("");
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
+    try {
+      await authContext?.createUser(email, password);
+
+      // Clear input fields after sign up
+      setName("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+    } catch (error) {
+      console.error("Error creating user:", error);
+    }
   };
+
+  const handleSocialSignIn = async (provider: string) => {
+    try {
+      if (provider === 'google') {
+        await authContext?.googleSignIn();
+      } else {
+        // Handle other social sign-in methods
+      }
+    } catch (error) {
+      console.error(`Error signing in with ${provider}:`, error);
+    }
+  };
+
 
   return (
     <div className="flex items-center justify-center my-20">
       <div className="flex min-h-full mx-auto max-w-screen-md bg-white rounded-2xl shadow-xl w-full">
         <div className="w-2/3 p-8 text-center">
-        <Link to='/'><h2 className="font-bold text-left ml-2 text-c-dark mb-6 text-xl">Resume<span className="text-c-primary">Craft</span></h2></Link>
+          <Link to='/'>
+            <h2 className="font-bold text-left ml-2 text-c-dark mb-6 text-xl">
+              Resume<span className="text-c-primary">Craft</span>
+            </h2>
+          </Link>
           <h2 className="text-2xl text-c-primary font-bold mb-4">Sign Up for an account</h2>
 
           {/* Social Media Icons */}
           <div className="flex justify-center mb-4">
             <button
               className="bg-red-500 text-white p-4 rounded-full mx-2"
-              onClick={() => console.log("Google clicked")}
+              onClick={() => handleSocialSignIn('google')}
             >
               <FaGoogle size={18} />
             </button>
