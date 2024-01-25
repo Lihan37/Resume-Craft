@@ -6,7 +6,7 @@ import { Container } from "../../../components/common/Container";
 
 const ResumesTemplates: React.FC = () => {
   useTitleSet("Resume Templates");
-
+  
   return (
     <Container>
       <div className=" w-full">
