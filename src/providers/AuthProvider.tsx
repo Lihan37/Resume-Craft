@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import { createContext, ReactNode, useEffect, useState } from "react";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -23,7 +23,9 @@ export interface AuthContextProps {
   updateUserProfile: (name: string, photo: string) => Promise<void>;
 }
 
-export const AuthContext = createContext<AuthContextProps | undefined>(undefined);
+export const AuthContext = createContext<AuthContextProps | undefined>(
+  undefined
+);
 
 const auth = getAuth(app);
 
@@ -66,15 +68,15 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser: User | null) => {
-      setUser(currentUser as Auth | null); 
+      setUser(currentUser as Auth | null);
       setLoading(false);
     });
-  
+
     return () => {
       return unsubscribe();
     };
   }, []);
-  
+
   const authInfo: AuthContextProps = {
     user,
     loading,
@@ -84,9 +86,12 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     logOut,
     updateUserProfile,
   };
-  
-  return <AuthContext.Provider value={authInfo as AuthContextProps}>{children}</AuthContext.Provider>;
-  
+
+  return (
+    <AuthContext.Provider value={authInfo as AuthContextProps}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;

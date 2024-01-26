@@ -4,7 +4,7 @@ import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import "./slider.css";
+import "./Slider.css";
 
 interface IResume {
   url: string;
@@ -65,7 +65,8 @@ const Slider: React.FC<ISlider> = ({ resumes = [] }) => {
           }}>
           {resumes.map((item, index) => (
             <SwiperSlide key={index}>
-              <img id="image"
+              <img
+                id="image"
                 src={item.url}
                 alt="resumes"
                 className="pointer-events-none select-none rounded-xl"
