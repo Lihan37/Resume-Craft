@@ -221,44 +221,32 @@ export default Pricing;
 
 const packagePlans = [
   {
-    name: "Components 1",
+    name: "Basic Resume",
     free: true,
     premium: true,
     enterprise: true,
   },
   {
-    name: "Components 2",
+    name: "Basic Cover letter",
     free: true,
     premium: true,
     enterprise: true,
   },
   {
-    name: "Components 3",
+    name: "Single User",
     free: true,
     premium: true,
     enterprise: true,
   },
   {
-    name: "Components 4",
+    name: "Portfolio Create",
     free: false,
     premium: true,
     enterprise: true,
   },
   {
-    name: "Components 5",
+    name: "10 User",
     free: false,
-    premium: false,
-    enterprise: true,
-  },
-  {
-    name: "Components 6",
-    free: false,
-    premium: true,
-    enterprise: true,
-  },
-  {
-    name: "Components 6",
-    free: true,
     premium: false,
     enterprise: true,
   },

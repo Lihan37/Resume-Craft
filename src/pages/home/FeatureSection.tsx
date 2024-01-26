@@ -14,14 +14,14 @@ const data = [
   },
   {
     id: 2,
-    title: "Multi-Format Resume Options",
+    title: "Multi-Format Resume & Cover-letter Options",
     doc: "Save Your Perfect Resume in Any Common Format You Know, Including ,Microsoft Word And PDF in One Click",
     icon: <MdAutoStories />,
   },
   {
     id: 3,
-    title: "Automatic General Summary Generator",
-    doc: "Create A Powerful Resume Profile Or Cover Letter in One Click. Writer's Block is No Longer An Obstacle ",
+    title: "Craft your your portfolio Easy And Fast",
+    doc: "Crafting visually stunning portfolios swiftly. Showcase your skills effortlessly with our easy and fast portfolio creation service. Elevate your profile!",
     icon: <MdAutoAwesome />,
   },
 ];
