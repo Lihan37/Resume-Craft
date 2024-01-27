@@ -4,7 +4,7 @@ import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./Slider.css";
-
+import ButtonUse from "../../../components/common/Button";
 interface IResume {
   url: string;
 }
@@ -79,11 +79,12 @@ const Slider: React.FC<ISlider> = ({ resumes = [] }) => {
         </Swiper>
         <div className=" absolute top-0 left-0 right-0 bottom-0 z-50">
           <div className=" w-full h-full flex justify-center items-center">
-            <button
+            <ButtonUse
+              icon={false}
               className=" bg-c-primary text-white font-mono text-base uppercase font-semibold 
             px-5 py-2 rounded-full">
               Use Template
-            </button>
+            </ButtonUse>
           </div>
         </div>
         <Button onClick={handleSlidePrev} left="15%">
