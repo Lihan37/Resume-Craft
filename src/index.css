@@ -6,10 +6,24 @@
 @import "tailwindcss/utilities";
 
 /* This will customize the vertical scrollbar */
-::-webkit-scrollbar {
+#sidebarEditor::-webkit-scrollbar {
   width: 1px;
 }
 
-::-webkit-scrollbar-thumb {
+#sidebarEditor::-webkit-scrollbar-thumb {
   background-color: #71706f90;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #3b83f6bd;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #3b82f6;
+}
+
+.ql-editor {
+  font-size: 1.125rem;
 }

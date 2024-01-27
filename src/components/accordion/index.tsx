@@ -16,6 +16,8 @@ const Accordion: FC<AccordionProps> = ({
     multiple ? [defaultIndex as number] : (defaultIndex as number)
   );
 
+  console.log(activeIndex);
+
   function onChangeIndex(index: number) {
     setActiveIndex((currentActiveIndex) => {
       if (!multiple) {

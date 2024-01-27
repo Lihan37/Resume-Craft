@@ -10,3 +10,9 @@ export enum Gap {
   "9D" = "gap-9",
   "10D" = "gap-10",
 }
+
+export interface RootState {
+  resume: {
+    isActive: boolean;
+  };
+}

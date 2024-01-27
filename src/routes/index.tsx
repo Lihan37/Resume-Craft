@@ -10,7 +10,7 @@ import SignUp from "../pages/auth/SignUp";
 import ResumesTemplates from "../pages/templates/resumes/ResumesTemplates";
 import CoverLetterTemplates from "../pages/templates/coverletter/CoverLetterTemplates";
 import EditorWrapper from "../layouts/EditorWrapper";
-import ResumeEditor from "../pages/editor/resume";
+import ResumeEditor from "../pages/editor";
 import Pricing from "../pages/pricing";
 import AuthWrapper from "../layouts/AuthWrapper";
 
