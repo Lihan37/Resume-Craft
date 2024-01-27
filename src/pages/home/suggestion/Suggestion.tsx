@@ -8,6 +8,7 @@ import SectionHeader from "../../../components/common/SectionHeader";
 import TextGradient from "../../../components/common/TextGradient";
 import { Container } from "../../../components/common/Container";
 import Button from "../../../components/common/Button";
+import { Link } from "react-router-dom";
 
 const tabs = [
   {
@@ -106,9 +107,11 @@ const Suggestion: React.FC = () => {
             </motion.div>
           </AnimatePresence>
         </main>
-        <div className="flex justify-center items-center w-full">
+        <Link
+          to="/resumes-template"
+          className="flex justify-center items-center w-full">
           <Button>See More Templates</Button>
-        </div>
+        </Link>
       </div>
     </Container>
   );
