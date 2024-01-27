@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AuthContext, AuthContextProps } from "../../providers/AuthProvider";
 import Button from "../../components/common/Button";
+import InputText from "../../components/common/InputText";
 
 const Login: React.FC = () => {
   const { signIn } = useContext(AuthContext) as AuthContextProps;
@@ -20,8 +21,7 @@ const Login: React.FC = () => {
   return (
     <form onSubmit={handleEmailSignIn} className="mx-auto ">
       <div className="mb-4">
-        <input
-          className="w-3/4 mx-auto px-3 py-2 border rounded-md"
+        <InputText
           type="text"
           placeholder="Email"
           value={email}
@@ -29,8 +29,7 @@ const Login: React.FC = () => {
         />
       </div>
       <div className="mb-4">
-        <input
-          className="w-3/4 mx-auto px-3 py-2 border rounded-md"
+        <InputText
           type="password"
           placeholder="Password"
           value={password}

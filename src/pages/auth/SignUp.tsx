@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Button from "../../components/common/Button";
+import InputText from "../../components/common/InputText";
 
 const SignUp: React.FC = () => {
   const authContext = useContext(AuthContext);
@@ -31,8 +32,7 @@ const SignUp: React.FC = () => {
   return (
     <form onSubmit={handleSignUp} className="mx-auto">
       <div className="mb-4">
-        <input
-          className="w-3/4 mx-auto px-3 py-2 border rounded-md"
+        <InputText
           type="text"
           placeholder="Name"
           value={name}
@@ -40,8 +40,7 @@ const SignUp: React.FC = () => {
         />
       </div>
       <div className="mb-4">
-        <input
-          className="w-3/4 mx-auto px-3 py-2 border rounded-md"
+        <InputText
           type="text"
           placeholder="Email"
           value={email}
@@ -49,8 +48,7 @@ const SignUp: React.FC = () => {
         />
       </div>
       <div className="mb-4">
-        <input
-          className="w-3/4 mx-auto px-3 py-2 border rounded-md"
+        <InputText
           type="password"
           placeholder="Password"
           value={password}
@@ -58,8 +56,7 @@ const SignUp: React.FC = () => {
         />
       </div>
       <div className="mb-4">
-        <input
-          className="w-3/4 mx-auto px-3 py-2 border rounded-md"
+        <InputText
           type="password"
           placeholder="Confirm Password"
           value={confirmPassword}

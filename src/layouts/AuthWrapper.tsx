@@ -9,7 +9,7 @@ const AuthWrapper: React.FC = () => {
   return (
     <div className="flex flex-col md:flex-row md:justify-between  bg-white  w-full h-[800px] md:h-screen ">
       <div className=" w-full md:w-2/3 p-8 text-center h-full flex justify-center items-center relative">
-        <div className=" min-w-full md:min-w-[500px] mt-20">
+        <div className=" min-w-full md:min-w-[470px] mt-20">
           <div className="w-full text-center">
             <h2 className="text-xl md:text-3xl text-c-primary font-bold mb-4 capitalize">
               {pathname === "/auth/sign-up"
