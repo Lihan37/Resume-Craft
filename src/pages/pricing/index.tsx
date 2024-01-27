@@ -4,7 +4,6 @@ import { Container } from "../../components/common/Container";
 import SectionHeader from "../../components/common/SectionHeader";
 import TextGradient from "../../components/common/TextGradient";
 import { RxCrossCircled, RxCheckCircled } from "react-icons/rx";
-import { FaArrowRight } from "react-icons/fa";
 
 const Pricing: React.FC = () => {
   useTitleSet("Pricing");
@@ -102,11 +101,10 @@ const Pricing: React.FC = () => {
                                 className={` ${
                                   eventItem ? "bg-gray-100" : " bg-white"
                                 } w-full  py-5 text-[24.2px] lg:text-[27.9px] font-semibold px-5`}>
-                                <div className=" w-full items-center flex justify-center gap-4 md:gap-0">
+                                <div className=" w-full items-center flex justify-between md:justify-center gap-4 md:gap-0">
                                   <span className=" md:hidden text-base ">
                                     {item.name}
                                   </span>
-                                  <FaArrowRight className=" text-base md:hidden" />
                                   {item.free ? (
                                     <RxCheckCircled className=" text-c-primary" />
                                   ) : (
@@ -145,11 +143,10 @@ const Pricing: React.FC = () => {
                                 className={` ${
                                   eventItem ? "bg-gray-100" : " bg-white"
                                 } w-full  py-5 text-[24.2px] lg:text-[27.9px] font-semibold px-5`}>
-                                <div className=" w-full items-center flex justify-center gap-4 md:gap-0">
+                                <div className=" w-full items-center flex justify-between md:justify-center gap-4 md:gap-0">
                                   <span className=" md:hidden text-base ">
                                     {item.name}
                                   </span>
-                                  <FaArrowRight className=" text-base md:hidden" />
                                   {item.premium ? (
                                     <RxCheckCircled className=" text-c-primary" />
                                   ) : (
@@ -188,11 +185,10 @@ const Pricing: React.FC = () => {
                                 className={` ${
                                   eventItem ? "bg-gray-100" : " bg-white"
                                 } w-full  py-5 text-[24.2px] lg:text-[27.9px] font-semibold px-5`}>
-                                <div className=" w-full items-center flex justify-center gap-4 md:gap-0">
+                                <div className=" w-full items-center flex justify-between md:justify-center gap-4 md:gap-0">
                                   <span className=" md:hidden text-base ">
                                     {item.name}
                                   </span>
-                                  <FaArrowRight className=" text-base md:hidden" />
                                   {item.enterprise ? (
                                     <RxCheckCircled className=" text-c-primary" />
                                   ) : (
