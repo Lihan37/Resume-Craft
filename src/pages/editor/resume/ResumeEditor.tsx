@@ -7,7 +7,8 @@ import AccordionPanel from "../../../components/accordion/AccordionPanelProps";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import InputTextEditor from "../../../components/common/InputTextEditor";
-import InputMonthYear from "../../../components/common/InputMonthYear";
+import AddEmploymentHistory from "./AddEmploymentHistory";
+import { TypeOfSingleEmploymentHistory } from "../../../types";
 
 // const initialState = {
 //   personal: {
@@ -32,6 +33,12 @@ const ResumeEditor: React.FC = () => {
   // const [state, setState] = useState(initialState);
   const [isActive, setIsActive] = useState(false);
 
+  const handleAddEmploymentHistory = (
+    data: TypeOfSingleEmploymentHistory[]
+  ) => {
+    console.log("handleAddEmploymentHistory 1", data);
+  };
+
   return (
     <div>
       <div className="">
@@ -40,7 +47,7 @@ const ResumeEditor: React.FC = () => {
           <AccordionItem>
             <AccordionHeader>Personal Information</AccordionHeader>
             <AccordionPanel>
-              <div className=" space-y-3 py-5">
+              <div className=" space-y-3 py-5 px-5 ">
                 <InputText placeholder="Job Title" />
                 <InputText placeholder="First Name" />
                 <InputText placeholder="Last Name" />
@@ -55,7 +62,7 @@ const ResumeEditor: React.FC = () => {
                       animate={{ height: "auto" }}
                       exit={{ height: 0 }}
                       transition={{ type: "spring", duration: 0.4, bounce: 0 }}>
-                      <div className="space-y-3">
+                      <div className="space-y-3 ">
                         <InputText placeholder="Your City" />
                         <InputText placeholder="Your Address" />
                         <InputText placeholder="Postal Code" />
@@ -85,7 +92,7 @@ const ResumeEditor: React.FC = () => {
           <AccordionItem>
             <AccordionHeader>Professional Summary</AccordionHeader>
             <AccordionPanel>
-              <div className="py-5">
+              <div className="py-5 px-5">
                 <InputTextEditor />
               </div>
             </AccordionPanel>
@@ -94,16 +101,7 @@ const ResumeEditor: React.FC = () => {
           <AccordionItem>
             <AccordionHeader>Employment History</AccordionHeader>
             <AccordionPanel>
-              <div className="py-5 space-y-5">
-                <InputText placeholder="Job Title" />
-                <InputText placeholder="Employer" />
-                <div className="flex justify-between items-center gap-1">
-                  <InputMonthYear />
-                  <InputMonthYear dropdownLef="-50%" />
-                </div>
-                <InputText placeholder="City" />
-                <InputTextEditor height="160px" />
-              </div>
+              <AddEmploymentHistory getValue={handleAddEmploymentHistory} />
             </AccordionPanel>
           </AccordionItem>
         </Accordion>
@@ -112,4 +110,4 @@ const ResumeEditor: React.FC = () => {
   );
 };
 
-export default ResumeEditor;
+export default React.memo(ResumeEditor);
