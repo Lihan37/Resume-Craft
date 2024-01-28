@@ -37,7 +37,7 @@ const InputMonthYear: React.FC<IInputMonthYear> = ({
     if (typeof getValue === "function" && value?.length > 0) {
       getValue(value);
     }
-  }, [value, getValue]);
+  }, [value]);
 
   const handleClickInput = () => {
     setIsOpen(true);
@@ -112,4 +112,4 @@ const InputMonthYear: React.FC<IInputMonthYear> = ({
   );
 };
 
-export default InputMonthYear;
+export default React.memo(InputMonthYear);

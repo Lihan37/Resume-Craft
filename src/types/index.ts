@@ -11,6 +11,16 @@ export enum Gap {
   "10D" = "gap-10",
 }
 
+export interface TypeOfSingleEmploymentHistory {
+  _id: string | number;
+  jobTitle: string;
+  employer: string;
+  startMontYear: string;
+  endMontYear: string;
+  city: string;
+  description: string;
+}
+
 export interface RootState {
   resume: {
     isActive: boolean;

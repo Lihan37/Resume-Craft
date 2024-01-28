@@ -5,11 +5,13 @@ import ReactQuill from "react-quill";
 interface ITextEditor {
   placeholder?: string;
   height?: string;
+  getValue?: (data: string) => void;
 }
 
 const InputTextEditor: React.FC<ITextEditor> = ({
   placeholder,
   height = "200px",
+  getValue = () => {},
 }) => {
   const modules = {
     toolbar: [
@@ -88,7 +90,7 @@ const InputTextEditor: React.FC<ITextEditor> = ({
   ];
 
   const handleProcedureContentChange = (content: string) => {
-    console.log("content---->", content);
+    getValue(content);
   };
 
   return (

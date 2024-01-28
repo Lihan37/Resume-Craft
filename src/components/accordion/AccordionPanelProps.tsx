@@ -17,7 +17,7 @@ const AccordionPanel: FC<AccordionPanelProps> = ({ children }) => {
           animate={{ height: "auto" }}
           exit={{ height: 0 }}
           transition={{ type: "spring", duration: 0.4, bounce: 0 }}>
-          <div className="bg-white px-5">{children}</div>
+          <div className="bg-white ">{children}</div>
         </motion.div>
       )}
     </AnimatePresence>
