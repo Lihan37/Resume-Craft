@@ -12,9 +12,11 @@ import {
   TypeOfSingleEducationHistory,
   TypeOfSingleEmploymentHistory,
   TypeOfSingleSocialWebSite,
+  TypeOfSkill,
 } from "../../../types";
 import AddEducationHistory from "./AddEducationHistory";
 import AddSocialWebSite from "./AddSocialWebSite";
+import AddSkills from "./AddSkills";
 
 // const initialState = {
 //   personal: {
@@ -51,6 +53,10 @@ const ResumeEditor: React.FC = () => {
 
   const handleAddSocialWebSite = (data: TypeOfSingleSocialWebSite[]) => {
     console.log("handleAddSocialWebSite", data);
+  };
+
+  const handleAddSkills = (data: TypeOfSkill[]) => {
+    console.log("handleAddSkills", data);
   };
 
   return (
@@ -102,7 +108,6 @@ const ResumeEditor: React.FC = () => {
               </div>
             </AccordionPanel>
           </AccordionItem>
-
           {/* Professional Summary */}
           <AccordionItem>
             <AccordionHeader>Professional Summary</AccordionHeader>
@@ -112,7 +117,6 @@ const ResumeEditor: React.FC = () => {
               </div>
             </AccordionPanel>
           </AccordionItem>
-
           {/* Employment History */}
           <AccordionItem>
             <AccordionHeader>Employment History</AccordionHeader>
@@ -120,7 +124,6 @@ const ResumeEditor: React.FC = () => {
               <AddEmploymentHistory getValue={handleAddEmploymentHistory} />
             </AccordionPanel>
           </AccordionItem>
-
           {/* Education */}
           <AccordionItem>
             <AccordionHeader>Education</AccordionHeader>
@@ -128,12 +131,18 @@ const ResumeEditor: React.FC = () => {
               <AddEducationHistory getValue={handleAddEducationHistory} />
             </AccordionPanel>
           </AccordionItem>
-
           {/* Websites & Social Links */}
           <AccordionItem>
             <AccordionHeader>Websites & Social Links</AccordionHeader>
             <AccordionPanel>
               <AddSocialWebSite getValue={handleAddSocialWebSite} />
+            </AccordionPanel>
+          </AccordionItem>
+          {/* Skills */}
+          <AccordionItem>
+            <AccordionHeader>Skills</AccordionHeader>
+            <AccordionPanel>
+              <AddSkills getValue={handleAddSkills} />
             </AccordionPanel>
           </AccordionItem>
         </Accordion>

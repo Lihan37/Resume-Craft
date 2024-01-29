@@ -34,6 +34,11 @@ export interface TypeOfSingleSocialWebSite {
   label: string;
   link: string;
 }
+export interface TypeOfSkill {
+  _id: string | number;
+  label: string;
+  level: number;
+}
 
 export interface RootState {
   resume: {
