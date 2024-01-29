@@ -11,7 +11,7 @@ const Card: React.FC<ICard> = ({ imgUrl, link = "/", name }) => {
   return (
     <Link to={link}>
       <div className=" bg-blue-50 rounded-sm p-5 cursor-pointer ">
-        <h1 className=" font-normal font-mono text-2xl text-c-dark capitalize pb-5">
+        <h1 className="  font-normal font-mono text-base xl:text-xl text-c-dark capitalize pb-5">
           {name}
         </h1>
         <img src={imgUrl} alt={name} className="h-96 w-full" />
