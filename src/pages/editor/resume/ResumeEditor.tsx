@@ -8,7 +8,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import InputTextEditor from "../../../components/common/InputTextEditor";
 import AddEmploymentHistory from "./AddEmploymentHistory";
-import { TypeOfSingleEmploymentHistory } from "../../../types";
+import {
+  TypeOfSingleEducationHistory,
+  TypeOfSingleEmploymentHistory,
+} from "../../../types";
+import AddEducationHistory from "./AddEducationHistory";
 
 // const initialState = {
 //   personal: {
@@ -36,12 +40,16 @@ const ResumeEditor: React.FC = () => {
   const handleAddEmploymentHistory = (
     data: TypeOfSingleEmploymentHistory[]
   ) => {
-    console.log("handleAddEmploymentHistory 1", data);
+    console.log("handleAddEmploymentHistory", data);
+  };
+
+  const handleAddEducationHistory = (data: TypeOfSingleEducationHistory[]) => {
+    console.log("handleAddEducationHistory", data);
   };
 
   return (
     <div>
-      <div className="">
+      <div className="pb-10">
         <Accordion defaultIndex={0}>
           {/* Personal Information  */}
           <AccordionItem>
@@ -98,10 +106,18 @@ const ResumeEditor: React.FC = () => {
             </AccordionPanel>
           </AccordionItem>
 
+          {/* Employment History */}
           <AccordionItem>
             <AccordionHeader>Employment History</AccordionHeader>
             <AccordionPanel>
               <AddEmploymentHistory getValue={handleAddEmploymentHistory} />
+            </AccordionPanel>
+          </AccordionItem>
+
+          <AccordionItem>
+            <AccordionHeader>Education</AccordionHeader>
+            <AccordionPanel>
+              <AddEducationHistory getValue={handleAddEducationHistory} />
             </AccordionPanel>
           </AccordionItem>
         </Accordion>

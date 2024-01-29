@@ -20,6 +20,15 @@ export interface TypeOfSingleEmploymentHistory {
   city: string;
   description: string;
 }
+export interface TypeOfSingleEducationHistory {
+  _id: string | number;
+  school: string;
+  degree: string;
+  startMontYear: string;
+  endMontYear: string;
+  city: string;
+  description: string;
+}
 
 export interface RootState {
   resume: {

@@ -21,8 +21,6 @@ const AddEmploymentHistory: React.FC<IAddEmploymentHistory> = ({
     const isAlreadyExist = employmentHistory?.find(
       (item) => item._id === data._id
     );
-    console.log("data 2 ", data);
-    console.log("isAlreadyExist 3", isAlreadyExist);
 
     if (!isAlreadyExist) {
       const filterData = employmentHistory.filter(
@@ -62,7 +60,7 @@ const AddEmploymentHistory: React.FC<IAddEmploymentHistory> = ({
       ))}
       <button
         onClick={() => setAddMore((prev) => prev + 1)}
-        className=" px-3 font-semibold hover:text-blue-700 py-1 duration-300 transition-colors  text-c-primary flex justify-start items-center gap-4">
+        className="pb-5 px-3 font-semibold hover:text-blue-700 py-1 duration-300 transition-colors  text-c-primary flex justify-start items-center gap-4 ">
         <FaPlus />
         <span> Add one more employment</span>
       </button>
