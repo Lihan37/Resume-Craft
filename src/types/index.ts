@@ -29,6 +29,11 @@ export interface TypeOfSingleEducationHistory {
   city: string;
   description: string;
 }
+export interface TypeOfSingleSocialWebSite {
+  _id: string | number;
+  label: string;
+  link: string;
+}
 
 export interface RootState {
   resume: {

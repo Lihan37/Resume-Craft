@@ -11,8 +11,10 @@ import AddEmploymentHistory from "./AddEmploymentHistory";
 import {
   TypeOfSingleEducationHistory,
   TypeOfSingleEmploymentHistory,
+  TypeOfSingleSocialWebSite,
 } from "../../../types";
 import AddEducationHistory from "./AddEducationHistory";
+import AddSocialWebSite from "./AddSocialWebSite";
 
 // const initialState = {
 //   personal: {
@@ -45,6 +47,10 @@ const ResumeEditor: React.FC = () => {
 
   const handleAddEducationHistory = (data: TypeOfSingleEducationHistory[]) => {
     console.log("handleAddEducationHistory", data);
+  };
+
+  const handleAddSocialWebSite = (data: TypeOfSingleSocialWebSite[]) => {
+    console.log("handleAddSocialWebSite", data);
   };
 
   return (
@@ -96,6 +102,7 @@ const ResumeEditor: React.FC = () => {
               </div>
             </AccordionPanel>
           </AccordionItem>
+
           {/* Professional Summary */}
           <AccordionItem>
             <AccordionHeader>Professional Summary</AccordionHeader>
@@ -114,10 +121,19 @@ const ResumeEditor: React.FC = () => {
             </AccordionPanel>
           </AccordionItem>
 
+          {/* Education */}
           <AccordionItem>
             <AccordionHeader>Education</AccordionHeader>
             <AccordionPanel>
               <AddEducationHistory getValue={handleAddEducationHistory} />
+            </AccordionPanel>
+          </AccordionItem>
+
+          {/* Websites & Social Links */}
+          <AccordionItem>
+            <AccordionHeader>Websites & Social Links</AccordionHeader>
+            <AccordionPanel>
+              <AddSocialWebSite getValue={handleAddSocialWebSite} />
             </AccordionPanel>
           </AccordionItem>
         </Accordion>
