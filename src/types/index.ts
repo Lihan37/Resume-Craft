@@ -39,6 +39,18 @@ export interface TypeOfSkill {
   label: string;
   level: number;
 }
+export interface TypeOfLanguage {
+  _id: string | number;
+  language: string;
+  level: string;
+}
+export interface TypeOfReference {
+  _id: string | number;
+  name: string;
+  company: string;
+  phone: string;
+  email: string;
+}
 
 export interface RootState {
   resume: {

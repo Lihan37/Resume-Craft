@@ -9,6 +9,8 @@ import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import InputTextEditor from "../../../components/common/InputTextEditor";
 import AddEmploymentHistory from "./AddEmploymentHistory";
 import {
+  TypeOfLanguage,
+  TypeOfReference,
   TypeOfSingleEducationHistory,
   TypeOfSingleEmploymentHistory,
   TypeOfSingleSocialWebSite,
@@ -17,6 +19,8 @@ import {
 import AddEducationHistory from "./AddEducationHistory";
 import AddSocialWebSite from "./AddSocialWebSite";
 import AddSkills from "./AddSkills";
+import AddLanguages from "./AddLanguages";
+import AddReferences from "./AddReferences";
 
 // const initialState = {
 //   personal: {
@@ -57,6 +61,14 @@ const ResumeEditor: React.FC = () => {
 
   const handleAddSkills = (data: TypeOfSkill[]) => {
     console.log("handleAddSkills", data);
+  };
+
+  const handleAddLanguages = (data: TypeOfLanguage[]) => {
+    console.log("handleAddLanguages", data);
+  };
+
+  const handleAddReferences = (data: TypeOfReference[]) => {
+    console.log("handleAddReferences", data);
   };
 
   return (
@@ -143,6 +155,20 @@ const ResumeEditor: React.FC = () => {
             <AccordionHeader>Skills</AccordionHeader>
             <AccordionPanel>
               <AddSkills getValue={handleAddSkills} />
+            </AccordionPanel>
+          </AccordionItem>
+          {/* Language */}
+          <AccordionItem>
+            <AccordionHeader>Languages</AccordionHeader>
+            <AccordionPanel>
+              <AddLanguages getValue={handleAddLanguages} />
+            </AccordionPanel>
+          </AccordionItem>
+          {/* References */}
+          <AccordionItem>
+            <AccordionHeader>References</AccordionHeader>
+            <AccordionPanel>
+              <AddReferences getValue={handleAddReferences} />
             </AccordionPanel>
           </AccordionItem>
         </Accordion>
