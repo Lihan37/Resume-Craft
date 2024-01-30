@@ -1,0 +1,119 @@
+[
+  {
+    "_id": "1",
+    "name": "Government",
+    "image": "https://i.ibb.co/xqy8LKc/11-9.jpg",
+    "tags": [
+      "most-popular",
+      "engineering",
+      "medical",
+      "education",
+      "transportation",
+      "administrative"
+    ]
+  },
+  {
+    "_id": "2",
+    "name": "Engineering",
+    "image": "https://i.ibb.co/j4M4prf/11-10.jpg",
+    "tags": [
+      "most-popular",
+      "engineering",
+      "medical",
+      "education",
+      "transportation",
+      "administrative"
+    ]
+  },
+  {
+    "_id": "3",
+    "name": "Civil Engineer",
+    "image": "https://i.ibb.co/0n2cz28/11-11.jpg",
+    "tags": [
+      "most-popular",
+      "engineering",
+      "medical",
+      "education",
+      "transportation",
+      "administrative"
+    ]
+  },
+  {
+    "_id": "4",
+    "name": "Electrical Engineer",
+    "image": "https://i.ibb.co/T8r70hJ/11-12.jpg",
+    "tags": [
+      "most-popular",
+      "engineering",
+      "medical",
+      "education",
+      "transportation",
+      "administrative"
+    ]
+  },
+  {
+    "_id": "5",
+    "name": "Nursing",
+    "image": "https://i.ibb.co/3dWV8Hj/11-13.jpg",
+    "tags": [
+      "most-popular",
+      "engineering",
+      "medical",
+      "education",
+      "transportation",
+      "administrative"
+    ]
+  },
+  {
+    "_id": "6",
+    "name": "Medical Assistant",
+    "image": "https://i.ibb.co/DDsJ3C9/11-14.jpg",
+    "tags": [
+      "most-popular",
+      "engineering",
+      "medical",
+      "education",
+      "transportation",
+      "administrative"
+    ]
+  },
+  {
+    "_id": "7",
+    "name": "Pharmacist",
+    "image": "https://i.ibb.co/fNhLCC0/11-15.jpg",
+    "tags": [
+      "most-popular",
+      "engineering",
+      "medical",
+      "education",
+      "transportation",
+      "administrative"
+    ]
+  },
+  {
+    "_id": "8",
+    "name": "Caregiver",
+    "image": "https://i.ibb.co/W6pQ29t/11-16.jpg",
+    "tags": [
+      "most-popular",
+      "engineering",
+      "medical",
+      "education",
+      "transportation",
+      "administrative"
+    ]
+  },
+  {
+    "_id": "9",
+    "name": "Internship",
+    "image": "https://i.ibb.co/BLQvK2w/11-17.jpg",
+    "tags": [
+      "most-popular",
+      "engineering",
+      "medical",
+      "education",
+      "transportation",
+      "administrative"
+    ]
+  }
+]

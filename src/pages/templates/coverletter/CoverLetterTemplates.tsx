@@ -3,10 +3,47 @@ import useTitleSet from "../../../hooks/useTitleSet";
 import HeaderResume from "../Shared/Header";
 import Search from "../Shared/Search";
 import Popular from "../Shared/Popular";
-import { images } from "../../../constant";
+import { data, images } from "../../../constant";
+import Catagories from "../Shared/Catagories";
+
+const catagories = [
+  {
+    label: "Engineering",
+    value: "engineering",
+    description:
+      "Our tailor-made samples and guides has all of the tools you need to easily craft a government CV in just minutes. Our samples have been field-tested and are expertly designed to set you up for success.",
+  },
+  {
+    label: "Medical",
+    value: "medical",
+    description:
+      "Our tailor-made samples and guides has all of the tools you need to easily craft a government CV in just minutes. Our samples have been field-tested and are expertly designed to set you up for success.",
+  },
+  {
+    label: "Education",
+    value: "education",
+    description:
+      "Our tailor-made samples and guides has all of the tools you need to easily craft a government CV in just minutes. Our samples have been field-tested and are expertly designed to set you up for success.",
+  },
+  {
+    label: "Transportation",
+    value: "transportation",
+    description:
+      "Our tailor-made samples and guides has all of the tools you need to easily craft a government CV in just minutes. Our samples have been field-tested and are expertly designed to set you up for success.",
+  },
+  {
+    label: "Administrative",
+    value: "administrative",
+    description:
+      "Our tailor-made samples and guides has all of the tools you need to easily craft a government CV in just minutes. Our samples have been field-tested and are expertly designed to set you up for success.",
+  },
+];
 
 const CoverLetterTemplates: React.FC = () => {
   useTitleSet("Cover letter templates");
+  const mostPopular = data.coverletter.filter((i) =>
+    i.tags.includes("most-popular")
+  );
   return (
     <div>
       <div className=" bg-blue-50 py-20">
@@ -18,7 +55,20 @@ const CoverLetterTemplates: React.FC = () => {
         />
       </div>
       <Search />
-      <Popular></Popular>
+      <Popular resumes={mostPopular} />
+      {catagories.map((item) => {
+        const coverLetter = data.coverletter.filter((i) =>
+          i.tags.includes(item.value)
+        );
+        return (
+          <Catagories
+            key={item.value}
+            data={coverLetter}
+            name={item.label}
+            doc={item.description}
+          />
+        );
+      })}
     </div>
   );
 };

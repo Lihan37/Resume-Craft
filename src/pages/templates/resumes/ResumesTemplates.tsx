@@ -59,7 +59,7 @@ const ResumesTemplates: React.FC = () => {
         return (
           <Catagories
             key={index}
-            resumes={resumes}
+            data={resumes}
             name={item.label}
             doc={item.description}
           />
