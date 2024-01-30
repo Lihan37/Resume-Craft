@@ -13,6 +13,7 @@ import EditorWrapper from "../layouts/EditorWrapper";
 import ResumeEditor from "../pages/editor";
 import Pricing from "../pages/pricing";
 import AuthWrapper from "../layouts/AuthWrapper";
+import Resume from "../pages/dashboard/Resume";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,12 @@ const router = createBrowserRouter([
         path: "/faq",
         element: <Faq />,
       },
+      // for dashboard
+      {
+        path: "/dashboard",
+        element: <Resume />,
+      },
+      
 
       {
         path: "/resumes-template",
