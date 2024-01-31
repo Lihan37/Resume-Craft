@@ -2,6 +2,7 @@ import React from "react";
 import { images } from "../../constant";
 import { Container } from "../../components/common/Container";
 import Button from "../../components/common/Button";
+import { Link } from "react-router-dom";
 
 const HeroSection: React.FC = () => {
   return (
@@ -42,7 +43,9 @@ const HeroSection: React.FC = () => {
           </p>
           {/* <Button>Build Your Resume</Button> */}
           <div className=" flex justify-center md:justify-start items-center gap-10">
-            <Button> GET started</Button>
+            <Link to="/edit/resume">
+              <Button> GET started</Button>
+            </Link>
 
             {/* TODO: optional */}
             {/* <button className=" tracking-widest text-lg text-c-dark-light cursor-pointer font-bold uppercase font-mono">

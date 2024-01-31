@@ -10,8 +10,9 @@ import SignUp from "../pages/auth/SignUp";
 import ResumesTemplates from "../pages/templates/resumes/ResumesTemplates";
 import CoverLetterTemplates from "../pages/templates/coverletter/CoverLetterTemplates";
 import EditorWrapper from "../layouts/EditorWrapper";
-import ResumeEditor from "../pages/editor/resume";
+import ResumeEditor from "../pages/editor";
 import Pricing from "../pages/pricing";
+import AuthWrapper from "../layouts/AuthWrapper";
 
 const router = createBrowserRouter([
   {
@@ -35,14 +36,7 @@ const router = createBrowserRouter([
         path: "/faq",
         element: <Faq />,
       },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/sign-up",
-        element: <SignUp />,
-      },
+
       {
         path: "/resumes-template",
         element: <ResumesTemplates />,
@@ -50,6 +44,21 @@ const router = createBrowserRouter([
       {
         path: "/cover-latter-template",
         element: <CoverLetterTemplates />,
+      },
+    ],
+  },
+
+  {
+    path: "auth",
+    element: <AuthWrapper />,
+    children: [
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "sign-up",
+        element: <SignUp />,
       },
     ],
   },

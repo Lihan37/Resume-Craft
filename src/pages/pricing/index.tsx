@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import useTitleSet from "../../hooks/useTitleSet";
 import { Container } from "../../components/common/Container";
 import SectionHeader from "../../components/common/SectionHeader";
 import TextGradient from "../../components/common/TextGradient";
 import { RxCrossCircled, RxCheckCircled } from "react-icons/rx";
-import { FaArrowRight } from "react-icons/fa";
+
+interface IPrice {
+  premium: number;
+  enterprise: number;
+}
 
 const Pricing: React.FC = () => {
+  const [selectedOption, setSelectedOption] = useState<string>("monthly");
   useTitleSet("Pricing");
+  const [prices, setPrice] = useState<IPrice>({ premium: 13, enterprise: 31 });
 
+  const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedOption(event.target.value);
+    const premiumYearly = 13 * 12 - (13 * 12 * 25) / 100;
+    const enterpriseYearly = 31 * 12 - (31 * 12 * 25) / 100;
+    setPrice((prev) => ({
+      ...prev,
+      premium: event.target.value === "monthly" ? 9 : premiumYearly,
+      enterprise: event.target.value === "monthly" ? 31 : enterpriseYearly,
+    }));
+  };
   return (
     <div>
       <div className=" relative py-10 bg-gradient-to-t from-blue-200 via-violet-100 to-white">
@@ -46,14 +62,34 @@ const Pricing: React.FC = () => {
                                   type="radio"
                                   name="monthly"
                                   id="monthly"
+                                  value="monthly"
+                                  className=" cursor-pointer"
+                                  checked={selectedOption === "monthly"}
+                                  onChange={handleRadioChange}
                                 />
-                                <label htmlFor="monthly">Monthly billing</label>
+                                <label
+                                  className=" cursor-pointer"
+                                  htmlFor="monthly">
+                                  Monthly billing
+                                </label>
                               </div>
                               <div className=" flex justify-start items-center gap-2 ">
-                                <input type="radio" name="Yearly" id="Yearly" />
-                                <label htmlFor="Yearly">Yearly billing</label>
-                                <span className=" px-2 text-base bg-gray-100 rounded-xl">
-                                  Save 20%
+                                <input
+                                  type="radio"
+                                  name="Yearly"
+                                  id="Yearly"
+                                  className="cursor-pointer"
+                                  value="yearly"
+                                  checked={selectedOption === "yearly"}
+                                  onChange={handleRadioChange}
+                                />
+                                <label
+                                  className=" cursor-pointer"
+                                  htmlFor="Yearly">
+                                  Yearly billing
+                                </label>
+                                <span className=" px-2 text-base bg-red-100 rounded-xl">
+                                  Save 25%
                                 </span>
                               </div>
                             </div>
@@ -102,11 +138,10 @@ const Pricing: React.FC = () => {
                                 className={` ${
                                   eventItem ? "bg-gray-100" : " bg-white"
                                 } w-full  py-5 text-[24.2px] lg:text-[27.9px] font-semibold px-5`}>
-                                <div className=" w-full items-center flex justify-center gap-4 md:gap-0">
+                                <div className=" w-full items-center flex justify-between md:justify-center gap-4 md:gap-0">
                                   <span className=" md:hidden text-base ">
                                     {item.name}
                                   </span>
-                                  <FaArrowRight className=" text-base md:hidden" />
                                   {item.free ? (
                                     <RxCheckCircled className=" text-c-primary" />
                                   ) : (
@@ -126,7 +161,7 @@ const Pricing: React.FC = () => {
                               Premium Plan
                             </h1>
                             <h1 className="  text-4xl md:text-2xl lg:text-6xl font-bold">
-                              $20
+                              ${prices.premium}
                             </h1>
                             <h2 className=" text-gray-200 text-base lg:font-xl">
                               Per Month
@@ -145,11 +180,10 @@ const Pricing: React.FC = () => {
                                 className={` ${
                                   eventItem ? "bg-gray-100" : " bg-white"
                                 } w-full  py-5 text-[24.2px] lg:text-[27.9px] font-semibold px-5`}>
-                                <div className=" w-full items-center flex justify-center gap-4 md:gap-0">
+                                <div className=" w-full items-center flex justify-between md:justify-center gap-4 md:gap-0">
                                   <span className=" md:hidden text-base ">
                                     {item.name}
                                   </span>
-                                  <FaArrowRight className=" text-base md:hidden" />
                                   {item.premium ? (
                                     <RxCheckCircled className=" text-c-primary" />
                                   ) : (
@@ -169,7 +203,7 @@ const Pricing: React.FC = () => {
                               Enterprise Plan
                             </h1>
                             <h1 className=" text-4xl md:text-2xl lg:text-6xl font-bold">
-                              $59
+                              ${prices.enterprise}
                             </h1>
                             <h2 className="text-gray-200 md:text-c-dark-light text-base lg:font-xl">
                               Per Month
@@ -188,11 +222,10 @@ const Pricing: React.FC = () => {
                                 className={` ${
                                   eventItem ? "bg-gray-100" : " bg-white"
                                 } w-full  py-5 text-[24.2px] lg:text-[27.9px] font-semibold px-5`}>
-                                <div className=" w-full items-center flex justify-center gap-4 md:gap-0">
+                                <div className=" w-full items-center flex justify-between md:justify-center gap-4 md:gap-0">
                                   <span className=" md:hidden text-base ">
                                     {item.name}
                                   </span>
-                                  <FaArrowRight className=" text-base md:hidden" />
                                   {item.enterprise ? (
                                     <RxCheckCircled className=" text-c-primary" />
                                   ) : (

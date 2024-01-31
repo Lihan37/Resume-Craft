@@ -14,6 +14,8 @@ import hubspot from "../assets/companies/hubspot.png";
 import notion from "../assets/companies/notion.png";
 import netflix from "../assets/companies/netflix.png";
 import zoom from "../assets/companies/zoom.png";
+import coverlatterTemplate from "../assets/images/coverlatterTemplate.png";
+import resumeTemplate from "../assets/images/resumeTemplate.png";
 
 const images = {
   logo,
@@ -32,6 +34,8 @@ const images = {
   notion,
   netflix,
   zoom,
+  coverlatterTemplate,
+  resumeTemplate,
 };
 
 export default images;

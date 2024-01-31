@@ -1,11 +1,10 @@
 import React, { useRef } from "react";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "./Slider.css";
-
+import ButtonUse from "../../../components/common/Button";
 interface IResume {
   url: string;
 }
@@ -42,7 +41,7 @@ const Slider: React.FC<ISlider> = ({ resumes = [] }) => {
 
   return (
     resumes.length > 0 && (
-      <div>
+      <div className=" w-full relative">
         <Swiper
           ref={sliderRef as React.RefObject<SwiperRef>}
           spaceBetween={50}
@@ -63,23 +62,37 @@ const Slider: React.FC<ISlider> = ({ resumes = [] }) => {
             prevEl: ".swiper-prev",
             nextEl: ".swiper-next",
           }}>
-          {resumes.map((item, index) => (
-            <SwiperSlide key={index}>
-              <img
-                id="image"
-                src={item.url}
-                alt="resumes"
-                className="pointer-events-none select-none rounded-xl"
-              />
-            </SwiperSlide>
-          ))}
-          <Button onClick={handleSlidePrev} left="15%">
-            <IoArrowBack />
-          </Button>
-          <Button onClick={handleSlideNext} right="15%">
-            <IoArrowForward />
-          </Button>
+          {resumes.map((item, index) => {
+            return (
+              <SwiperSlide key={index}>
+                <div id="image_container">
+                  <img
+                    id="image"
+                    src={item.url}
+                    alt="resumes"
+                    className="pointer-events-none select-none rounded-xl h-full w-full "
+                  />
+                </div>
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
+        <div className=" absolute top-0 left-0 right-0 bottom-0 z-50">
+          <div className=" w-full h-full flex justify-center items-center">
+            <ButtonUse
+              icon={false}
+              className=" bg-c-primary text-white font-mono text-base uppercase font-semibold 
+            px-5 py-2 rounded-full">
+              Use Template
+            </ButtonUse>
+          </div>
+        </div>
+        <Button onClick={handleSlidePrev} left="15%">
+          <IoArrowBack />
+        </Button>
+        <Button onClick={handleSlideNext} right="15%">
+          <IoArrowForward />
+        </Button>
       </div>
     )
   );
