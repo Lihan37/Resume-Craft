@@ -13,8 +13,9 @@ import EditorWrapper from "../layouts/EditorWrapper";
 import ResumeEditor from "../pages/editor";
 import Pricing from "../pages/pricing";
 import AuthWrapper from "../layouts/AuthWrapper";
-import Resume from "../pages/dashboard/Resume";
+import Resume from "../pages/dashboard/user";
 import AdminDashboard from "../pages/dashboard/admin";
+import BlogDetails from "../pages/blog/BlogDetails";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog />,
+      },
+      {
+        path: "/blog/:id",
+        element: <BlogDetails />,
       },
       {
         path: "/pricing",
