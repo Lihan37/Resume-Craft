@@ -5,6 +5,7 @@ import Search from "../Shared/Search";
 import Popular from "../Shared/Popular";
 import { data, images } from "../../../constant";
 import Catagories from "../Shared/Catagories";
+import { Container } from "../../../components/common/Container";
 
 const catagories = [
   {
@@ -51,20 +52,24 @@ const ResumesTemplates: React.FC = () => {
         />
       </div>
 
-      <Search />
-      <Popular resumes={data.resumes} />
+      <Container>
+        <Search />
+        <Popular resumes={data.resumes} />
 
-      {catagories.map((item, index) => {
-        const resumes = data.resumes.filter((i) => i.tags.includes(item.value));
-        return (
-          <Catagories
-            key={index}
-            data={resumes}
-            name={item.label}
-            doc={item.description}
-          />
-        );
-      })}
+        {catagories.map((item, index) => {
+          const resumes = data.resumes.filter((i) =>
+            i.tags.includes(item.value)
+          );
+          return (
+            <Catagories
+              key={index}
+              data={resumes}
+              name={item.label}
+              doc={item.description}
+            />
+          );
+        })}
+      </Container>
     </div>
   );
 };

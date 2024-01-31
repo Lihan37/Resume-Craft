@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
-import { Container } from "../../../components/common/Container";
 import { PiGlobeStand } from "react-icons/pi";
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 import "swiper/swiper-bundle.css";
@@ -30,7 +29,7 @@ const Popular: React.FC<IPopular> = ({ resumes = [] }) => {
   };
   return (
     resumes?.length > 0 && (
-      <Container>
+      <>
         <div className="flex justify-between items-center py-7 border-b-2 mb-7">
           <div className="flex gap-3 items-center">
             <PiGlobeStand className="text-4xl text-c-primary" />
@@ -75,7 +74,7 @@ const Popular: React.FC<IPopular> = ({ resumes = [] }) => {
             );
           })}
         </Swiper>
-      </Container>
+      </>
     )
   );
 };
