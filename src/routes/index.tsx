@@ -14,6 +14,7 @@ import ResumeEditor from "../pages/editor";
 import Pricing from "../pages/pricing";
 import AuthWrapper from "../layouts/AuthWrapper";
 import Resume from "../pages/dashboard/Resume";
+import AdminDashboard from "../pages/dashboard/admin";
 
 const router = createBrowserRouter([
   {
@@ -42,7 +43,6 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: <Resume />,
       },
-      
 
       {
         path: "/resumes-template",
@@ -69,6 +69,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+
   {
     path: "edit",
     element: <EditorWrapper />,
@@ -84,8 +85,8 @@ const router = createBrowserRouter([
     element: <DashBoardWrapper />,
     children: [
       {
-        path: "cover-latter",
-        element: <CoverLetterTemplates />,
+        path: "admin",
+        element: <AdminDashboard />,
       },
     ],
   },
