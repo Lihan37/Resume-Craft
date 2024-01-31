@@ -1,63 +1,76 @@
 import { Link } from "react-router-dom";
-import { MdOutlineDownload } from "react-icons/md";
-import { FaEquals } from "react-icons/fa";
-import { FaRegEdit } from "react-icons/fa";
-import { Fragment } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import resume1 from "../../../assets/resumes/resume1.webp";
-import { FaRegCopy } from "react-icons/fa6";
-import { useEffect, useState } from "react";
 import { Container } from "../../../components/common/Container";
-import Resumes from "./Resumes";
-
+import TabSection from "./TabSection";
+import Button from "../../../components/common/Button";
+import { data } from "../../../constant";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+interface IData {
+  _id: string | number;
+  name: string;
+  image: string;
+  tags: string[];
+}
 const UserDashboard: React.FC = () => {
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
-  const [showDetails, setShowDetails] = useState(false);
-  useEffect(() => {
-    const handleResize = () => {
-      setIsSmallScreen(window.innerWidth <= 768);
-    };
+  const [activeTab, setActiveTab] = useState<string>("resume");
 
-    handleResize();
+  let tabData: IData[] = [];
+  let buttonLabel: string = "";
+  if (activeTab === "resume") {
+    tabData = [...data.resumes.slice(2, 6)];
+    buttonLabel = "Add Resume";
+  } else if (activeTab === "cover-letter") {
+    tabData = [...data.coverletter.slice(2, 4)];
+    buttonLabel = "Add Cover Letter";
+  } else if (activeTab === "portfolio") {
+    buttonLabel = "Add Portfolio";
+  }
 
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  // const toggleDetails = () => {
-  //   setShowDetails(!showDetails);
-  // };
   return (
     <Container>
-      <div className=" my-20">
-        <div
-          className="flex justify-between items-start mb-10 border-b-2 pb-2 
-      text-c-dark">
-          <div className=" space-y-2">
-            <h1 className=" text-xl lg:text-3xl  font-bold text-gray-700">
-              Resumes & Cover Letters & Portfolio
-            </h1>
-            <div className=" flex justify-start items-center gap-10 text-lg font-normal text-gray-500">
-              <span className=" cursor-pointer">Resumes</span>
-              <span className=" cursor-pointer">Cover Letters</span>
-              <span className=" cursor-pointer">Portfolio</span>
-            </div>
-          </div>
-          <Link to="/">
-            <button
-              type="button"
-              className="bg-c-primary text-white font-mono text-base uppercase font-semibold px-5 py-2 rounded-t-lg
-                   rounded-b-lg
-                     hover:bg-c-primary-hover transition duration-300 ease-in-out">
-              Add Resume
-            </button>
+      <div className=" my-20 mb-32">
+        <div className="flex flex-col gap-3 md:flex-row justify-between items-center text-c-dark">
+          <h1 className=" text-2xl text-center md:text-start  md:text-3xl lg:text-4xl  font-bold text-gray-700">
+            Resumes & Cover Letters & Portfolio
+          </h1>
+          <Link to="/edit/resume">
+            <Button icon={false}>{buttonLabel}</Button>
           </Link>
         </div>
-        {/* the templates */}
-        <Resumes />
+        <div className=" py-5 mt-10 md:mt-0  mb-10 border-b-2 flex justify-center md:justify-start items-center gap-5 md:gap-10 text-base md:text-lg font-semibold text-gray-500">
+          <span
+            onClick={() => setActiveTab("resume")}
+            className={`cursor-pointer ${
+              activeTab === "resume" && " text-c-primary"
+            }`}>
+            Resumes
+          </span>
+          <span
+            onClick={() => setActiveTab("cover-letter")}
+            className={`cursor-pointer ${
+              activeTab === "cover-letter" && " text-c-primary"
+            }`}>
+            Cover Letters
+          </span>
+          <span
+            onClick={() => setActiveTab("portfolio")}
+            className={`cursor-pointer ${
+              activeTab === "portfolio" && " text-c-primary"
+            }`}>
+            Portfolio
+          </span>
+        </div>
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -10, opacity: 0 }}
+            transition={{ duration: 0.2 }}>
+            <TabSection buttonLabel={buttonLabel} data={tabData} />
+          </motion.div>
+        </AnimatePresence>
       </div>
     </Container>
   );
