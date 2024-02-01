@@ -13,6 +13,9 @@ import EditorWrapper from "../layouts/EditorWrapper";
 import ResumeEditor from "../pages/editor";
 import Pricing from "../pages/pricing";
 import AuthWrapper from "../layouts/AuthWrapper";
+import Resume from "../pages/dashboard/user";
+import AdminDashboard from "../pages/dashboard/admin";
+import BlogDetails from "../pages/blog/BlogDetails";
 
 const router = createBrowserRouter([
   {
@@ -29,12 +32,21 @@ const router = createBrowserRouter([
         element: <Blog />,
       },
       {
+        path: "/blog/:id",
+        element: <BlogDetails />,
+      },
+      {
         path: "/pricing",
         element: <Pricing />,
       },
       {
         path: "/faq",
         element: <Faq />,
+      },
+      // for dashboard
+      {
+        path: "/dashboard",
+        element: <Resume />,
       },
 
       {
@@ -62,6 +74,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+
   {
     path: "edit",
     element: <EditorWrapper />,
@@ -77,8 +90,8 @@ const router = createBrowserRouter([
     element: <DashBoardWrapper />,
     children: [
       {
-        path: "cover-latter",
-        element: <CoverLetterTemplates />,
+        path: "admin",
+        element: <AdminDashboard />,
       },
     ],
   },

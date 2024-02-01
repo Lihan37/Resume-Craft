@@ -5,6 +5,7 @@ import Search from "../Shared/Search";
 import Popular from "../Shared/Popular";
 import { data, images } from "../../../constant";
 import Catagories from "../Shared/Catagories";
+import { Container } from "../../../components/common/Container";
 
 const catagories = [
   {
@@ -54,21 +55,23 @@ const CoverLetterTemplates: React.FC = () => {
           image={images.coverlatterTemplate}
         />
       </div>
-      <Search />
-      <Popular resumes={mostPopular} />
-      {catagories.map((item) => {
-        const coverLetter = data.coverletter.filter((i) =>
-          i.tags.includes(item.value)
-        );
-        return (
-          <Catagories
-            key={item.value}
-            data={coverLetter}
-            name={item.label}
-            doc={item.description}
-          />
-        );
-      })}
+      <Container>
+        <Search />
+        <Popular resumes={mostPopular} />
+        {catagories.map((item) => {
+          const coverLetter = data.coverletter.filter((i) =>
+            i.tags.includes(item.value)
+          );
+          return (
+            <Catagories
+              key={item.value}
+              data={coverLetter}
+              name={item.label}
+              doc={item.description}
+            />
+          );
+        })}
+      </Container>
     </div>
   );
 };
