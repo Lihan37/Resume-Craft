@@ -1,16 +1,9 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { data } from "../../constant";
+import { Link } from "react-router-dom";
 import { Container } from "../../components/common/Container";
 import { CiSearch } from "react-icons/ci";
 
 const BlogDetails: React.FC = () => {
-  const { id } = useParams();
-  const blog = id && data.blogs.find((items) => items.id === parseInt(id));
-  console.log(blog);
-  const { image, title, author, authorImage, company, content } = blog;
-
-  console.log(id);
   return (
     <div>
       <Container>
@@ -36,9 +29,27 @@ const BlogDetails: React.FC = () => {
           </div>
           <div className="flex justify-between gap-10">
             <div className="w-10/12">
-              <img src={image} alt="" />
-              <h3 className="text-4xl pt-10 pb-3">{title}</h3>
-              <p className="text-xl mb-10">{content}</p>
+              <img src="https://i.ibb.co/b1Vq9RJ/1.jpg" alt="" />
+              <h3 className="text-4xl pt-10 pb-3">
+                Crafting the Perfect Resume: Essential Steps
+              </h3>
+              <p className="text-xl mb-10">
+                Crafting a stellar resume involves essential steps. Learn how to
+                showcase your professional experience effectively, tailor your
+                content to the job, and grab employers' attention. This
+                comprehensive guide will help you craft a winning resume that
+                stands out in the competitive job market. Crafting a stellar
+                resume involves essential steps. Learn how to showcase your
+                professional experience effectively, tailor your content to the
+                job, and grab employers' attention. This comprehensive guide
+                will help you craft a winning resume that stands out in the
+                competitive job market. Crafting a stellar resume involves
+                essential steps. Learn how to showcase your professional
+                experience effectively, tailor your content to the job, and grab
+                employers' attention. This comprehensive guide will help you
+                craft a winning resume that stands out in the competitive job
+                market.
+              </p>
             </div>
             <div className="w-2/12">
               <input
