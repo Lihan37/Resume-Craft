@@ -826,8 +826,77 @@ const Resume: React.FC = () => {
           </div>
           {/* dotted one */}
           {/* template 7 */}
-         
-          
+          <div className="flex relative">
+            {isSmallScreen ? (
+              <div
+                className={`md:w-2/3 lg:w-2/3 ${isSmallScreen ? "w-full" : ""}`}
+              >
+                <FaRegFilePdf />
+                {/* {showDetails && (
+              <Transition.Root show={showDetails} as={Fragment}>
+                <Dialog onClose={()=>setShowDetails(false)}>
+                  <Transition.Child
+                    as={Fragment}
+                    enter="ease-out duration-300"
+                    enterFrom="opacity-0"
+                    enterTo="opacity-100"
+                    leave="ease-in duration-200"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
+                  >
+                    <div className="fixed inset-0 h-full w-full z-10 overflow-y-auto">
+                      <div className="flex min-h-screen items-center justify-center">
+                        <div className="bg-white p-4 w-full max-w-md mx-auto  relative">
+                { showDetails && <button 
+                  className="btn absolute mt-4 
+                  z-20
+                  mr-3 p-2 px-2 py-1 rounded bg-c-primary text-white top-0 right-0"
+                  onClick={()=>setShowDetails(!showDetails)}
+                >
+                  X
+                </button>}
+                <div className="flex  flex-col  ">
+            <div className="grid place-items-center outline-dashed m-2 p-12 gap-6 outline-gray-400">
+          <FaRegFilePdf  className="max-h-70" />
+        <button className="text-gray-500">Add Resume</button>
+          </div>
+          </div>
+                         
+                        </div>
+                      </div>
+                    </div>
+                  </Transition.Child>
+                </Dialog>
+              </Transition.Root>
+            )}
+                {!showDetails && <button 
+                  className="btn absolute  
+                  z-20 mt-8
+                  mr-5 p-2 px-2 py-1 rounded bg-c-primary text-white top-0 right-0"
+                  onClick={()=>setShowDetails(!showDetails)}
+                >
+                  
+                  <FaEquals />
+                </button>} */}
+                <div className="flex  flex-col w-2/4 ">
+        <div className="grid place-items-center outline-dashed m-2 p-12 gap-6 outline-gray-400">
+      <FaRegFilePdf  className="max-h-70" />
+      <button className="text-gray-500">Add Resume</button>
+      </div>
+      </div>
+              </div>
+            ) :
+             (
+              <div className="flex  flex-col w-2/4 ">
+        <div className="grid place-items-center outline-dashed m-2 p-12 gap-6 outline-gray-400">
+      <FaRegFilePdf  className="max-h-70" />
+      <button className="text-gray-500">Add Resume</button>
+      </div>
+      </div>
+            )}
+
+           
+          </div>
           
         </div>
       </div>
