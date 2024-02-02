@@ -61,9 +61,9 @@ const Navbar: React.FC = () => {
               ))}
             </div>
           )}
-          <NavLink to="/auth/login">
+          <NavLink to="/dashboard">
             <button className=" hidden lg:flex font-mono justify-start items-center gap-2 xl:gap-5  uppercase  rounded-full text-c-dark font-semibold text-lg">
-              <span> Login</span>
+              <span> Dashboard</span>
               <span className=" border-2 rounded-full p-2 xl:p-3 border-c-primary">
                 <FaArrowRightLong />
               </span>

@@ -4,7 +4,9 @@ import TabSection from "./TabSection";
 import Button from "../../../components/common/Button";
 import { data } from "../../../constant";
 import { useState } from "react";
+
 import { AnimatePresence, motion } from "framer-motion";
+import demo from "../../../assets/resumes/demo.png";
 interface IData {
   _id: string | number;
   name: string;
@@ -17,7 +19,7 @@ const UserDashboard: React.FC = () => {
   let tabData: IData[] = [];
   let buttonLabel: string = "";
   if (activeTab === "resume") {
-    tabData = [...data.resumes.slice(2, 6)];
+    tabData = [{ _id: 1, name: "", tags: ["new"], image: demo }];
     buttonLabel = "Add Resume";
   } else if (activeTab === "cover-letter") {
     tabData = [...data.coverletter.slice(2, 4)];
