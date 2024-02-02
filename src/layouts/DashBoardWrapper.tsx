@@ -6,8 +6,8 @@ import Navbar from "../components/admin/Navbar";
 export const DashBoardWrapper: React.FC = () => {
   return (
     <>
-      <Navbar />
-      <Sidebar />
+      {/* <Navbar />
+      <Sidebar /> */}
       <Outlet />
     </>
   );
