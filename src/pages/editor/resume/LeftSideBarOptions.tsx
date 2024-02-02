@@ -21,6 +21,7 @@ import AddSocialWebSite from "./AddSocialWebSite";
 import AddSkills from "./AddSkills";
 import AddLanguages from "./AddLanguages";
 import AddReferences from "./AddReferences";
+import { useResumeEditor } from "./ResumeEditorProvider";
 
 // const initialState = {
 //   personal: {
@@ -41,9 +42,10 @@ import AddReferences from "./AddReferences";
 //   },
 // };
 
-const ResumeEditor: React.FC = () => {
+const LeftSideBarOptions: React.FC = () => {
   // const [state, setState] = useState(initialState);
   const [isActive, setIsActive] = useState(false);
+  const { personalInfo, handleInput } = useResumeEditor();
 
   const handleAddEmploymentHistory = (
     data: TypeOfSingleEmploymentHistory[]
@@ -80,9 +82,33 @@ const ResumeEditor: React.FC = () => {
             <AccordionHeader>Personal Information</AccordionHeader>
             <AccordionPanel>
               <div className=" space-y-3 py-5 px-5 ">
-                <InputText placeholder="Job Title" />
-                <InputText placeholder="First Name" />
-                <InputText placeholder="Last Name" />
+                <InputText
+                  value={personalInfo?.jobTitle || ""}
+                  placeholder="Job Title"
+                  onChange={(e) => {
+                    if (handleInput) {
+                      handleInput("jobTitle", e.target.value || "");
+                    }
+                  }}
+                />
+                <InputText
+                  value={personalInfo?.firstName || ""}
+                  placeholder="First Name"
+                  onChange={(e) => {
+                    if (handleInput) {
+                      handleInput("firstName", e.target.value || "");
+                    }
+                  }}
+                />
+                <InputText
+                  value={personalInfo?.lastName || ""}
+                  placeholder="Last Name"
+                  onChange={(e) => {
+                    if (handleInput) {
+                      handleInput("lastName", e.target.value || "");
+                    }
+                  }}
+                />
                 <InputText placeholder="Email Address" />
                 <InputText placeholder="Phone Number" />
                 <InputText placeholder="Your Country" />
@@ -177,4 +203,4 @@ const ResumeEditor: React.FC = () => {
   );
 };
 
-export default React.memo(ResumeEditor);
+export default React.memo(LeftSideBarOptions);

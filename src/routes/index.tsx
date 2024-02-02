@@ -16,6 +16,7 @@ import AuthWrapper from "../layouts/AuthWrapper";
 import Resume from "../pages/dashboard/user";
 import AdminDashboard from "../pages/dashboard/admin";
 import BlogDetails from "../pages/blog/BlogDetails";
+import ResumeEditorProvider from "../pages/editor/resume/ResumeEditorProvider";
 
 const router = createBrowserRouter([
   {
@@ -81,7 +82,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "resume",
-        element: <ResumeEditor />,
+        element: (
+          <ResumeEditorProvider>
+            <ResumeEditor />
+          </ResumeEditorProvider>
+        ),
       },
     ],
   },
