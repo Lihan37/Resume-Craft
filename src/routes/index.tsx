@@ -16,7 +16,7 @@ import AuthWrapper from "../layouts/AuthWrapper";
 import Resume from "../pages/dashboard/user";
 import AdminDashboard from "../pages/dashboard/admin";
 import BlogDetails from "../pages/blog/BlogDetails";
-import ResumeEditorProvider from "../pages/editor/resume/ResumeEditorProvider";
+import ResumeEditorProvider from "../providers/ResumeEditorProvider";
 
 const router = createBrowserRouter([
   {

@@ -4,7 +4,7 @@ import useTitleSet from "../../hooks/useTitleSet";
 import ResumeTemplates from "./resume/ResumeTemplates";
 import LeftSideBarOptions from "./resume/LeftSideBarOptions";
 import useDisplay from "../../hooks/useDisplay";
-import { useResumeEditor } from "./resume/ResumeEditorProvider";
+import { useResumeEditor } from "../../hooks/useResumeEditor";
 
 const Editor: React.FC = () => {
   useTitleSet("Resume Builder");

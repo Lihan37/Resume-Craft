@@ -21,7 +21,7 @@ import AddSocialWebSite from "./AddSocialWebSite";
 import AddSkills from "./AddSkills";
 import AddLanguages from "./AddLanguages";
 import AddReferences from "./AddReferences";
-import { useResumeEditor } from "./ResumeEditorProvider";
+import { useResumeEditor } from "../../../hooks/useResumeEditor";
 
 // const initialState = {
 //   personal: {
