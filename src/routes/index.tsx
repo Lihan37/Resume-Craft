@@ -17,6 +17,7 @@ import Resume from "../pages/dashboard/user";
 import AdminDashboard from "../pages/dashboard/admin";
 import BlogDetails from "../pages/blog/BlogDetails";
 import ResumeEditorProvider from "../providers/ResumeEditorProvider";
+import BlogPost from "../pages/dashboard/admin/blog";
 
 const router = createBrowserRouter([
   {
@@ -91,12 +92,16 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "app",
+    path: "admin",
     element: <DashBoardWrapper />,
     children: [
       {
-        path: "admin",
+        path: "",
         element: <AdminDashboard />,
+      },
+      {
+        path: "blog",
+        element: <BlogPost />,
       },
     ],
   },
