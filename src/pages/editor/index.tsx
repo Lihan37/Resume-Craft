@@ -2,7 +2,7 @@ import React from "react";
 import LeftSideBar from "./leftBar/LeftSideBar";
 import useTitleSet from "../../hooks/useTitleSet";
 import ResumeTemplates from "./resume/ResumeTemplates";
-import LeftSideBarOptions from "./resume/LeftSideBarOptions";
+import LeftSideBarOptions from "./resume";
 import useDisplay from "../../hooks/useDisplay";
 import { useResumeEditor } from "../../hooks/useResumeEditor";
 
