@@ -58,30 +58,25 @@ const Editor: React.FC = () => {
         </div>
       </div>
 
-      <div className="h-full space-y-4 p-5 w-80 border-r-2">
+      <div className="h-full space-y-4 p-5  border-r-2">
         <div className=" space-y-1">
-          <h1 className=" font-semibold text-2xl">Theme</h1>
-          <div className="w-full gap-5 flex justify-between items-center">
-            <div className="w-10 h-10 rounded-full bg-amber-600 cursor-pointer flex justify-center items-center">
+          <div className="w-full gap-5 flex flex-col justify-between items-center">
+            <div className="w-14 h-14 rounded-full bg-amber-600 cursor-pointer flex justify-center items-center">
               <FaCheck className=" text-lg text-white" />
             </div>
-            <div className="w-10 h-10 rounded-full bg-lime-600 cursor-pointer flex justify-center items-center">
+            <div className="w-14 h-14 rounded-full bg-lime-600 cursor-pointer flex justify-center items-center">
               <FaCheck className=" text-lg text-white" />
             </div>
-            <div className="w-10 h-10 rounded-full bg-teal-600 cursor-pointer flex justify-center items-center">
+            <div className="w-14 h-14 rounded-full bg-teal-600 cursor-pointer flex justify-center items-center">
               <FaCheck className=" text-lg text-white" />
             </div>
-            <div className="w-10 h-10 rounded-full bg-emerald-600 cursor-pointer flex justify-center items-center">
+            <div className="w-14 h-14 rounded-full bg-emerald-600 cursor-pointer flex justify-center items-center">
               <FaCheck className=" text-lg text-white" />
             </div>
-            <div className="w-10 h-10 rounded-full bg-cyan-600 cursor-pointer flex justify-center items-center">
+            <div className="w-14 h-14 rounded-full bg-cyan-600 cursor-pointer flex justify-center items-center">
               <FaCheck className=" text-lg text-white" />
             </div>
           </div>
-        </div>
-        <div className="space-y-1">
-          <h1 className="font-semibold text-2xl">Text</h1>
-          <div className=""></div>
         </div>
       </div>
     </div>
