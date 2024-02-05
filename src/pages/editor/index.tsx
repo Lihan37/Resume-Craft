@@ -6,7 +6,7 @@ import LeftSideBarOptions from "./resume/LeftSideBarOptions";
 import useDisplay from "../../hooks/useDisplay";
 import { useResumeEditor } from "../../hooks/useResumeEditor";
 
-// import { FaCheck } from "react-icons/fa6";
+import { FaCheck } from "react-icons/fa6";
 
 const Editor: React.FC = () => {
   useTitleSet("Resume Builder");
@@ -58,7 +58,7 @@ const Editor: React.FC = () => {
         </div>
       </div>
 
-      {/* <div className="h-full space-y-4 p-5 w-80 border-r-2">
+      <div className="h-full space-y-4 p-5 w-80 border-r-2">
         <div className=" space-y-1">
           <h1 className=" font-semibold text-2xl">Theme</h1>
           <div className="w-full gap-5 flex justify-between items-center">
@@ -83,7 +83,7 @@ const Editor: React.FC = () => {
           <h1 className="font-semibold text-2xl">Text</h1>
           <div className=""></div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
