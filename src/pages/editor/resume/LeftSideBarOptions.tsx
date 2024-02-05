@@ -76,7 +76,7 @@ const LeftSideBarOptions: React.FC = () => {
   return (
     <div>
       <div className="pb-10">
-        <Accordion defaultIndex={0}>
+        <Accordion multiple={true} defaultIndex={0}>
           {/* Personal Information  */}
           <AccordionItem>
             <AccordionHeader>Personal Information</AccordionHeader>

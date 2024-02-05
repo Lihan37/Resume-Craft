@@ -6,6 +6,8 @@ import LeftSideBarOptions from "./resume/LeftSideBarOptions";
 import useDisplay from "../../hooks/useDisplay";
 import { useResumeEditor } from "../../hooks/useResumeEditor";
 
+// import { FaCheck } from "react-icons/fa6";
+
 const Editor: React.FC = () => {
   useTitleSet("Resume Builder");
   const [windowWidth] = useDisplay();
@@ -25,19 +27,19 @@ const Editor: React.FC = () => {
     <div
       style={{ minHeight: hight }}
       className="flex justify-start items-start">
-      <div className="h-full min-w-96 max-w-96 ">
+      <div className="h-full xl:min-w-[540px] 2xl:min-w-[640px] xl:max-w-[540px] 2xl:max-w-[640px] ">
         <LeftSideBar
           editor={<LeftSideBarOptions />}
           templates={<ResumeTemplates />}
         />
       </div>
-      <div className="w-full h-full p-3 bg-slate-500 ">
+      <div
+        style={{ height: hight }}
+        className="w-full flex justify-center items-center bg-zinc-100 ">
         <div
-          style={{ minHeight: resumeHight }}
-          className=" max-w-[700px] mx-auto flex justify-start items-start rounded-lg overflow-hidden">
-          <div
-            style={{ minHeight: resumeHight }}
-            className=" w-4/12 h-full bg-[#084c41] text-white p-10">
+          style={{ transform: `scale(${0.7})` }}
+          className=" h-[1190.14px] w-[845px] flex justify-start items-start rounded-lg overflow-hidden">
+          <div className=" w-4/12 h-full bg-[#084c41] text-white p-10 ">
             <h1 className=" text-xl text-center font-semibold ">
               {personalInfo.firstName} {personalInfo.lastName}
             </h1>
@@ -55,12 +57,33 @@ const Editor: React.FC = () => {
             className=" w-8/12 h-full bg-white "></div>
         </div>
       </div>
-      <div className="h-full min-w-96 ">
-        {/* <LeftSideBar
-          editor={<LeftSideBarOptions />}
-          templates={<ResumeTemplates />}
-        /> */}
-      </div>
+
+      {/* <div className="h-full space-y-4 p-5 w-80 border-r-2">
+        <div className=" space-y-1">
+          <h1 className=" font-semibold text-2xl">Theme</h1>
+          <div className="w-full gap-5 flex justify-between items-center">
+            <div className="w-10 h-10 rounded-full bg-amber-600 cursor-pointer flex justify-center items-center">
+              <FaCheck className=" text-lg text-white" />
+            </div>
+            <div className="w-10 h-10 rounded-full bg-lime-600 cursor-pointer flex justify-center items-center">
+              <FaCheck className=" text-lg text-white" />
+            </div>
+            <div className="w-10 h-10 rounded-full bg-teal-600 cursor-pointer flex justify-center items-center">
+              <FaCheck className=" text-lg text-white" />
+            </div>
+            <div className="w-10 h-10 rounded-full bg-emerald-600 cursor-pointer flex justify-center items-center">
+              <FaCheck className=" text-lg text-white" />
+            </div>
+            <div className="w-10 h-10 rounded-full bg-cyan-600 cursor-pointer flex justify-center items-center">
+              <FaCheck className=" text-lg text-white" />
+            </div>
+          </div>
+        </div>
+        <div className="space-y-1">
+          <h1 className="font-semibold text-2xl">Text</h1>
+          <div className=""></div>
+        </div>
+      </div> */}
     </div>
   );
 };
