@@ -43,7 +43,7 @@ const HeroSection: React.FC = () => {
           </p>
           {/* <Button>Build Your Resume</Button> */}
           <div className=" flex justify-center md:justify-start items-center gap-10">
-            <Link to="/edit/resume">
+            <Link to="/dashboard">
               <Button> GET started</Button>
             </Link>
 

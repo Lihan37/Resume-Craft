@@ -21,7 +21,7 @@ import AddSocialWebSite from "./AddSocialWebSite";
 import AddSkills from "./AddSkills";
 import AddLanguages from "./AddLanguages";
 import AddReferences from "./AddReferences";
-import { useResumeEditor } from "./ResumeEditorProvider";
+import { useResumeEditor } from "../../../hooks/useResumeEditor";
 
 // const initialState = {
 //   personal: {
@@ -76,7 +76,7 @@ const LeftSideBarOptions: React.FC = () => {
   return (
     <div>
       <div className="pb-10">
-        <Accordion defaultIndex={0}>
+        <Accordion multiple={true} defaultIndex={0}>
           {/* Personal Information  */}
           <AccordionItem>
             <AccordionHeader>Personal Information</AccordionHeader>
