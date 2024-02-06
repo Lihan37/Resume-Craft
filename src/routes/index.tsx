@@ -18,6 +18,7 @@ import AdminDashboard from "../pages/dashboard/admin";
 import BlogDetails from "../pages/blog/BlogDetails";
 import ResumeEditorProvider from "../providers/ResumeEditorProvider";
 import BlogPost from "../pages/dashboard/admin/blog";
+import BlogAdmin from "../pages/dashboard/admin/blog/BlogAdmin";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,7 @@ const router = createBrowserRouter([
         path: "/cover-latter-template",
         element: <CoverLetterTemplates />,
       },
+      
     ],
   },
 
@@ -102,6 +104,11 @@ const router = createBrowserRouter([
       {
         path: "blog",
         element: <BlogPost />,
+      },
+      // for admin blog post
+      {
+        path: "createBlog",
+        element: <BlogAdmin/>,
       },
     ],
   },
