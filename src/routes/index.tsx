@@ -17,7 +17,8 @@ import Resume from "../pages/dashboard/user";
 import AdminDashboard from "../pages/dashboard/admin";
 import BlogDetails from "../pages/blog/BlogDetails";
 import ResumeEditorProvider from "../providers/ResumeEditorProvider";
-import BlogPost from "../pages/dashboard/admin/blog";
+import Blogs from "../pages/dashboard/admin/blog";
+import CreateBlog from "../pages/dashboard/admin/blog/CreateBlog";
 
 const router = createBrowserRouter([
   {
@@ -105,8 +106,8 @@ const router = createBrowserRouter([
       },
       // for admin blog post
       {
-        path: "createBlog",
-        element: <BlogAdmin />,
+        path: "create-blog",
+        element: <CreateBlog />,
       },
     ],
   },
