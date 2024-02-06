@@ -2,11 +2,12 @@ import React, { useLayoutEffect, useState } from "react";
 import InputText from "../../../components/common/InputText";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import { TypeOfSingleSocialWebSite } from "../../../types";
+import { TypeOfSingleSocialWebSite } from "../../../types/resumeEditor";
 
 interface IAddSingeSocialWebSite {
   id: string | number;
   getValue?: (data: TypeOfSingleSocialWebSite) => void;
+  initialValue?: TypeOfSingleSocialWebSite;
 }
 
 const initialState = {
@@ -18,9 +19,12 @@ const initialState = {
 const AddSingeSocialWebSite: React.FC<IAddSingeSocialWebSite> = ({
   id,
   getValue = () => {},
+  initialValue,
 }) => {
   const [title, setTitle] = useState<string>("(Not specified)");
-  const [state, setState] = useState<TypeOfSingleSocialWebSite>(initialState);
+  const [state, setState] = useState<TypeOfSingleSocialWebSite>(
+    initialValue && initialValue._id ? initialValue : initialState
+  );
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useLayoutEffect(() => {
