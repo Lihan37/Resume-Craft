@@ -6,12 +6,14 @@ interface ITextEditor {
   placeholder?: string;
   height?: string;
   getValue?: (data: string) => void;
+  initialValue?: string;
 }
 
 const InputTextEditor: React.FC<ITextEditor> = ({
   placeholder,
   height = "200px",
   getValue = () => {},
+  initialValue = "",
 }) => {
   const modules = {
     toolbar: [
@@ -90,11 +92,14 @@ const InputTextEditor: React.FC<ITextEditor> = ({
   ];
 
   const handleProcedureContentChange = (content: string) => {
-    getValue(content);
+    if (getValue && typeof getValue === "function") {
+      getValue(content);
+    }
   };
 
   return (
     <ReactQuill
+      value={initialValue}
       //   theme="snow"
       modules={modules}
       formats={formats}
@@ -103,8 +108,8 @@ const InputTextEditor: React.FC<ITextEditor> = ({
       style={{
         height: height,
         fontSize: "16px",
-        border: "2px solid #f5f5f5",
-        borderBottom: "2px solid #c3bebe",
+        border: "1.8px solid #f5f5f5",
+        borderBottom: "1.8px solid #c3bebe",
         borderRadius: "0.375rem",
         overflow: "hidden",
       }}></ReactQuill>

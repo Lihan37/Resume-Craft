@@ -5,6 +5,7 @@ import AccordionPanel from "../../../components/accordion/AccordionPanelProps";
 import InputTextEditor from "../../../components/common/InputTextEditor";
 import AddEmploymentHistory from "./AddEmploymentHistory";
 import {
+  IResumePersonalInfo,
   TypeOfLanguage,
   TypeOfReference,
   TypeOfSingleEducationHistory,
@@ -26,10 +27,14 @@ import {
   setReference,
   setLanguage,
   setSocialProfile,
+  setPersonalInfo,
+  setProfessionalSummary,
 } from "../../../services/resumeEditor/resumeEditorSlice";
 import {
   selectEducation,
   selectLanguage,
+  selectPersonalInfo,
+  selectProfessionalSummary,
   selectReference,
   selectSkills,
   selectSocialProfile,
@@ -44,6 +49,8 @@ const LeftSideBarOptions: React.FC = () => {
   const languages = useSelector(selectLanguage);
   const socialProfile = useSelector(selectSocialProfile);
   const references = useSelector(selectReference);
+  const personalInfo = useSelector(selectPersonalInfo);
+  const professionalSummary = useSelector(selectProfessionalSummary);
 
   return (
     <div>
@@ -51,14 +58,24 @@ const LeftSideBarOptions: React.FC = () => {
         <AccordionItem>
           <AccordionHeader id={1} tittle="Personal Information" />
           <AccordionPanel id={1}>
-            <PersonaData />
+            <PersonaData
+              initialValue={personalInfo}
+              getValue={(data: IResumePersonalInfo) => {
+                dispatch(setPersonalInfo(data));
+              }}
+            />
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem>
           <AccordionHeader id={2} tittle="Professional Summary" />
           <AccordionPanel id={2}>
             <div className="py-5 px-5">
-              <InputTextEditor />
+              <InputTextEditor
+                initialValue={professionalSummary}
+                getValue={(data: string) => {
+                  dispatch(setProfessionalSummary(data));
+                }}
+              />
             </div>
           </AccordionPanel>
         </AccordionItem>

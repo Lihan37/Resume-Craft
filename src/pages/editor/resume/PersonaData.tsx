@@ -1,47 +1,87 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputText from "../../../components/common/InputText";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
+import { IResumePersonalInfo } from "../../../types/resumeEditor";
 
-import { useResumeEditor } from "../../../hooks/useResumeEditor";
+const initialState = {
+  jobTitle: "",
+  firstName: "",
+  lastName: "",
+  email: "",
+  phoneNumber: "",
+  country: "",
+  city: "",
+  address: "",
+  postalCode: "",
+  drivingLicense: "",
+  nationality: "",
+  placeOfBirth: "",
+  DateOfBirth: "",
+};
 
-const PersonaData: React.FC = () => {
+interface IPersonaData {
+  getValue?: (data: IResumePersonalInfo) => void;
+  initialValue?: IResumePersonalInfo;
+}
+const PersonaData: React.FC<IPersonaData> = ({
+  getValue = () => {},
+  initialValue,
+}) => {
   const [isActive, setIsActive] = useState(false);
+  const [state, setState] = useState<IResumePersonalInfo>(
+    initialValue || initialState
+  );
 
-  const { personalInfo, handleInput } = useResumeEditor();
+  useEffect(() => {
+    if (getValue && typeof getValue === "function") {
+      getValue(state);
+    }
+  }, [state]);
+
+  const handleInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setState((prev: IResumePersonalInfo) => ({ ...prev, [name]: value }));
+  };
 
   return (
     <div className=" space-y-3 py-5 px-5 ">
       <InputText
-        value={personalInfo?.jobTitle || ""}
+        value={state.jobTitle}
+        name="jobTitle"
         placeholder="Job Title"
-        onChange={(e) => {
-          if (handleInput) {
-            handleInput("jobTitle", e.target.value || "");
-          }
-        }}
+        onChange={handleInputValue}
       />
       <InputText
-        value={personalInfo?.firstName || ""}
+        value={state.firstName}
+        name="firstName"
         placeholder="First Name"
-        onChange={(e) => {
-          if (handleInput) {
-            handleInput("firstName", e.target.value || "");
-          }
-        }}
+        onChange={handleInputValue}
       />
       <InputText
-        value={personalInfo?.lastName || ""}
+        value={state.lastName}
         placeholder="Last Name"
-        onChange={(e) => {
-          if (handleInput) {
-            handleInput("lastName", e.target.value || "");
-          }
-        }}
+        name="lastName"
+        onChange={handleInputValue}
       />
-      <InputText placeholder="Email Address" />
-      <InputText placeholder="Phone Number" />
-      <InputText placeholder="Your Country" />
+      <InputText
+        value={state.email}
+        onChange={handleInputValue}
+        name="email"
+        placeholder="Email Address"
+      />
+      <InputText
+        value={state.phoneNumber}
+        onChange={handleInputValue}
+        name="phoneNumber"
+        placeholder="Phone Number"
+      />
+      <InputText
+        value={state.country}
+        onChange={handleInputValue}
+        name="country"
+        placeholder="Your Country"
+      />
 
       <AnimatePresence initial={false}>
         {isActive && (
@@ -51,13 +91,48 @@ const PersonaData: React.FC = () => {
             exit={{ height: 0 }}
             transition={{ type: "spring", duration: 0.4, bounce: 0 }}>
             <div className="space-y-3 ">
-              <InputText placeholder="Your City" />
-              <InputText placeholder="Your Address" />
-              <InputText placeholder="Postal Code" />
-              <InputText placeholder="Driving License" />
-              <InputText placeholder="Nationality" />
-              <InputText placeholder="Place Of Birth" />
-              <InputText placeholder="Date Of Birth" />
+              <InputText
+                value={state.city}
+                onChange={handleInputValue}
+                name="city"
+                placeholder="Your City"
+              />
+              <InputText
+                value={state.address}
+                onChange={handleInputValue}
+                name="address"
+                placeholder="Your Address"
+              />
+              <InputText
+                value={state.postalCode}
+                onChange={handleInputValue}
+                name="postalCode"
+                placeholder="Postal Code"
+              />
+              <InputText
+                value={state.drivingLicense}
+                onChange={handleInputValue}
+                name="drivingLicense"
+                placeholder="Driving License"
+              />
+              <InputText
+                value={state.nationality}
+                onChange={handleInputValue}
+                name="nationality"
+                placeholder="Nationality"
+              />
+              <InputText
+                value={state.placeOfBirth}
+                onChange={handleInputValue}
+                name="placeOfBirth"
+                placeholder="Place Of Birth"
+              />
+              <InputText
+                value={state.DateOfBirth}
+                onChange={handleInputValue}
+                name="DateOfBirth"
+                placeholder="Date Of Birth"
+              />
             </div>
           </motion.div>
         )}
