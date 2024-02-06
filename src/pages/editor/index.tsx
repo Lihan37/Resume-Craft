@@ -19,8 +19,6 @@ const Editor: React.FC = () => {
       ? window.innerHeight - 98 + "px"
       : window.innerHeight - 88 + "px";
 
-  console.log(windowWidth);
-
   return (
     <div
       style={{ minHeight: hight }}

@@ -11,104 +11,123 @@ import {
   TypeOfSingleEmploymentHistory,
   TypeOfSingleSocialWebSite,
   TypeOfSkill,
-} from "../../../types";
+} from "../../../types/resumeEditor";
 import AddEducationHistory from "./AddEducationHistory";
 import AddSocialWebSite from "./AddSocialWebSite";
 import AddSkills from "./AddSkills";
 import AddLanguages from "./AddLanguages";
 import AddReferences from "./AddReferences";
 import PersonaData from "./PersonaData";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setWorkExperience,
+  setEducation,
+  setSkills,
+  setReference,
+  setLanguage,
+  setSocialProfile,
+} from "../../../services/resumeEditor/resumeEditorSlice";
+import {
+  selectEducation,
+  selectLanguage,
+  selectReference,
+  selectSkills,
+  selectSocialProfile,
+  selectWorkExperience,
+} from "../../../services/resumeEditor/resumeEditorSelector";
 
 const LeftSideBarOptions: React.FC = () => {
-  const handleAddEmploymentHistory = (
-    data: TypeOfSingleEmploymentHistory[]
-  ) => {
-    console.log("handleAddEmploymentHistory", data);
-  };
-
-  const handleAddEducationHistory = (data: TypeOfSingleEducationHistory[]) => {
-    console.log("handleAddEducationHistory", data);
-  };
-
-  const handleAddSocialWebSite = (data: TypeOfSingleSocialWebSite[]) => {
-    console.log("handleAddSocialWebSite", data);
-  };
-
-  const handleAddSkills = (data: TypeOfSkill[]) => {
-    console.log("handleAddSkills", data);
-  };
-
-  const handleAddLanguages = (data: TypeOfLanguage[]) => {
-    console.log("handleAddLanguages", data);
-  };
-
-  const handleAddReferences = (data: TypeOfReference[]) => {
-    console.log("handleAddReferences", data);
-  };
+  const dispatch = useDispatch();
+  const workExperiences = useSelector(selectWorkExperience);
+  const educations = useSelector(selectEducation);
+  const skills = useSelector(selectSkills);
+  const languages = useSelector(selectLanguage);
+  const socialProfile = useSelector(selectSocialProfile);
+  const references = useSelector(selectReference);
 
   return (
     <div>
       <div className="pb-10">
-        {/* <Accordion multiple={true} defaultIndex={0}> */}
-        {/* Personal Information  */}
         <AccordionItem>
-          <AccordionHeader id={1}>Personal Information</AccordionHeader>
+          <AccordionHeader id={1} tittle="Personal Information" />
           <AccordionPanel id={1}>
             <PersonaData />
           </AccordionPanel>
         </AccordionItem>
-        {/* Professional Summary */}
         <AccordionItem>
-          <AccordionHeader id={2}>Professional Summary</AccordionHeader>
+          <AccordionHeader id={2} tittle="Professional Summary" />
           <AccordionPanel id={2}>
             <div className="py-5 px-5">
               <InputTextEditor />
             </div>
           </AccordionPanel>
         </AccordionItem>
-        {/* Employment History */}
         <AccordionItem>
-          <AccordionHeader id={3}>Employment History</AccordionHeader>
+          <AccordionHeader id={3} tittle="Employment History" />
           <AccordionPanel id={3}>
-            <AddEmploymentHistory getValue={handleAddEmploymentHistory} />
+            <AddEmploymentHistory
+              initialValue={workExperiences}
+              getValue={(data: TypeOfSingleEmploymentHistory[]) => {
+                dispatch(setWorkExperience(data));
+              }}
+            />
           </AccordionPanel>
         </AccordionItem>
-        {/* Education */}
         <AccordionItem>
-          <AccordionHeader id={4}>Education</AccordionHeader>
+          <AccordionHeader id={4} tittle="Education" />
           <AccordionPanel id={4}>
-            <AddEducationHistory getValue={handleAddEducationHistory} />
+            <AddEducationHistory
+              initialValue={educations}
+              getValue={(data: TypeOfSingleEducationHistory[]) => {
+                dispatch(setEducation(data));
+              }}
+            />
           </AccordionPanel>
         </AccordionItem>
-        {/* Websites & Social Links */}
         <AccordionItem>
-          <AccordionHeader id={4}>Websites & Social Links</AccordionHeader>
-          <AccordionPanel id={4}>
-            <AddSocialWebSite getValue={handleAddSocialWebSite} />
+          <AccordionHeader id={501} tittle="Websites & Social Links" />
+          <AccordionPanel id={501}>
+            <AddSocialWebSite
+              initialValue={socialProfile}
+              getValue={(data: TypeOfSingleSocialWebSite[]) => {
+                dispatch(setSocialProfile(data));
+              }}
+            />
           </AccordionPanel>
         </AccordionItem>
-        {/* Skills */}
         <AccordionItem>
-          <AccordionHeader id={5}>Skills</AccordionHeader>
-          <AccordionPanel id={5}>
-            <AddSkills getValue={handleAddSkills} />
+          <AccordionHeader id={502} tittle="Skills" />
+          <AccordionPanel id={502}>
+            <AddSkills
+              initialValue={skills}
+              getValue={(data: TypeOfSkill[]) => {
+                dispatch(setSkills(data));
+              }}
+            />
           </AccordionPanel>
         </AccordionItem>
-        {/* Language */}
         <AccordionItem>
-          <AccordionHeader id={6}>Languages</AccordionHeader>
+          <AccordionHeader id={6} tittle="Languages" />
           <AccordionPanel id={6}>
-            <AddLanguages getValue={handleAddLanguages} />
+            <AddLanguages
+              initialValue={languages}
+              getValue={(data: TypeOfLanguage[]) => {
+                dispatch(setLanguage(data));
+              }}
+            />
           </AccordionPanel>
         </AccordionItem>
-        {/* References */}
         <AccordionItem>
-          <AccordionHeader id={7}>References</AccordionHeader>
+          <AccordionHeader id={7} tittle="References" />
           <AccordionPanel id={7}>
-            <AddReferences getValue={handleAddReferences} />
+            <AddReferences
+              initialValue={references}
+              getValue={(data: TypeOfReference[]) => {
+                dispatch(setReference(data));
+              }}
+            />
           </AccordionPanel>
         </AccordionItem>
-        {/* </Accordion> */}
       </div>
     </div>
   );
