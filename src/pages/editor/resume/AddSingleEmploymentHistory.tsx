@@ -4,11 +4,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import InputTextEditor from "../../../components/common/InputTextEditor";
 import InputMonthYear from "../../../components/common/InputMonthYear";
-import { TypeOfSingleEmploymentHistory } from "../../../types";
+import { TypeOfSingleEmploymentHistory } from "../../../types/resumeEditor";
 
 interface IAddSingleEmploymentHistory {
   id: string | number;
   getValue?: (data: TypeOfSingleEmploymentHistory) => void;
+  initialValue?: TypeOfSingleEmploymentHistory;
 }
 
 const initialState = {
@@ -24,10 +25,12 @@ const initialState = {
 const AddSingleEmploymentHistory: React.FC<IAddSingleEmploymentHistory> = ({
   id,
   getValue = () => {},
+  initialValue,
 }) => {
   const [title, setTitle] = useState<string>("(Not specified)");
-  const [state, setState] =
-    useState<TypeOfSingleEmploymentHistory>(initialState);
+  const [state, setState] = useState<TypeOfSingleEmploymentHistory>(
+    initialValue && initialValue._id ? initialValue : initialState
+  );
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleStartMontYear = (data: string) => {
@@ -91,8 +94,12 @@ const AddSingleEmploymentHistory: React.FC<IAddSingleEmploymentHistory> = ({
                 placeholder="Employer"
               />
               <div className="flex justify-between items-center gap-1">
-                <InputMonthYear getValue={handleStartMontYear} />
                 <InputMonthYear
+                  initialValue={state.startMontYear}
+                  getValue={handleStartMontYear}
+                />
+                <InputMonthYear
+                  initialValue={state.endMontYear}
                   getValue={handleEndMontYear}
                   dropdownLef="-50%"
                 />
