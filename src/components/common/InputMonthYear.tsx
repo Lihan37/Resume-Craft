@@ -21,14 +21,16 @@ interface IInputMonthYear {
   getValue?: (data: string) => void;
   dropdownLef?: string;
   dropdownRight?: string;
+  initialValue?: string;
 }
 
 const InputMonthYear: React.FC<IInputMonthYear> = ({
   getValue = () => {},
   dropdownLef = "0%",
   dropdownRight = "0%",
+  initialValue = "",
 }) => {
-  const [value, setValue] = useState<string>("");
+  const [value, setValue] = useState<string>(initialValue);
   const [year, setYear] = useState<number>(new Date().getFullYear());
   const [month, setMonth] = useState<number>(new Date().getMonth());
   const [isOpen, setIsOpen] = useState<boolean>(false);
