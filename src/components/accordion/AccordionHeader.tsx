@@ -12,7 +12,7 @@ const AccordionHeader: FC<AccordionHeaderProps> = ({ children }) => {
 
   return (
     <motion.div
-      className={`px-5 cursor-pointer border-t-2 p-2 py-3 flex justify-between items-center w-full`}
+      className={`px-5 cursor-pointer border-t-[1.8px] p-2 py-3 flex justify-between items-center w-full`}
       onClick={() => onChangeIndex(index)}>
       <h1 className=" font-semibold text-lg text-c-dark">{children} </h1>
       {isActive ? <FaMinus /> : <FaPlus />}

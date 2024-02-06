@@ -12,7 +12,7 @@ const InputText: React.FC<InputTextProps> = ({
     <input
       {...argument}
       type={type}
-      className="w-full px-4 py-2 rounded-md outline-none focus:border-c-primary  border-2 placeholder:font-semibold text-lg placeholder:text-gray-400 placeholder:text-base text-c-dark"
+      className="w-full px-4 py-2 rounded-md outline-none focus:border-c-primary  border-[1.8px] placeholder:font-semibold text-lg placeholder:text-gray-400 placeholder:text-base text-c-dark"
     />
   );
 };

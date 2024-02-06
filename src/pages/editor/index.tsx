@@ -2,11 +2,12 @@ import React from "react";
 import LeftSideBar from "./leftBar/LeftSideBar";
 import useTitleSet from "../../hooks/useTitleSet";
 import ResumeTemplates from "./resume/ResumeTemplates";
-import LeftSideBarOptions from "./resume";
+import LeftSideBarOptions from "./resume/LeftSideBarOptions";
 import useDisplay from "../../hooks/useDisplay";
 import { useResumeEditor } from "../../hooks/useResumeEditor";
-
-import { FaCheck } from "react-icons/fa6";
+import RightSideBar from "./rightBar/RightSideBar";
+import RightSideBarOptions from "./resume/RightSideBarOptions";
+import { IoSettingsOutline } from "react-icons/io5";
 
 const Editor: React.FC = () => {
   useTitleSet("Resume Builder");
@@ -18,16 +19,13 @@ const Editor: React.FC = () => {
       ? window.innerHeight - 98 + "px"
       : window.innerHeight - 88 + "px";
 
-  const resumeHight =
-    windowWidth > 1024
-      ? window.innerHeight - 123 + "px"
-      : window.innerHeight - 113 + "px";
+  console.log(windowWidth);
 
   return (
     <div
       style={{ minHeight: hight }}
       className="flex justify-start items-start">
-      <div className="h-full xl:min-w-[540px] 2xl:min-w-[640px] xl:max-w-[540px] 2xl:max-w-[640px] ">
+      <div className="h-full min-w-[400px] max-w-[400px]  ">
         <LeftSideBar
           editor={<LeftSideBarOptions />}
           templates={<ResumeTemplates />}
@@ -52,32 +50,22 @@ const Editor: React.FC = () => {
               <p></p>
             </div>
           </div>
-          <div
-            style={{ minHeight: resumeHight }}
-            className=" w-8/12 h-full bg-white "></div>
+          <div className=" w-8/12 h-full bg-white "></div>
         </div>
       </div>
 
-      <div className="h-full space-y-4 p-5  border-r-2">
-        <div className=" space-y-1">
-          <div className="w-full gap-5 flex flex-col justify-between items-center">
-            <div className="w-14 h-14 rounded-full bg-amber-600 cursor-pointer flex justify-center items-center">
-              <FaCheck className=" text-lg text-white" />
-            </div>
-            <div className="w-14 h-14 rounded-full bg-lime-600 cursor-pointer flex justify-center items-center">
-              <FaCheck className=" text-lg text-white" />
-            </div>
-            <div className="w-14 h-14 rounded-full bg-teal-600 cursor-pointer flex justify-center items-center">
-              <FaCheck className=" text-lg text-white" />
-            </div>
-            <div className="w-14 h-14 rounded-full bg-emerald-600 cursor-pointer flex justify-center items-center">
-              <FaCheck className=" text-lg text-white" />
-            </div>
-            <div className="w-14 h-14 rounded-full bg-cyan-600 cursor-pointer flex justify-center items-center">
-              <FaCheck className=" text-lg text-white" />
-            </div>
-          </div>
-        </div>
+      <div className="2xl:hidden fixed right-0 top-56 py-2 px-6 hover:bg-white hover:text-c-primary duration-300 transition-colors cursor-pointer text-white rounded-l-full bg-c-primary">
+        <IoSettingsOutline className="animate-spin text-4xl" />
+      </div>
+      <div
+        className={`${
+          windowWidth < 1590
+            ? "fixed top-[88px] xl:top-[98px] z-50 -right-[50%]"
+            : null
+        }`}>
+        <RightSideBar>
+          <RightSideBarOptions />
+        </RightSideBar>
       </div>
     </div>
   );

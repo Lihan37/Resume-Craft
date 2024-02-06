@@ -12,7 +12,10 @@ export default {
         "c-dark-light": "#525252",
       },
       fontFamily: {
-        "f-mono": "Sometype Mono",
+        "f-mono": "Mono",
+        "f-poppins": "Poppins",
+        "f-roboto": "Roboto",
+        "f-inter": "Inter",
         // sans: ["Inter", "sans-serif"],
       },
     },
