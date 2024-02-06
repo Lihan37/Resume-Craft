@@ -4,15 +4,16 @@ import useTitleSet from "../../hooks/useTitleSet";
 import ResumeTemplates from "./resume/ResumeTemplates";
 import LeftSideBarOptions from "./resume/LeftSideBarOptions";
 import useDisplay from "../../hooks/useDisplay";
-import { useResumeEditor } from "../../hooks/useResumeEditor";
 import RightSideBar from "./rightBar/RightSideBar";
 import RightSideBarOptions from "./resume/RightSideBarOptions";
 import { IoSettingsOutline } from "react-icons/io5";
+import { useSelector } from "react-redux";
+import { selectPersonalInfo } from "../../services/resumeEditor/resumeEditorSelector";
 
 const Editor: React.FC = () => {
   useTitleSet("Resume Builder");
   const [windowWidth] = useDisplay();
-  const { personalInfo } = useResumeEditor();
+  const personalInfo = useSelector(selectPersonalInfo);
 
   const hight =
     windowWidth > 1024

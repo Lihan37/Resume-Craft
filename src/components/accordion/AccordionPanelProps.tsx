@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { selectActiveAccordion } from "../../services/accordion/accordionSelector";
 import { RootState } from "../../app/store";
-// import { useAccordion } from "../../hooks/useAccordion";
 
 interface AccordionPanelProps {
   children: ReactNode;
