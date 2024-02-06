@@ -4,11 +4,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import InputTextEditor from "../../../components/common/InputTextEditor";
 import InputMonthYear from "../../../components/common/InputMonthYear";
-import { TypeOfSingleEducationHistory } from "../../../types";
+import { TypeOfSingleEducationHistory } from "../../../types/resumeEditor";
 
 interface IAddSingleEducationHistory {
   id: string | number;
   getValue?: (data: TypeOfSingleEducationHistory) => void;
+  initialValue?: TypeOfSingleEducationHistory;
 }
 
 const initialState = {
@@ -24,10 +25,12 @@ const initialState = {
 const AddSingleEducationHistory: React.FC<IAddSingleEducationHistory> = ({
   id,
   getValue = () => {},
+  initialValue,
 }) => {
   const [title, setTitle] = useState<string>("(Not specified)");
-  const [state, setState] =
-    useState<TypeOfSingleEducationHistory>(initialState);
+  const [state, setState] = useState<TypeOfSingleEducationHistory>(
+    initialValue && initialValue._id ? initialValue : initialState
+  );
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleStartMontYear = (data: string) => {
@@ -91,8 +94,12 @@ const AddSingleEducationHistory: React.FC<IAddSingleEducationHistory> = ({
                 placeholder="Degree"
               />
               <div className="flex justify-between items-center gap-1">
-                <InputMonthYear getValue={handleStartMontYear} />
                 <InputMonthYear
+                  initialValue={state.startMontYear}
+                  getValue={handleStartMontYear}
+                />
+                <InputMonthYear
+                  initialValue={state.endMontYear}
                   getValue={handleEndMontYear}
                   dropdownLef="-50%"
                 />
