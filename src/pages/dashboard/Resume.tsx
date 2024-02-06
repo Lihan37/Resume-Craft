@@ -905,3 +905,4 @@ const Resume: React.FC = () => {
 };
 
 export default Resume;
+

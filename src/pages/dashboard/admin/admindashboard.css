@@ -1,0 +1,24 @@
+
+
+@keyframes changeColor {
+    0%, 100% {
+      background-color: #3490dc; 
+    }
+    20% {
+      background-color: #4a90e2; 
+    }
+    40% {
+      background-color: #1e4e8c; 
+    }
+    60% {
+      background-color: #3b5998; 
+    }
+    80% {
+      background-color: #2164f3; 
+    }
+  }
+  
+  .animate-bg {
+    animation: changeColor 10s ease-in-out infinite;    
+  }
+  

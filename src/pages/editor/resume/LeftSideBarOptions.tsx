@@ -8,7 +8,20 @@ import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import InputTextEditor from "../../../components/common/InputTextEditor";
 import AddEmploymentHistory from "./AddEmploymentHistory";
-import { TypeOfSingleEmploymentHistory } from "../../../types";
+import {
+  TypeOfLanguage,
+  TypeOfReference,
+  TypeOfSingleEducationHistory,
+  TypeOfSingleEmploymentHistory,
+  TypeOfSingleSocialWebSite,
+  TypeOfSkill,
+} from "../../../types";
+import AddEducationHistory from "./AddEducationHistory";
+import AddSocialWebSite from "./AddSocialWebSite";
+import AddSkills from "./AddSkills";
+import AddLanguages from "./AddLanguages";
+import AddReferences from "./AddReferences";
+import { useResumeEditor } from "./ResumeEditorProvider";
 
 // const initialState = {
 //   personal: {
@@ -29,28 +42,73 @@ import { TypeOfSingleEmploymentHistory } from "../../../types";
 //   },
 // };
 
-const ResumeEditor: React.FC = () => {
+const LeftSideBarOptions: React.FC = () => {
   // const [state, setState] = useState(initialState);
   const [isActive, setIsActive] = useState(false);
+  const { personalInfo, handleInput } = useResumeEditor();
 
   const handleAddEmploymentHistory = (
     data: TypeOfSingleEmploymentHistory[]
   ) => {
-    console.log("handleAddEmploymentHistory 1", data);
+    console.log("handleAddEmploymentHistory", data);
+  };
+
+  const handleAddEducationHistory = (data: TypeOfSingleEducationHistory[]) => {
+    console.log("handleAddEducationHistory", data);
+  };
+
+  const handleAddSocialWebSite = (data: TypeOfSingleSocialWebSite[]) => {
+    console.log("handleAddSocialWebSite", data);
+  };
+
+  const handleAddSkills = (data: TypeOfSkill[]) => {
+    console.log("handleAddSkills", data);
+  };
+
+  const handleAddLanguages = (data: TypeOfLanguage[]) => {
+    console.log("handleAddLanguages", data);
+  };
+
+  const handleAddReferences = (data: TypeOfReference[]) => {
+    console.log("handleAddReferences", data);
   };
 
   return (
     <div>
-      <div className="">
+      <div className="pb-10">
         <Accordion defaultIndex={0}>
           {/* Personal Information  */}
           <AccordionItem>
             <AccordionHeader>Personal Information</AccordionHeader>
             <AccordionPanel>
               <div className=" space-y-3 py-5 px-5 ">
-                <InputText placeholder="Job Title" />
-                <InputText placeholder="First Name" />
-                <InputText placeholder="Last Name" />
+                <InputText
+                  value={personalInfo?.jobTitle || ""}
+                  placeholder="Job Title"
+                  onChange={(e) => {
+                    if (handleInput) {
+                      handleInput("jobTitle", e.target.value || "");
+                    }
+                  }}
+                />
+                <InputText
+                  value={personalInfo?.firstName || ""}
+                  placeholder="First Name"
+                  onChange={(e) => {
+                    if (handleInput) {
+                      handleInput("firstName", e.target.value || "");
+                    }
+                  }}
+                />
+                <InputText
+                  value={personalInfo?.lastName || ""}
+                  placeholder="Last Name"
+                  onChange={(e) => {
+                    if (handleInput) {
+                      handleInput("lastName", e.target.value || "");
+                    }
+                  }}
+                />
                 <InputText placeholder="Email Address" />
                 <InputText placeholder="Phone Number" />
                 <InputText placeholder="Your Country" />
@@ -97,11 +155,46 @@ const ResumeEditor: React.FC = () => {
               </div>
             </AccordionPanel>
           </AccordionItem>
-
+          {/* Employment History */}
           <AccordionItem>
             <AccordionHeader>Employment History</AccordionHeader>
             <AccordionPanel>
               <AddEmploymentHistory getValue={handleAddEmploymentHistory} />
+            </AccordionPanel>
+          </AccordionItem>
+          {/* Education */}
+          <AccordionItem>
+            <AccordionHeader>Education</AccordionHeader>
+            <AccordionPanel>
+              <AddEducationHistory getValue={handleAddEducationHistory} />
+            </AccordionPanel>
+          </AccordionItem>
+          {/* Websites & Social Links */}
+          <AccordionItem>
+            <AccordionHeader>Websites & Social Links</AccordionHeader>
+            <AccordionPanel>
+              <AddSocialWebSite getValue={handleAddSocialWebSite} />
+            </AccordionPanel>
+          </AccordionItem>
+          {/* Skills */}
+          <AccordionItem>
+            <AccordionHeader>Skills</AccordionHeader>
+            <AccordionPanel>
+              <AddSkills getValue={handleAddSkills} />
+            </AccordionPanel>
+          </AccordionItem>
+          {/* Language */}
+          <AccordionItem>
+            <AccordionHeader>Languages</AccordionHeader>
+            <AccordionPanel>
+              <AddLanguages getValue={handleAddLanguages} />
+            </AccordionPanel>
+          </AccordionItem>
+          {/* References */}
+          <AccordionItem>
+            <AccordionHeader>References</AccordionHeader>
+            <AccordionPanel>
+              <AddReferences getValue={handleAddReferences} />
             </AccordionPanel>
           </AccordionItem>
         </Accordion>
@@ -110,4 +203,4 @@ const ResumeEditor: React.FC = () => {
   );
 };
 
-export default React.memo(ResumeEditor);
+export default React.memo(LeftSideBarOptions);

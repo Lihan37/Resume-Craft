@@ -3,7 +3,36 @@ import useTitleSet from "../../../hooks/useTitleSet";
 import HeaderResume from "../Shared/Header";
 import Search from "../Shared/Search";
 import Popular from "../Shared/Popular";
-import { images } from "../../../constant";
+import { data, images } from "../../../constant";
+import Catagories from "../Shared/Catagories";
+import { Container } from "../../../components/common/Container";
+
+const catagories = [
+  {
+    label: "ATS-Friendly",
+    value: "ats-friendly",
+    description:
+      "Our tailor-made samples and guides has all of the tools you need to easily craft a government CV in just minutes. Our samples have been field-tested and are expertly designed to set you up for success.",
+  },
+  {
+    label: "Professional",
+    value: "professional",
+    description:
+      "Our tailor-made samples and guides has all of the tools you need to easily craft a government CV in just minutes. Our samples have been field-tested and are expertly designed to set you up for success.",
+  },
+  {
+    label: "Modern",
+    value: "modern",
+    description:
+      "Our tailor-made samples and guides has all of the tools you need to easily craft a government CV in just minutes. Our samples have been field-tested and are expertly designed to set you up for success.",
+  },
+  {
+    label: "Creative",
+    value: "creative",
+    description:
+      "Our tailor-made samples and guides has all of the tools you need to easily craft a government CV in just minutes. Our samples have been field-tested and are expertly designed to set you up for success.",
+  },
+];
 
 const ResumesTemplates: React.FC = () => {
   useTitleSet("Resume Templates");
@@ -23,8 +52,24 @@ const ResumesTemplates: React.FC = () => {
         />
       </div>
 
-      <Search />
-      <Popular></Popular>
+      <Container>
+        <Search />
+        <Popular resumes={data.resumes} />
+
+        {catagories.map((item, index) => {
+          const resumes = data.resumes.filter((i) =>
+            i.tags.includes(item.value)
+          );
+          return (
+            <Catagories
+              key={index}
+              data={resumes}
+              name={item.label}
+              doc={item.description}
+            />
+          );
+        })}
+      </Container>
     </div>
   );
 };
