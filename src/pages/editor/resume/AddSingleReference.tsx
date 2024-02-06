@@ -2,12 +2,12 @@ import React, { useLayoutEffect, useState } from "react";
 import InputText from "../../../components/common/InputText";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import { TypeOfReference } from "../../../types";
+import { TypeOfReference } from "../../../types/resumeEditor";
 
 interface IAddSingleReference {
   id: string | number;
   getValue?: (data: TypeOfReference) => void;
-  value?: TypeOfReference;
+  initialValue?: TypeOfReference;
 }
 
 const initialState = {
@@ -21,17 +21,13 @@ const initialState = {
 const AddSingleReference: React.FC<IAddSingleReference> = ({
   id,
   getValue = () => {},
-  value,
+  initialValue,
 }) => {
   const [title, setTitle] = useState<string>("(Not specified)");
-  const [state, setState] = useState<TypeOfReference>(initialState);
+  const [state, setState] = useState<TypeOfReference>(
+    initialValue && initialValue._id ? initialValue : initialState
+  );
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  useLayoutEffect(() => {
-    if (value && value._id) {
-      setState(value);
-    }
-  }, []);
 
   useLayoutEffect(() => {
     if (typeof getValue === "function") {
