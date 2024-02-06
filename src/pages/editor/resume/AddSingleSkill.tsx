@@ -2,13 +2,13 @@ import React, { useLayoutEffect, useState } from "react";
 import InputText from "../../../components/common/InputText";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import { TypeOfSkill } from "../../../types";
+import { TypeOfSkill } from "../../../types/resumeEditor";
 import SkillLevel from "./SkillLevel";
 
 interface IAddSingleSkill {
   id: string | number;
   getValue?: (data: TypeOfSkill) => void;
-  value?: TypeOfSkill;
+  initialValue?: TypeOfSkill;
 }
 
 const initialState = {
@@ -20,17 +20,13 @@ const initialState = {
 const AddSingleSkill: React.FC<IAddSingleSkill> = ({
   id,
   getValue = () => {},
-  value,
+  initialValue,
 }) => {
   const [title, setTitle] = useState<string>("(Not specified)");
-  const [state, setState] = useState<TypeOfSkill>(initialState);
+  const [state, setState] = useState<TypeOfSkill>(
+    initialValue && initialValue._id ? initialValue : initialState
+  );
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  useLayoutEffect(() => {
-    if (value && value._id) {
-      setState(value);
-    }
-  }, []);
 
   useLayoutEffect(() => {
     if (typeof getValue === "function") {
