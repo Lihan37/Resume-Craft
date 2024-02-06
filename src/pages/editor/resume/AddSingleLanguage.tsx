@@ -2,12 +2,12 @@ import React, { useLayoutEffect, useState } from "react";
 import InputText from "../../../components/common/InputText";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import { TypeOfLanguage } from "../../../types";
+import { TypeOfLanguage } from "../../../types/resumeEditor";
 
 interface IAddSingleLanguage {
   id: string | number;
   getValue?: (data: TypeOfLanguage) => void;
-  value?: TypeOfLanguage;
+  initialValue?: TypeOfLanguage;
 }
 
 const initialState = {
@@ -19,17 +19,13 @@ const initialState = {
 const AddSingleLanguage: React.FC<IAddSingleLanguage> = ({
   id,
   getValue = () => {},
-  value,
+  initialValue,
 }) => {
   const [title, setTitle] = useState<string>("(Not specified)");
-  const [state, setState] = useState<TypeOfLanguage>(initialState);
+  const [state, setState] = useState<TypeOfLanguage>(
+    initialValue && initialValue._id ? initialValue : initialState
+  );
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  useLayoutEffect(() => {
-    if (value && value._id) {
-      setState(value);
-    }
-  }, []);
 
   useLayoutEffect(() => {
     if (typeof getValue === "function") {
