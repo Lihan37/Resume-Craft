@@ -1,5 +1,4 @@
 import React from "react";
-import Accordion from "../../../components/accordion";
 import AccordionItem from "../../../components/accordion/AccordionItem";
 import AccordionHeader from "../../../components/accordion/AccordionHeader";
 import AccordionPanel from "../../../components/accordion/AccordionPanelProps";
@@ -50,66 +49,66 @@ const LeftSideBarOptions: React.FC = () => {
   return (
     <div>
       <div className="pb-10">
-        <Accordion multiple={true} defaultIndex={0}>
-          {/* Personal Information  */}
-          <AccordionItem>
-            <AccordionHeader>Personal Information</AccordionHeader>
-            <AccordionPanel>
-              <PersonaData />
-            </AccordionPanel>
-          </AccordionItem>
-          {/* Professional Summary */}
-          <AccordionItem>
-            <AccordionHeader>Professional Summary</AccordionHeader>
-            <AccordionPanel>
-              <div className="py-5 px-5">
-                <InputTextEditor />
-              </div>
-            </AccordionPanel>
-          </AccordionItem>
-          {/* Employment History */}
-          <AccordionItem>
-            <AccordionHeader>Employment History</AccordionHeader>
-            <AccordionPanel>
-              <AddEmploymentHistory getValue={handleAddEmploymentHistory} />
-            </AccordionPanel>
-          </AccordionItem>
-          {/* Education */}
-          <AccordionItem>
-            <AccordionHeader>Education</AccordionHeader>
-            <AccordionPanel>
-              <AddEducationHistory getValue={handleAddEducationHistory} />
-            </AccordionPanel>
-          </AccordionItem>
-          {/* Websites & Social Links */}
-          <AccordionItem>
-            <AccordionHeader>Websites & Social Links</AccordionHeader>
-            <AccordionPanel>
-              <AddSocialWebSite getValue={handleAddSocialWebSite} />
-            </AccordionPanel>
-          </AccordionItem>
-          {/* Skills */}
-          <AccordionItem>
-            <AccordionHeader>Skills</AccordionHeader>
-            <AccordionPanel>
-              <AddSkills getValue={handleAddSkills} />
-            </AccordionPanel>
-          </AccordionItem>
-          {/* Language */}
-          <AccordionItem>
-            <AccordionHeader>Languages</AccordionHeader>
-            <AccordionPanel>
-              <AddLanguages getValue={handleAddLanguages} />
-            </AccordionPanel>
-          </AccordionItem>
-          {/* References */}
-          <AccordionItem>
-            <AccordionHeader>References</AccordionHeader>
-            <AccordionPanel>
-              <AddReferences getValue={handleAddReferences} />
-            </AccordionPanel>
-          </AccordionItem>
-        </Accordion>
+        {/* <Accordion multiple={true} defaultIndex={0}> */}
+        {/* Personal Information  */}
+        <AccordionItem>
+          <AccordionHeader id={1}>Personal Information</AccordionHeader>
+          <AccordionPanel id={1}>
+            <PersonaData />
+          </AccordionPanel>
+        </AccordionItem>
+        {/* Professional Summary */}
+        <AccordionItem>
+          <AccordionHeader id={2}>Professional Summary</AccordionHeader>
+          <AccordionPanel id={2}>
+            <div className="py-5 px-5">
+              <InputTextEditor />
+            </div>
+          </AccordionPanel>
+        </AccordionItem>
+        {/* Employment History */}
+        <AccordionItem>
+          <AccordionHeader id={3}>Employment History</AccordionHeader>
+          <AccordionPanel id={3}>
+            <AddEmploymentHistory getValue={handleAddEmploymentHistory} />
+          </AccordionPanel>
+        </AccordionItem>
+        {/* Education */}
+        <AccordionItem>
+          <AccordionHeader id={4}>Education</AccordionHeader>
+          <AccordionPanel id={4}>
+            <AddEducationHistory getValue={handleAddEducationHistory} />
+          </AccordionPanel>
+        </AccordionItem>
+        {/* Websites & Social Links */}
+        <AccordionItem>
+          <AccordionHeader id={4}>Websites & Social Links</AccordionHeader>
+          <AccordionPanel id={4}>
+            <AddSocialWebSite getValue={handleAddSocialWebSite} />
+          </AccordionPanel>
+        </AccordionItem>
+        {/* Skills */}
+        <AccordionItem>
+          <AccordionHeader id={5}>Skills</AccordionHeader>
+          <AccordionPanel id={5}>
+            <AddSkills getValue={handleAddSkills} />
+          </AccordionPanel>
+        </AccordionItem>
+        {/* Language */}
+        <AccordionItem>
+          <AccordionHeader id={6}>Languages</AccordionHeader>
+          <AccordionPanel id={6}>
+            <AddLanguages getValue={handleAddLanguages} />
+          </AccordionPanel>
+        </AccordionItem>
+        {/* References */}
+        <AccordionItem>
+          <AccordionHeader id={7}>References</AccordionHeader>
+          <AccordionPanel id={7}>
+            <AddReferences getValue={handleAddReferences} />
+          </AccordionPanel>
+        </AccordionItem>
+        {/* </Accordion> */}
       </div>
     </div>
   );

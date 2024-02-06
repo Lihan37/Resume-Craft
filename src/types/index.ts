@@ -52,8 +52,8 @@ export interface TypeOfReference {
   email: string;
 }
 
-export interface RootState {
-  resume: {
-    isActive: boolean;
-  };
-}
+// export interface RootState {
+//   resume: {
+//     isActive: boolean;
+//   };
+// }
