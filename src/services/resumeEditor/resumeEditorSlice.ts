@@ -15,7 +15,7 @@ interface IResumeData {
   template: string | null;
   avatar: string | null;
   personalInfo: IResumePersonalInfo;
-  professionalSummary: string | null;
+  professionalSummary: string;
   workExperience: TypeOfSingleEmploymentHistory[];
   skills: TypeOfSkill[];
   languages: TypeOfLanguage[];
@@ -44,6 +44,7 @@ const initialState: IResumeEditorState = {
       jobTitle: "",
       firstName: "",
       lastName: "",
+      email: "",
       phoneNumber: "",
       country: "",
       city: "",
@@ -54,7 +55,7 @@ const initialState: IResumeEditorState = {
       placeOfBirth: "",
       DateOfBirth: "",
     },
-    professionalSummary: null,
+    professionalSummary: "",
     workExperience: [],
     skills: [],
     languages: [],
@@ -104,6 +105,12 @@ const resumeEditorSlice = createSlice({
     ) {
       state.resume.socialProfiles = action.payload;
     },
+    setPersonalInfo(state, action: PayloadAction<IResumePersonalInfo>) {
+      state.resume.personalInfo = action.payload;
+    },
+    setProfessionalSummary(state, action) {
+      state.resume.professionalSummary = action.payload;
+    },
   },
 });
 
@@ -118,6 +125,8 @@ export const {
   setReference,
   setLanguage,
   setSocialProfile,
+  setPersonalInfo,
+  setProfessionalSummary,
 } = resumeEditorSlice.actions;
 
 export default resumeEditorSlice.reducer;

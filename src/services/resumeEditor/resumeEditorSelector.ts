@@ -17,3 +17,9 @@ export const selectSocialProfile = (state: RootState) =>
 
 export const selectSkills = (state: RootState) =>
   state.resumeEditor.resume.skills;
+
+export const selectPersonalInfo = (state: RootState) =>
+  state.resumeEditor.resume.personalInfo;
+
+export const selectProfessionalSummary = (state: RootState) =>
+  state.resumeEditor.resume.professionalSummary;
