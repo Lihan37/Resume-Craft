@@ -113,6 +113,7 @@ const AddSingleEducationHistory: React.FC<IAddSingleEducationHistory> = ({
                 placeholder="City"
               />
               <InputTextEditor
+                initialValue={state.description}
                 getValue={handleDescription}
                 placeholder="Descriptions.."
                 height="160px"

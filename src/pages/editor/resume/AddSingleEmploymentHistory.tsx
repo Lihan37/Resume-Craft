@@ -113,6 +113,7 @@ const AddSingleEmploymentHistory: React.FC<IAddSingleEmploymentHistory> = ({
                 placeholder="City"
               />
               <InputTextEditor
+                initialValue={state.description}
                 getValue={handleDescription}
                 placeholder="Descriptions.."
                 height="160px"
