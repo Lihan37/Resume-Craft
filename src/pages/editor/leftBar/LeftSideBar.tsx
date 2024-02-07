@@ -18,7 +18,7 @@ const LeftSideBar: React.FC<ILeftSideBar> = ({ editor, templates }) => {
 
   return (
     <div
-      style={{ maxHeight: sideBarHight }}
+      style={{ height: sideBarHight }}
       id="sidebarEditor"
       className=" w-full overflow-y-scroll border-l-2 border-r-2">
       <Header isActive={isActive} setIsActive={setIsActive} />

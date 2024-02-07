@@ -1,11 +1,11 @@
 import React from "react";
 import { IResumeData } from "../../services/resumeEditor/resumeEditorSlice";
 
-interface IToronto {
+interface IStockholm {
   resume: IResumeData;
 }
 
-const Toronto: React.FC<IToronto> = ({ resume }) => {
+const Stockholm: React.FC<IStockholm> = ({ resume }) => {
   return (
     <div
       style={{
@@ -16,10 +16,10 @@ const Toronto: React.FC<IToronto> = ({ resume }) => {
           parseFloat(resume.size.height.slice(0, -2)) > 1190.14 ? "bottom" : "",
         transition: "transform 0.5s",
       }}
-      className="flex justify-start items-start rounded-lg overflow-hidden">
+      className=" rounded-lg overflow-hidden">
       <div
         style={{ backgroundColor: resume.theme }}
-        className=" w-4/12 h-full bg-[#084c41] text-white p-10 ">
+        className=" text-white p-10 ">
         <h1
           style={{ fontFamily: "Serif" }}
           className=" text-xl text-center font-semibold ">
@@ -34,9 +34,10 @@ const Toronto: React.FC<IToronto> = ({ resume }) => {
           <p></p>
         </div>
       </div>
-      <div className=" w-8/12 h-full bg-white "></div>
+
+      <div className="h-full bg-white "></div>
     </div>
   );
 };
 
-export default Toronto;
+export default Stockholm;

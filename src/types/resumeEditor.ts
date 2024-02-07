@@ -54,3 +54,13 @@ export interface TypeOfReference {
   phone: string;
   email: string;
 }
+export interface TypeOfSectionTitle {
+  personalInfo: string;
+  professionalSummary: string;
+  workExperience: string;
+  skills: string;
+  languages: string;
+  references: string;
+  educations: string;
+  socialProfiles: string;
+}

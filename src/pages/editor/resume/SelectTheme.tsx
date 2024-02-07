@@ -1,15 +1,36 @@
 import React from "react";
 import ColorSelect from "../../../components/common/ColorSelect";
+import createArrayUpToNumber from "../../../utils/createArrayUpToNumber";
 
-const SelectTheme: React.FC = () => {
+interface ISelectTheme {
+  selectedValue?: string;
+  values?: string[];
+  getValue?: (data: string) => void;
+}
+
+const SelectTheme: React.FC<ISelectTheme> = ({
+  selectedValue,
+  values,
+  getValue = () => {},
+}) => {
   return (
     <div className=" border-b pb-5">
-      <div className="w-full gap-2 flex justify-between items-center">
-        <ColorSelect color="bg-amber-600" isSelect={true} />
-        <ColorSelect color="bg-lime-600" />
-        <ColorSelect color="bg-teal-600" />
-        <ColorSelect color="bg-emerald-600" />
-        <ColorSelect color="bg-cyan-600" />
+      <div className="w-full gap-2 flex justify-start items-center">
+        {values?.map((item) => {
+          const isSelect = item === selectedValue;
+          return (
+            <ColorSelect
+              onClick={() => getValue(item)}
+              color={item}
+              isSelect={isSelect}
+            />
+          );
+        })}
+        {createArrayUpToNumber(values ? 5 - values?.length : 5).map((item) => (
+          <ColorSelect key={item} color="#383838" lock={true} />
+        ))}
+
+        {/* <ColorSelect color="#00f5e0" /> */}
       </div>
     </div>
   );

@@ -11,11 +11,16 @@ interface IResumeHightWidth {
   getValue?: (data: IValue) => void;
 }
 
+const initialValue = {
+  height: "",
+  width: "",
+};
+
 const ResumeHightWidth: React.FC<IResumeHightWidth> = ({
   isSelectedValue,
   getValue = () => {},
 }) => {
-  const [state, setState] = useState<IValue>(isSelectedValue);
+  const [state, setState] = useState<IValue>(isSelectedValue || initialValue);
 
   useEffect(() => {
     getValue(state);
@@ -28,7 +33,7 @@ const ResumeHightWidth: React.FC<IResumeHightWidth> = ({
           <RxHeight className=" text-2xl" />
           <input
             onChange={(e) =>
-              setState((prev) => ({ ...prev, height: e.target.value + "px" }))
+              setState((prev) => ({ ...prev, height: e.target.value }))
             }
             value={state.height}
             className="w-20 outline-none "
@@ -42,7 +47,7 @@ const ResumeHightWidth: React.FC<IResumeHightWidth> = ({
           <RxWidth className=" text-2xl" />
           <input
             onChange={(e) =>
-              setState((prev) => ({ ...prev, width: e.target.value + "px" }))
+              setState((prev) => ({ ...prev, width: e.target.value }))
             }
             className="w-20 outline-none "
             value={state.width}

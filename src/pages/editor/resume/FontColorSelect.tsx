@@ -17,7 +17,7 @@ const FontColorSelect: React.FC<IFontColorSelect> = ({
   return (
     <div className="font-semibold text-lg gap-5 p-2 px-4 border-[1.8px] rounded-md flex justify-start items-center">
       <input
-        className="w-7 rounded-md border-none outline-none cursor-pointer h-7"
+        className="w-7 h-7 rounded-md border-none outline-none cursor-pointer "
         type="color"
         onChange={(e) => setColor(e.target.value)}
         name="color"
@@ -26,7 +26,7 @@ const FontColorSelect: React.FC<IFontColorSelect> = ({
       />
       <input
         onChange={(e) => setColor(e.target.value)}
-        className=" outline-none"
+        className=" outline-none w-36"
         type="text"
         placeholder="#00000"
         value={color}

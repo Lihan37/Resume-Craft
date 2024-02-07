@@ -3,14 +3,13 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import useOutsideClick from "../../../hooks/useOutsideClick";
 
 const fontFamily = [
-  { value: "font-sans", label: "Sans" },
-  { value: "font-serif", label: "Serif" },
-  { value: "font-f-mono", label: "Mono" },
-  { value: "font-thin", label: "Thin" },
-  { value: "font-f-mono", label: "F-mono" },
-  { value: "font-f-poppins", label: "Poppins" },
-  { value: "font-f-roboto", label: "Roboto" },
-  { value: "font-f-inter", label: "Inter" },
+  { value: "'Lato', sans-serif", label: "Lato" },
+  { value: "'Montserrat', sans-serif", label: "Montserrat" },
+  { value: "'Playfair Display', serif", label: "Playfair" },
+  { value: "'Poppins', sans-serif", label: "Poppins" },
+  { value: "'Roboto', sans-serif", label: "Roboto" },
+  { value: "'Roboto Mono', monospace", label: "Roboto Mono" },
+  { value: "'Titillium Web', sans-serif", label: "Titillium" },
 ];
 
 interface IValue {
@@ -54,8 +53,9 @@ const FontFamilySelect: React.FC<IFontFamilySelect> = ({
         <div className=" z-50 rounded-md absolute w-full left-0 right-0 bg-white top-12 shadow-[0_8px_30px_rgb(0,0,0,0.12)] font-semibold">
           {fontFamily.map((item) => (
             <h1
+              style={{ fontFamily: item.value }}
               onClick={() => setSelect(item)}
-              className={` ${item.value} p-2 px-4 hover:text-c-primary duration-300 transition-colors`}>
+              className={`  p-2 px-4 hover:text-c-primary duration-300 transition-colors`}>
               {item.label}
             </h1>
           ))}

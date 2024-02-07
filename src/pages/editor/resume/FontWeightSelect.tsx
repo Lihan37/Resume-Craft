@@ -3,15 +3,15 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import useOutsideClick from "../../../hooks/useOutsideClick";
 
 const fontFamily = [
-  { value: "font-extralight", label: "Extralight" },
-  { value: "font-normal", label: "Normal" },
-  { value: "font-semibold", label: "Semibold" },
-  { value: "font-bold", label: "Bold" },
-  { value: "font-extrabold", label: "Extrabold" },
+  { value: 200, label: "Extralight" },
+  { value: 400, label: "Normal" },
+  { value: 600, label: "Semibold" },
+  { value: 700, label: "Bold" },
+  { value: 800, label: "Extrabold" },
 ];
 
 interface IValue {
-  value: string;
+  value: number;
   label: string;
 }
 
@@ -51,8 +51,9 @@ const FontWeightSelect: React.FC<IFontWeightSelect> = ({
         <div className=" z-50 rounded-md absolute w-full left-0 right-0 bg-white top-12 shadow-[0_8px_30px_rgb(0,0,0,0.12)] font-semibold">
           {fontFamily.map((item) => (
             <h1
+              style={{ fontWeight: item.value }}
               onClick={() => setSelect(item)}
-              className={` ${item.value} p-2 px-4 hover:text-c-primary duration-300 transition-colors`}>
+              className={`  p-2 px-4 hover:text-c-primary duration-300 transition-colors`}>
               {item.label}
             </h1>
           ))}

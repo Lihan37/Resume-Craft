@@ -29,6 +29,7 @@ import {
   setSocialProfile,
   setPersonalInfo,
   setProfessionalSummary,
+  setSectionTitles,
 } from "../../../services/resumeEditor/resumeEditorSlice";
 import {
   selectEducation,
@@ -36,6 +37,7 @@ import {
   selectPersonalInfo,
   selectProfessionalSummary,
   selectReference,
+  selectSectionTitles,
   selectSkills,
   selectSocialProfile,
   selectWorkExperience,
@@ -51,12 +53,19 @@ const LeftSideBarOptions: React.FC = () => {
   const references = useSelector(selectReference);
   const personalInfo = useSelector(selectPersonalInfo);
   const professionalSummary = useSelector(selectProfessionalSummary);
+  const sectionTitle = useSelector(selectSectionTitles);
 
   return (
     <div>
       <div className="pb-10">
         <AccordionItem>
-          <AccordionHeader id={1} tittle="Personal Information" />
+          <AccordionHeader
+            id={1}
+            title={sectionTitle.personalInfo}
+            getValue={(data: string) => {
+              dispatch(setSectionTitles({ name: "personalInfo", value: data }));
+            }}
+          />
           <AccordionPanel id={1}>
             <PersonaData
               initialValue={personalInfo}
@@ -67,7 +76,15 @@ const LeftSideBarOptions: React.FC = () => {
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem>
-          <AccordionHeader id={2} tittle="Professional Summary" />
+          <AccordionHeader
+            id={2}
+            title={sectionTitle.professionalSummary}
+            getValue={(data: string) => {
+              dispatch(
+                setSectionTitles({ name: "professionalSummary", value: data })
+              );
+            }}
+          />
           <AccordionPanel id={2}>
             <div className="py-5 px-5">
               <InputTextEditor
@@ -80,7 +97,15 @@ const LeftSideBarOptions: React.FC = () => {
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem>
-          <AccordionHeader id={3} tittle="Employment History" />
+          <AccordionHeader
+            id={3}
+            title={sectionTitle.workExperience}
+            getValue={(data: string) => {
+              dispatch(
+                setSectionTitles({ name: "workExperience", value: data })
+              );
+            }}
+          />
           <AccordionPanel id={3}>
             <AddEmploymentHistory
               initialValue={workExperiences}
@@ -91,7 +116,13 @@ const LeftSideBarOptions: React.FC = () => {
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem>
-          <AccordionHeader id={4} tittle="Education" />
+          <AccordionHeader
+            id={4}
+            title={sectionTitle.educations}
+            getValue={(data: string) => {
+              dispatch(setSectionTitles({ name: "educations", value: data }));
+            }}
+          />
           <AccordionPanel id={4}>
             <AddEducationHistory
               initialValue={educations}
@@ -102,7 +133,15 @@ const LeftSideBarOptions: React.FC = () => {
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem>
-          <AccordionHeader id={501} tittle="Websites & Social Links" />
+          <AccordionHeader
+            id={501}
+            title={sectionTitle.socialProfiles}
+            getValue={(data: string) => {
+              dispatch(
+                setSectionTitles({ name: "socialProfiles", value: data })
+              );
+            }}
+          />
           <AccordionPanel id={501}>
             <AddSocialWebSite
               initialValue={socialProfile}
@@ -113,7 +152,13 @@ const LeftSideBarOptions: React.FC = () => {
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem>
-          <AccordionHeader id={502} tittle="Skills" />
+          <AccordionHeader
+            id={502}
+            title={sectionTitle.skills}
+            getValue={(data: string) => {
+              dispatch(setSectionTitles({ name: "skills", value: data }));
+            }}
+          />
           <AccordionPanel id={502}>
             <AddSkills
               initialValue={skills}
@@ -124,7 +169,13 @@ const LeftSideBarOptions: React.FC = () => {
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem>
-          <AccordionHeader id={6} tittle="Languages" />
+          <AccordionHeader
+            id={6}
+            title={sectionTitle.languages}
+            getValue={(data: string) => {
+              dispatch(setSectionTitles({ name: "languages", value: data }));
+            }}
+          />
           <AccordionPanel id={6}>
             <AddLanguages
               initialValue={languages}
@@ -135,7 +186,13 @@ const LeftSideBarOptions: React.FC = () => {
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem>
-          <AccordionHeader id={7} tittle="References" />
+          <AccordionHeader
+            id={7}
+            title={sectionTitle.references}
+            getValue={(data: string) => {
+              dispatch(setSectionTitles({ name: "references", value: data }));
+            }}
+          />
           <AccordionPanel id={7}>
             <AddReferences
               initialValue={references}
