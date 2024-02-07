@@ -5,9 +5,15 @@ import Title from "./Title";
 import { IoIosCloudy } from "react-icons/io";
 import { FiSend } from "react-icons/fi";
 import { FiDownload } from "react-icons/fi";
+import ZoomIn from "./ZoomIn";
+import { useDispatch, useSelector } from "react-redux";
+import { setZoomIn } from "../../services/resumeEditor/resumeEditorSlice";
+import { selectZoomIn } from "../../services/resumeEditor/resumeEditorSelector";
 
 const EditorNavbar: React.FC = () => {
-  // hight > 1024 ? 96 : 88
+  const dispatch = useDispatch();
+  const zoom = useSelector(selectZoomIn);
+
   return (
     <div className="border-b-2">
       <div className=" 2xl:max-w-[1800px] mx-auto px-10 2xl:px-0 py-5 ">
@@ -26,6 +32,13 @@ const EditorNavbar: React.FC = () => {
               </div>
             </div>
           </div>
+          <ZoomIn
+            initialValue={zoom}
+            getValue={(data: number) => {
+              dispatch(setZoomIn(data));
+            }}
+          />
+
           <div className=" flex justify-start items-center gap-5 xl:gap-10">
             <button className=" text-c-dark font-semibold flex justify-start items-center gap-2 px-4 py-1 lg:py-2 bg-gray-100 rounded-full text-base lg:text-xl">
               <FiDownload />
