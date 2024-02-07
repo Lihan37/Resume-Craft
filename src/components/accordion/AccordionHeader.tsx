@@ -8,13 +8,19 @@ import {
 } from "../../services/accordion/accordionSlice";
 import { RootState } from "../../app/store";
 import { selectActiveAccordion } from "../../services/accordion/accordionSelector";
+import Title from "../editor/Title";
 
 interface AccordionHeaderProps {
   id: number;
-  tittle?: string;
+  title?: string;
+  getValue?: (data: string) => void;
 }
 
-const AccordionHeader: FC<AccordionHeaderProps> = ({ id, tittle }) => {
+const AccordionHeader: FC<AccordionHeaderProps> = ({
+  id,
+  title,
+  getValue = () => {},
+}) => {
   const dispatch = useDispatch();
 
   const isActive = useSelector((state: RootState) =>
@@ -29,11 +35,16 @@ const AccordionHeader: FC<AccordionHeaderProps> = ({ id, tittle }) => {
     dispatch(removeActiveId(id));
   };
 
+  const onTitleClick = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    event.stopPropagation();
+  };
   return (
     <motion.div
       className={`px-5 cursor-pointer border-t-[1.8px] p-2 py-3 flex justify-between items-center w-full`}
       onClick={onChangeIndex}>
-      <h1 className=" font-semibold text-lg text-c-dark">{tittle} </h1>
+      <Title getValue={getValue} initialValue={title} onClick={onTitleClick} />
       {isActive ? <FaMinus /> : <FaPlus />}
     </motion.div>
   );
