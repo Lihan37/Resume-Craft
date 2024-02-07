@@ -3,13 +3,22 @@ import {
   IResumePersonalInfo,
   TypeOfLanguage,
   TypeOfReference,
+  TypeOfSectionTitle,
   TypeOfSingleEducationHistory,
   TypeOfSingleEmploymentHistory,
   TypeOfSingleSocialWebSite,
   TypeOfSkill,
 } from "../../types/resumeEditor";
 
-interface IResumeData {
+interface ISetSectionTitlesPayload {
+  name: keyof TypeOfSectionTitle;
+  value: string;
+}
+export interface ISetResumeSize {
+  height: string;
+  width: string;
+}
+export interface IResumeData {
   id: number;
   type: string;
   template: string | null;
@@ -22,6 +31,11 @@ interface IResumeData {
   references: TypeOfReference[];
   educations: TypeOfSingleEducationHistory[];
   socialProfiles: TypeOfSingleSocialWebSite[];
+  sectionTitles: TypeOfSectionTitle;
+  zoom: number;
+  theme: string;
+  themeOptions: string[];
+  size: ISetResumeSize;
 }
 
 interface IResumeEditorState {
@@ -62,6 +76,23 @@ const initialState: IResumeEditorState = {
     references: [],
     educations: [],
     socialProfiles: [],
+    sectionTitles: {
+      personalInfo: "Personal Details",
+      professionalSummary: "Professional Summary",
+      workExperience: "Employment",
+      skills: "Skills",
+      languages: "Languages",
+      references: "References",
+      educations: "Education",
+      socialProfiles: "Websites & Social",
+    },
+    zoom: 0.7,
+    theme: "#084C41",
+    themeOptions: ["#084C41", "#65A30D", "#0D9488"],
+    size: {
+      height: "1190.14px",
+      width: "852px",
+    },
   },
 };
 
@@ -111,6 +142,21 @@ const resumeEditorSlice = createSlice({
     setProfessionalSummary(state, action) {
       state.resume.professionalSummary = action.payload;
     },
+    setSectionTitles(state, action: PayloadAction<ISetSectionTitlesPayload>) {
+      state.resume.sectionTitles = {
+        ...state.resume.sectionTitles,
+        [action.payload.name]: action.payload.value,
+      };
+    },
+    setResumeTheme(state, action) {
+      state.resume.theme = action.payload;
+    },
+    setResumeSize(state, action: PayloadAction<ISetResumeSize>) {
+      state.resume.size = action.payload;
+    },
+    setZoomIn(state, action) {
+      state.resume.zoom = action.payload;
+    },
   },
 });
 
@@ -127,6 +173,10 @@ export const {
   setSocialProfile,
   setPersonalInfo,
   setProfessionalSummary,
+  setSectionTitles,
+  setResumeTheme,
+  setResumeSize,
+  setZoomIn,
 } = resumeEditorSlice.actions;
 
 export default resumeEditorSlice.reducer;
