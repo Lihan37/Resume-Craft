@@ -23,3 +23,20 @@ export const selectPersonalInfo = (state: RootState) =>
 
 export const selectProfessionalSummary = (state: RootState) =>
   state.resumeEditor.resume.professionalSummary;
+
+export const selectSectionTitles = (state: RootState) =>
+  state.resumeEditor.resume.sectionTitles;
+
+export const selectTheme = (state: RootState) =>
+  state.resumeEditor.resume.theme;
+
+export const selectThemeOptions = (state: RootState) =>
+  state.resumeEditor.resume.themeOptions;
+
+export const selectResumeSize = (state: RootState) =>
+  state.resumeEditor.resume.size;
+
+export const selectZoomIn = (state: RootState) =>
+  state.resumeEditor.resume.zoom;
+
+export const selectResume = (state: RootState) => state.resumeEditor.resume;
