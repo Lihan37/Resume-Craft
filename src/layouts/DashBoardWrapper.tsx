@@ -4,9 +4,9 @@ import Sidebar from "../components/admin/Sidebar";
 
 export const DashBoardWrapper: React.FC = () => {
   return (
-    <div className=" flex justify-start items-start bg-[#c8d9ea]">
+    <div className=" flex justify-start items-start ">
       <Sidebar />
-      <div className=" w-full h-full p-4">
+      <div className=" w-full h-full ">
         <Outlet />
       </div>
     </div>
