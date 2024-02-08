@@ -44,7 +44,7 @@ const AddSocialWebSite: React.FC<IAddSocialWebSite> = ({
   };
 
   useEffect(() => {
-    if (typeof getValue === "function") {
+    if (typeof getValue === "function" && socialWebSite.length > 0) {
       getValue(socialWebSite);
     }
   }, [socialWebSite]);

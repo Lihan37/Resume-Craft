@@ -16,10 +16,11 @@ const SelectTheme: React.FC<ISelectTheme> = ({
   return (
     <div className=" border-b pb-5">
       <div className="w-full gap-2 flex justify-start items-center">
-        {values?.map((item) => {
+        {values?.map((item, i) => {
           const isSelect = item === selectedValue;
           return (
             <ColorSelect
+              key={i}
               onClick={() => getValue(item)}
               color={item}
               isSelect={isSelect}

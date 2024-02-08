@@ -45,7 +45,7 @@ const AddEmploymentHistory: React.FC<IAddEmploymentHistory> = ({
   };
 
   useEffect(() => {
-    if (typeof getValue === "function") {
+    if (typeof getValue === "function" && employmentHistory.length > 0) {
       getValue(employmentHistory);
     }
   }, [employmentHistory]);

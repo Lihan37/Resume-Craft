@@ -1,7 +1,7 @@
 import React from "react";
 import { IResumeData } from "../../services/resumeEditor/resumeEditorSlice";
 
-interface IToronto {
+export interface IToronto {
   resume: IResumeData;
 }
 

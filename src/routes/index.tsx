@@ -18,6 +18,7 @@ import AdminDashboard from "../pages/dashboard/admin";
 import BlogDetails from "../pages/blog/BlogDetails";
 import Blogs from "../pages/dashboard/admin/blog";
 import CreateBlog from "../pages/dashboard/admin/blog/CreateBlog";
+// import Stockholm from "../components/resumeTemplates/Stockholm";
 
 const router = createBrowserRouter([
   {
@@ -82,7 +83,7 @@ const router = createBrowserRouter([
     element: <EditorWrapper />,
     children: [
       {
-        path: "resume",
+        path: "resume/:id",
         element: <ResumeEditor />,
       },
     ],
@@ -106,6 +107,10 @@ const router = createBrowserRouter([
       },
     ],
   },
+  // {
+  //   path: "/demo",
+  //   element: <Stockholm />,
+  // },
 ]);
 
 export default router;

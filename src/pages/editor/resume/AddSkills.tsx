@@ -42,7 +42,7 @@ const AddSkills: React.FC<IAddSkills> = ({
   };
 
   useEffect(() => {
-    if (typeof getValue === "function") {
+    if (typeof getValue === "function" && skills.length > 0) {
       getValue(skills);
     }
   }, [skills]);

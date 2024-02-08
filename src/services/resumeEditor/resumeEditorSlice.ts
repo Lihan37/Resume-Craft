@@ -9,6 +9,7 @@ import {
   TypeOfSingleSocialWebSite,
   TypeOfSkill,
 } from "../../types/resumeEditor";
+import { createResumeAndUpdate } from "./resumeEditorApi";
 
 interface ISetSectionTitlesPayload {
   name: keyof TypeOfSectionTitle;
@@ -19,10 +20,9 @@ export interface ISetResumeSize {
   width: string;
 }
 export interface IResumeData {
-  id: number;
-  type: string;
-  template: string | null;
-  avatar: string | null;
+  _id: string | number;
+  templateId: string;
+  avatar: string;
   personalInfo: IResumePersonalInfo;
   professionalSummary: string;
   workExperience: TypeOfSingleEmploymentHistory[];
@@ -50,10 +50,9 @@ const initialState: IResumeEditorState = {
   isSyncing: false,
   error: null,
   resume: {
-    id: 0,
-    type: "",
-    template: null,
-    avatar: null,
+    _id: "",
+    templateId: "",
+    avatar: "",
     personalInfo: {
       jobTitle: "",
       firstName: "",
@@ -87,8 +86,8 @@ const initialState: IResumeEditorState = {
       socialProfiles: "Websites & Social",
     },
     zoom: 0.7,
-    theme: "#084C41",
-    themeOptions: ["#084C41", "#65A30D", "#0D9488"],
+    theme: "",
+    themeOptions: [],
     size: {
       height: "1190.14px",
       width: "852px",
@@ -157,6 +156,23 @@ const resumeEditorSlice = createSlice({
     setZoomIn(state, action) {
       state.resume.zoom = action.payload;
     },
+    changeTemplate(state, action) {
+      state.resume = { ...state.resume, ...action.payload };
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(createResumeAndUpdate.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(createResumeAndUpdate.fulfilled, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(createResumeAndUpdate.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload as string;
+      });
   },
 });
 
@@ -177,6 +193,7 @@ export const {
   setResumeTheme,
   setResumeSize,
   setZoomIn,
+  changeTemplate,
 } = resumeEditorSlice.actions;
 
 export default resumeEditorSlice.reducer;

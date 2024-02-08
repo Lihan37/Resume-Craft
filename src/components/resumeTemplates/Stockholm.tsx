@@ -1,7 +1,7 @@
 import React from "react";
 import { IResumeData } from "../../services/resumeEditor/resumeEditorSlice";
 
-interface IStockholm {
+export interface IStockholm {
   resume: IResumeData;
 }
 
@@ -21,8 +21,8 @@ const Stockholm: React.FC<IStockholm> = ({ resume }) => {
         style={{ backgroundColor: resume.theme }}
         className=" text-white p-10 ">
         <h1
-          style={{ fontFamily: "Serif" }}
-          className=" text-xl text-center font-semibold ">
+          style={{ fontFamily: "Serif", textAlign: "start" }}
+          className=" text-xl  font-semibold ">
           {resume.personalInfo.firstName} {resume.personalInfo.lastName}
         </h1>
         <span className=" mx-auto my-2 w-10 h-[1px] block bg-white"></span>

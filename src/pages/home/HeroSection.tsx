@@ -53,6 +53,7 @@ const HeroSection: React.FC = () => {
           </button> */}
           </div>
         </div>
+
         <div className="hidden pointer-events-none lg:block absolute bottom-10 xl:bottom-20 right-0 z-0">
           <img
             className=" w-[450px] xl:w-[550px] 2xl:w-[650px]"

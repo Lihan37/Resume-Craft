@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { motion } from "framer-motion";
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
@@ -50,4 +50,4 @@ const AccordionHeader: FC<AccordionHeaderProps> = ({
   );
 };
 
-export default AccordionHeader;
+export default React.memo(AccordionHeader);

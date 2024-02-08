@@ -47,7 +47,7 @@ const AddEducationHistory: React.FC<IAddEducationHistory> = ({
   };
 
   useEffect(() => {
-    if (typeof getValue === "function") {
+    if (typeof getValue === "function" && educationHistory.length > 0) {
       getValue(educationHistory);
     }
   }, [educationHistory]);

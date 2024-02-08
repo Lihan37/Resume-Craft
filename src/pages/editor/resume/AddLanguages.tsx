@@ -41,7 +41,7 @@ const AddLanguages: React.FC<IAddLanguages> = ({
   };
 
   useEffect(() => {
-    if (typeof getValue === "function") {
+    if (typeof getValue === "function" && languages.length > 0) {
       getValue(languages);
     }
   }, [languages]);

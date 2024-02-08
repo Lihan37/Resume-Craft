@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LeftSideBar from "./leftBar/LeftSideBar";
 import useTitleSet from "../../hooks/useTitleSet";
 import ResumeTemplates from "./resume/ResumeTemplates";
@@ -9,20 +9,33 @@ import RightSideBarOptions from "./resume/RightSideBarOptions";
 import { IoSettingsOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { selectResume } from "../../services/resumeEditor/resumeEditorSelector";
-// import Toronto from "../../components/resumeTemplates/Toronto";
-import resumes from "../../components/resumeTemplates";
+import resumes, { ResumeTemplatesType } from "../../components/resumeTemplates";
+import { createResumeAndUpdate } from "../../services/resumeEditor/resumeEditorApi";
+import { useAppDispatch } from "../../app/store";
 
 const Editor: React.FC = () => {
   useTitleSet("Resume Builder");
   const [windowWidth] = useDisplay();
   const resume = useSelector(selectResume);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const timeoutId = setTimeout(async () => {
+      dispatch(createResumeAndUpdate(resume));
+    }, 500);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [resume, dispatch]);
 
   const hight =
     windowWidth > 1024
       ? window.innerHeight - 98 + "px"
       : window.innerHeight - 88 + "px";
 
-  const Template = resumes["stockholm01"].template;
+  const Template =
+    resumes[resume.templateId as keyof ResumeTemplatesType].template;
 
   return (
     <div

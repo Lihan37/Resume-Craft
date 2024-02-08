@@ -46,7 +46,7 @@ const AddReferences: React.FC<IAddReferences> = ({
   };
 
   useEffect(() => {
-    if (typeof getValue === "function") {
+    if (typeof getValue === "function" && references.length > 0) {
       getValue(references);
     }
   }, [references]);
