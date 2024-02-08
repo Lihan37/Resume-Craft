@@ -1,10 +1,13 @@
 import React from "react";
+import DashBoardStats from "./home/DashBoardStats";
+import DashBoardChart from "./home/DashBoardChart";
 
 const AdminDashboard: React.FC = () => {
   return (
-    <div
-      className=" w-full rounded-xl overflow-hidden h-screen bg-white">
-      AdminDashboard
+    <div className=" w-full overflow-hidden h-screen ">
+      <p className="text-4xl text-c-dark-light font-bold px-5 py-10">Dashboard</p>
+      <DashBoardStats></DashBoardStats>
+      <DashBoardChart></DashBoardChart>
     </div>
   );
 };

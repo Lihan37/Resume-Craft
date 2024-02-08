@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaHome } from "react-icons/fa";
 import { MdArticle } from "react-icons/md";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { IoIosCreate } from "react-icons/io";
 import { GrHistory } from "react-icons/gr";
 import { images } from "../../constant";
@@ -44,8 +44,8 @@ const Sidebar: React.FC = () => {
   ];
 
   return (
-    <div className="w-96 h-screen border-r-2">
-      <div className="flex items-center p-4 mb-6">
+    <div className="w-full md:w-20 lg:w-80 lg:min-h-screen border-r-2">
+      <Link to="/" className="flex items-center p-4 mb-6">
         <img
           className="w-10 h-10 xl:w-12 xl:h-12"
           src={images.logo}
@@ -54,7 +54,7 @@ const Sidebar: React.FC = () => {
         <h1 className="block md:hidden lg:block font-bold text-2xl xl:text-3xl  text-c-dark">
           Resume<span className=" text-c-primary">Craft</span>
         </h1>
-      </div>
+      </Link>
       <ul className="p-4">
         {sideMenu.map((item) => (
           <li className="mt-3 text-c-dark rounded-lg">
@@ -67,7 +67,7 @@ const Sidebar: React.FC = () => {
                   : ""
               }`}
             >
-              <p>{item.icon}</p>
+              <p className="mx-0 md:mx-auto lg:mx-0">{item.icon}</p>
               <p className="block md:hidden lg:block">{item.label}</p>
             </NavLink>
           </li>
