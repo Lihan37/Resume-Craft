@@ -60,32 +60,56 @@ const data = [
   },
 ];
 
-const monthTickFormatter = (tick: string) => {
+const monthTickFormatter = (tick: number) => {
   const date = new Date(tick);
 
-  return date.getMonth() + 1;
+  return (date.getMonth() + 1).toString();
 };
 
-const renderQuarterTick = (tickProps: any) => {
-  const { x, y, payload } = tickProps;
-  const { value, offset } = payload;
-  const date = new Date(value);
-  const month = date.getMonth();
-  const quarterNo = Math.floor(month / 3) + 1;
+// const renderQuarterTick = (tickProps: any) => {
+//   const { x, y, payload } = tickProps;
+//   const { value, offset } = payload;
+//   const date = new Date(value);
+//   const month = date.getMonth();
+//   const quarterNo = Math.floor(month / 3) + 1;
 
-  if (month % 3 === 1) {
-    return <text x={x} y={y - 4} textAnchor="middle">{`Q${quarterNo}`}</text>;
-  }
+//   if (month % 3 === 1) {
+//     return <text x={x} y={y - 4} textAnchor="middle">{`Q${quarterNo}`}</text>;
+//   }
 
-  const isLast = month === 11;
+//   const isLast = month === 11;
 
-  if (month % 3 === 0 || isLast) {
-    const pathX = Math.floor(isLast ? x + offset : x - offset) + 0.5;
+//   if (month % 3 === 0 || isLast) {
+//     const pathX = Math.floor(isLast ? x + offset : x - offset) + 0.5;
 
-    return <path d={`M${pathX},${y - 4}v${-35}`} stroke="red" />;
-  }
-  return null;
-};
+//     return <path d={`M${pathX},${y - 4}v${-35}`} stroke="red" />;
+//   }
+//   return null;
+// };
+
+// const renderQuarterTick = (tickProps: any) => {
+//   const { x, y, payload } = tickProps;
+//   const { value, offset } = payload;
+//   const date = new Date(value);
+//   const month = date.getMonth();
+//   const quarterNo = Math.floor(month / 3) + 1;
+
+//   if (month % 3 === 1) {
+//     return <text x={x} y={y - 4} textAnchor="middle">{`Q${quarterNo}`}</text>;
+//   }
+
+//   const isLast = month === 11;
+
+//   if (month % 3 === 0 || isLast) {
+//     const pathX = Math.floor(isLast ? x + offset : x - offset) + 0.5;
+
+//     // Return a SVG path element as a React element
+//     return <path d={`M${pathX},${y - 4}v${-35}`} stroke="red" />;
+//   }
+
+//   // Return null if none of the conditions are met
+//   return null;
+// };
 
 const PaymentChart: React.FC = () => {
   return (
@@ -99,8 +123,7 @@ const PaymentChart: React.FC = () => {
           right: 30,
           left: 20,
           bottom: 5,
-        }}
-      >
+        }}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="date" tickFormatter={monthTickFormatter} />
         <XAxis
@@ -108,7 +131,7 @@ const PaymentChart: React.FC = () => {
           axisLine={false}
           tickLine={false}
           interval={0}
-          tick={renderQuarterTick}
+          // tick={renderQuarterTick}
           height={1}
           scale="band"
           xAxisId="quarter"
