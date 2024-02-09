@@ -6,6 +6,7 @@ interface ITextEditor {
   placeholder?: string;
   height?: string;
   getValue?: (data: string) => void;
+  onFocus?: () => void;
   initialValue?: string;
 }
 
@@ -13,6 +14,7 @@ const InputTextEditor: React.FC<ITextEditor> = ({
   placeholder,
   height = "200px",
   getValue = () => {},
+  onFocus = () => {},
   initialValue = "",
 }) => {
   const modules = {
@@ -100,6 +102,7 @@ const InputTextEditor: React.FC<ITextEditor> = ({
   return (
     <ReactQuill
       value={initialValue}
+      onFocus={onFocus}
       //   theme="snow"
       modules={modules}
       formats={formats}
