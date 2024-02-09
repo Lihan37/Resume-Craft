@@ -1,5 +1,7 @@
 import { RootState } from "../../app/store";
 
+export const selectResumeEditor = (state: RootState) => state.resumeEditor;
+
 export const selectWorkExperience = (state: RootState) =>
   state.resumeEditor.resume.workExperience;
 
@@ -28,10 +30,10 @@ export const selectSectionTitles = (state: RootState) =>
   state.resumeEditor.resume.sectionTitles;
 
 export const selectTheme = (state: RootState) =>
-  state.resumeEditor.resume.theme;
+  state.resumeEditor.resume.style.theme;
 
 export const selectThemeOptions = (state: RootState) =>
-  state.resumeEditor.resume.themeOptions;
+  state.resumeEditor.resume.style.themeOptions;
 
 export const selectResumeSize = (state: RootState) =>
   state.resumeEditor.resume.size;
