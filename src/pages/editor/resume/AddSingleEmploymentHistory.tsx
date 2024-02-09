@@ -1,15 +1,17 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import InputText from "../../../components/common/InputText";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import InputTextEditor from "../../../components/common/InputTextEditor";
 import InputMonthYear from "../../../components/common/InputMonthYear";
 import { TypeOfSingleEmploymentHistory } from "../../../types/resumeEditor";
+import InputTextEditor from "../../../components/common/InputTextEditor";
 
 interface IAddSingleEmploymentHistory {
   id: string | number;
   getValue?: (data: TypeOfSingleEmploymentHistory) => void;
   initialValue?: TypeOfSingleEmploymentHistory;
+  getFocusedInputValue?: (data: string) => void;
+  initialFocusedValue?: string;
 }
 
 const initialState = {
@@ -25,13 +27,34 @@ const initialState = {
 const AddSingleEmploymentHistory: React.FC<IAddSingleEmploymentHistory> = ({
   id,
   getValue = () => {},
+  getFocusedInputValue = () => {},
   initialValue,
+  initialFocusedValue,
 }) => {
   const [title, setTitle] = useState<string>("(Not specified)");
   const [state, setState] = useState<TypeOfSingleEmploymentHistory>(
     initialValue && initialValue._id ? initialValue : initialState
   );
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const [focusedInput, setFocusedInput] = useState<string>(
+    initialFocusedValue || ""
+  );
+
+  useEffect(() => {
+    if (
+      getFocusedInputValue &&
+      typeof getFocusedInputValue === "function" &&
+      focusedInput !== initialFocusedValue
+    ) {
+      getFocusedInputValue(focusedInput);
+    }
+  }, [focusedInput]);
+
+  const handleInputFocus = (inputName: string) => {
+    setFocusedInput(inputName);
+  };
 
   const handleStartMontYear = (data: string) => {
     setState((prev) => ({ ...prev, startMontYear: data }));
@@ -39,10 +62,10 @@ const AddSingleEmploymentHistory: React.FC<IAddSingleEmploymentHistory> = ({
   const handleEndMontYear = (data: string) => {
     setState((prev) => ({ ...prev, endMontYear: data }));
   };
+
   const handleDescription = (data: string) => {
     setState((prev) => ({ ...prev, description: data }));
   };
-
   useLayoutEffect(() => {
     if (typeof getValue === "function") {
       getValue({ ...state, _id: id });
@@ -84,6 +107,7 @@ const AddSingleEmploymentHistory: React.FC<IAddSingleEmploymentHistory> = ({
                 value={state.jobTitle}
                 name="jobTitle"
                 placeholder="Job Title"
+                onFocus={() => handleInputFocus("jobTitle")}
               />
               <InputText
                 onChange={(e) =>
@@ -92,16 +116,19 @@ const AddSingleEmploymentHistory: React.FC<IAddSingleEmploymentHistory> = ({
                 value={state.employer}
                 name="employer"
                 placeholder="Employer"
+                onFocus={() => handleInputFocus("employer")}
               />
               <div className="flex justify-between items-center gap-1">
                 <InputMonthYear
                   initialValue={state.startMontYear}
                   getValue={handleStartMontYear}
+                  onFocus={() => handleInputFocus("startMontYear")}
                 />
                 <InputMonthYear
                   initialValue={state.endMontYear}
                   getValue={handleEndMontYear}
                   dropdownLef="-50%"
+                  onFocus={() => handleInputFocus("endMontYear")}
                 />
               </div>
               <InputText
@@ -111,8 +138,20 @@ const AddSingleEmploymentHistory: React.FC<IAddSingleEmploymentHistory> = ({
                 value={state.city}
                 name="city"
                 placeholder="City"
+                onFocus={() => handleInputFocus("city")}
               />
+              {/* TODO ! textarea */}
+              {/* <textarea
+                onFocus={() => handleInputFocus("description")}
+                onChange={(e) =>
+                  setState((prev) => ({ ...prev, description: e.target.value }))
+                }
+                name="description"
+                placeholder="Descriptions.."
+                className="w-full min-h-28 px-4 py-2 rounded-md outline-none focus:border-c-primary  border-[1.8px] placeholder:font-semibold text-lg placeholder:text-gray-400 placeholder:text-base text-c-dark"
+              /> */}
               <InputTextEditor
+                onFocus={() => handleInputFocus("description")}
                 initialValue={state.description}
                 getValue={handleDescription}
                 placeholder="Descriptions.."

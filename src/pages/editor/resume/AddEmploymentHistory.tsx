@@ -3,15 +3,20 @@ import AddSingleEmploymentHistory from "./AddSingleEmploymentHistory";
 import { FaPlus } from "react-icons/fa6";
 import createArrayUpToNumber from "../../../utils/createArrayUpToNumber";
 import { TypeOfSingleEmploymentHistory } from "../../../types/resumeEditor";
+import compareArrays from "../../../utils/compareArrays";
 
 interface IAddEmploymentHistory {
   getValue?: (data: TypeOfSingleEmploymentHistory[]) => void;
   initialValue?: TypeOfSingleEmploymentHistory[];
+  getFocusedInputValue?: (data: string) => void;
+  initialFocusedValue?: string;
 }
 
 const AddEmploymentHistory: React.FC<IAddEmploymentHistory> = ({
   getValue = () => {},
+  getFocusedInputValue = () => {},
   initialValue,
+  initialFocusedValue,
 }) => {
   const [addMore, setAddMore] = useState<number>(
     initialValue && initialValue?.length > 0 ? initialValue?.length : 1
@@ -45,7 +50,11 @@ const AddEmploymentHistory: React.FC<IAddEmploymentHistory> = ({
   };
 
   useEffect(() => {
-    if (typeof getValue === "function" && employmentHistory.length > 0) {
+    if (
+      typeof getValue === "function" &&
+      employmentHistory.length > 0 &&
+      !compareArrays(employmentHistory, initialValue || [])
+    ) {
       getValue(employmentHistory);
     }
   }, [employmentHistory]);
@@ -62,6 +71,8 @@ const AddEmploymentHistory: React.FC<IAddEmploymentHistory> = ({
             getValue={handleSingleHistory}
             key={item}
             initialValue={initialSingleData}
+            getFocusedInputValue={getFocusedInputValue}
+            initialFocusedValue={initialFocusedValue}
           />
         );
       })}
