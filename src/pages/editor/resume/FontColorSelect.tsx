@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 interface IFontColorSelect {
-  isSelectedValue: string;
+  isSelectedValue?: string;
   getValue?: (data: string) => void;
 }
 
@@ -12,8 +12,15 @@ const FontColorSelect: React.FC<IFontColorSelect> = ({
   const [color, setColor] = useState<string>(isSelectedValue);
 
   useEffect(() => {
-    getValue(color);
+    setColor(isSelectedValue);
+  }, [isSelectedValue]);
+
+  useEffect(() => {
+    if (typeof getValue === "function" && isSelectedValue !== color) {
+      getValue(color);
+    }
   }, [color]);
+
   return (
     <div className="font-semibold text-lg gap-5 p-2 px-4 border-[1.8px] rounded-md flex justify-start items-center">
       <input
@@ -35,4 +42,4 @@ const FontColorSelect: React.FC<IFontColorSelect> = ({
   );
 };
 
-export default FontColorSelect;
+export default React.memo(FontColorSelect);
