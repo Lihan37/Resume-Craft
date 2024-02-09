@@ -54,7 +54,7 @@ const FontAlignSelect: React.FC<IFontAlignSelect> = ({
         onClick={() => setFontAlign("justify")}
         className={` ${
           fontAlign === "justify" && "text-c-primary"
-        } w-full cursor-pointer  border-r-[1.8px] p-3 flex justify-center`}>
+        } w-full cursor-pointer  p-3 flex justify-center`}>
         <FaAlignJustify />
       </div>
     </div>
