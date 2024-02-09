@@ -3,7 +3,7 @@ import SingleCard from "./SingleCard";
 import { useDispatch } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import { changeTemplate } from "../../../services/resumeEditor/resumeEditorSlice";
-import resumeStyle from "../../../components/resumeTemplates/styles";
+import resumeStyle from "../../../components/resumeTemplates/style";
 import { useNavigate } from "react-router-dom";
 
 interface IData {
@@ -25,8 +25,9 @@ const TabSection: React.FC<ITabSection> = ({ data, buttonLabel = "Add" }) => {
     const data = {
       _id: nanoid(),
       templateId: "stockholm01",
-      theme: resumeStyle["stockholm01"].style.theme,
-      themeOptions: resumeStyle["stockholm01"].style.themeOptions,
+      style: {
+        ...resumeStyle["stockholm01"].style.require,
+      },
     };
     dispatch(changeTemplate(data));
     navigate(`/edit/resume/${data._id}`);

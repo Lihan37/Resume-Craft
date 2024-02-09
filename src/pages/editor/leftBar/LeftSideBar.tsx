@@ -22,8 +22,12 @@ const LeftSideBar: React.FC<ILeftSideBar> = ({ editor, templates }) => {
       id="sidebarEditor"
       className=" w-full overflow-y-scroll border-l-2 border-r-2">
       <Header isActive={isActive} setIsActive={setIsActive} />
-      {isActive === "create" && editor}
-      {isActive === "template" && templates}
+      <div className={`${isActive === "create" ? "block" : "hidden"}`}>
+        {editor}
+      </div>
+      <div className={`${isActive === "template" ? "block" : "hidden"}`}>
+        {templates}
+      </div>
     </div>
   );
 };
