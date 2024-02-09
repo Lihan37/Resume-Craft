@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import InputText from "../../../components/common/InputText";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
@@ -8,6 +8,8 @@ interface IAddSingleReference {
   id: string | number;
   getValue?: (data: TypeOfReference) => void;
   initialValue?: TypeOfReference;
+  getFocusedInputValue?: (data: string) => void;
+  initialFocusedValue?: string;
 }
 
 const initialState = {
@@ -21,13 +23,33 @@ const initialState = {
 const AddSingleReference: React.FC<IAddSingleReference> = ({
   id,
   getValue = () => {},
+  getFocusedInputValue = () => {},
   initialValue,
+  initialFocusedValue,
 }) => {
   const [title, setTitle] = useState<string>("(Not specified)");
   const [state, setState] = useState<TypeOfReference>(
     initialValue && initialValue._id ? initialValue : initialState
   );
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const [focusedInput, setFocusedInput] = useState<string>(
+    initialFocusedValue || ""
+  );
+
+  useEffect(() => {
+    if (
+      getFocusedInputValue &&
+      typeof getFocusedInputValue === "function" &&
+      focusedInput !== initialFocusedValue
+    ) {
+      getFocusedInputValue(focusedInput);
+    }
+  }, [focusedInput]);
+
+  const handleInputFocus = (inputName: string) => {
+    setFocusedInput(inputName);
+  };
 
   useLayoutEffect(() => {
     if (typeof getValue === "function") {
@@ -70,6 +92,7 @@ const AddSingleReference: React.FC<IAddSingleReference> = ({
                 value={state.name}
                 name="name"
                 placeholder="Name"
+                onFocus={() => handleInputFocus("name")}
               />
               <InputText
                 onChange={(e) =>
@@ -78,14 +101,16 @@ const AddSingleReference: React.FC<IAddSingleReference> = ({
                 value={state.company}
                 name="company"
                 placeholder="Company"
+                onFocus={() => handleInputFocus("company")}
               />
               <InputText
                 onChange={(e) =>
-                  setState((prev) => ({ ...prev, phone: e.target.value }))
+                  setState((prev) => ({ ...prev, level: e.target.value }))
                 }
                 value={state.phone}
                 name="phone"
                 placeholder="Phone"
+                onFocus={() => handleInputFocus("phone")}
               />
               <InputText
                 onChange={(e) =>
@@ -94,6 +119,7 @@ const AddSingleReference: React.FC<IAddSingleReference> = ({
                 value={state.email}
                 name="email"
                 placeholder="Email"
+                onFocus={() => handleInputFocus("email")}
               />
             </div>
           </motion.div>

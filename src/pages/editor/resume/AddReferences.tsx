@@ -3,15 +3,20 @@ import { FaPlus } from "react-icons/fa6";
 import createArrayUpToNumber from "../../../utils/createArrayUpToNumber";
 import { TypeOfReference } from "../../../types/resumeEditor";
 import AddSingleReference from "./AddSingleReference";
+import compareArrays from "../../../utils/compareArrays";
 
 interface IAddReferences {
   getValue?: (data: TypeOfReference[]) => void;
   initialValue?: TypeOfReference[];
+  getFocusedInputValue?: (data: string) => void;
+  initialFocusedValue?: string;
 }
 
 const AddReferences: React.FC<IAddReferences> = ({
   getValue = () => {},
+  getFocusedInputValue = () => {},
   initialValue,
+  initialFocusedValue,
 }) => {
   const [addMore, setAddMore] = useState<number>(
     initialValue && initialValue?.length > 0 ? initialValue?.length : 1
@@ -46,7 +51,11 @@ const AddReferences: React.FC<IAddReferences> = ({
   };
 
   useEffect(() => {
-    if (typeof getValue === "function" && references.length > 0) {
+    if (
+      typeof getValue === "function" &&
+      references.length > 0 &&
+      !compareArrays(references, initialValue || [])
+    ) {
       getValue(references);
     }
   }, [references]);
@@ -62,6 +71,8 @@ const AddReferences: React.FC<IAddReferences> = ({
             getValue={handleSingleHistory}
             key={item}
             initialValue={initialSingleData}
+            getFocusedInputValue={getFocusedInputValue}
+            initialFocusedValue={initialFocusedValue}
           />
         );
       })}
