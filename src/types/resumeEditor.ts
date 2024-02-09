@@ -12,6 +12,7 @@ export interface IResumePersonalInfo {
   nationality: string;
   placeOfBirth: string;
   DateOfBirth: string;
+  _id: string;
 }
 
 export interface TypeOfSingleEmploymentHistory {
@@ -63,4 +64,85 @@ export interface TypeOfSectionTitle {
   references: string;
   educations: string;
   socialProfiles: string;
+  _id: string;
+}
+
+export interface TypeOfStyleText {
+  color: string;
+  fontFamily: string;
+  fontWidth: number;
+  size: string;
+  textAlign: string;
+}
+export interface TypeOfResumeStyle {
+  theme: string;
+  themeOptions: string[];
+  personalInfo: IPersonalInfo;
+  workExperience: IWorkExperience;
+  skills: ISkills;
+  languages: ILanguages;
+  references: IReferences;
+  educations: IEducations;
+  socialProfiles: ISocialProfiles;
+  sectionTitles: ISectionTitles;
+}
+
+export interface IPersonalInfo {
+  jobTitle: TypeOfStyleText;
+  firstName: TypeOfStyleText;
+  lastName: TypeOfStyleText;
+  email: TypeOfStyleText;
+  phoneNumber: TypeOfStyleText;
+  country: TypeOfStyleText;
+  city: TypeOfStyleText;
+  address: TypeOfStyleText;
+  postalCode: TypeOfStyleText;
+  drivingLicense: TypeOfStyleText;
+  nationality: TypeOfStyleText;
+  placeOfBirth: TypeOfStyleText;
+  DateOfBirth: TypeOfStyleText;
+}
+export interface IWorkExperience {
+  city: TypeOfStyleText;
+  description: TypeOfStyleText;
+  employer: TypeOfStyleText;
+  endMontYear: TypeOfStyleText;
+  jobTitle: TypeOfStyleText;
+  startMontYear: TypeOfStyleText;
+}
+export interface ISkills {
+  label: TypeOfStyleText;
+  level: TypeOfStyleText;
+}
+export interface ILanguages {
+  language: TypeOfStyleText;
+  level: TypeOfStyleText;
+}
+export interface IReferences {
+  name: TypeOfStyleText;
+  company: TypeOfStyleText;
+  phone: TypeOfStyleText;
+  email: TypeOfStyleText;
+}
+export interface IEducations {
+  school: TypeOfStyleText;
+  degree: TypeOfStyleText;
+  startMontYear: TypeOfStyleText;
+  endMontYear: TypeOfStyleText;
+  city: TypeOfStyleText;
+  description: TypeOfStyleText;
+}
+export interface ISocialProfiles {
+  label: TypeOfStyleText;
+  link: TypeOfStyleText;
+}
+export interface ISectionTitles {
+  personalInfo: TypeOfStyleText;
+  professionalSummary: TypeOfStyleText;
+  workExperience: TypeOfStyleText;
+  skills: TypeOfStyleText;
+  languages: TypeOfStyleText;
+  references: TypeOfStyleText;
+  educations: TypeOfStyleText;
+  socialProfiles: TypeOfStyleText;
 }
