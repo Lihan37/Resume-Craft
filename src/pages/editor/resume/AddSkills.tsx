@@ -3,15 +3,20 @@ import { FaPlus } from "react-icons/fa6";
 import createArrayUpToNumber from "../../../utils/createArrayUpToNumber";
 import { TypeOfSkill } from "../../../types/resumeEditor";
 import AddSingleSkill from "./AddSingleSkill";
+import compareArrays from "../../../utils/compareArrays";
 
 interface IAddSkills {
   getValue?: (data: TypeOfSkill[]) => void;
   initialValue?: TypeOfSkill[];
+  getFocusedInputValue?: (data: string) => void;
+  initialFocusedValue?: string;
 }
 
 const AddSkills: React.FC<IAddSkills> = ({
   getValue = () => {},
+  getFocusedInputValue = () => {},
   initialValue,
+  initialFocusedValue,
 }) => {
   const [addMore, setAddMore] = useState<number>(
     initialValue && initialValue?.length > 0 ? initialValue?.length : 1
@@ -42,7 +47,11 @@ const AddSkills: React.FC<IAddSkills> = ({
   };
 
   useEffect(() => {
-    if (typeof getValue === "function" && skills.length > 0) {
+    if (
+      typeof getValue === "function" &&
+      skills.length > 0 &&
+      !compareArrays(skills, initialValue || [])
+    ) {
       getValue(skills);
     }
   }, [skills]);
@@ -58,6 +67,8 @@ const AddSkills: React.FC<IAddSkills> = ({
             getValue={handleSingleHistory}
             key={item}
             initialValue={initialSingleData}
+            getFocusedInputValue={getFocusedInputValue}
+            initialFocusedValue={initialFocusedValue}
           />
         );
       })}

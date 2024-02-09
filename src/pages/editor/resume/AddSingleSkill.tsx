@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import InputText from "../../../components/common/InputText";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
@@ -9,6 +9,8 @@ interface IAddSingleSkill {
   id: string | number;
   getValue?: (data: TypeOfSkill) => void;
   initialValue?: TypeOfSkill;
+  getFocusedInputValue?: (data: string) => void;
+  initialFocusedValue?: string;
 }
 
 const initialState = {
@@ -20,13 +22,33 @@ const initialState = {
 const AddSingleSkill: React.FC<IAddSingleSkill> = ({
   id,
   getValue = () => {},
+  getFocusedInputValue = () => {},
   initialValue,
+  initialFocusedValue,
 }) => {
   const [title, setTitle] = useState<string>("(Not specified)");
   const [state, setState] = useState<TypeOfSkill>(
     initialValue && initialValue._id ? initialValue : initialState
   );
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const [focusedInput, setFocusedInput] = useState<string>(
+    initialFocusedValue || ""
+  );
+
+  useEffect(() => {
+    if (
+      getFocusedInputValue &&
+      typeof getFocusedInputValue === "function" &&
+      focusedInput !== initialFocusedValue
+    ) {
+      getFocusedInputValue(focusedInput);
+    }
+  }, [focusedInput]);
+
+  const handleInputFocus = (inputName: string) => {
+    setFocusedInput(inputName);
+  };
 
   useLayoutEffect(() => {
     if (typeof getValue === "function") {
@@ -66,6 +88,7 @@ const AddSingleSkill: React.FC<IAddSingleSkill> = ({
             transition={{ type: "spring", duration: 0.4, bounce: 0 }}>
             <div className="space-y-5 px-3 pb-4 pt-2 bg-white ">
               <InputText
+                onFocus={() => handleInputFocus("label")}
                 onChange={(e) =>
                   setState((prev) => ({ ...prev, label: e.target.value }))
                 }
