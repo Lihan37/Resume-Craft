@@ -1,16 +1,49 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
+  IEducations,
+  ILanguages,
+  IReferences,
+  ISectionTitles,
+  ISkills,
+  ISocialProfiles,
+  IWorkExperience,
   IResumePersonalInfo,
   TypeOfLanguage,
   TypeOfReference,
+  TypeOfResumeStyle,
   TypeOfSectionTitle,
   TypeOfSingleEducationHistory,
   TypeOfSingleEmploymentHistory,
   TypeOfSingleSocialWebSite,
   TypeOfSkill,
+  TypeOfStyleText,
+  IPersonalInfo,
 } from "../../types/resumeEditor";
-import { createResumeAndUpdate } from "./resumeEditorApi";
+import { createResumeAndUpdate, getSingleResumeData } from "./resumeEditorApi";
 
+type SectionStyle =
+  | IPersonalInfo
+  | IWorkExperience
+  | ISkills
+  | ILanguages
+  | IReferences
+  | IEducations
+  | ISocialProfiles
+  | ISectionTitles;
+
+export interface IPayloadChangeStyleResume {
+  sectionTitle: keyof TypeOfResumeStyle;
+  fieldName:
+    | keyof IPersonalInfo
+    | keyof IWorkExperience
+    | keyof ISkills
+    | keyof ILanguages
+    | keyof IReferences
+    | keyof IEducations
+    | keyof ISocialProfiles
+    | keyof ISectionTitles;
+  value: TypeOfStyleText;
+}
 interface ISetSectionTitlesPayload {
   name: keyof TypeOfSectionTitle;
   value: string;
@@ -19,6 +52,7 @@ export interface ISetResumeSize {
   height: string;
   width: string;
 }
+
 export interface IResumeData {
   _id: string | number;
   templateId: string;
@@ -33,9 +67,11 @@ export interface IResumeData {
   socialProfiles: TypeOfSingleSocialWebSite[];
   sectionTitles: TypeOfSectionTitle;
   zoom: number;
-  theme: string;
-  themeOptions: string[];
   size: ISetResumeSize;
+  style: TypeOfResumeStyle;
+  createdAt: string | null;
+  updatedAt: string | null;
+  __v: string | null | number;
 }
 
 interface IResumeEditorState {
@@ -45,12 +81,23 @@ interface IResumeEditorState {
   resume: IResumeData;
 }
 
+const styleInitialState: TypeOfStyleText = {
+  color: "",
+  fontFamily: "",
+  fontWidth: 0,
+  size: "",
+  textAlign: "",
+};
 const initialState: IResumeEditorState = {
   isLoading: false,
   isSyncing: false,
   error: null,
+
   resume: {
     _id: "",
+    __v: 0,
+    createdAt: "",
+    updatedAt: "",
     templateId: "",
     avatar: "",
     personalInfo: {
@@ -67,6 +114,7 @@ const initialState: IResumeEditorState = {
       nationality: "",
       placeOfBirth: "",
       DateOfBirth: "",
+      _id: "",
     },
     professionalSummary: "",
     workExperience: [],
@@ -84,13 +132,97 @@ const initialState: IResumeEditorState = {
       references: "References",
       educations: "Education",
       socialProfiles: "Websites & Social",
+      _id: "",
     },
     zoom: 0.7,
-    theme: "",
-    themeOptions: [],
     size: {
       height: "1190.14px",
       width: "852px",
+    },
+    style: {
+      theme: "",
+      themeOptions: [],
+      personalInfo: {
+        jobTitle: {
+          ...styleInitialState,
+        },
+        firstName: {
+          ...styleInitialState,
+        },
+        lastName: {
+          ...styleInitialState,
+        },
+        email: {
+          ...styleInitialState,
+        },
+        phoneNumber: {
+          ...styleInitialState,
+        },
+        country: {
+          ...styleInitialState,
+        },
+        city: {
+          ...styleInitialState,
+        },
+        address: {
+          ...styleInitialState,
+        },
+        postalCode: {
+          ...styleInitialState,
+        },
+        drivingLicense: {
+          ...styleInitialState,
+        },
+        nationality: {
+          ...styleInitialState,
+        },
+        placeOfBirth: { ...styleInitialState },
+        DateOfBirth: { ...styleInitialState },
+      },
+      workExperience: {
+        city: { ...styleInitialState },
+        description: { ...styleInitialState },
+        employer: { ...styleInitialState },
+        endMontYear: { ...styleInitialState },
+        jobTitle: { ...styleInitialState },
+        startMontYear: { ...styleInitialState },
+      },
+      skills: {
+        label: { ...styleInitialState },
+        level: { ...styleInitialState },
+      },
+      languages: {
+        language: { ...styleInitialState },
+        level: { ...styleInitialState },
+      },
+      references: {
+        name: { ...styleInitialState },
+        company: { ...styleInitialState },
+        phone: { ...styleInitialState },
+        email: { ...styleInitialState },
+      },
+      educations: {
+        school: { ...styleInitialState },
+        degree: { ...styleInitialState },
+        startMontYear: { ...styleInitialState },
+        endMontYear: { ...styleInitialState },
+        city: { ...styleInitialState },
+        description: { ...styleInitialState },
+      },
+      socialProfiles: {
+        label: { ...styleInitialState },
+        link: { ...styleInitialState },
+      },
+      sectionTitles: {
+        personalInfo: { ...styleInitialState },
+        professionalSummary: { ...styleInitialState },
+        workExperience: { ...styleInitialState },
+        skills: { ...styleInitialState },
+        languages: { ...styleInitialState },
+        references: { ...styleInitialState },
+        educations: { ...styleInitialState },
+        socialProfiles: { ...styleInitialState },
+      },
     },
   },
 };
@@ -148,7 +280,7 @@ const resumeEditorSlice = createSlice({
       };
     },
     setResumeTheme(state, action) {
-      state.resume.theme = action.payload;
+      state.resume.style.theme = action.payload;
     },
     setResumeSize(state, action: PayloadAction<ISetResumeSize>) {
       state.resume.size = action.payload;
@@ -159,17 +291,62 @@ const resumeEditorSlice = createSlice({
     changeTemplate(state, action) {
       state.resume = { ...state.resume, ...action.payload };
     },
+    // changeStyleResume(state, action: PayloadAction<IPayloadChangeStyleResume>) {
+    // const sectionStyle = state.resume.style[action.payload.sectionTitle] as
+    //   | keyof IPersonalInfo
+    //   | keyof IWorkExperience
+    //   | keyof ISkills
+    //   | keyof ILanguages
+    //   | keyof IReferences
+    //   | keyof IEducations
+    //   | keyof ISocialProfiles
+    //   | keyof ISectionTitles;
+
+    // if (sectionStyle && typeof sectionStyle === "object") {
+    //  {
+    //    ...sectionStyle ,sectionStyle[action.payload.fieldName] =
+    //       action.payload.value
+    //   }
+    // }
+    // state.resume.style[action.payload.sectionTitle] = {
+    //   ...state.resume.style[action.payload.sectionTitle],
+    //   [action.payload.fieldName]: action.payload.value,
+    // };
+    // },
+    changeStyleResume(state, action: PayloadAction<IPayloadChangeStyleResume>) {
+      const { sectionTitle, fieldName, value } = action.payload;
+      // Find the section style object
+      const sectionStyle = state.resume.style[sectionTitle];
+
+      if (sectionStyle && typeof sectionStyle === "object") {
+        if (fieldName in sectionStyle) {
+          (sectionStyle as any)[fieldName] = value;
+        }
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(createResumeAndUpdate.pending, (state) => {
-        state.isLoading = true;
+        state.isSyncing = true;
         state.error = null;
       })
       .addCase(createResumeAndUpdate.fulfilled, (state) => {
-        state.isLoading = false;
+        state.isSyncing = false;
       })
       .addCase(createResumeAndUpdate.rejected, (state, action) => {
+        state.isSyncing = false;
+        state.error = action.payload as string;
+      })
+      .addCase(getSingleResumeData.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getSingleResumeData.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.resume = action.payload.resume;
+      })
+      .addCase(getSingleResumeData.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload as string;
       });
@@ -194,6 +371,7 @@ export const {
   setResumeSize,
   setZoomIn,
   changeTemplate,
+  changeStyleResume,
 } = resumeEditorSlice.actions;
 
 export default resumeEditorSlice.reducer;
