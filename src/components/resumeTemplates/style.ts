@@ -1,5 +1,5 @@
-import styleStockholm from "./StockholmStyle";
-import styleToronto from "./TorontoStyle";
+import styleStockholm from "./stockholm/StockholmStyle";
+import styleToronto from "./toronto/TorontoStyle";
 
 const resumeStyle = {
   toronto01: { id: "toronto01", style: styleToronto },

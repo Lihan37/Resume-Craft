@@ -8,10 +8,15 @@ import { FiDownload } from "react-icons/fi";
 import ZoomIn from "./ZoomIn";
 import { useDispatch, useSelector } from "react-redux";
 import { setZoomIn } from "../../services/resumeEditor/resumeEditorSlice";
-import { selectZoomIn } from "../../services/resumeEditor/resumeEditorSelector";
+import {
+  selectResumeEditor,
+  selectZoomIn,
+} from "../../services/resumeEditor/resumeEditorSelector";
+import { TbLoader2 } from "react-icons/tb";
 
 const EditorNavbar: React.FC = () => {
   const dispatch = useDispatch();
+  const editor = useSelector(selectResumeEditor);
   const zoom = useSelector(selectZoomIn);
 
   return (
@@ -24,20 +29,33 @@ const EditorNavbar: React.FC = () => {
               <Breadcrumbs back="/" label="Home" />
               <Breadcrumbs back="/" label="Resumes" />
               <Title />
-              <div className="flex justify-start items-center gap-2 mt-1">
-                <IoIosCloudy className=" text-c-primary text-2xl lg:text-3xl" />
-                <span className=" font-semibold text-c-dark text-base lg:text-xl">
-                  Saved
-                </span>
+              <div className="flex justify-start items-center gap-2 mt-1 w-28">
+                {editor.isSyncing ? (
+                  <TbLoader2 className="animate-spin text-c-primary text-2xl lg:text-2xl" />
+                ) : (
+                  <IoIosCloudy className=" text-c-primary text-2xl lg:text-3xl" />
+                )}
+
+                {editor.isSyncing ? (
+                  <span className=" font-semibold text-c-primary text-base lg:text-xl">
+                    Saving..
+                  </span>
+                ) : (
+                  <span className=" font-semibold text-c-dark text-base lg:text-xl">
+                    Saved
+                  </span>
+                )}
               </div>
             </div>
           </div>
-          <ZoomIn
-            initialValue={zoom}
-            getValue={(data: number) => {
-              dispatch(setZoomIn(data));
-            }}
-          />
+          {!editor.isLoading && (
+            <ZoomIn
+              initialValue={zoom}
+              getValue={(data: number) => {
+                dispatch(setZoomIn(data));
+              }}
+            />
+          )}
 
           <div className=" flex justify-start items-center gap-5 xl:gap-10">
             <button className=" text-c-dark font-semibold flex justify-start items-center gap-2 px-4 py-1 lg:py-2 bg-gray-100 rounded-full text-base lg:text-xl">

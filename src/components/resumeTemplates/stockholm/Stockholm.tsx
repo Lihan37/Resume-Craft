@@ -1,5 +1,5 @@
 import React from "react";
-import { IResumeData } from "../../services/resumeEditor/resumeEditorSlice";
+import { IResumeData } from "../../../services/resumeEditor/resumeEditorSlice";
 
 export interface IStockholm {
   resume: IResumeData;
@@ -16,12 +16,15 @@ const Stockholm: React.FC<IStockholm> = ({ resume }) => {
           parseFloat(resume.size.height.slice(0, -2)) > 1190.14 ? "bottom" : "",
         transition: "transform 0.5s",
       }}
-      className=" rounded-lg overflow-hidden">
+      className="rounded-lg overflow-hidden">
       <div
-        style={{ backgroundColor: resume.theme }}
-        className=" text-white p-10 ">
+        style={{ backgroundColor: resume.style.theme }}
+        className=" text-white p-10">
         <h1
-          style={{ fontFamily: "Serif", textAlign: "start" }}
+          style={{
+            fontFamily: resume.style.personalInfo.firstName.fontFamily,
+            textAlign: resume.style.personalInfo.firstName.textAlign as any,
+          }}
           className=" text-xl  font-semibold ">
           {resume.personalInfo.firstName} {resume.personalInfo.lastName}
         </h1>

@@ -1,6 +1,6 @@
 import { FC } from "react";
-import Stockholm, { IStockholm } from "./Stockholm";
-import Toronto, { IToronto } from "./Toronto";
+import Stockholm, { IStockholm } from "./stockholm/Stockholm";
+import Toronto, { IToronto } from "./toronto/Toronto";
 
 export type ResumeTemplatesType = {
   toronto01: { id: string; template: FC<IToronto> };

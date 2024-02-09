@@ -1,5 +1,5 @@
 import React from "react";
-import { IResumeData } from "../../services/resumeEditor/resumeEditorSlice";
+import { IResumeData } from "../../../services/resumeEditor/resumeEditorSlice";
 
 export interface IToronto {
   resume: IResumeData;
@@ -18,8 +18,8 @@ const Toronto: React.FC<IToronto> = ({ resume }) => {
       }}
       className="flex justify-start items-start rounded-lg overflow-hidden">
       <div
-        style={{ backgroundColor: resume.theme }}
-        className=" w-4/12 h-full bg-[#084c41] text-white p-10 ">
+        style={{ backgroundColor: resume.style.theme }}
+        className=" w-4/12 h-full  text-white p-10 ">
         <h1
           style={{ fontFamily: "Serif" }}
           className=" text-xl text-center font-semibold ">
