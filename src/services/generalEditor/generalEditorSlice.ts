@@ -1,27 +1,31 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { TypeOfStyleText } from "../../types/resumeEditor";
 
-export interface ITextStyle {
-  isActive: boolean;
-  fontFamily: string;
-  fontWidth: string;
-  color: string;
-  size: string;
-}
 export interface ITextStylePayload {
-  name: keyof ITextStyle;
+  name: keyof TypeOfStyleText;
   value: string;
 }
+
+export interface IFocus {
+  focusInput: string;
+  focusSection: string;
+}
 interface IGeneralEditorState {
-  textStyle: ITextStyle;
+  focus: IFocus;
+  textStyle: TypeOfStyleText;
 }
 
 const initialState: IGeneralEditorState = {
+  focus: {
+    focusInput: "jobTitle",
+    focusSection: "personalInfo",
+  },
   textStyle: {
-    isActive: false,
-    fontFamily: "",
-    fontWidth: "",
     color: "",
+    fontFamily: "",
+    fontWidth: 0,
     size: "",
+    textAlign: "",
   },
 };
 
@@ -29,15 +33,15 @@ const generalEditorSlice = createSlice({
   name: "generalEditor",
   initialState,
   reducers: {
-    setTextStyle(state, action: PayloadAction<ITextStylePayload>) {
-      state.textStyle = {
-        ...state.textStyle,
-        [action.payload.name]: action.payload.value,
-      };
+    setTextStyle(state, action: PayloadAction<TypeOfStyleText>) {
+      state.textStyle = action.payload;
+    },
+    setFocus(state, action: PayloadAction<IFocus>) {
+      state.focus = action.payload;
     },
   },
 });
 
-export const { setTextStyle } = generalEditorSlice.actions;
+export const { setTextStyle, setFocus } = generalEditorSlice.actions;
 
 export default generalEditorSlice.reducer;

@@ -1,4 +1,7 @@
 import { RootState } from "../../app/store";
 
-export const selectTextStyle = (state: RootState) =>
-  state.generalEditor.textStyle;
+export const selectFocusInput = (state: RootState) =>
+  state.generalEditor.focus.focusInput;
+
+export const selectFocusSection = (state: RootState) =>
+  state.generalEditor.focus.focusSection;
