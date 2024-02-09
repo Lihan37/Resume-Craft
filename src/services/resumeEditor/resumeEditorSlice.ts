@@ -21,15 +21,15 @@ import {
 } from "../../types/resumeEditor";
 import { createResumeAndUpdate, getSingleResumeData } from "./resumeEditorApi";
 
-type SectionStyle =
-  | IPersonalInfo
-  | IWorkExperience
-  | ISkills
-  | ILanguages
-  | IReferences
-  | IEducations
-  | ISocialProfiles
-  | ISectionTitles;
+// type SectionStyle =
+//   | IPersonalInfo
+//   | IWorkExperience
+//   | ISkills
+//   | ILanguages
+//   | IReferences
+//   | IEducations
+//   | ISocialProfiles
+//   | ISectionTitles;
 
 export interface IPayloadChangeStyleResume {
   sectionTitle: keyof TypeOfResumeStyle;
