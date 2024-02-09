@@ -3,15 +3,20 @@ import { FaPlus } from "react-icons/fa6";
 import createArrayUpToNumber from "../../../utils/createArrayUpToNumber";
 import { TypeOfLanguage } from "../../../types/resumeEditor";
 import AddSingleLanguage from "./AddSingleLanguage";
+import compareArrays from "../../../utils/compareArrays";
 
 interface IAddLanguages {
   getValue?: (data: TypeOfLanguage[]) => void;
   initialValue?: TypeOfLanguage[];
+  getFocusedInputValue?: (data: string) => void;
+  initialFocusedValue?: string;
 }
 
 const AddLanguages: React.FC<IAddLanguages> = ({
   getValue = () => {},
   initialValue,
+  getFocusedInputValue = () => {},
+  initialFocusedValue,
 }) => {
   const [addMore, setAddMore] = useState<number>(
     initialValue && initialValue?.length > 0 ? initialValue?.length : 1
@@ -41,7 +46,11 @@ const AddLanguages: React.FC<IAddLanguages> = ({
   };
 
   useEffect(() => {
-    if (typeof getValue === "function" && languages.length > 0) {
+    if (
+      typeof getValue === "function" &&
+      languages.length > 0 &&
+      !compareArrays(languages, initialValue || [])
+    ) {
       getValue(languages);
     }
   }, [languages]);
@@ -56,6 +65,8 @@ const AddLanguages: React.FC<IAddLanguages> = ({
             getValue={handleSingleHistory}
             key={item}
             initialValue={initialSingleData}
+            getFocusedInputValue={getFocusedInputValue}
+            initialFocusedValue={initialFocusedValue}
           />
         );
       })}

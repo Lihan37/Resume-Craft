@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import InputText from "../../../components/common/InputText";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
@@ -8,6 +8,8 @@ interface IAddSingleLanguage {
   id: string | number;
   getValue?: (data: TypeOfLanguage) => void;
   initialValue?: TypeOfLanguage;
+  getFocusedInputValue?: (data: string) => void;
+  initialFocusedValue?: string;
 }
 
 const initialState = {
@@ -19,13 +21,33 @@ const initialState = {
 const AddSingleLanguage: React.FC<IAddSingleLanguage> = ({
   id,
   getValue = () => {},
+  getFocusedInputValue = () => {},
   initialValue,
+  initialFocusedValue,
 }) => {
   const [title, setTitle] = useState<string>("(Not specified)");
   const [state, setState] = useState<TypeOfLanguage>(
     initialValue && initialValue._id ? initialValue : initialState
   );
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const [focusedInput, setFocusedInput] = useState<string>(
+    initialFocusedValue || ""
+  );
+
+  useEffect(() => {
+    if (
+      getFocusedInputValue &&
+      typeof getFocusedInputValue === "function" &&
+      focusedInput !== initialFocusedValue
+    ) {
+      getFocusedInputValue(focusedInput);
+    }
+  }, [focusedInput]);
+
+  const handleInputFocus = (inputName: string) => {
+    setFocusedInput(inputName);
+  };
 
   useLayoutEffect(() => {
     if (typeof getValue === "function") {
@@ -68,6 +90,7 @@ const AddSingleLanguage: React.FC<IAddSingleLanguage> = ({
                 value={state.language}
                 name="language"
                 placeholder="Language"
+                onFocus={() => handleInputFocus("language")}
               />
               <InputText
                 onChange={(e) =>
@@ -76,6 +99,7 @@ const AddSingleLanguage: React.FC<IAddSingleLanguage> = ({
                 value={state.level}
                 name="level"
                 placeholder="Level"
+                onFocus={() => handleInputFocus("level")}
               />
             </div>
           </motion.div>
