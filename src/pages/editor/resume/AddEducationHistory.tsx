@@ -3,15 +3,20 @@ import { FaPlus } from "react-icons/fa6";
 import createArrayUpToNumber from "../../../utils/createArrayUpToNumber";
 import { TypeOfSingleEducationHistory } from "../../../types/resumeEditor";
 import AddSingleEducationHistory from "./AddSingleEducationHistory";
+import compareArrays from "../../../utils/compareArrays";
 
 interface IAddEducationHistory {
   getValue?: (data: TypeOfSingleEducationHistory[]) => void;
   initialValue?: TypeOfSingleEducationHistory[];
+  getFocusedInputValue?: (data: string) => void;
+  initialFocusedValue?: string;
 }
 
 const AddEducationHistory: React.FC<IAddEducationHistory> = ({
   getValue = () => {},
   initialValue,
+  getFocusedInputValue = () => {},
+  initialFocusedValue,
 }) => {
   const [addMore, setAddMore] = useState<number>(
     initialValue && initialValue?.length > 0 ? initialValue?.length : 1
@@ -47,7 +52,11 @@ const AddEducationHistory: React.FC<IAddEducationHistory> = ({
   };
 
   useEffect(() => {
-    if (typeof getValue === "function" && educationHistory.length > 0) {
+    if (
+      typeof getValue === "function" &&
+      educationHistory.length > 0 &&
+      !compareArrays(educationHistory, initialValue || [])
+    ) {
       getValue(educationHistory);
     }
   }, [educationHistory]);
@@ -62,6 +71,8 @@ const AddEducationHistory: React.FC<IAddEducationHistory> = ({
             getValue={handleSingleHistory}
             key={item}
             initialValue={initialSingleData}
+            getFocusedInputValue={getFocusedInputValue}
+            initialFocusedValue={initialFocusedValue}
           />
         );
       })}

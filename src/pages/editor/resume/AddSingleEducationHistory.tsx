@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import InputText from "../../../components/common/InputText";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
@@ -10,6 +10,8 @@ interface IAddSingleEducationHistory {
   id: string | number;
   getValue?: (data: TypeOfSingleEducationHistory) => void;
   initialValue?: TypeOfSingleEducationHistory;
+  getFocusedInputValue?: (data: string) => void;
+  initialFocusedValue?: string;
 }
 
 const initialState = {
@@ -26,12 +28,32 @@ const AddSingleEducationHistory: React.FC<IAddSingleEducationHistory> = ({
   id,
   getValue = () => {},
   initialValue,
+  getFocusedInputValue = () => {},
+  initialFocusedValue,
 }) => {
   const [title, setTitle] = useState<string>("(Not specified)");
   const [state, setState] = useState<TypeOfSingleEducationHistory>(
     initialValue && initialValue._id ? initialValue : initialState
   );
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const [focusedInput, setFocusedInput] = useState<string>(
+    initialFocusedValue || ""
+  );
+
+  useEffect(() => {
+    if (
+      getFocusedInputValue &&
+      typeof getFocusedInputValue === "function" &&
+      focusedInput !== initialFocusedValue
+    ) {
+      getFocusedInputValue(focusedInput);
+    }
+  }, [focusedInput]);
+
+  const handleInputFocus = (inputName: string) => {
+    setFocusedInput(inputName);
+  };
 
   const handleStartMontYear = (data: string) => {
     setState((prev) => ({ ...prev, startMontYear: data }));
@@ -84,6 +106,7 @@ const AddSingleEducationHistory: React.FC<IAddSingleEducationHistory> = ({
                 value={state.school}
                 name="school"
                 placeholder="School"
+                onFocus={() => handleInputFocus("school")}
               />
               <InputText
                 onChange={(e) =>
@@ -92,13 +115,16 @@ const AddSingleEducationHistory: React.FC<IAddSingleEducationHistory> = ({
                 value={state.degree}
                 name="degree"
                 placeholder="Degree"
+                onFocus={() => handleInputFocus("degree")}
               />
               <div className="flex justify-between items-center gap-1">
                 <InputMonthYear
+                  onFocus={() => handleInputFocus("startMontYear")}
                   initialValue={state.startMontYear}
                   getValue={handleStartMontYear}
                 />
                 <InputMonthYear
+                  onFocus={() => handleInputFocus("endMontYear")}
                   initialValue={state.endMontYear}
                   getValue={handleEndMontYear}
                   dropdownLef="-50%"
@@ -111,12 +137,14 @@ const AddSingleEducationHistory: React.FC<IAddSingleEducationHistory> = ({
                 value={state.city}
                 name="city"
                 placeholder="City"
+                onFocus={() => handleInputFocus("city")}
               />
               <InputTextEditor
                 initialValue={state.description}
                 getValue={handleDescription}
                 placeholder="Descriptions.."
                 height="160px"
+                onFocus={() => handleInputFocus("description")}
               />
             </div>
           </motion.div>
