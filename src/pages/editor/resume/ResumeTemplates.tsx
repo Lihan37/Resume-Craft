@@ -2,7 +2,7 @@ import React from "react";
 import { images } from "../../../constant";
 import { useDispatch } from "react-redux";
 import { changeTemplate } from "../../../services/resumeEditor/resumeEditorSlice";
-import resumeStyle from "../../../components/resumeTemplates/styles";
+import resumeStyle from "../../../components/resumeTemplates/style";
 
 const ResumeTemplates: React.FC = () => {
   const dispatch = useDispatch();
@@ -16,8 +16,7 @@ const ResumeTemplates: React.FC = () => {
             dispatch(
               changeTemplate({
                 templateId: item.templateId,
-                theme: item.theme,
-                themeOptions: item.themeOptions,
+                style: item.style,
               })
             );
           }}
@@ -35,13 +34,11 @@ const resumeTemplate = [
   {
     templateId: "toronto01",
     img: images.resume1,
-    theme: resumeStyle["toronto01"].style.theme,
-    themeOptions: resumeStyle["toronto01"].style.themeOptions,
+    style: { ...resumeStyle["toronto01"].style.require },
   },
   {
     templateId: "stockholm01",
     img: images.resume2,
-    theme: resumeStyle["stockholm01"].style.theme,
-    themeOptions: resumeStyle["stockholm01"].style.themeOptions,
+    style: { ...resumeStyle["stockholm01"].style.require },
   },
 ];
