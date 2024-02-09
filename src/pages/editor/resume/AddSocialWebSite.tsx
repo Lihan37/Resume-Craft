@@ -3,15 +3,20 @@ import { FaPlus } from "react-icons/fa6";
 import createArrayUpToNumber from "../../../utils/createArrayUpToNumber";
 import { TypeOfSingleSocialWebSite } from "../../../types/resumeEditor";
 import AddSingeSocialWebSite from "./AddSingeSocialWebSite";
+import compareArrays from "../../../utils/compareArrays";
 
 interface IAddSocialWebSite {
   getValue?: (data: TypeOfSingleSocialWebSite[]) => void;
   initialValue?: TypeOfSingleSocialWebSite[];
+  getFocusedInputValue?: (data: string) => void;
+  initialFocusedValue?: string;
 }
 
 const AddSocialWebSite: React.FC<IAddSocialWebSite> = ({
   getValue = () => {},
+  getFocusedInputValue = () => {},
   initialValue,
+  initialFocusedValue,
 }) => {
   const [addMore, setAddMore] = useState<number>(
     initialValue && initialValue?.length > 0 ? initialValue?.length : 1
@@ -44,7 +49,11 @@ const AddSocialWebSite: React.FC<IAddSocialWebSite> = ({
   };
 
   useEffect(() => {
-    if (typeof getValue === "function" && socialWebSite.length > 0) {
+    if (
+      typeof getValue === "function" &&
+      socialWebSite.length > 0 &&
+      !compareArrays(socialWebSite, initialValue || [])
+    ) {
       getValue(socialWebSite);
     }
   }, [socialWebSite]);
@@ -60,6 +69,8 @@ const AddSocialWebSite: React.FC<IAddSocialWebSite> = ({
             getValue={handleSingleHistory}
             key={item}
             initialValue={initialSingleData}
+            getFocusedInputValue={getFocusedInputValue}
+            initialFocusedValue={initialFocusedValue}
           />
         );
       })}
