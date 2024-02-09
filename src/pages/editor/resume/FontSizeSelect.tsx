@@ -2,18 +2,24 @@ import React, { useEffect, useState } from "react";
 import { LuPlus, LuMinus } from "react-icons/lu";
 
 interface IFontSizeSelect {
-  isSelectedValue: string;
+  isSelectedValue?: string;
   getValue?: (data: string) => void;
 }
 
 const FontSizeSelect: React.FC<IFontSizeSelect> = ({
-  isSelectedValue,
+  isSelectedValue = "18px",
   getValue = () => {},
 }) => {
   const [size, setSize] = useState<string>(isSelectedValue);
 
   useEffect(() => {
-    getValue(size);
+    setSize(isSelectedValue);
+  }, [isSelectedValue]);
+
+  useEffect(() => {
+    if (typeof getValue === "function" && isSelectedValue !== size) {
+      getValue(size);
+    }
   }, [size]);
 
   const lastCharacter = size.slice(size?.length - 2, size?.length);
