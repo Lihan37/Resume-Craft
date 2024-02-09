@@ -11,7 +11,7 @@ const HeroSection: React.FC = () => {
         <div className="lg:w-10/12 space-y-5 md:space-y-8 ">
           <img
             className=" md:hidden"
-            src={images.heroSectionMobile}
+            src={images.resume6}
             alt="heroSectionMobile"
           />
           <div className="w-full flex justify-center md:justify-start items-center">
@@ -56,8 +56,8 @@ const HeroSection: React.FC = () => {
 
         <div className="hidden pointer-events-none lg:block absolute bottom-10 xl:bottom-20 right-0 z-0">
           <img
-            className=" w-[450px] xl:w-[550px] 2xl:w-[650px]"
-            src={images.heroSection}
+            className=" w-[350px] h-[450px] xl:w-[450px] xl:h-[550px]  2xl:w-[450px] 2xl:h-[650px] border-2"
+            src={images.resume6}
             alt="heroSection"
           />
         </div>
