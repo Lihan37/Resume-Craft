@@ -27,7 +27,7 @@ const Stockholm: React.FC<IStockholm> = ({ resume }) => {
             color: resume.style.personalInfo.firstName.color,
             fontSize: resume.style.personalInfo.firstName.size,
           }}
-          className=" text-xl  font-semibold w-full">
+          className="text-xl font-semibold w-full">
           {resume.personalInfo.firstName} {resume.personalInfo.lastName}
         </h1>
         {/* <span className=" mx-auto my-2 w-10 h-[1px] block bg-white"></span> */}
@@ -44,7 +44,9 @@ const Stockholm: React.FC<IStockholm> = ({ resume }) => {
           {resume.personalInfo.jobTitle}
         </h3>
         <div className=" my-4">
-          <h1 className=" font-semibold text-lg text-white">Details</h1>
+          <h1 className=" font-semibold text-lg text-white">
+            {resume.sectionTitles.personalInfo}
+          </h1>
           <p
             style={{
               fontFamily: resume.style.personalInfo.email.fontFamily,
