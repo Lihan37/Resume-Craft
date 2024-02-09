@@ -42,6 +42,8 @@ import {
   selectSocialProfile,
   selectWorkExperience,
 } from "../../../services/resumeEditor/resumeEditorSelector";
+import { setFocus } from "../../../services/generalEditor/generalEditorSlice";
+import { selectFocusInput } from "../../../services/generalEditor/generalEditorSelector";
 
 const LeftSideBarOptions: React.FC = () => {
   const dispatch = useDispatch();
@@ -54,6 +56,7 @@ const LeftSideBarOptions: React.FC = () => {
   const personalInfo = useSelector(selectPersonalInfo);
   const professionalSummary = useSelector(selectProfessionalSummary);
   const sectionTitle = useSelector(selectSectionTitles);
+  const focusInput = useSelector(selectFocusInput);
 
   return (
     <div>
@@ -68,6 +71,12 @@ const LeftSideBarOptions: React.FC = () => {
           />
           <AccordionPanel id={1}>
             <PersonaData
+              initialFocusedValue={focusInput}
+              getFocusedInputValue={(data: string) => {
+                dispatch(
+                  setFocus({ focusInput: data, focusSection: "personalInfo" })
+                );
+              }}
               initialValue={personalInfo}
               getValue={(data: IResumePersonalInfo) => {
                 dispatch(setPersonalInfo(data));
@@ -108,6 +117,12 @@ const LeftSideBarOptions: React.FC = () => {
           />
           <AccordionPanel id={3}>
             <AddEmploymentHistory
+              initialFocusedValue={focusInput}
+              getFocusedInputValue={(data: string) => {
+                dispatch(
+                  setFocus({ focusInput: data, focusSection: "workExperience" })
+                );
+              }}
               initialValue={workExperiences}
               getValue={(data: TypeOfSingleEmploymentHistory[]) => {
                 dispatch(setWorkExperience(data));
@@ -125,6 +140,12 @@ const LeftSideBarOptions: React.FC = () => {
           />
           <AccordionPanel id={4}>
             <AddEducationHistory
+              initialFocusedValue={focusInput}
+              getFocusedInputValue={(data: string) => {
+                dispatch(
+                  setFocus({ focusInput: data, focusSection: "educations" })
+                );
+              }}
               initialValue={educations}
               getValue={(data: TypeOfSingleEducationHistory[]) => {
                 dispatch(setEducation(data));
@@ -144,6 +165,12 @@ const LeftSideBarOptions: React.FC = () => {
           />
           <AccordionPanel id={501}>
             <AddSocialWebSite
+              initialFocusedValue={focusInput}
+              getFocusedInputValue={(data: string) => {
+                dispatch(
+                  setFocus({ focusInput: data, focusSection: "socialProfiles" })
+                );
+              }}
               initialValue={socialProfile}
               getValue={(data: TypeOfSingleSocialWebSite[]) => {
                 dispatch(setSocialProfile(data));
@@ -161,6 +188,12 @@ const LeftSideBarOptions: React.FC = () => {
           />
           <AccordionPanel id={502}>
             <AddSkills
+              initialFocusedValue={focusInput}
+              getFocusedInputValue={(data: string) => {
+                dispatch(
+                  setFocus({ focusInput: data, focusSection: "skills" })
+                );
+              }}
               initialValue={skills}
               getValue={(data: TypeOfSkill[]) => {
                 dispatch(setSkills(data));
@@ -178,6 +211,12 @@ const LeftSideBarOptions: React.FC = () => {
           />
           <AccordionPanel id={6}>
             <AddLanguages
+              initialFocusedValue={focusInput}
+              getFocusedInputValue={(data: string) => {
+                dispatch(
+                  setFocus({ focusInput: data, focusSection: "languages" })
+                );
+              }}
               initialValue={languages}
               getValue={(data: TypeOfLanguage[]) => {
                 dispatch(setLanguage(data));
@@ -195,6 +234,11 @@ const LeftSideBarOptions: React.FC = () => {
           />
           <AccordionPanel id={7}>
             <AddReferences
+              getFocusedInputValue={(data: string) => {
+                dispatch(
+                  setFocus({ focusInput: data, focusSection: "references" })
+                );
+              }}
               initialValue={references}
               getValue={(data: TypeOfReference[]) => {
                 dispatch(setReference(data));
