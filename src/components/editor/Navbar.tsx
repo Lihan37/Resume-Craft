@@ -27,16 +27,16 @@ const EditorNavbar: React.FC = () => {
             <Logo name={false} />
             <div className=" flex justify-start items-center gap-5 xl:gap-10">
               <Breadcrumbs back="/" label="Home" />
-              <Breadcrumbs back="/" label="Resumes" />
+              <Breadcrumbs back="/dashboard" label="Resumes" />
               <Title />
               <div className="flex justify-start items-center gap-2 mt-1 w-28">
-                {editor.isSyncing ? (
+                {editor?.isSyncing ? (
                   <TbLoader2 className="animate-spin text-c-primary text-2xl lg:text-2xl" />
                 ) : (
                   <IoIosCloudy className=" text-c-primary text-2xl lg:text-3xl" />
                 )}
 
-                {editor.isSyncing ? (
+                {editor?.isSyncing ? (
                   <span className=" font-semibold text-c-primary text-base lg:text-xl">
                     Saving..
                   </span>

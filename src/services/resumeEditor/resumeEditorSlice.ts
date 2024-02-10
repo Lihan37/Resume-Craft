@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   IEducations,
@@ -20,16 +21,6 @@ import {
   IPersonalInfo,
 } from "../../types/resumeEditor";
 import { createResumeAndUpdate, getSingleResumeData } from "./resumeEditorApi";
-
-// type SectionStyle =
-//   | IPersonalInfo
-//   | IWorkExperience
-//   | ISkills
-//   | ILanguages
-//   | IReferences
-//   | IEducations
-//   | ISocialProfiles
-//   | ISectionTitles;
 
 export interface IPayloadChangeStyleResume {
   sectionTitle: keyof TypeOfResumeStyle;
@@ -57,6 +48,7 @@ export interface IResumeData {
   _id: string | number;
   templateId: string;
   avatar: string;
+  historyId: string | number;
   personalInfo: IResumePersonalInfo;
   professionalSummary: string;
   workExperience: TypeOfSingleEmploymentHistory[];
@@ -69,9 +61,6 @@ export interface IResumeData {
   zoom: number;
   size: ISetResumeSize;
   style: TypeOfResumeStyle;
-  createdAt: string | null;
-  updatedAt: string | null;
-  __v: string | null | number;
 }
 
 interface IResumeEditorState {
@@ -88,18 +77,15 @@ const styleInitialState: TypeOfStyleText = {
   size: "",
   textAlign: "",
 };
-const initialState: IResumeEditorState = {
+export const initialState: IResumeEditorState = {
   isLoading: false,
   isSyncing: false,
   error: null,
-
   resume: {
     _id: "",
-    __v: 0,
-    createdAt: "",
-    updatedAt: "",
-    templateId: "",
     avatar: "",
+    historyId: "Schema.Types.Mixed",
+    templateId: "",
     personalInfo: {
       jobTitle: "",
       firstName: "",
@@ -291,28 +277,6 @@ const resumeEditorSlice = createSlice({
     changeTemplate(state, action) {
       state.resume = { ...state.resume, ...action.payload };
     },
-    // changeStyleResume(state, action: PayloadAction<IPayloadChangeStyleResume>) {
-    // const sectionStyle = state.resume.style[action.payload.sectionTitle] as
-    //   | keyof IPersonalInfo
-    //   | keyof IWorkExperience
-    //   | keyof ISkills
-    //   | keyof ILanguages
-    //   | keyof IReferences
-    //   | keyof IEducations
-    //   | keyof ISocialProfiles
-    //   | keyof ISectionTitles;
-
-    // if (sectionStyle && typeof sectionStyle === "object") {
-    //  {
-    //    ...sectionStyle ,sectionStyle[action.payload.fieldName] =
-    //       action.payload.value
-    //   }
-    // }
-    // state.resume.style[action.payload.sectionTitle] = {
-    //   ...state.resume.style[action.payload.sectionTitle],
-    //   [action.payload.fieldName]: action.payload.value,
-    // };
-    // },
     changeStyleResume(state, action: PayloadAction<IPayloadChangeStyleResume>) {
       const { sectionTitle, fieldName, value } = action.payload;
       // Find the section style object
