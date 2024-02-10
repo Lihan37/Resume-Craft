@@ -1,32 +1,90 @@
-import { Link } from "react-router-dom";
 import { Container } from "../../../components/common/Container";
 import TabSection from "./TabSection";
 import Button from "../../../components/common/Button";
-import { data } from "../../../constant";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { nanoid } from "@reduxjs/toolkit";
+import { changeTemplate } from "../../../services/resumeEditor/resumeEditorSlice";
+import resumeStyle from "../../../components/resumeTemplates/style";
+import { useNavigate } from "react-router-dom";
+import { ISingleUserHistory } from "../../../services/history/historySlice";
+import { createUserHistory } from "../../../services/history/historyApi";
+import { initialState } from "../../../services/resumeEditor/resumeEditorSlice";
 import { AnimatePresence, motion } from "framer-motion";
-import demo from "../../../assets/resumes/demo.png";
-interface IData {
-  _id: string | number;
-  name: string;
-  image: string;
-  tags: string[];
-}
+import { RootState, useAppDispatch } from "../../../app/store";
+import { userHistory } from "../../../services/history/historyApi";
+import { useSelector } from "react-redux";
+import {
+  selectAllHistory,
+  selectHistory,
+  selectHistoryLoading,
+} from "../../../services/history/historySelector";
+
 const UserDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("resume");
+  const dispatch = useDispatch();
+  const appDispatch = useAppDispatch();
+  const allHistory = useSelector(selectAllHistory);
+  const navigate = useNavigate();
+  const resumeId = nanoid();
+  const historyId = nanoid();
 
-  let tabData: IData[] = [];
-  let buttonLabel: string = "";
+  useEffect(() => {
+    if (!(allHistory.length > 0)) {
+      appDispatch(userHistory());
+    }
+  }, []);
+
+  const history = useSelector((state: RootState) =>
+    selectHistory(state, activeTab)
+  );
+  const loading = useSelector(selectHistoryLoading);
+
+  let buttonLabel = { value: "resume", label: "Add Resume" };
   if (activeTab === "resume") {
-    tabData = [{ _id: 1, name: "", tags: ["new"], image: demo }];
-    buttonLabel = "Add Resume";
-  } else if (activeTab === "cover-letter") {
-    tabData = [...data.coverletter.slice(2, 4)];
-    buttonLabel = "Add Cover Letter";
+    buttonLabel = { value: "resume", label: "Add Resume" };
+  } else if (activeTab === "coverletter") {
+    buttonLabel = { value: "coverletter", label: "Add Cover Letter" };
   } else if (activeTab === "portfolio") {
-    buttonLabel = "Add Portfolio";
+    buttonLabel = { value: "portfolio", label: "Add Portfolio" };
   }
+
+  const handleCreateHistory = async () => {
+    const data: ISingleUserHistory = {
+      _id: historyId,
+      user: "65bfd0f85443cc82b0f3f504",
+      resumeId: resumeId,
+      thumbnail: {
+        public_id: "",
+        url: "",
+      },
+      type: "resume",
+      createdAt: "",
+      updatedAt: "",
+    };
+
+    try {
+      await appDispatch(createUserHistory(data));
+    } catch (error) {
+      console.error("Error creating history:", error);
+    }
+  };
+  const createNewResume = (value: string) => {
+    if (value === "resume") {
+      const data = {
+        ...initialState.resume,
+        _id: resumeId,
+        templateId: "stockholm01",
+        historyId: historyId,
+        style: {
+          ...resumeStyle["stockholm01"].style.require,
+        },
+      };
+      handleCreateHistory();
+      dispatch(changeTemplate(data));
+      navigate(`/edit/resume/${data._id}`);
+    }
+  };
 
   return (
     <Container>
@@ -35,9 +93,11 @@ const UserDashboard: React.FC = () => {
           <h1 className=" text-2xl text-center md:text-start  md:text-3xl lg:text-4xl  font-bold text-gray-700">
             Resumes & Cover Letters & Portfolio
           </h1>
-          <Link to="/edit/resume">
-            <Button icon={false}>{buttonLabel}</Button>
-          </Link>
+          <Button
+            onClick={() => createNewResume(buttonLabel.value)}
+            icon={false}>
+            {buttonLabel.label}
+          </Button>
         </div>
         <div className=" py-5 mt-10 md:mt-0  mb-10 border-b-2 flex justify-center md:justify-start items-center gap-5 md:gap-10 text-base md:text-lg font-semibold text-gray-500">
           <span
@@ -48,7 +108,7 @@ const UserDashboard: React.FC = () => {
             Resumes
           </span>
           <span
-            onClick={() => setActiveTab("cover-letter")}
+            onClick={() => setActiveTab("coverletter")}
             className={`cursor-pointer ${
               activeTab === "cover-letter" && " text-c-primary"
             }`}>
@@ -63,16 +123,22 @@ const UserDashboard: React.FC = () => {
           </span>
         </div>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ y: 10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -10, opacity: 0 }}
-            transition={{ duration: 0.2 }}>
-            <TabSection buttonLabel={buttonLabel} data={tabData} />
-          </motion.div>
-        </AnimatePresence>
+        {!loading && (
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -10, opacity: 0 }}
+              transition={{ duration: 0.2 }}>
+              <TabSection
+                createNewResume={createNewResume}
+                buttonLabel={buttonLabel}
+                data={history}
+              />
+            </motion.div>
+          </AnimatePresence>
+        )}
       </div>
     </Container>
   );

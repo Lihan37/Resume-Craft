@@ -1,13 +1,14 @@
 import { FaCloudDownloadAlt, FaCopy, FaEdit } from "react-icons/fa";
 import Title from "../../../components/editor/Title";
 import { Link } from "react-router-dom";
+import { ISingleUserHistory } from "../../../services/history/historySlice";
 
 interface IButtonOption {
   children: React.ReactNode;
 }
 
 interface ISingleCard {
-  image: string;
+  history: ISingleUserHistory;
 }
 
 const ButtonOption: React.FC<IButtonOption> = ({ children }) => {
@@ -18,12 +19,16 @@ const ButtonOption: React.FC<IButtonOption> = ({ children }) => {
   );
 };
 
-const SingleCard: React.FC<ISingleCard> = ({ image }) => {
+const SingleCard: React.FC<ISingleCard> = ({ history }) => {
   return (
-    <Link to="/edit/resume">
+    <Link to={`/edit/resume/${history.resumeId}`}>
       <div className=" flex justify-start items-start gap-5">
         <div className="h-56 lg:h-72 xl:h-56 2xl:h-72 w-full  border-[1px] rounded-md overflow-hidden">
-          <img className=" h-full w-full" src={image} alt="image" />
+          <img
+            className=" h-full w-full"
+            src={history.thumbnail.url}
+            alt="image"
+          />
         </div>
         <div className="text-c-dark flex flex-col gap-2 justify-start items-start w-full">
           <Title maxWidth="80px" />
