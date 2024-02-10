@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useEffect, useRef } from "react";
 import LeftSideBar from "./leftBar/LeftSideBar";
 import useTitleSet from "../../hooks/useTitleSet";
 import ResumeTemplates from "./resume/ResumeTemplates";
@@ -21,6 +22,8 @@ import {
 } from "../../services/resumeEditor/resumeEditorApi";
 import { useAppDispatch } from "../../app/store";
 import { useParams } from "react-router-dom";
+import html2canvas from "html2canvas";
+import { updateHistoryThumbnail } from "../../services/history/historyApi";
 
 const Editor: React.FC = () => {
   useTitleSet("Resume Builder");
@@ -29,12 +32,47 @@ const Editor: React.FC = () => {
   const editor = useSelector(selectResumeEditor);
   const dispatch = useAppDispatch();
   const param = useParams();
+  const templateRef = useRef(null);
+
+  const downloadDivAsPNG = async (ref: any, id: string) => {
+    if (ref.current && id) {
+      const divToCapture = ref.current;
+      const canvas = await html2canvas(divToCapture);
+
+      // Convert canvas to blob
+      const blob = await new Promise<Blob | null>((resolve) => {
+        canvas.toBlob(resolve, "image/png");
+      });
+
+      if (!blob) {
+        console.error("Failed to convert canvas to blob.");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append(
+        "resumeCraftResumeThumbnail",
+        blob,
+        "resumeThumbnail.png"
+      );
+
+      if (resume.templateId) {
+        try {
+          await dispatch(
+            updateHistoryThumbnail({ id: resume.historyId, fileData: formData })
+          );
+        } catch (error) {
+          console.error("Error updating thumbnail:", error);
+        }
+      }
+    }
+  };
 
   useEffect(() => {
-    if (param.id && !resume._id) {
+    if (param.id && param.id !== resume._id) {
       dispatch(getSingleResumeData(param.id));
     }
-  }, [param.id]);
+  }, [param.id, resume._id]);
 
   useEffect(() => {
     const timeoutId = setTimeout(async () => {
@@ -47,6 +85,18 @@ const Editor: React.FC = () => {
       clearTimeout(timeoutId);
     };
   }, [resume, dispatch]);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(async () => {
+      if (!editor.isLoading) {
+        downloadDivAsPNG(templateRef, param.id || "");
+      }
+    }, 2000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [resume]);
 
   const hight =
     windowWidth > 1024
@@ -75,7 +125,7 @@ const Editor: React.FC = () => {
           style={{ height: hight }}
           id="resumeEditorDashboard"
           className="w-full flex overflow-auto justify-center items-center bg-zinc-100 ">
-          {Template && <Template resume={resume} />}
+          {Template && <Template ref={templateRef} resume={resume} />}
         </div>
 
         <div className="2xl:hidden fixed right-0 top-56 py-2 px-6 hover:bg-white hover:text-c-primary duration-300 transition-colors cursor-pointer text-white rounded-l-full bg-c-primary">

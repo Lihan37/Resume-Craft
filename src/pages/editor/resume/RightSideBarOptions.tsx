@@ -65,8 +65,6 @@ const RightSideBarOptions: React.FC = () => {
     )
   );
 
-  console.log("style", style);
-
   return (
     <div className=" space-y-10 text-c-dark ">
       <SelectTheme
