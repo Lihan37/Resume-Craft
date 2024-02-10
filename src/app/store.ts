@@ -3,13 +3,20 @@ import accordionReducer from "../services/accordion/accordionSlice";
 import resumeEditorReducer from "../services/resumeEditor/resumeEditorSlice";
 import generalEditorReducer from "../services/generalEditor/generalEditorSlice";
 import { useDispatch } from "react-redux";
+import historyReducer from "../services/history/historySlice";
+import apiSlice from "../services/api/api";
 
 const store = configureStore({
   reducer: {
+    [apiSlice.reducerPath]: apiSlice.reducer,
     accordion: accordionReducer,
     generalEditor: generalEditorReducer,
     resumeEditor: resumeEditorReducer,
+    history: historyReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(apiSlice.middleware),
+
   devTools: !(import.meta.env.MODE == "production"),
 });
 
