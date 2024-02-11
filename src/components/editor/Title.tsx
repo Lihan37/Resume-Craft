@@ -38,6 +38,12 @@ const Title: React.FC<ITitle> = ({
     setInputWidth(inputWidth);
   }, [title]);
 
+  useEffect(() => {
+    if (initialValue !== title) {
+      setTitle(initialValue || "Untitled");
+    }
+  }, [initialValue]);
+
   useOutsideClick(inputRef, () => {
     if (title?.length === 0) {
       setTitle(initialValue || "Untitled");
@@ -51,11 +57,13 @@ const Title: React.FC<ITitle> = ({
   };
 
   useEffect(() => {
-    if (typeof getValue === "function") {
+    if (typeof getValue === "function" && initialValue !== title) {
+      console.count("Title getValue");
       getValue(title);
     }
   }, [title]);
 
+  console.count("Title");
   return (
     <div
       onClick={onClick}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../common/Logo";
 import Breadcrumbs from "../common/Breadcrumbs";
 import Title from "./Title";
@@ -9,16 +9,64 @@ import ZoomIn from "./ZoomIn";
 import { useDispatch, useSelector } from "react-redux";
 import { setZoomIn } from "../../services/resumeEditor/resumeEditorSlice";
 import {
+  selectResume,
   selectResumeEditor,
   selectZoomIn,
 } from "../../services/resumeEditor/resumeEditorSelector";
 import { TbLoader2 } from "react-icons/tb";
+import { ISingleUserHistory } from "../../services/history/historySlice";
+import {
+  updateUserHistory,
+  userHistory,
+} from "../../services/history/historyApi";
+import { RootState, useAppDispatch } from "../../app/store";
+import {
+  selectAllHistory,
+  selectSingleHistory,
+} from "../../services/history/historySelector";
 
 const EditorNavbar: React.FC = () => {
   const dispatch = useDispatch();
+  const appDispatch = useAppDispatch();
   const editor = useSelector(selectResumeEditor);
   const zoom = useSelector(selectZoomIn);
+  const resume = useSelector(selectResume);
 
+  const history = useSelector((state: RootState) =>
+    selectSingleHistory(state, resume._id)
+  );
+
+  const allHistory = useSelector(selectAllHistory);
+
+  useEffect(() => {
+    if (!(allHistory.length > 0)) {
+      appDispatch(userHistory());
+    }
+  }, []);
+
+  const [title, setTitle] = useState<string>(history?.title || "");
+
+  useEffect(() => {
+    const timerId = setTimeout(async () => {
+      if (title !== "Untitled" && history?.title !== title) {
+        if (history?._id) {
+          const data: ISingleUserHistory = {
+            ...history,
+            title: title,
+          };
+          try {
+            await appDispatch(updateUserHistory(data));
+          } catch (error) {
+            console.error("Error creating history:", error);
+          }
+        }
+      }
+    }, 600);
+
+    return () => clearTimeout(timerId);
+  }, [title]);
+
+  console.count("EditorNavbar");
   return (
     <div className="border-b-2">
       <div className=" 2xl:max-w-[1800px] mx-auto px-10 2xl:px-0 py-5 ">
@@ -28,7 +76,12 @@ const EditorNavbar: React.FC = () => {
             <div className=" flex justify-start items-center gap-5 xl:gap-10">
               <Breadcrumbs back="/" label="Home" />
               <Breadcrumbs back="/dashboard" label="Resumes" />
-              <Title />
+              {history?._id && (
+                <Title
+                  initialValue={history?.title}
+                  getValue={(data: string) => setTitle(data)}
+                />
+              )}
               <div className="flex justify-start items-center gap-2 mt-1 w-28">
                 {editor?.isSyncing ? (
                   <TbLoader2 className="animate-spin text-c-primary text-2xl lg:text-2xl" />
@@ -73,4 +126,4 @@ const EditorNavbar: React.FC = () => {
   );
 };
 
-export default EditorNavbar;
+export default React.memo(EditorNavbar);
