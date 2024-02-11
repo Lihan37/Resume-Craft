@@ -1,7 +1,10 @@
 import { FaCloudDownloadAlt, FaCopy, FaEdit } from "react-icons/fa";
 import Title from "../../../components/editor/Title";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ISingleUserHistory } from "../../../services/history/historySlice";
+import React, { useEffect, useState } from "react";
+import { useAppDispatch } from "../../../app/store";
+import { updateUserHistory } from "../../../services/history/historyApi";
 
 interface IButtonOption {
   children: React.ReactNode;
@@ -20,8 +23,43 @@ const ButtonOption: React.FC<IButtonOption> = ({ children }) => {
 };
 
 const SingleCard: React.FC<ISingleCard> = ({ history }) => {
+  const [title, setTitle] = useState<string>(history.title);
+  const navigate = useNavigate();
+  const appDispatch = useAppDispatch();
+
+  const handleNavigate = () => {
+    navigate(`/edit/resume/${history.resumeId}`);
+  };
+  const onTitleClick = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    event.stopPropagation();
+  };
+
+  const handleCreateHistory = async () => {
+    const data: ISingleUserHistory = {
+      ...history,
+      title: title,
+    };
+
+    try {
+      await appDispatch(updateUserHistory(data));
+    } catch (error) {
+      console.error("Error creating history:", error);
+    }
+  };
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      if (title !== "Untitled" && history.title !== title) {
+        handleCreateHistory();
+      }
+    }, 600);
+
+    return () => clearTimeout(timerId);
+  }, [title]);
+
   return (
-    <Link to={`/edit/resume/${history.resumeId}`}>
+    <div onClick={handleNavigate} className=" cursor-pointer">
       <div className=" flex justify-start items-start gap-5">
         <div className="h-56 lg:h-72 xl:h-56 2xl:h-72 w-full  border-[1px] rounded-md overflow-hidden">
           <img
@@ -31,7 +69,12 @@ const SingleCard: React.FC<ISingleCard> = ({ history }) => {
           />
         </div>
         <div className="text-c-dark flex flex-col gap-2 justify-start items-start w-full">
-          <Title maxWidth="80px" />
+          <Title
+            initialValue={title}
+            getValue={(data: string) => setTitle(data)}
+            onClick={onTitleClick}
+            maxWidth="80px"
+          />
           <p className=" text-c-dark-light text-sm">Updated 14 January</p>
           <ButtonOption>
             <FaEdit className=" text-xl text-c-primary" /> Edit
@@ -45,8 +88,8 @@ const SingleCard: React.FC<ISingleCard> = ({ history }) => {
           </ButtonOption>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 
-export default SingleCard;
+export default React.memo(SingleCard);

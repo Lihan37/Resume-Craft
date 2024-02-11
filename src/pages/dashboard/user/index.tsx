@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Container } from "../../../components/common/Container";
 import TabSection from "./TabSection";
 import Button from "../../../components/common/Button";
@@ -20,14 +21,27 @@ import {
   selectHistoryLoading,
 } from "../../../services/history/historySelector";
 
+interface State {
+  activeTab: string;
+  resumeId: string;
+  historyId: string;
+}
+
 const UserDashboard: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<string>("resume");
+  const [state, setState] = useState<State>({
+    activeTab: "resume",
+    resumeId: nanoid(),
+    historyId: nanoid(),
+  });
+  const { activeTab, resumeId, historyId } = state;
   const dispatch = useDispatch();
   const appDispatch = useAppDispatch();
-  const allHistory = useSelector(selectAllHistory);
   const navigate = useNavigate();
-  const resumeId = nanoid();
-  const historyId = nanoid();
+  const allHistory = useSelector(selectAllHistory);
+  const history = useSelector((state: RootState) =>
+    selectHistory(state, activeTab)
+  );
+  const loading = useSelector(selectHistoryLoading);
 
   useEffect(() => {
     if (!(allHistory.length > 0)) {
@@ -35,24 +49,17 @@ const UserDashboard: React.FC = () => {
     }
   }, []);
 
-  const history = useSelector((state: RootState) =>
-    selectHistory(state, activeTab)
-  );
-  const loading = useSelector(selectHistoryLoading);
-
-  let buttonLabel = { value: "resume", label: "Add Resume" };
-  if (activeTab === "resume") {
-    buttonLabel = { value: "resume", label: "Add Resume" };
-  } else if (activeTab === "coverletter") {
-    buttonLabel = { value: "coverletter", label: "Add Cover Letter" };
-  } else if (activeTab === "portfolio") {
-    buttonLabel = { value: "portfolio", label: "Add Portfolio" };
-  }
+  const buttonLabels: Record<string, string> = {
+    resume: "Add Resume",
+    coverletter: "Add Cover Letter",
+    portfolio: "Add Portfolio",
+  };
 
   const handleCreateHistory = async () => {
     const data: ISingleUserHistory = {
       _id: historyId,
       user: "65bfd0f85443cc82b0f3f504",
+      title: "Untitled",
       resumeId: resumeId,
       thumbnail: {
         public_id: "",
@@ -69,6 +76,7 @@ const UserDashboard: React.FC = () => {
       console.error("Error creating history:", error);
     }
   };
+
   const createNewResume = (value: string) => {
     if (value === "resume") {
       const data = {
@@ -93,34 +101,22 @@ const UserDashboard: React.FC = () => {
           <h1 className=" text-2xl text-center md:text-start  md:text-3xl lg:text-4xl  font-bold text-gray-700">
             Resumes & Cover Letters & Portfolio
           </h1>
-          <Button
-            onClick={() => createNewResume(buttonLabel.value)}
-            icon={false}>
-            {buttonLabel.label}
+          <Button onClick={() => createNewResume(activeTab)} icon={false}>
+            {buttonLabels[activeTab]}
           </Button>
         </div>
+
         <div className=" py-5 mt-10 md:mt-0  mb-10 border-b-2 flex justify-center md:justify-start items-center gap-5 md:gap-10 text-base md:text-lg font-semibold text-gray-500">
-          <span
-            onClick={() => setActiveTab("resume")}
-            className={`cursor-pointer ${
-              activeTab === "resume" && " text-c-primary"
-            }`}>
-            Resumes
-          </span>
-          <span
-            onClick={() => setActiveTab("coverletter")}
-            className={`cursor-pointer ${
-              activeTab === "cover-letter" && " text-c-primary"
-            }`}>
-            Cover Letters
-          </span>
-          <span
-            onClick={() => setActiveTab("portfolio")}
-            className={`cursor-pointer ${
-              activeTab === "portfolio" && " text-c-primary"
-            }`}>
-            Portfolio
-          </span>
+          {Object.keys(buttonLabels).map((tab) => (
+            <span
+              key={tab}
+              onClick={() => setState({ ...state, activeTab: tab })}
+              className={`cursor-pointer ${
+                activeTab === tab && " text-c-primary"
+              }`}>
+              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+            </span>
+          ))}
         </div>
 
         {!loading && (
@@ -133,7 +129,10 @@ const UserDashboard: React.FC = () => {
               transition={{ duration: 0.2 }}>
               <TabSection
                 createNewResume={createNewResume}
-                buttonLabel={buttonLabel}
+                buttonLabel={{
+                  value: activeTab,
+                  label: buttonLabels[activeTab],
+                }}
                 data={history}
               />
             </motion.div>
