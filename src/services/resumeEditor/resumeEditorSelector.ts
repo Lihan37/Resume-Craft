@@ -42,3 +42,9 @@ export const selectZoomIn = (state: RootState) =>
   state.resumeEditor.resume.zoom;
 
 export const selectResume = (state: RootState) => state.resumeEditor.resume;
+
+export const selectSkillLevel = (state: RootState) =>
+  state.resumeEditor.resume.style.skillLevel;
+
+export const selectSkillLevelDisabled = (state: RootState) =>
+  state.resumeEditor.resume.style.skillLevelDisabled;

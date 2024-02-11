@@ -128,6 +128,8 @@ export const initialState: IResumeEditorState = {
     style: {
       theme: "",
       themeOptions: [],
+      skillLevel: false,
+      skillLevelDisabled: false,
       personalInfo: {
         jobTitle: {
           ...styleInitialState,
@@ -280,6 +282,9 @@ const resumeEditorSlice = createSlice({
     changeTemplate(state, action) {
       state.resume = { ...state.resume, ...action.payload };
     },
+    changeSkillLevel(state) {
+      state.resume.style.skillLevel = !state.resume.style.skillLevel;
+    },
     changeStyleResume(state, action: PayloadAction<IPayloadChangeStyleResume>) {
       const { sectionTitle, fieldName, value } = action.payload;
       // Find the section style object
@@ -339,6 +344,7 @@ export const {
   setZoomIn,
   changeTemplate,
   changeStyleResume,
+  changeSkillLevel,
 } = resumeEditorSlice.actions;
 
 export default resumeEditorSlice.reducer;

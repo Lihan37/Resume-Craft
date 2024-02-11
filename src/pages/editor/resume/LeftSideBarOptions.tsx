@@ -29,6 +29,7 @@ import {
   setPersonalInfo,
   setProfessionalSummary,
   setSectionTitles,
+  changeSkillLevel,
 } from "../../../services/resumeEditor/resumeEditorSlice";
 import {
   selectEducation,
@@ -37,6 +38,8 @@ import {
   selectProfessionalSummary,
   selectReference,
   selectSectionTitles,
+  selectSkillLevel,
+  selectSkillLevelDisabled,
   selectSkills,
   selectSocialProfile,
   selectWorkExperience,
@@ -57,6 +60,8 @@ const LeftSideBarOptions: React.FC = () => {
   const professionalSummary = useSelector(selectProfessionalSummary);
   const sectionTitle = useSelector(selectSectionTitles);
   const focusInput = useSelector(selectFocusInput);
+  const skillLevel = useSelector(selectSkillLevel);
+  const skillLevelDisabled = useSelector(selectSkillLevelDisabled);
 
   return (
     <div>
@@ -253,6 +258,11 @@ const LeftSideBarOptions: React.FC = () => {
           />
           <AccordionPanel id={502}>
             <AddSkills
+              skillLevelDisabled={skillLevelDisabled}
+              skillLevel={skillLevel}
+              handleSkillLevel={() => {
+                dispatch(changeSkillLevel());
+              }}
               initialFocusedValue={focusInput}
               getFocusedInputValue={(data: string) => {
                 dispatch(

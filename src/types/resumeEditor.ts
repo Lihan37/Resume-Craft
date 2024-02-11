@@ -76,6 +76,8 @@ export interface TypeOfStyleText {
 }
 export interface TypeOfResumeStyle {
   theme: string;
+  skillLevel: boolean;
+  skillLevelDisabled: boolean;
   themeOptions: string[];
   personalInfo: IPersonalInfo;
   workExperience: IWorkExperience;

@@ -11,6 +11,7 @@ interface IAddSingleSkill {
   initialValue?: TypeOfSkill;
   getFocusedInputValue?: (data: string) => void;
   initialFocusedValue?: string;
+  skillLevel?: boolean;
 }
 
 const initialState = {
@@ -25,6 +26,7 @@ const AddSingleSkill: React.FC<IAddSingleSkill> = ({
   getFocusedInputValue = () => {},
   initialValue,
   initialFocusedValue,
+  skillLevel = false,
 }) => {
   const [title, setTitle] = useState<string>("(Not specified)");
   const [state, setState] = useState<TypeOfSkill>(
@@ -96,7 +98,11 @@ const AddSingleSkill: React.FC<IAddSingleSkill> = ({
                 name="label"
                 placeholder="Label"
               />
-              <SkillLevel value={state?.level} getValue={handleSkillLevel} />
+              <SkillLevel
+                disable={skillLevel}
+                value={state?.level}
+                getValue={handleSkillLevel}
+              />
             </div>
           </motion.div>
         )}

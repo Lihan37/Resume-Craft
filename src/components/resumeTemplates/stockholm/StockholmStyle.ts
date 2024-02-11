@@ -2,6 +2,8 @@ const styleStockholm = {
   require: {
     theme: "#084C41",
     themeOptions: ["#084C41", "#65A30D", "#0D9488"],
+    skillLevel: true,
+    skillLevelDisabled: true,
     personalInfo: {
       jobTitle: {
         color: "#fcfcfc",
