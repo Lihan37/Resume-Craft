@@ -155,6 +155,15 @@ const styleStockholm = {
         textAlign: "",
       },
     },
+    professionalSummary: {
+      summery: {
+        color: "#0D9488",
+        fontFamily: "",
+        fontWidth: 0,
+        size: "44px",
+        textAlign: "center",
+      },
+    },
     languages: {
       language: {
         color: "",

@@ -177,6 +177,9 @@ export const initialState: IResumeEditorState = {
         label: { ...styleInitialState },
         level: { ...styleInitialState },
       },
+      professionalSummary: {
+        summery: { ...styleInitialState },
+      },
       languages: {
         language: { ...styleInitialState },
         level: { ...styleInitialState },

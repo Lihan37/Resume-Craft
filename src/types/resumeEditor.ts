@@ -79,6 +79,7 @@ export interface TypeOfResumeStyle {
   themeOptions: string[];
   personalInfo: IPersonalInfo;
   workExperience: IWorkExperience;
+  professionalSummary: { summery: TypeOfStyleText };
   skills: ISkills;
   languages: ILanguages;
   references: IReferences;
