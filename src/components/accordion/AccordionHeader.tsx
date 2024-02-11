@@ -14,12 +14,14 @@ interface AccordionHeaderProps {
   id: number;
   title?: string;
   getValue?: (data: string) => void;
+  onFocus?: () => void;
 }
 
 const AccordionHeader: FC<AccordionHeaderProps> = ({
   id,
   title,
   getValue = () => {},
+  onFocus = () => {},
 }) => {
   const dispatch = useDispatch();
 
@@ -44,7 +46,12 @@ const AccordionHeader: FC<AccordionHeaderProps> = ({
     <motion.div
       className={`px-5 cursor-pointer border-t-[1.8px] p-2 py-3 flex justify-between items-center w-full`}
       onClick={onChangeIndex}>
-      <Title getValue={getValue} initialValue={title} onClick={onTitleClick} />
+      <Title
+        onFocus={onFocus}
+        getValue={getValue}
+        initialValue={title}
+        onClick={onTitleClick}
+      />
       {isActive ? <FaMinus /> : <FaPlus />}
     </motion.div>
   );

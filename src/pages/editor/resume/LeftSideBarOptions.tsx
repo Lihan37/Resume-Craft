@@ -68,6 +68,14 @@ const LeftSideBarOptions: React.FC = () => {
             getValue={(data: string) => {
               dispatch(setSectionTitles({ name: "personalInfo", value: data }));
             }}
+            onFocus={() => {
+              dispatch(
+                setFocus({
+                  focusInput: "personalInfoStyle",
+                  focusSection: "sectionTitles",
+                })
+              );
+            }}
           />
           <AccordionPanel id={1}>
             <PersonaData
@@ -93,6 +101,14 @@ const LeftSideBarOptions: React.FC = () => {
                 setSectionTitles({ name: "professionalSummary", value: data })
               );
             }}
+            onFocus={() => {
+              dispatch(
+                setFocus({
+                  focusInput: "professionalSummaryStyle",
+                  focusSection: "sectionTitles",
+                })
+              );
+            }}
           />
           <AccordionPanel id={2}>
             <div className="py-5 px-5">
@@ -112,6 +128,14 @@ const LeftSideBarOptions: React.FC = () => {
             getValue={(data: string) => {
               dispatch(
                 setSectionTitles({ name: "workExperience", value: data })
+              );
+            }}
+            onFocus={() => {
+              dispatch(
+                setFocus({
+                  focusInput: "workExperienceStyle",
+                  focusSection: "sectionTitles",
+                })
               );
             }}
           />
@@ -136,6 +160,14 @@ const LeftSideBarOptions: React.FC = () => {
             title={sectionTitle.educations}
             getValue={(data: string) => {
               dispatch(setSectionTitles({ name: "educations", value: data }));
+            }}
+            onFocus={() => {
+              dispatch(
+                setFocus({
+                  focusInput: "educationsStyle",
+                  focusSection: "sectionTitles",
+                })
+              );
             }}
           />
           <AccordionPanel id={4}>
@@ -162,6 +194,14 @@ const LeftSideBarOptions: React.FC = () => {
                 setSectionTitles({ name: "socialProfiles", value: data })
               );
             }}
+            onFocus={() => {
+              dispatch(
+                setFocus({
+                  focusInput: "socialProfilesStyle",
+                  focusSection: "sectionTitles",
+                })
+              );
+            }}
           />
           <AccordionPanel id={501}>
             <AddSocialWebSite
@@ -184,6 +224,14 @@ const LeftSideBarOptions: React.FC = () => {
             title={sectionTitle.skills}
             getValue={(data: string) => {
               dispatch(setSectionTitles({ name: "skills", value: data }));
+            }}
+            onFocus={() => {
+              dispatch(
+                setFocus({
+                  focusInput: "skillsStyle",
+                  focusSection: "sectionTitles",
+                })
+              );
             }}
           />
           <AccordionPanel id={502}>
@@ -208,6 +256,14 @@ const LeftSideBarOptions: React.FC = () => {
             getValue={(data: string) => {
               dispatch(setSectionTitles({ name: "languages", value: data }));
             }}
+            onFocus={() => {
+              dispatch(
+                setFocus({
+                  focusInput: "languagesStyle",
+                  focusSection: "sectionTitles",
+                })
+              );
+            }}
           />
           <AccordionPanel id={6}>
             <AddLanguages
@@ -230,6 +286,14 @@ const LeftSideBarOptions: React.FC = () => {
             title={sectionTitle.references}
             getValue={(data: string) => {
               dispatch(setSectionTitles({ name: "references", value: data }));
+            }}
+            onFocus={() => {
+              dispatch(
+                setFocus({
+                  focusInput: "referencesStyle",
+                  focusSection: "sectionTitles",
+                })
+              );
             }}
           />
           <AccordionPanel id={7}>

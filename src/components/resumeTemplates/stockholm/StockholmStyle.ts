@@ -262,56 +262,56 @@ const styleStockholm = {
       },
     },
     sectionTitles: {
-      personalInfo: {
+      personalInfoStyle: {
         color: "",
         fontFamily: "",
         fontWidth: 0,
         size: "",
         textAlign: "",
       },
-      professionalSummary: {
+      professionalSummaryStyle: {
         color: "",
         fontFamily: "",
         fontWidth: 0,
         size: "",
         textAlign: "",
       },
-      workExperience: {
+      workExperienceStyle: {
         color: "",
         fontFamily: "",
         fontWidth: 0,
         size: "",
         textAlign: "",
       },
-      skills: {
+      skillsStyle: {
         color: "",
         fontFamily: "",
         fontWidth: 0,
         size: "",
         textAlign: "",
       },
-      languages: {
+      languagesStyle: {
         color: "",
         fontFamily: "",
         fontWidth: 0,
         size: "",
         textAlign: "",
       },
-      references: {
+      referencesStyle: {
         color: "",
         fontFamily: "",
         fontWidth: 0,
         size: "",
         textAlign: "",
       },
-      educations: {
+      educationsStyle: {
         color: "",
         fontFamily: "",
         fontWidth: 0,
         size: "",
         textAlign: "",
       },
-      socialProfiles: {
+      socialProfilesStyle: {
         color: "",
         fontFamily: "",
         fontWidth: 0,

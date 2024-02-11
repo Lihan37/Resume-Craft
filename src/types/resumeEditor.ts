@@ -137,12 +137,12 @@ export interface ISocialProfiles {
   link: TypeOfStyleText;
 }
 export interface ISectionTitles {
-  personalInfo: TypeOfStyleText;
-  professionalSummary: TypeOfStyleText;
-  workExperience: TypeOfStyleText;
-  skills: TypeOfStyleText;
-  languages: TypeOfStyleText;
-  references: TypeOfStyleText;
-  educations: TypeOfStyleText;
-  socialProfiles: TypeOfStyleText;
+  personalInfoStyle: TypeOfStyleText;
+  professionalSummaryStyle: TypeOfStyleText;
+  workExperienceStyle: TypeOfStyleText;
+  skillsStyle: TypeOfStyleText;
+  languagesStyle: TypeOfStyleText;
+  referencesStyle: TypeOfStyleText;
+  educationsStyle: TypeOfStyleText;
+  socialProfilesStyle: TypeOfStyleText;
 }

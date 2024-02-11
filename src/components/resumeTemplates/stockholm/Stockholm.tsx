@@ -10,6 +10,7 @@ const Stockholm: React.ForwardRefRenderFunction<HTMLDivElement, IStockholm> = (
   { resume },
   ref
 ) => {
+  const sectionTitleStyle = resume.style.sectionTitles;
   const personalInfo = resume.personalInfo;
   const personalInfoSectionTitle =
     (personalInfo.email || personalInfo.phoneNumber || personalInfo.country) &&
@@ -53,7 +54,15 @@ const Stockholm: React.ForwardRefRenderFunction<HTMLDivElement, IStockholm> = (
           {personalInfo.jobTitle}
         </h3>
         <div className=" my-4">
-          <h1 className=" font-semibold text-lg text-white">
+          <h1
+            style={{
+              fontFamily: sectionTitleStyle.personalInfoStyle.fontFamily,
+              textAlign: sectionTitleStyle.personalInfoStyle.textAlign as any,
+              fontWeight: sectionTitleStyle.personalInfoStyle.fontWidth,
+              color: sectionTitleStyle.personalInfoStyle.color,
+              fontSize: sectionTitleStyle.personalInfoStyle.size,
+            }}
+            className=" font-semibold text-lg text-white">
             {personalInfoSectionTitle}
           </h1>
           <p
