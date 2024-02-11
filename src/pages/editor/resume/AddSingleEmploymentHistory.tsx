@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import InputMonthYear from "../../../components/common/InputMonthYear";
 import { TypeOfSingleEmploymentHistory } from "../../../types/resumeEditor";
-import InputTextEditor from "../../../components/common/InputTextEditor";
 
 interface IAddSingleEmploymentHistory {
   id: string | number;
@@ -63,9 +62,6 @@ const AddSingleEmploymentHistory: React.FC<IAddSingleEmploymentHistory> = ({
     setState((prev) => ({ ...prev, endMontYear: data }));
   };
 
-  const handleDescription = (data: string) => {
-    setState((prev) => ({ ...prev, description: data }));
-  };
   useLayoutEffect(() => {
     if (typeof getValue === "function") {
       getValue({ ...state, _id: id });
@@ -140,22 +136,16 @@ const AddSingleEmploymentHistory: React.FC<IAddSingleEmploymentHistory> = ({
                 placeholder="City"
                 onFocus={() => handleInputFocus("city")}
               />
-              {/* TODO ! textarea */}
-              {/* <textarea
+
+              <InputText
+                textarea={true}
                 onFocus={() => handleInputFocus("description")}
                 onChange={(e) =>
                   setState((prev) => ({ ...prev, description: e.target.value }))
                 }
+                value={state.description}
                 name="description"
                 placeholder="Descriptions.."
-                className="w-full min-h-28 px-4 py-2 rounded-md outline-none focus:border-c-primary  border-[1.8px] placeholder:font-semibold text-lg placeholder:text-gray-400 placeholder:text-base text-c-dark"
-              /> */}
-              <InputTextEditor
-                onFocus={() => handleInputFocus("description")}
-                initialValue={state.description}
-                getValue={handleDescription}
-                placeholder="Descriptions.."
-                height="160px"
               />
             </div>
           </motion.div>

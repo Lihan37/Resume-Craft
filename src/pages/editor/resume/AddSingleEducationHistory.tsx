@@ -2,7 +2,6 @@ import React, { useEffect, useLayoutEffect, useState } from "react";
 import InputText from "../../../components/common/InputText";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import InputTextEditor from "../../../components/common/InputTextEditor";
 import InputMonthYear from "../../../components/common/InputMonthYear";
 import { TypeOfSingleEducationHistory } from "../../../types/resumeEditor";
 
@@ -60,9 +59,6 @@ const AddSingleEducationHistory: React.FC<IAddSingleEducationHistory> = ({
   };
   const handleEndMontYear = (data: string) => {
     setState((prev) => ({ ...prev, endMontYear: data }));
-  };
-  const handleDescription = (data: string) => {
-    setState((prev) => ({ ...prev, description: data }));
   };
 
   useLayoutEffect(() => {
@@ -139,12 +135,15 @@ const AddSingleEducationHistory: React.FC<IAddSingleEducationHistory> = ({
                 placeholder="City"
                 onFocus={() => handleInputFocus("city")}
               />
-              <InputTextEditor
-                initialValue={state.description}
-                getValue={handleDescription}
-                placeholder="Descriptions.."
-                height="160px"
+              <InputText
+                textarea={true}
                 onFocus={() => handleInputFocus("description")}
+                onChange={(e) =>
+                  setState((prev) => ({ ...prev, description: e.target.value }))
+                }
+                value={state.description}
+                name="description"
+                placeholder="Descriptions.."
               />
             </div>
           </motion.div>

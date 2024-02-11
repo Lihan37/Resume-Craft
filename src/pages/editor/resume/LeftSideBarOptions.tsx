@@ -2,7 +2,6 @@ import React from "react";
 import AccordionItem from "../../../components/accordion/AccordionItem";
 import AccordionHeader from "../../../components/accordion/AccordionHeader";
 import AccordionPanel from "../../../components/accordion/AccordionPanelProps";
-import InputTextEditor from "../../../components/common/InputTextEditor";
 import AddEmploymentHistory from "./AddEmploymentHistory";
 import {
   IResumePersonalInfo,
@@ -44,6 +43,7 @@ import {
 } from "../../../services/resumeEditor/resumeEditorSelector";
 import { setFocus } from "../../../services/generalEditor/generalEditorSlice";
 import { selectFocusInput } from "../../../services/generalEditor/generalEditorSelector";
+import InputText from "../../../components/common/InputText";
 
 const LeftSideBarOptions: React.FC = () => {
   const dispatch = useDispatch();
@@ -112,12 +112,29 @@ const LeftSideBarOptions: React.FC = () => {
           />
           <AccordionPanel id={2}>
             <div className="py-5 px-5">
-              <InputTextEditor
+              <InputText
+                textarea={true}
+                onFocus={() => {
+                  dispatch(
+                    setFocus({
+                      focusInput: "summery",
+                      focusSection: "professionalSummary",
+                    })
+                  );
+                }}
+                onChange={(e) => {
+                  dispatch(setProfessionalSummary(e.target.value));
+                }}
+                value={professionalSummary}
+                name="professionalSummary"
+                placeholder="Professional Summary.."
+              />
+              {/* <InputTextEditor
                 initialValue={professionalSummary}
                 getValue={(data: string) => {
                   dispatch(setProfessionalSummary(data));
                 }}
-              />
+              /> */}
             </div>
           </AccordionPanel>
         </AccordionItem>
