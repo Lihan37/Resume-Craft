@@ -42,6 +42,28 @@ export const createUserHistory = createAsyncThunk(
   }
 );
 
+export const updateUserHistory = createAsyncThunk(
+  "history/updateUserHistory",
+  async (historyData: ISingleUserHistory, { rejectWithValue }) => {
+    try {
+      const response = await fetch(`${baseUrl}/history/v1/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(historyData),
+      });
+      const data = await response.json();
+
+      return data.history;
+    } catch (error) {
+      return rejectWithValue(
+        (error as Error).message || "An error occurred during Update History"
+      );
+    }
+  }
+);
+
 export const updateHistoryThumbnail = createAsyncThunk(
   "history/updateHistoryThumbnail",
   async (
