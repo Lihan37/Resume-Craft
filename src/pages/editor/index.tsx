@@ -34,40 +34,6 @@ const Editor: React.FC = () => {
   const param = useParams();
   const templateRef = useRef(null);
 
-  const downloadDivAsPNG = async (ref: any, id: string) => {
-    if (ref.current && id) {
-      const divToCapture = ref.current;
-      const canvas = await html2canvas(divToCapture);
-
-      // Convert canvas to blob
-      const blob = await new Promise<Blob | null>((resolve) => {
-        canvas.toBlob(resolve, "image/png");
-      });
-
-      if (!blob) {
-        console.error("Failed to convert canvas to blob.");
-        return;
-      }
-
-      const formData = new FormData();
-      formData.append(
-        "resumeCraftResumeThumbnail",
-        blob,
-        "resumeThumbnail.png"
-      );
-
-      if (resume.templateId) {
-        try {
-          await dispatch(
-            updateHistoryThumbnail({ id: resume.historyId, fileData: formData })
-          );
-        } catch (error) {
-          console.error("Error updating thumbnail:", error);
-        }
-      }
-    }
-  };
-
   useEffect(() => {
     if (param.id && param.id !== resume._id) {
       dispatch(getSingleResumeData(param.id));
@@ -89,7 +55,40 @@ const Editor: React.FC = () => {
   useEffect(() => {
     const timeoutId = setTimeout(async () => {
       if (!editor.isLoading) {
-        downloadDivAsPNG(templateRef, param.id || "");
+        if (templateRef.current && param.id) {
+          const divToCapture = templateRef.current;
+          const canvas = await html2canvas(divToCapture);
+
+          // Convert canvas to blob
+          const blob = await new Promise<Blob | null>((resolve) => {
+            canvas.toBlob(resolve, "image/png");
+          });
+
+          if (!blob) {
+            console.error("Failed to convert canvas to blob.");
+            return;
+          }
+
+          const formData = new FormData();
+          formData.append(
+            "resumeCraftResumeThumbnail",
+            blob,
+            "resumeThumbnail.png"
+          );
+
+          if (resume.templateId) {
+            try {
+              await dispatch(
+                updateHistoryThumbnail({
+                  id: resume.historyId,
+                  fileData: formData,
+                })
+              );
+            } catch (error) {
+              console.error("Error updating thumbnail:", error);
+            }
+          }
+        }
       }
     }, 2000);
 
