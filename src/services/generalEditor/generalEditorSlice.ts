@@ -23,7 +23,7 @@ const initialState: IGeneralEditorState = {
   textStyle: {
     color: "",
     fontFamily: "",
-    fontWidth: 0,
+    fontWeight: 0,
     size: "",
     textAlign: "",
   },

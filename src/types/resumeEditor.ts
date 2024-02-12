@@ -70,7 +70,7 @@ export interface TypeOfSectionTitle {
 export interface TypeOfStyleText {
   color: string;
   fontFamily: string;
-  fontWidth: number;
+  fontWeight: number;
   size: string;
   textAlign: string;
 }

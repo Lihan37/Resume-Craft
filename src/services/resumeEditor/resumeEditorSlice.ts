@@ -73,7 +73,7 @@ interface IResumeEditorState {
 const styleInitialState: TypeOfStyleText = {
   color: "",
   fontFamily: "",
-  fontWidth: 0,
+  fontWeight: 0,
   size: "",
   textAlign: "",
 };

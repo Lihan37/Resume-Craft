@@ -110,12 +110,12 @@ const RightSideBarOptions: React.FC = () => {
                     fieldName: focusInput as focusInput,
                     value: {
                       ...style,
-                      fontWidth: data,
+                      fontWeight: data,
                     } as TypeOfStyleText,
                   })
                 );
               }}
-              isSelectedValue={style?.fontWidth}
+              isSelectedValue={style?.fontWeight}
             />
             <FontColorSelect
               getValue={(data: string) => {

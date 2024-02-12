@@ -34,7 +34,7 @@ const Stockholm: React.ForwardRefRenderFunction<HTMLDivElement, IStockholm> = (
           style={{
             fontFamily: personalInfoStyle.firstName.fontFamily,
             textAlign: personalInfoStyle.firstName.textAlign as any,
-            fontWeight: personalInfoStyle.firstName.fontWidth,
+            fontWeight: personalInfoStyle.firstName.fontWeight,
             color: personalInfoStyle.firstName.color,
             fontSize: personalInfoStyle.firstName.size,
           }}
@@ -46,7 +46,7 @@ const Stockholm: React.ForwardRefRenderFunction<HTMLDivElement, IStockholm> = (
           style={{
             fontFamily: personalInfoStyle.jobTitle.fontFamily,
             textAlign: personalInfoStyle.jobTitle.textAlign as any,
-            fontWeight: personalInfoStyle.jobTitle.fontWidth,
+            fontWeight: personalInfoStyle.jobTitle.fontWeight,
             color: personalInfoStyle.jobTitle.color,
             fontSize: personalInfoStyle.jobTitle.size,
           }}
@@ -58,7 +58,7 @@ const Stockholm: React.ForwardRefRenderFunction<HTMLDivElement, IStockholm> = (
             style={{
               fontFamily: sectionTitleStyle.personalInfoStyle.fontFamily,
               textAlign: sectionTitleStyle.personalInfoStyle.textAlign as any,
-              fontWeight: sectionTitleStyle.personalInfoStyle.fontWidth,
+              fontWeight: sectionTitleStyle.personalInfoStyle.fontWeight,
               color: sectionTitleStyle.personalInfoStyle.color,
               fontSize: sectionTitleStyle.personalInfoStyle.size,
             }}
@@ -69,7 +69,7 @@ const Stockholm: React.ForwardRefRenderFunction<HTMLDivElement, IStockholm> = (
             style={{
               fontFamily: personalInfoStyle.email.fontFamily,
               textAlign: personalInfoStyle.email.textAlign as any,
-              fontWeight: personalInfoStyle.email.fontWidth,
+              fontWeight: personalInfoStyle.email.fontWeight,
               color: personalInfoStyle.email.color,
               fontSize: personalInfoStyle.email.size,
             }}>
@@ -79,7 +79,7 @@ const Stockholm: React.ForwardRefRenderFunction<HTMLDivElement, IStockholm> = (
             style={{
               fontFamily: personalInfoStyle.phoneNumber.fontFamily,
               textAlign: personalInfoStyle.phoneNumber.textAlign as any,
-              fontWeight: personalInfoStyle.phoneNumber.fontWidth,
+              fontWeight: personalInfoStyle.phoneNumber.fontWeight,
               color: personalInfoStyle.phoneNumber.color,
               fontSize: personalInfoStyle.phoneNumber.size,
             }}>
@@ -89,7 +89,7 @@ const Stockholm: React.ForwardRefRenderFunction<HTMLDivElement, IStockholm> = (
             style={{
               fontFamily: personalInfoStyle.country.fontFamily,
               textAlign: personalInfoStyle.country.textAlign as any,
-              fontWeight: personalInfoStyle.country.fontWidth,
+              fontWeight: personalInfoStyle.country.fontWeight,
               color: personalInfoStyle.country.color,
               fontSize: personalInfoStyle.country.size,
             }}>

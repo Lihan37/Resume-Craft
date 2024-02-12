@@ -5,6 +5,7 @@ import { ISingleUserHistory } from "../../../services/history/historySlice";
 import React, { useEffect, useState } from "react";
 import { useAppDispatch } from "../../../app/store";
 import { updateUserHistory } from "../../../services/history/historyApi";
+import formatDateToDayMonth from "../../../utils/formatDateToDayMonth";
 
 interface IButtonOption {
   children: React.ReactNode;
@@ -75,7 +76,9 @@ const SingleCard: React.FC<ISingleCard> = ({ history }) => {
             onClick={onTitleClick}
             maxWidth="80px"
           />
-          <p className=" text-c-dark-light text-sm">Updated 14 January</p>
+          <p className=" text-c-dark-light text-sm">
+            Updated {formatDateToDayMonth(history.updatedAt)}
+          </p>
           <ButtonOption>
             <FaEdit className=" text-xl text-c-primary" /> Edit
           </ButtonOption>
