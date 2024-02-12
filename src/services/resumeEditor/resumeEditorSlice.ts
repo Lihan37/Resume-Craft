@@ -307,6 +307,12 @@ const resumeEditorSlice = createSlice({
         }
       }
     },
+    removeResumeAvatar(state) {
+      state.resume.avatar = {
+        public_id: "",
+        url: "",
+      };
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -359,6 +365,7 @@ export const {
   changeTemplate,
   changeStyleResume,
   changeSkillLevel,
+  removeResumeAvatar,
 } = resumeEditorSlice.actions;
 
 export default resumeEditorSlice.reducer;
