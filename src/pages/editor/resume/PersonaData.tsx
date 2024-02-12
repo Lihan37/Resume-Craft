@@ -3,6 +3,7 @@ import InputText from "../../../components/common/InputText";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { IResumePersonalInfo } from "../../../types/resumeEditor";
+import AvatarResume from "./AvatarResume";
 
 const initialState = {
   _id: "",
@@ -33,7 +34,7 @@ const PersonaData: React.FC<IPersonaData> = ({
   initialValue,
   initialFocusedValue,
 }) => {
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState<boolean>(false);
   const [state, setState] = useState<IResumePersonalInfo>(
     initialValue || initialState
   );
@@ -68,6 +69,7 @@ const PersonaData: React.FC<IPersonaData> = ({
 
   return (
     <div className=" space-y-3 py-5 px-5 ">
+      <AvatarResume />
       <InputText
         value={state.jobTitle}
         name="jobTitle"
