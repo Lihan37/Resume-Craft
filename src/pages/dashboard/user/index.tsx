@@ -20,6 +20,7 @@ import {
   selectHistory,
   selectHistoryLoading,
 } from "../../../services/history/historySelector";
+import UserDashboardSkeleton from "../../../components/skeleton/UserDashboardSkeleton";
 
 interface State {
   activeTab: string;
@@ -119,7 +120,9 @@ const UserDashboard: React.FC = () => {
           ))}
         </div>
 
-        {!loading && (
+        {loading ? (
+          <UserDashboardSkeleton />
+        ) : (
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}

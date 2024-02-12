@@ -66,7 +66,6 @@ const EditorNavbar: React.FC = () => {
     return () => clearTimeout(timerId);
   }, [title]);
 
-  console.count("EditorNavbar");
   return (
     <div className="border-b-2">
       <div className=" 2xl:max-w-[1800px] mx-auto px-10 2xl:px-0 py-5 ">
@@ -76,12 +75,14 @@ const EditorNavbar: React.FC = () => {
             <div className=" flex justify-start items-center gap-5 xl:gap-10">
               <Breadcrumbs back="/" label="Home" />
               <Breadcrumbs back="/dashboard" label="Resumes" />
+
               {history?._id && (
                 <Title
                   initialValue={history?.title}
                   getValue={(data: string) => setTitle(data)}
                 />
               )}
+
               <div className="flex justify-start items-center gap-2 mt-1 w-28">
                 {editor?.isSyncing ? (
                   <TbLoader2 className="animate-spin text-c-primary text-2xl lg:text-2xl" />

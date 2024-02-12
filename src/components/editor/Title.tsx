@@ -63,7 +63,6 @@ const Title: React.FC<ITitle> = ({
     }
   }, [title]);
 
-  console.count("Title");
   return (
     <div
       onClick={onClick}
