@@ -23,6 +23,7 @@ const BlogDetails: React.FC = () => {
             </li>
           </ul>
 
+
           <img src={blog.image} alt="" className="h-[70vh] w-full rounded-md" />
           <ul className="flex items-baseline pt-20 pb-6">
             <li className="mr-20 font-semibold w-12 flex items-center gap-3 h-1 text-3xl">Fllower<img src={blog.authorImage} className="rounded-full border-emerald-200 border-2" alt="" /></li>
