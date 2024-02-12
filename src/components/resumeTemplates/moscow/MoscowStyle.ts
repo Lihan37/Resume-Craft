@@ -1,9 +1,9 @@
-// https://i.ibb.co/1dgPZK0/dublin-resume-templates.webp
+// https://i.ibb.co/D1TkdGx/sydney-resume-templates.webp
 
-const styleToronto = {
+const styleMoscow = {
   require: {
-    theme: "#084C41",
-    themeOptions: ["#084C41", "#87300D", "#10365C", "#3E1D53", "#242935"],
+    theme: "#082A4D",
+    themeOptions: ["#082A4D", "#581010", "#1D473A", "#32084D", "#1B212F"],
     skillLevel: true,
     skillLevelDisabled: true,
     personalInfo: {
@@ -335,4 +335,4 @@ const styleToronto = {
   },
 };
 
-export default styleToronto;
+export default styleMoscow;
