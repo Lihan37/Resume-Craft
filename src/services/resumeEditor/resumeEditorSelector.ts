@@ -43,6 +43,12 @@ export const selectZoomIn = (state: RootState) =>
 
 export const selectResume = (state: RootState) => state.resumeEditor.resume;
 
+export const selectResumeID = (state: RootState) =>
+  state.resumeEditor.resume._id;
+
+export const selectResumeAvatar = (state: RootState) =>
+  state.resumeEditor.resume.avatar;
+
 export const selectSkillLevel = (state: RootState) =>
   state.resumeEditor.resume.style.skillLevel;
 

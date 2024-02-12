@@ -40,25 +40,24 @@ export const getSingleResumeData = createAsyncThunk(
   }
 );
 
-// export const updateResumeThumbnail = createAsyncThunk(
-//   "resumeEditor/updateResumeThumbnail",
-//   async (
-//     { id, fileData }: { id: string; fileData: FormData },
-//     { rejectWithValue }
-//   ) => {
-//     try {
-//       const response = await fetch(`${baseUrl}/resume/v1/thumbnail/${id}`, {
-//         method: "PATCH",
-//         body: fileData,
-//       });
-//       const data = await response.json();
-
-//       return data.thumbnail;
-//     } catch (error) {
-//       return rejectWithValue(
-//         (error as Error).message ||
-//           "An error occurred during Update Resume Thumbnail !"
-//       );
-//     }
-//   }
-// );
+export const updateResumeAvatar = createAsyncThunk(
+  "resumeEditor/updateResumeAvatar",
+  async (
+    { id, fileData }: { id: string | number; fileData: FormData },
+    { rejectWithValue }
+  ) => {
+    try {
+      const response = await fetch(`${baseUrl}/resume/v1/upload/${id}`, {
+        method: "PATCH",
+        body: fileData,
+      });
+      const data = await response.json();
+      return data.avatar;
+    } catch (error) {
+      return rejectWithValue(
+        (error as Error).message ||
+          "An error occurred during Update history Thumbnail !"
+      );
+    }
+  }
+);

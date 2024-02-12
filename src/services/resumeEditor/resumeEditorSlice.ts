@@ -20,7 +20,11 @@ import {
   TypeOfStyleText,
   IPersonalInfo,
 } from "../../types/resumeEditor";
-import { createResumeAndUpdate, getSingleResumeData } from "./resumeEditorApi";
+import {
+  createResumeAndUpdate,
+  getSingleResumeData,
+  updateResumeAvatar,
+} from "./resumeEditorApi";
 
 export interface IPayloadChangeStyleResume {
   sectionTitle: keyof TypeOfResumeStyle;
@@ -47,7 +51,10 @@ export interface ISetResumeSize {
 export interface IResumeData {
   _id: string | number;
   templateId: string;
-  avatar: string;
+  avatar: {
+    public_id: string;
+    url: string;
+  };
   historyId: string | number;
   personalInfo: IResumePersonalInfo;
   professionalSummary: string;
@@ -83,7 +90,11 @@ export const initialState: IResumeEditorState = {
   error: null,
   resume: {
     _id: "",
-    avatar: "",
+    avatar: {
+      public_id: "",
+      url: "",
+    },
+
     historyId: "Schema.Types.Mixed",
     templateId: "",
     personalInfo: {
@@ -321,6 +332,9 @@ const resumeEditorSlice = createSlice({
       .addCase(getSingleResumeData.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload as string;
+      })
+      .addCase(updateResumeAvatar.fulfilled, (state, action) => {
+        state.resume.avatar = action.payload;
       });
   },
 });
