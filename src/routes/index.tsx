@@ -18,7 +18,7 @@ import AdminDashboard from "../pages/dashboard/admin";
 import BlogDetails from "../pages/blog/BlogDetails";
 import Blogs from "../pages/dashboard/admin/blog";
 import CreateBlog from "../pages/dashboard/admin/blog/CreateBlog";
-// import Stockholm from "../components/resumeTemplates/Stockholm";
+import Vienna from "../components/resumeTemplates/vienna/Vienna";
 
 const router = createBrowserRouter([
   {
@@ -107,10 +107,10 @@ const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: "/demo",
-  //   element: <Stockholm />,
-  // },
+  {
+    path: "/demo",
+    element: <Vienna />,
+  },
 ]);
 
 export default router;

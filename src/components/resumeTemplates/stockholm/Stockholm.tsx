@@ -27,7 +27,8 @@ const Stockholm: React.ForwardRefRenderFunction<HTMLDivElement, IStockholm> = (
         transformOrigin:
           parseFloat(resume.size.height.slice(0, -2)) > 1190.14 ? "bottom" : "",
         transition: "transform 0.5s",
-      }}>
+      }}
+      className="rounded overflow-hidden">
       <div
         style={{
           backgroundColor: resume.style.theme,
