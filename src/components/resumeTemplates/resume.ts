@@ -1,19 +1,100 @@
-// !Font Family
-// !Font Size must be px
-// !Font Weight must number
-
-// *Font Family List
-// "'Lato', sans-serif"
-// "'Montserrat', sans-serif"
-// "'Playfair Display', serif"
-// "'Poppins', sans-serif"
-// "'Roboto', sans-serif"
-// "'Roboto Mono', monospace"
-// "'Titillium Web', sans-serif"
-
-const styleStockholm = {
-  require: {
-    theme: "#084C41",
+export const resume = {
+  avatar: {
+    public_id: "resumeCraft_resume_Avatar/mlpqk3un5k7dlyahgxzv",
+    url: "https://res.cloudinary.com/dvbgu8nqo/image/upload/v1707718258/resumeCraft_resume_Avatar/mlpqk3un5k7dlyahgxzv.webp",
+  },
+  _id: "bfKW2ph4OY24mUZ9c46At",
+  educations: [
+    {
+      _id: 1,
+      school: "asfsaf",
+      degree: "",
+      startMontYear: "",
+      endMontYear: "",
+      city: "",
+      description: "",
+    },
+    {
+      _id: 2,
+      school: "sfsd",
+      degree: "",
+      startMontYear: "",
+      endMontYear: "",
+      city: "",
+      description: "",
+    },
+    {
+      _id: 3,
+      school: "",
+      degree: "",
+      startMontYear: "Mar,2024",
+      endMontYear: "Feb,2024",
+      city: "",
+      description: "",
+    },
+  ],
+  historyId: "aDPsvwx0aknlEAsLSAzNZ",
+  languages: [
+    {
+      _id: 1,
+      language: "",
+      level: "",
+    },
+    {
+      _id: 2,
+      language: "",
+      level: "",
+    },
+  ],
+  personalInfo: {
+    _id: "",
+    jobTitle: "Frontend Dev",
+    firstName: "Khokon  ",
+    lastName: "Dev",
+    email: "",
+    phoneNumber: "",
+    country: "",
+    city: "",
+    address: "",
+    postalCode: "",
+    drivingLicense: "",
+    nationality: "asfsaf",
+    placeOfBirth: "",
+    DateOfBirth: "",
+  },
+  professionalSummary: "",
+  references: [],
+  sectionTitles: {
+    _id: "",
+    personalInfo: "Personal Data",
+    professionalSummary: "Professional Summary",
+    workExperience: "Employment",
+    skills: "Skills",
+    languages: "Languages",
+    references: "References",
+    educations: "Education",
+    socialProfiles: "Websites & Social",
+  },
+  size: {
+    height: "1190.14px",
+    width: "852px",
+  },
+  skills: [
+    {
+      _id: 1,
+      label: "",
+      level: 20,
+    },
+  ],
+  socialProfiles: [
+    {
+      _id: 1,
+      label: "",
+      link: "",
+    },
+  ],
+  style: {
+    theme: "#65A30D",
     themeOptions: ["#084C41", "#65A30D", "#0D9488"],
     skillLevel: false,
     skillLevelDisabled: false,
@@ -90,8 +171,8 @@ const styleStockholm = {
       },
       nationality: {
         color: "",
-        fontFamily: "",
-        fontWeight: 0,
+        fontFamily: "'Montserrat', sans-serif",
+        fontWeight: 200,
         size: "",
         textAlign: "",
       },
@@ -174,7 +255,7 @@ const styleStockholm = {
       summery: {
         color: "#0D9488",
         fontFamily: "",
-        fontWeight: 0,
+        fontWeight: 200,
         size: "44px",
         textAlign: "center",
       },
@@ -287,10 +368,10 @@ const styleStockholm = {
     },
     sectionTitles: {
       personalInfoStyle: {
-        color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        size: "",
+        color: "#d11515",
+        fontFamily: "'Roboto Mono', monospace",
+        fontWeight: 800,
+        size: "30px",
         textAlign: "",
       },
       professionalSummaryStyle: {
@@ -344,14 +425,17 @@ const styleStockholm = {
       },
     },
   },
-  common: {
-    herader: {
-      display: "flex",
-
-      padding: "30px",
-      gap: "30px",
+  templateId: "stockholm01",
+  workExperience: [
+    {
+      _id: 1,
+      city: "",
+      description: "",
+      employer: "",
+      endMontYear: "",
+      jobTitle: "",
+      startMontYear: "",
     },
-  },
+  ],
+  zoom: 0.7,
 };
-
-export default styleStockholm;
