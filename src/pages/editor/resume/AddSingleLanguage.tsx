@@ -1,13 +1,15 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import InputText from "../../../components/common/InputText";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import { TypeOfLanguage } from "../../../types";
+import { TypeOfLanguage } from "../../../types/resumeEditor";
 
 interface IAddSingleLanguage {
   id: string | number;
   getValue?: (data: TypeOfLanguage) => void;
-  value?: TypeOfLanguage;
+  initialValue?: TypeOfLanguage;
+  getFocusedInputValue?: (data: string) => void;
+  initialFocusedValue?: string;
 }
 
 const initialState = {
@@ -19,17 +21,33 @@ const initialState = {
 const AddSingleLanguage: React.FC<IAddSingleLanguage> = ({
   id,
   getValue = () => {},
-  value,
+  getFocusedInputValue = () => {},
+  initialValue,
+  initialFocusedValue,
 }) => {
   const [title, setTitle] = useState<string>("(Not specified)");
-  const [state, setState] = useState<TypeOfLanguage>(initialState);
+  const [state, setState] = useState<TypeOfLanguage>(
+    initialValue && initialValue._id ? initialValue : initialState
+  );
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  useLayoutEffect(() => {
-    if (value && value._id) {
-      setState(value);
+  const [focusedInput, setFocusedInput] = useState<string>(
+    initialFocusedValue || ""
+  );
+
+  useEffect(() => {
+    if (
+      getFocusedInputValue &&
+      typeof getFocusedInputValue === "function" &&
+      focusedInput !== initialFocusedValue
+    ) {
+      getFocusedInputValue(focusedInput);
     }
-  }, []);
+  }, [focusedInput]);
+
+  const handleInputFocus = (inputName: string) => {
+    setFocusedInput(inputName);
+  };
 
   useLayoutEffect(() => {
     if (typeof getValue === "function") {
@@ -46,7 +64,7 @@ const AddSingleLanguage: React.FC<IAddSingleLanguage> = ({
   }, [state]);
 
   return (
-    <div className="mx-2 border-2 rounded-md text-c-dark overflow-hidden">
+    <div className="mx-2 border-[1.8px] rounded-md text-c-dark overflow-hidden">
       <motion.div
         onClick={() => setIsOpen((prev) => !prev)}
         className="w-full py-3 px-3 cursor-pointer font-semibold flex justify-between items-center">
@@ -72,6 +90,7 @@ const AddSingleLanguage: React.FC<IAddSingleLanguage> = ({
                 value={state.language}
                 name="language"
                 placeholder="Language"
+                onFocus={() => handleInputFocus("language")}
               />
               <InputText
                 onChange={(e) =>
@@ -80,6 +99,7 @@ const AddSingleLanguage: React.FC<IAddSingleLanguage> = ({
                 value={state.level}
                 name="level"
                 placeholder="Level"
+                onFocus={() => handleInputFocus("level")}
               />
             </div>
           </motion.div>

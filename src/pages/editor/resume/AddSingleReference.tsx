@@ -1,13 +1,15 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import InputText from "../../../components/common/InputText";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import { TypeOfReference } from "../../../types";
+import { TypeOfReference } from "../../../types/resumeEditor";
 
 interface IAddSingleReference {
   id: string | number;
   getValue?: (data: TypeOfReference) => void;
-  value?: TypeOfReference;
+  initialValue?: TypeOfReference;
+  getFocusedInputValue?: (data: string) => void;
+  initialFocusedValue?: string;
 }
 
 const initialState = {
@@ -21,17 +23,33 @@ const initialState = {
 const AddSingleReference: React.FC<IAddSingleReference> = ({
   id,
   getValue = () => {},
-  value,
+  getFocusedInputValue = () => {},
+  initialValue,
+  initialFocusedValue,
 }) => {
   const [title, setTitle] = useState<string>("(Not specified)");
-  const [state, setState] = useState<TypeOfReference>(initialState);
+  const [state, setState] = useState<TypeOfReference>(
+    initialValue && initialValue._id ? initialValue : initialState
+  );
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  useLayoutEffect(() => {
-    if (value && value._id) {
-      setState(value);
+  const [focusedInput, setFocusedInput] = useState<string>(
+    initialFocusedValue || ""
+  );
+
+  useEffect(() => {
+    if (
+      getFocusedInputValue &&
+      typeof getFocusedInputValue === "function" &&
+      focusedInput !== initialFocusedValue
+    ) {
+      getFocusedInputValue(focusedInput);
     }
-  }, []);
+  }, [focusedInput]);
+
+  const handleInputFocus = (inputName: string) => {
+    setFocusedInput(inputName);
+  };
 
   useLayoutEffect(() => {
     if (typeof getValue === "function") {
@@ -48,7 +66,7 @@ const AddSingleReference: React.FC<IAddSingleReference> = ({
   }, [state]);
 
   return (
-    <div className="mx-2 border-2 rounded-md text-c-dark overflow-hidden">
+    <div className="mx-2 border-[1.8px] rounded-md text-c-dark overflow-hidden">
       <motion.div
         onClick={() => setIsOpen((prev) => !prev)}
         className="w-full py-3 px-3 cursor-pointer font-semibold flex justify-between items-center">
@@ -74,6 +92,7 @@ const AddSingleReference: React.FC<IAddSingleReference> = ({
                 value={state.name}
                 name="name"
                 placeholder="Name"
+                onFocus={() => handleInputFocus("name")}
               />
               <InputText
                 onChange={(e) =>
@@ -82,14 +101,16 @@ const AddSingleReference: React.FC<IAddSingleReference> = ({
                 value={state.company}
                 name="company"
                 placeholder="Company"
+                onFocus={() => handleInputFocus("company")}
               />
               <InputText
                 onChange={(e) =>
-                  setState((prev) => ({ ...prev, phone: e.target.value }))
+                  setState((prev) => ({ ...prev, level: e.target.value }))
                 }
                 value={state.phone}
                 name="phone"
                 placeholder="Phone"
+                onFocus={() => handleInputFocus("phone")}
               />
               <InputText
                 onChange={(e) =>
@@ -98,6 +119,7 @@ const AddSingleReference: React.FC<IAddSingleReference> = ({
                 value={state.email}
                 name="email"
                 placeholder="Email"
+                onFocus={() => handleInputFocus("email")}
               />
             </div>
           </motion.div>

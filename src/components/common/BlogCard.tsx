@@ -14,10 +14,10 @@ interface BlogCardProps {
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
-  const { id, image, title, author, authorImage, company, content} = blog;
-  
+  const { id, image, title, author, authorImage, company, content } = blog;
+
   return (
-    <Link  to={`/blog/${id}`} >
+    <Link to={`/blog/${id}`}>
       <div className="">
         <img src={image} className="rounded-tl-2xl rounded-tr-2xl" alt="" />
         <div className="border-2 border-gray-300 rounded-bl-2xl rounded-br-2xl p-4 md:p-3 lg:p-5">

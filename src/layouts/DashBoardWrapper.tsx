@@ -1,14 +1,14 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/admin/Sidebar";
-import Navbar from "../components/admin/Navbar";
 
 export const DashBoardWrapper: React.FC = () => {
   return (
-    <>
-      <Navbar />
+    <div className="max-w-[1450px] mx-auto flex flex-col md:flex-row">
       <Sidebar />
-      <Outlet />
-    </>
+      <div className=" w-full h-full ">
+        <Outlet />
+      </div>
+    </div>
   );
 };

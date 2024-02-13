@@ -16,6 +16,11 @@ import AuthWrapper from "../layouts/AuthWrapper";
 import Resume from "../pages/dashboard/user";
 import AdminDashboard from "../pages/dashboard/admin";
 import BlogDetails from "../pages/blog/BlogDetails";
+import Blogs from "../pages/dashboard/admin/blog";
+import CreateBlog from "../pages/dashboard/admin/blog/CreateBlog";
+import Vienna from "../components/resumeTemplates/vienna/Vienna";
+import { PDFViewer } from "@react-pdf/renderer";
+import ViennaPDF from "../components/resumeTemplates/vienna/ViennaPDF";
 
 const router = createBrowserRouter([
   {
@@ -80,20 +85,41 @@ const router = createBrowserRouter([
     element: <EditorWrapper />,
     children: [
       {
-        path: "resume",
+        path: "resume/:id",
         element: <ResumeEditor />,
       },
     ],
   },
   {
-    path: "app",
+    path: "admin",
     element: <DashBoardWrapper />,
     children: [
       {
-        path: "admin",
+        path: "",
         element: <AdminDashboard />,
       },
+      {
+        path: "blog",
+        element: <Blogs />,
+      },
+      // for admin blog post
+      {
+        path: "create-blog",
+        element: <CreateBlog />,
+      },
     ],
+  },
+  {
+    path: "/demo",
+    element: <Vienna />,
+  },
+  {
+    path: "/demopdf",
+    element: (
+      <PDFViewer width={1000} height={1300}>
+        <ViennaPDF />
+      </PDFViewer>
+    ),
   },
 ]);
 

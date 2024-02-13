@@ -5,7 +5,7 @@ interface AccordionItemProps {
 }
 
 const AccordionItem: FC<AccordionItemProps> = ({ children }) => {
-  return <div className=" bg-white overflow-hidden">{children}</div>;
+  return <div className="bg-white overflow-hidden">{children}</div>;
 };
 
 export default AccordionItem;

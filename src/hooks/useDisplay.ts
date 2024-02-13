@@ -2,7 +2,7 @@ import { useLayoutEffect, useState } from "react";
 
 const useDisplay = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [scrollY, setScroll] = useState(window.scrollY);
+  // const [scrollY, setScroll] = useState(window.scrollY);
 
   useLayoutEffect(() => {
     const handleResize = () => {
@@ -14,17 +14,17 @@ const useDisplay = () => {
     };
   }, []);
 
-  useLayoutEffect(() => {
-    const handleScroll = () => {
-      setScroll(window.scrollY);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  // useLayoutEffect(() => {
+  //   const handleScroll = () => {
+  //     setScroll(window.scrollY);
+  //   };
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
-  return [windowWidth, scrollY];
+  return [windowWidth];
 };
 
 export default useDisplay;

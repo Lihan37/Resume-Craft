@@ -1,63 +1,146 @@
-import { Link } from "react-router-dom";
-import { MdOutlineDownload } from "react-icons/md";
-import { FaEquals } from "react-icons/fa";
-import { FaRegEdit } from "react-icons/fa";
-import { Fragment } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import resume1 from "../../../assets/resumes/resume1.webp";
-import { FaRegCopy } from "react-icons/fa6";
-import { useEffect, useState } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Container } from "../../../components/common/Container";
-import Resumes from "./Resumes";
+import TabSection from "./TabSection";
+import Button from "../../../components/common/Button";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { nanoid } from "@reduxjs/toolkit";
+import { changeTemplate } from "../../../services/resumeEditor/resumeEditorSlice";
+import resumeStyle from "../../../components/resumeTemplates/style";
+import { useNavigate } from "react-router-dom";
+import { ISingleUserHistory } from "../../../services/history/historySlice";
+import { createUserHistory } from "../../../services/history/historyApi";
+import { initialState } from "../../../services/resumeEditor/resumeEditorSlice";
+import { AnimatePresence, motion } from "framer-motion";
+import { RootState, useAppDispatch } from "../../../app/store";
+import { userHistory } from "../../../services/history/historyApi";
+import { useSelector } from "react-redux";
+import {
+  selectAllHistory,
+  selectHistory,
+  selectHistoryLoading,
+} from "../../../services/history/historySelector";
+import UserDashboardSkeleton from "../../../components/skeleton/UserDashboardSkeleton";
+
+interface State {
+  activeTab: string;
+  resumeId: string;
+  historyId: string;
+}
 
 const UserDashboard: React.FC = () => {
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
-  const [showDetails, setShowDetails] = useState(false);
+  const [state, setState] = useState<State>({
+    activeTab: "resume",
+    resumeId: nanoid(),
+    historyId: nanoid(),
+  });
+  const { activeTab, resumeId, historyId } = state;
+  const dispatch = useDispatch();
+  const appDispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const allHistory = useSelector(selectAllHistory);
+  const history = useSelector((state: RootState) =>
+    selectHistory(state, activeTab)
+  );
+  const loading = useSelector(selectHistoryLoading);
+
   useEffect(() => {
-    const handleResize = () => {
-      setIsSmallScreen(window.innerWidth <= 768);
-    };
-
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    if (!(allHistory.length > 0)) {
+      appDispatch(userHistory());
+    }
   }, []);
 
-  // const toggleDetails = () => {
-  //   setShowDetails(!showDetails);
-  // };
+  const buttonLabels: Record<string, string> = {
+    resume: "Add Resume",
+    coverletter: "Add Cover Letter",
+    portfolio: "Add Portfolio",
+  };
+
+  const handleCreateHistory = async () => {
+    const data: ISingleUserHistory = {
+      _id: historyId,
+      user: "65bfd0f85443cc82b0f3f504",
+      title: "Untitled",
+      resumeId: resumeId,
+      thumbnail: {
+        public_id: "",
+        url: "",
+      },
+      type: "resume",
+      createdAt: "",
+      updatedAt: "",
+    };
+
+    try {
+      await appDispatch(createUserHistory(data));
+    } catch (error) {
+      console.error("Error creating history:", error);
+    }
+  };
+
+  const createNewResume = (value: string) => {
+    if (value === "resume") {
+      const data = {
+        ...initialState.resume,
+        _id: resumeId,
+        templateId: "stockholm01",
+        historyId: historyId,
+        style: {
+          ...resumeStyle["stockholm01"].style.require,
+        },
+      };
+      handleCreateHistory();
+      dispatch(changeTemplate(data));
+      navigate(`/edit/resume/${data._id}`);
+    }
+  };
+
   return (
     <Container>
-      <div className=" my-20">
-        <div
-          className="flex justify-between items-start mb-10 border-b-2 pb-2 
-      text-c-dark">
-          <div className=" space-y-2">
-            <h1 className=" text-xl lg:text-3xl  font-bold text-gray-700">
-              Resumes & Cover Letters & Portfolio
-            </h1>
-            <div className=" flex justify-start items-center gap-10 text-lg font-normal text-gray-500">
-              <span className=" cursor-pointer">Resumes</span>
-              <span className=" cursor-pointer">Cover Letters</span>
-              <span className=" cursor-pointer">Portfolio</span>
-            </div>
-          </div>
-          <Link to="/">
-            <button
-              type="button"
-              className="bg-c-primary text-white font-mono text-base uppercase font-semibold px-5 py-2 rounded-t-lg
-                   rounded-b-lg
-                     hover:bg-c-primary-hover transition duration-300 ease-in-out">
-              Add Resume
-            </button>
-          </Link>
+      <div className=" my-20 mb-32">
+        <div className="flex flex-col gap-3 md:flex-row justify-between items-center text-c-dark">
+          <h1 className=" text-2xl text-center md:text-start  md:text-3xl lg:text-4xl  font-bold text-gray-700">
+            Resumes & Cover Letters & Portfolio
+          </h1>
+          <Button onClick={() => createNewResume(activeTab)} icon={false}>
+            {buttonLabels[activeTab]}
+          </Button>
         </div>
-        {/* the templates */}
-        <Resumes />
+
+        <div className=" py-5 mt-10 md:mt-0  mb-10 border-b-2 flex justify-center md:justify-start items-center gap-5 md:gap-10 text-base md:text-lg font-semibold text-gray-500">
+          {Object.keys(buttonLabels).map((tab) => (
+            <span
+              key={tab}
+              onClick={() => setState({ ...state, activeTab: tab })}
+              className={`cursor-pointer ${
+                activeTab === tab && " text-c-primary"
+              }`}>
+              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+            </span>
+          ))}
+        </div>
+
+        {loading ? (
+          <UserDashboardSkeleton />
+        ) : (
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -10, opacity: 0 }}
+              transition={{ duration: 0.2 }}>
+              <TabSection
+                createNewResume={createNewResume}
+                buttonLabel={{
+                  value: activeTab,
+                  label: buttonLabels[activeTab],
+                }}
+                data={history}
+              />
+            </motion.div>
+          </AnimatePresence>
+        )}
       </div>
     </Container>
   );

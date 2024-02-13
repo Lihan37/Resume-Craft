@@ -46,9 +46,14 @@ const level = [
 interface ISkillLevel {
   getValue?: (data: number) => void;
   value?: number;
+  disable?: boolean;
 }
 
-const SkillLevel: React.FC<ISkillLevel> = ({ value, getValue = () => {} }) => {
+const SkillLevel: React.FC<ISkillLevel> = ({
+  value,
+  getValue = () => {},
+  disable = false,
+}) => {
   const [state, setState] = useState<number>(20);
   const selected = level.find((item) => item.level === state);
 
@@ -64,21 +69,35 @@ const SkillLevel: React.FC<ISkillLevel> = ({ value, getValue = () => {} }) => {
     }
   }, [state]);
 
+  const handleLevel = (level: number) => {
+    if (disable) {
+      return;
+    }
+    setState(level);
+  };
   return (
     <div className=" space-y-2">
       <h1 className=" text-c-dark-light font-semibold">
-        Level: <span className={`${selected?.text}`}> {selected?.label}</span>
+        Level:{" "}
+        <span className={` ${!disable ? selected?.text : "text-gray-300"}`}>
+          {" "}
+          {selected?.label}
+        </span>
       </h1>
-      <div className={`flex justify-start items-center w-full ${selected?.bg}`}>
+      <div
+        className={`flex cursor-not-allowed  justify-start items-center w-full ${
+          !disable ? selected?.bg : "bg-gray-300"
+        }`}>
         {level.map((item) => {
           const isActive = item.level === state;
           return (
             <Level
-              onClick={() => setState(item.level)}
+              onClick={() => handleLevel(item.level)}
               key={item.level}
               isActive={isActive}
-              bg={selected?.span}
-              hoverColor={selected?.spanHover}
+              disable={disable}
+              bg={!disable ? selected?.span : "bg-gray-500"}
+              hoverColor={(!disable && selected?.spanHover) || ""}
             />
           );
         })}
@@ -92,17 +111,24 @@ export default SkillLevel;
 interface ILevel {
   onClick?: () => void;
   isActive?: boolean;
+  disable?: boolean;
   bg?: string;
   hoverColor?: string;
 }
 
-const Level: React.FC<ILevel> = ({ onClick, isActive, bg, hoverColor }) => {
+const Level: React.FC<ILevel> = ({
+  onClick,
+  isActive,
+  bg,
+  hoverColor,
+  disable,
+}) => {
   return (
     <span
       onClick={onClick}
-      className={`${
-        !isActive && hoverColor
-      } text-gray-400 py-1 w-full duration-300 transition-colors rounded-md cursor-pointer relative flex justify-end items-end ${
+      className={`${!isActive && hoverColor} ${
+        !disable ? "cursor-pointer" : " cursor-not-allowed"
+      } text-gray-400 py-1 w-full duration-300 transition-colors rounded-md  relative flex justify-end items-end ${
         isActive && bg
       }`}>
       |

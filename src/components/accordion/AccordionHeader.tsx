@@ -1,23 +1,60 @@
-import { FC, ReactNode } from "react";
+import React, { FC } from "react";
 import { motion } from "framer-motion";
 import { FaPlus, FaMinus } from "react-icons/fa6";
-import { useAccordion } from "../../hooks/useAccordion";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  removeActiveId,
+  setActiveId,
+} from "../../services/accordion/accordionSlice";
+import { RootState } from "../../app/store";
+import { selectActiveAccordion } from "../../services/accordion/accordionSelector";
+import Title from "../editor/Title";
 
 interface AccordionHeaderProps {
-  children: ReactNode;
+  id: number;
+  title?: string;
+  getValue?: (data: string) => void;
+  onFocus?: () => void;
 }
 
-const AccordionHeader: FC<AccordionHeaderProps> = ({ children }) => {
-  const { isActive, index, onChangeIndex } = useAccordion();
+const AccordionHeader: FC<AccordionHeaderProps> = ({
+  id,
+  title,
+  getValue = () => {},
+  onFocus = () => {},
+}) => {
+  const dispatch = useDispatch();
 
+  const isActive = useSelector((state: RootState) =>
+    selectActiveAccordion(state, id)
+  );
+
+  const onChangeIndex = () => {
+    if (!isActive) {
+      dispatch(setActiveId(id));
+      return;
+    }
+    dispatch(removeActiveId(id));
+  };
+
+  const onTitleClick = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    event.stopPropagation();
+  };
   return (
     <motion.div
-      className={`px-5 cursor-pointer border-t-2 p-2 py-3 flex justify-between items-center w-full`}
-      onClick={() => onChangeIndex(index)}>
-      <h1 className=" font-semibold text-lg text-c-dark">{children} </h1>
+      className={`px-5 cursor-pointer border-t-[1.8px] p-2 py-3 flex justify-between items-center w-full`}
+      onClick={onChangeIndex}>
+      <Title
+        onFocus={onFocus}
+        getValue={getValue}
+        initialValue={title}
+        onClick={onTitleClick}
+      />
       {isActive ? <FaMinus /> : <FaPlus />}
     </motion.div>
   );
 };
 
-export default AccordionHeader;
+export default React.memo(AccordionHeader);

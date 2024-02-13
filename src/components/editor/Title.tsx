@@ -1,9 +1,28 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, {
+  useLayoutEffect,
+  useRef,
+  useState,
+  InputHTMLAttributes,
+  useEffect,
+} from "react";
 import useOutsideClick from "../../hooks/useOutsideClick";
 import useDisplay from "../../hooks/useDisplay";
+import { MdModeEditOutline } from "react-icons/md";
 
-const Title: React.FC = () => {
-  const [title, setTitle] = useState<string>("Untitled");
+interface ITitle extends InputHTMLAttributes<HTMLInputElement> {
+  maxWidth?: string;
+  onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  getValue?: (data: string) => void;
+  initialValue?: string;
+}
+const Title: React.FC<ITitle> = ({
+  maxWidth,
+  onClick,
+  getValue = () => {},
+  initialValue,
+  ...argument
+}) => {
+  const [title, setTitle] = useState<string>(initialValue || "Untitled");
   const [inputWidth, setInputWidth] = useState<string>("0px");
   const inputRef = useRef<HTMLInputElement>(null);
   const [windowWidth] = useDisplay();
@@ -19,22 +38,45 @@ const Title: React.FC = () => {
     setInputWidth(inputWidth);
   }, [title]);
 
+  useEffect(() => {
+    if (initialValue !== title) {
+      setTitle(initialValue || "Untitled");
+    }
+  }, [initialValue]);
+
   useOutsideClick(inputRef, () => {
     if (title?.length === 0) {
-      setTitle("Untitled");
+      setTitle(initialValue || "Untitled");
     }
   });
 
+  const handleEditClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  useEffect(() => {
+    if (typeof getValue === "function" && initialValue !== title) {
+      console.count("Title getValue");
+      getValue(title);
+    }
+  }, [title]);
+
   return (
-    <div className=" text-base lg:text-xl font-semibold">
+    <div
+      onClick={onClick}
+      className=" flex justify-start items-center text-base lg:text-xl font-semibold">
       <input
+        {...argument}
         style={{
-          maxWidth:
-            title?.length > 8 && windowWidth > 769
-              ? inputWidth
-              : windowWidth > 769
-              ? "80px"
-              : "70px",
+          maxWidth: maxWidth
+            ? maxWidth
+            : title?.length > 4 && windowWidth > 769
+            ? inputWidth
+            : windowWidth > 769
+            ? "80px"
+            : "70px",
         }}
         ref={inputRef}
         onChange={(e) => setTitle(e.target.value)}
@@ -43,8 +85,12 @@ const Title: React.FC = () => {
         type="text"
         value={title}
       />
+      <MdModeEditOutline
+        onClick={handleEditClick}
+        className=" text-xl hover:text-c-primary duration-300 transition-colors cursor-pointer"
+      />
     </div>
   );
 };
 
-export default Title;
+export default React.memo(Title);
