@@ -1,5 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
-import { Page, View, Document, StyleSheet, Image } from "@react-pdf/renderer";
+import {
+  Page,
+  View,
+  Document,
+  StyleSheet,
+  Image,
+  Text,
+} from "@react-pdf/renderer";
 import styleVienna from "./ViennaStyle";
 
 import { resume } from "../resume";
@@ -14,6 +22,10 @@ const ViennaPDF: React.FC = () => {
     },
     headerDivOne: styleVienna.common.headerDivOne,
     headerDivTwo: styleVienna.common.headerDivTwo,
+    text: {
+      textAlign: styleVienna.require.personalInfo.firstName.textAlign as any,
+      fontSize: styleVienna.require.personalInfo.firstName.fontSize as any,
+    },
   });
 
   return (
@@ -23,7 +35,7 @@ const ViennaPDF: React.FC = () => {
           <View style={styles.headerDivOne}>
             <Image src={resume.avatar.url} />
           </View>
-          <View style={styles.headerDivTwo}>Section #1</View>
+          <Text style={styles.text}>Section #1</Text>
         </View>
       </Page>
     </Document>

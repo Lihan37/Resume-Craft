@@ -145,7 +145,7 @@ const RightSideBarOptions: React.FC = () => {
                   })
                 );
               }}
-              isSelectedValue={style?.size}
+              isSelectedValue={style?.fontSize}
             />
             <FontAlignSelect
               getValue={(data: string) => {

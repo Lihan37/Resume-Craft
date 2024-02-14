@@ -71,7 +71,7 @@ export interface TypeOfStyleText {
   color: string;
   fontFamily: string;
   fontWeight: number;
-  size: string;
+  fontSize: string;
   textAlign: string;
 }
 export interface TypeOfResumeStyle {

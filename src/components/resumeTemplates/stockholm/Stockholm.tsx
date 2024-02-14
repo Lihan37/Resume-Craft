@@ -50,11 +50,8 @@ const Stockholm: React.ForwardRefRenderFunction<HTMLDivElement, IStockholm> = (
         <div>
           <h1
             style={{
-              fontFamily: personalInfoStyle.firstName.fontFamily,
+              ...personalInfoStyle.firstName,
               textAlign: personalInfoStyle.firstName.textAlign as any,
-              fontWeight: personalInfoStyle.firstName.fontWeight,
-              color: personalInfoStyle.firstName.color,
-              fontSize: personalInfoStyle.firstName.size,
             }}
             className="text-xl font-semibold w-full">
             {personalInfo.firstName} {personalInfo.lastName}
@@ -62,11 +59,8 @@ const Stockholm: React.ForwardRefRenderFunction<HTMLDivElement, IStockholm> = (
           {/* <span className=" mx-auto my-2 w-10 h-[1px] block bg-white"></span> */}
           <h3
             style={{
-              fontFamily: personalInfoStyle.jobTitle.fontFamily,
+              ...personalInfoStyle.jobTitle,
               textAlign: personalInfoStyle.jobTitle.textAlign as any,
-              fontWeight: personalInfoStyle.jobTitle.fontWeight,
-              color: personalInfoStyle.jobTitle.color,
-              fontSize: personalInfoStyle.jobTitle.size,
             }}
             className=" uppercase ">
             {personalInfo.jobTitle}
@@ -74,42 +68,30 @@ const Stockholm: React.ForwardRefRenderFunction<HTMLDivElement, IStockholm> = (
           <div className=" my-4">
             <h1
               style={{
-                fontFamily: sectionTitleStyle.personalInfoStyle.fontFamily,
+                ...sectionTitleStyle.personalInfoStyle,
                 textAlign: sectionTitleStyle.personalInfoStyle.textAlign as any,
-                fontWeight: sectionTitleStyle.personalInfoStyle.fontWeight,
-                color: sectionTitleStyle.personalInfoStyle.color,
-                fontSize: sectionTitleStyle.personalInfoStyle.size,
               }}
               className=" font-semibold text-lg text-white">
               {personalInfoSectionTitle}
             </h1>
             <p
               style={{
-                fontFamily: personalInfoStyle.email.fontFamily,
+                ...personalInfoStyle.email,
                 textAlign: personalInfoStyle.email.textAlign as any,
-                fontWeight: personalInfoStyle.email.fontWeight,
-                color: personalInfoStyle.email.color,
-                fontSize: personalInfoStyle.email.size,
               }}>
               {personalInfo.email}
             </p>
             <p
               style={{
-                fontFamily: personalInfoStyle.phoneNumber.fontFamily,
+                ...personalInfoStyle.phoneNumber,
                 textAlign: personalInfoStyle.phoneNumber.textAlign as any,
-                fontWeight: personalInfoStyle.phoneNumber.fontWeight,
-                color: personalInfoStyle.phoneNumber.color,
-                fontSize: personalInfoStyle.phoneNumber.size,
               }}>
               {personalInfo.phoneNumber}
             </p>
             <p
               style={{
-                fontFamily: personalInfoStyle.country.fontFamily,
+                ...personalInfoStyle.country,
                 textAlign: personalInfoStyle.country.textAlign as any,
-                fontWeight: personalInfoStyle.country.fontWeight,
-                color: personalInfoStyle.country.color,
-                fontSize: personalInfoStyle.country.size,
               }}>
               {personalInfo.country}
             </p>
