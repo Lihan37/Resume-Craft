@@ -83,7 +83,7 @@ const EditorNavbar: React.FC = () => {
                 />
               )}
 
-              <div className="flex justify-start items-center gap-2 mt-1 w-28">
+              <div className="hidden md:flex justify-start items-center gap-2 mt-1 md:w-28">
                 {editor?.isSyncing ? (
                   <TbLoader2 className="animate-spin text-c-primary text-2xl lg:text-2xl" />
                 ) : (
@@ -102,23 +102,25 @@ const EditorNavbar: React.FC = () => {
               </div>
             </div>
           </div>
-          {!editor.isLoading && (
-            <ZoomIn
-              initialValue={zoom}
-              getValue={(data: number) => {
-                dispatch(setZoomIn(data));
-              }}
-            />
-          )}
+          <div className="hidden md:block">
+            {!editor.isLoading && (
+              <ZoomIn
+                initialValue={zoom}
+                getValue={(data: number) => {
+                  dispatch(setZoomIn(data));
+                }}
+              />
+            )}
+          </div>
 
           <div className=" flex justify-start items-center gap-5 xl:gap-10">
-            <button className=" text-c-dark font-semibold flex justify-start items-center gap-2 px-4 py-1 lg:py-2 bg-gray-100 rounded-full text-base lg:text-xl">
+            <button className=" text-c-dark font-semibold flex justify-start  items-center lg:gap-2 lg:px-4 p-2 lg:py-2 bg-gray-100 rounded-full text-base lg:text-xl">
               <FiDownload />
-              <span>Download</span>
+              <span className=" hidden lg:block">Download</span>
             </button>
-            <button className=" flex justify-start items-center gap-2 px-4 py-1 lg:py-2 bg-c-primary text-white rounded-full text-base lg:text-xl">
+            <button className=" flex justify-start items-center lg:gap-2 lg:px-4 p-2  lg:py-2 bg-c-primary text-white rounded-full text-base lg:text-xl">
               <FiSend />
-              <span>Share</span>
+              <span className=" hidden lg:block">Share</span>
             </button>
           </div>
         </div>

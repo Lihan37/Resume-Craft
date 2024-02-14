@@ -21,7 +21,7 @@ const ViennaPDF: React.FC = () => {
       <Page style={styles.container}>
         <View style={styles.header}>
           <View style={styles.headerDivOne}>
-            <Image style src={resume.avatar.url} />
+            <Image src={resume.avatar.url} />
           </View>
           <View style={styles.headerDivTwo}>Section #1</View>
         </View>

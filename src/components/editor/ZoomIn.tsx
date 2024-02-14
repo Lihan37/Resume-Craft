@@ -34,7 +34,7 @@ const ZoomIn: FC<IZoomIn> = ({ initialValue, getValue = () => {} }) => {
     <div
       ref={ref}
       onClick={() => setIsOpen((prev) => !prev)}
-      className="cursor-pointer font-semibold relative px-4 py-2 text-lg bg-neutral-100 rounded-md flex justify-start gap-1 items-center">
+      className="cursor-pointer font-semibold relative px-3 lg:px-4 py-1 lg:py-2 text-base lg:text-lg bg-neutral-100 rounded-md flex justify-start gap-1 items-center">
       <span>{label?.label}</span> <IoIosArrowDown />
       {isOpen && (
         <div className="rounded-md shadow-md bg-white text-center absolute left-0 right-0 top-10 z-50">
@@ -44,7 +44,7 @@ const ZoomIn: FC<IZoomIn> = ({ initialValue, getValue = () => {} }) => {
               <h1
                 onClick={() => setState(item.value)}
                 key={item.value}
-                className={`text-base  p-2  cursor-pointer duration-300 transition-colors ${
+                className={`text-base p-2 cursor-pointer duration-300 transition-colors ${
                   isActive ? "bg-neutral-100" : "hover:bg-neutral-100"
                 }`}>
                 {item.label}
