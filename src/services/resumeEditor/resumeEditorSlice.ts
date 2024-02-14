@@ -81,7 +81,7 @@ const styleInitialState: TypeOfStyleText = {
   color: "",
   fontFamily: "",
   fontWeight: 0,
-  size: "",
+  fontSize: "",
   textAlign: "",
 };
 export const initialState: IResumeEditorState = {

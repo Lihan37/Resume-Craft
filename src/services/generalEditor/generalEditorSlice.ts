@@ -24,7 +24,7 @@ const initialState: IGeneralEditorState = {
     color: "",
     fontFamily: "",
     fontWeight: 0,
-    size: "",
+    fontSize: "",
     textAlign: "",
   },
 };
