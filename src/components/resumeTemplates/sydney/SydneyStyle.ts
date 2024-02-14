@@ -1,102 +1,171 @@
 // https://i.ibb.co/TKPqbjH/stockholm-resume-templates.webp
 
 const styleSydney = {
+  common: {
+    container: {
+      padding: "40px 40px",
+      width: "100%",
+      height: "100%",
+    },
+    header: {
+      display: "flex",
+      gap: "20px",
+
+    },
+
+    headerDivOne: {
+      padding: "30px",
+      width: "300px",
+    },
+    headerDivTwo: {
+      padding: "30px",
+      width: "100%",
+    },
+    bodyDivOne: {
+      width: "300px",
+    },
+    bodyDivTwo: {
+      padding: "30px",
+      width: "100%",
+    },
+
+    Image: {
+      width: "100px",
+      height: "100px",
+      borderRadius: '10px'
+    },
+    proTitle: {
+      fontWeight: 600,
+
+    },
+    proDate: {
+
+      color: "#002B18",
+
+    },
+    icon: {
+      width: "20px",
+      height: "20px",
+      marginTop: "7px",
+
+    },
+    headerIcon: {
+      display: "flex",
+      gap: "10px",
+      alignItems: 'center',
+      marginLeft: "-30px",
+    },
+    bar: {
+      padding: "5px",
+      width: "100%",
+      height: "10px",
+      backgroundColor: '#4FC2D8',
+      borderRadius: '10px'
+    }
+
+  },
   require: {
     theme: "#2196F3",
-    themeOptions: ["#0F141F", "#673AB7", "#2196F3", "#22A860", "#FF4D4D"],
+    themeOptions: [],
     skillLevel: true,
     skillLevelDisabled: true,
+    personalInfoStyle: {
+      fontWeight: 600,
+      fontSize: "25px",
+      paddingTop: "10px",
+      textAlign: "",
+    },
     personalInfo: {
       jobTitle: {
-        color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        size: "",
-        textAlign: "",
+        color: "#002B18",
+        fontFamily: "'Lato', sans-serif",
+        fontWeight: 400,
+        size: "25px",
+        textAlign: "start",
       },
       firstName: {
-        color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        size: "",
-        textAlign: "",
+        color: "#002B18",
+        fontFamily: "'Lato', sans-serif",
+        fontWeight: 600,
+        size: "35px",
+        textAlign: "start",
       },
       lastName: {
-        color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        size: "",
-        textAlign: "",
+        color: "#002B18",
+        fontFamily: "'Lato', sans-serif",
+        fontWeight: 600,
+        size: "35px",
+        textAlign: "start",
       },
       email: {
-        color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        size: "",
+        color: "#387BE8",
+        fontFamily: "'Lato', sans-serif",
+        fontWeight: 400,
+
         textAlign: "start",
       },
       phoneNumber: {
-        color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        size: "",
+        color: "#002B18",
+        fontFamily: "'Lato', sans-serif",
+        fontWeight: 400,
+
         textAlign: "start",
       },
       country: {
-        color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        size: "",
+        color: "#002B18",
+        fontFamily: "'Lato', sans-serif",
+        fontWeight: 400,
+
         textAlign: "start",
       },
       city: {
-        color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        size: "",
-        textAlign: "",
+        color: "#002B18",
+        fontFamily: "'Lato', sans-serif",
+        fontWeight: 400,
+
+        textAlign: "start",
       },
       address: {
-        color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        size: "",
-        textAlign: "",
+        color: "#002B18",
+        fontFamily: "'Lato', sans-serif",
+        fontWeight: 400,
+
+        textAlign: "start",
       },
       postalCode: {
-        color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        size: "",
-        textAlign: "",
+        color: "#002B18",
+        fontFamily: "'Lato', sans-serif",
+        fontWeight: 400,
+
+        textAlign: "start",
       },
       drivingLicense: {
-        color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        size: "",
-        textAlign: "",
+        color: "#545556",
+        fontFamily: "'Lato', sans-serif",
+        fontWeight: 400,
+        size: "15px",
+        textAlign: "start",
       },
       nationality: {
-        color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        size: "",
-        textAlign: "",
+        color: "#545556",
+        fontFamily: "'Lato', sans-serif",
+        fontWeight: 400,
+        size: "15px",
+        textAlign: "start",
       },
       placeOfBirth: {
-        color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        size: "",
-        textAlign: "",
+        color: "#545556",
+        fontFamily: "'Lato', sans-serif",
+        fontWeight: 400,
+        size: "15px",
+        textAlign: "start",
       },
       DateOfBirth: {
-        color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        size: "",
-        textAlign: "",
+        color: "#545556",
+        fontFamily: "'Lato', sans-serif",
+        fontWeight: 400,
+        size: "15px",
+        textAlign: "start",
       },
     },
     workExperience: {
@@ -276,17 +345,15 @@ const styleSydney = {
     },
     sectionTitles: {
       personalInfoStyle: {
-        color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        size: "",
+        fontWeight: 600,
+        fontSize: "25px",
+        paddingTop: "10px",
         textAlign: "",
       },
       professionalSummaryStyle: {
-        color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        size: "",
+        paddingTop: "5px",
+        fontWeight: 600,
+        fontSize: "20px",
         textAlign: "",
       },
       workExperienceStyle: {

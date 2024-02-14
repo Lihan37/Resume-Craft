@@ -18,7 +18,7 @@ export const resume = {
     {
       _id: 2,
       school: "DD",
-      degree: "MD",
+      degree: "HSC",
       startMontYear: "Feb,2024",
       endMontYear: "Feb,2024",
       city: "DB",
@@ -85,7 +85,7 @@ export const resume = {
     {
       _id: 1,
       label: "Html",
-      level: 20,
+      level: 50,
     },
     {
       _id: 2,
@@ -439,6 +439,16 @@ export const resume = {
   },
   templateId: "stockholm01",
   workExperience: [
+    {
+      _id: 1,
+      city: "Bangladash Dhaka",
+      description:
+        " Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil maxime unde rerum dolore totam quasi impedit, reprehenderit voluptatum dolores laudantium similique consequuntur quod, delectus omnis voluptatem nulla nostrum. Ratione, veniam.",
+      employer: "LB limited",
+      endMontYear: "Feb,2023",
+      jobTitle: "Frontend Dev",
+      startMontYear: "Feb,2022",
+    },
     {
       _id: 1,
       city: "Bangladash Dhaka",
