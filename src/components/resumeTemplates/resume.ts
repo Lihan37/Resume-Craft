@@ -45,7 +45,7 @@ export const resume = {
     firstName: "Satya Ranjon",
     lastName: "Sharma",
     email: "demo@gmail.com",
-    phoneNumber: "001475101",
+    phoneNumber: "01984553087",
     country: "Bangladesh",
     city: "Rangpur",
     address: "Lalgbag",
