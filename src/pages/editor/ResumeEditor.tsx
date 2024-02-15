@@ -28,7 +28,7 @@ import useOutsideClick from "../../hooks/useOutsideClick";
 import Button from "../../components/common/Button";
 import { FaArrowLeftLong } from "react-icons/fa6";
 
-const Editor: React.FC = () => {
+const ResumeEditor: React.FC = () => {
   useTitleSet("Resume Builder");
   const [windowWidth] = useDisplay();
   const resume = useSelector(selectResume);
@@ -199,4 +199,4 @@ const Editor: React.FC = () => {
   );
 };
 
-export default React.memo(Editor);
+export default React.memo(ResumeEditor);
