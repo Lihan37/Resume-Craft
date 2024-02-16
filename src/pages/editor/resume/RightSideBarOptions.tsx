@@ -1,12 +1,6 @@
 import React from "react";
 import SelectTheme from "./SelectTheme";
-import FontFamilySelect from "./FontFamilySelect";
-import FontWeightSelect from "./FontWeightSelect";
-import FontColorSelect from "./FontColorSelect";
-import FontSizeSelect from "./FontSizeSelect";
-import FontAlignSelect from "./FontAlignSelect";
 // import FontDecorationSelect from "./FontDecorationSelect";
-import ResumeHightWidth from "./ResumeHightWidth";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectResumeSize,
@@ -38,6 +32,12 @@ import {
   TypeOfStyleText,
 } from "../../../types/resumeEditor";
 import { addSpaceAfterCapitalLetters } from "../../../utils/addSpaceAfterCapitalLetters";
+import ContentHightWidth from "../common/ContentHightWidth";
+import FontFamilySelect from "../common/FontFamilySelect";
+import FontWeightSelect from "../common/FontWeightSelect";
+import FontColorSelect from "../common/FontColorSelect";
+import FontSizeSelect from "../common/FontSizeSelect";
+import FontAlignSelect from "../common/FontAlignSelect";
 
 type focusInput =
   | keyof IPersonalInfo
@@ -75,7 +75,7 @@ const RightSideBarOptions: React.FC = () => {
         }}
       />
 
-      <ResumeHightWidth
+      <ContentHightWidth
         isSelectedValue={size}
         getValue={(data: ISetResumeSize) => {
           dispatch(setResumeSize(data));

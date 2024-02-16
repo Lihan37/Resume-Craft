@@ -6,8 +6,8 @@ interface IValue {
   width: string;
 }
 
-interface IResumeHightWidth {
-  isSelectedValue: IValue;
+interface IContentHightWidth {
+  isSelectedValue?: IValue;
   getValue?: (data: IValue) => void;
 }
 
@@ -16,7 +16,7 @@ const initialValue = {
   width: "",
 };
 
-const ResumeHightWidth: React.FC<IResumeHightWidth> = ({
+const ContentHightWidth: React.FC<IContentHightWidth> = ({
   isSelectedValue,
   getValue = () => {},
 }) => {
@@ -60,4 +60,4 @@ const ResumeHightWidth: React.FC<IResumeHightWidth> = ({
   );
 };
 
-export default ResumeHightWidth;
+export default ContentHightWidth;

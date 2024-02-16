@@ -157,6 +157,7 @@ const ResumeEditor: React.FC = () => {
           className="2xl:hidden fixed right-0 top-56 py-2 px-6 hover:bg-white hover:text-c-primary duration-300 transition-colors cursor-pointer text-white rounded-l-full bg-c-primary">
           <IoSettingsOutline className="animate-spin text-4xl" />
         </div>
+
         <div
           ref={rightSideRef}
           className={`${
