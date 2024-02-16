@@ -5,17 +5,23 @@ import LeftSideBarOptions from "./coverletter/LeftSideBarOptions";
 import CoverLetterTemplates from "./coverletter/CoverLetterTemplates";
 import RightSideBar from "./rightBar/RightSideBar";
 import RightSideBarOptions from "./coverletter/RightSideBarOptions";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import { IoSettingsOutline } from "react-icons/io5";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import Button from "../../components/common/Button";
+import { useSelector } from "react-redux";
+import { selectCoverLetterEditor } from "../../services/coverletterEditor/coverletterEditorSelector";
+import coverLetters, {
+  CoverLettersTemplatesType,
+} from "../../components/coverLetterTemplates/template";
 
 const CoverLetter: React.FC = () => {
   const [rightSideBarIsOpen, setRightSideBarIsOpen] = useState<boolean>(false);
   const [editorDashboardIsOpen, setEditorDashboardIsOpen] =
     useState<boolean>(false);
   const [windowWidth] = useDisplay();
-  const param = useParams();
+  const editor = useSelector(selectCoverLetterEditor);
+  // const param = useParams();
   const templateRef = useRef(null);
   const rightSideRef = useRef(null);
   const leftSideRef = useRef(null);
@@ -25,6 +31,16 @@ const CoverLetter: React.FC = () => {
     windowWidth > 1024
       ? window.innerHeight - 98 + "px"
       : window.innerHeight - 88 + "px";
+
+  const Template =
+    !editor.isLoading &&
+    coverLetters[
+      editor.coverLetter.templateId as keyof CoverLettersTemplatesType
+    ]
+      ? coverLetters[
+          editor.coverLetter.templateId as keyof CoverLettersTemplatesType
+        ].template
+      : null;
 
   return (
     <div>
@@ -42,13 +58,17 @@ const CoverLetter: React.FC = () => {
           />
         </div>
 
+        {/* Editor Dashboard  */}
         <div
           style={{ height: hight }}
           id="resumeEditorDashboard"
           className={`${
             editorDashboardIsOpen ? "block" : " hidden"
-          } w-full xl:flex overflow-auto justify-center items-center bg-zinc-100 `}></div>
-
+          } w-full xl:flex overflow-auto justify-center items-center bg-zinc-100 `}>
+          {Template && (
+            <Template ref={templateRef} coverLetter={editor.coverLetter} />
+          )}
+        </div>
         <div
           ref={rightSideBarOpenButtonRef}
           onClick={() => setRightSideBarIsOpen(true)}
