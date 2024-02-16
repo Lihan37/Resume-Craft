@@ -23,7 +23,6 @@ import { PDFViewer } from "@react-pdf/renderer";
 import ViennaPDF from "../components/resumeTemplates/vienna/ViennaPDF";
 import Madrid from "../components/resumeTemplates/madrid/Madrid";
 import CoverLetter from "../pages/editor/CoverLetter";
-import Sydney from "../components/resumeTemplates/sydney/Sydney";
 
 const router = createBrowserRouter([
   {
@@ -123,10 +122,6 @@ const router = createBrowserRouter([
   {
     path: "/madrid",
     element: <Madrid />,
-  },
-  {
-    path: "/sweeny",
-    element: <Sydney></Sydney>,
   },
   {
     path: "/demopdf",
