@@ -1,4 +1,23 @@
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TypeOfStyleText, styleInitialState } from "./../../types/editor";
+
+export interface ICoverLetterStyle {
+  theme: string;
+  themeOptions: string[];
+  fullName: TypeOfStyleText;
+  JobTitle: TypeOfStyleText;
+  address: TypeOfStyleText;
+  email: TypeOfStyleText;
+  phoneNumber: TypeOfStyleText;
+  companyName: TypeOfStyleText;
+  managerName: TypeOfStyleText;
+  details: TypeOfStyleText;
+}
+
+export interface IPayloadChangeStyle {
+  fieldName: keyof ICoverLetterStyle;
+  value: TypeOfStyleText;
+}
 interface ICoverLetter {
   _id: string | number;
   historyId: string | number;
@@ -16,18 +35,7 @@ interface ICoverLetter {
     height: string;
     width: string;
   };
-  style: {
-    theme: string;
-    themeOptions: string[];
-    fullName: TypeOfStyleText;
-    JobTitle: TypeOfStyleText;
-    address: TypeOfStyleText;
-    email: TypeOfStyleText;
-    phoneNumber: TypeOfStyleText;
-    companyName: TypeOfStyleText;
-    managerName: TypeOfStyleText;
-    details: TypeOfStyleText;
-  };
+  style: ICoverLetterStyle;
 }
 
 interface ICoverLetterEditorState {
@@ -41,7 +49,6 @@ export const initialState: ICoverLetterEditorState = {
   isLoading: false,
   isSyncing: false,
   error: null,
-
   coverLetter: {
     _id: "",
     historyId: "",
@@ -60,8 +67,8 @@ export const initialState: ICoverLetterEditorState = {
       width: "852px",
     },
     style: {
-      theme: "",
-      themeOptions: [],
+      theme: "#27dd2a",
+      themeOptions: ["#ca4949", "#27dd2a"],
       fullName: { ...styleInitialState },
       JobTitle: { ...styleInitialState },
       address: { ...styleInitialState },
@@ -73,3 +80,34 @@ export const initialState: ICoverLetterEditorState = {
     },
   },
 };
+
+const coverLetterEditorSlice = createSlice({
+  name: "coverLetterEditor",
+  initialState,
+  reducers: {
+    setValue(state, action) {
+      state.coverLetter = {
+        ...state.coverLetter,
+        [action.payload.name]: action.payload.value,
+      };
+    },
+    changeTheme(state, action) {
+      state.coverLetter.style.theme = action.payload;
+    },
+    changeSize(state, action) {
+      state.coverLetter.size = action.payload;
+    },
+    changeStyleCovetLetter(state, action: PayloadAction<IPayloadChangeStyle>) {
+      const { fieldName, value } = action.payload;
+      state.coverLetter.style = {
+        ...state.coverLetter.style,
+        [fieldName]: value,
+      };
+    },
+  },
+});
+
+export const { setValue, changeTheme, changeSize, changeStyleCovetLetter } =
+  coverLetterEditorSlice.actions;
+
+export default coverLetterEditorSlice.reducer;
