@@ -6,10 +6,10 @@ import {
   ISkills,
   ISocialProfiles,
   IWorkExperience,
-  TypeOfStyleText,
 } from "./../../types/resumeEditor";
 import { RootState } from "../../app/store";
 import { IPersonalInfo, TypeOfResumeStyle } from "../../types/resumeEditor";
+import { TypeOfStyleText } from "../../types/editor";
 
 export const selectPersonalInfoStyle = (state: RootState) =>
   state.resumeEditor.resume.style.personalInfo;

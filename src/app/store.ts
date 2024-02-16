@@ -5,6 +5,7 @@ import generalEditorReducer from "../services/generalEditor/generalEditorSlice";
 import { useDispatch } from "react-redux";
 import historyReducer from "../services/history/historySlice";
 import apiSlice from "../services/api/api";
+import coverletterEditorReducer from "../services/coverletterEditor/coverletterEditorSlice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     accordion: accordionReducer,
     generalEditor: generalEditorReducer,
     resumeEditor: resumeEditorReducer,
+    coverLetterEditor: coverletterEditorReducer,
     history: historyReducer,
   },
   middleware: (getDefaultMiddleware) =>

@@ -29,7 +29,6 @@ import {
   ISocialProfiles,
   IWorkExperience,
   TypeOfResumeStyle,
-  TypeOfStyleText,
 } from "../../../types/resumeEditor";
 import { addSpaceAfterCapitalLetters } from "../../../utils/addSpaceAfterCapitalLetters";
 import ContentHightWidth from "../common/ContentHightWidth";
@@ -38,6 +37,7 @@ import FontWeightSelect from "../common/FontWeightSelect";
 import FontColorSelect from "../common/FontColorSelect";
 import FontSizeSelect from "../common/FontSizeSelect";
 import FontAlignSelect from "../common/FontAlignSelect";
+import { TypeOfStyleText } from "../../../types/editor";
 
 type focusInput =
   | keyof IPersonalInfo
