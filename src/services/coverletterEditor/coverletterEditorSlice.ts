@@ -53,7 +53,7 @@ export const initialState: ICoverLetterEditorState = {
     _id: "",
     historyId: "",
     templateId: "sydney01",
-    fullName: "Satya Ranjon Sharma",
+    fullName: "Ranjon Sharma",
     JobTitle: "Frontend Developer",
     address: "Lalbag Road Rangpur , Rangpur, 5400, Bangladesh",
     email: "satyaranjonofficial@gmail.com",
@@ -68,8 +68,8 @@ export const initialState: ICoverLetterEditorState = {
       width: "852px",
     },
     style: {
-      theme: "#27dd2a",
-      themeOptions: ["#ca4949", "#27dd2a"],
+      theme: "#232323",
+      themeOptions: ["#232323", "#172F53", "#361146", "#160A45", "#324739"],
       fullName: { ...styleInitialState },
       JobTitle: { ...styleInitialState },
       address: { ...styleInitialState },
@@ -98,6 +98,9 @@ const coverLetterEditorSlice = createSlice({
     changeSize(state, action) {
       state.coverLetter.size = action.payload;
     },
+    changeZoom(state, action) {
+      state.coverLetter.zoom = action.payload;
+    },
     changeStyleCovetLetter(state, action: PayloadAction<IPayloadChangeStyle>) {
       const { fieldName, value } = action.payload;
       state.coverLetter.style = {
@@ -117,6 +120,7 @@ export const {
   changeSize,
   changeStyleCovetLetter,
   changeTemplate,
+  changeZoom,
 } = coverLetterEditorSlice.actions;
 
 export default coverLetterEditorSlice.reducer;

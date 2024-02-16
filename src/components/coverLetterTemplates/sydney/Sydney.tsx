@@ -24,7 +24,7 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
       }}>
       <div className=" w-full  p-[48px] h-full bg-white text-neutral-800 ">
         <div className=" flex gap-3 justify-between items-start font-bold ">
-          <div className=" max-w-[28.2rem] text-7xl">
+          <div className=" max-w-[10.2rem] text-7xl">
             {coverLetter.fullName}
           </div>
           <div className="w-fit">

@@ -8,6 +8,7 @@ import { selectCoverLetter } from "../../../services/coverletterEditor/coverlett
 const LeftSideBarOptions: React.FC = () => {
   const dispatch = useDispatch();
   const coverLetter = useSelector(selectCoverLetter);
+
   return (
     <div>
       <div className="px-5 text-c-dark space-y-4 pb-20">

@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { changeTemplate } from "../../../services/coverletterEditor/coverletterEditorSlice";
 const CoverLetterTemplates: React.FC = () => {
   const dispatch = useDispatch();
+
   return (
     <div className=" px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1 justify-center items-center gap-3 my-10 mt-5">
       {coverLetterTemplate.map((item) => (
@@ -33,21 +34,21 @@ const coverLetterTemplate = [
     img: "https://i.ibb.co/DDfZsj1/sydney-cover-letter-templates.jpg",
     style: { ...coverLetterStyle["sydney01"].style.require },
   },
-  {
-    templateId: "vienna01",
-    img: "https://i.ibb.co/k9TKstJ/vienna-cover-letter-templates.jpg",
-  },
-  {
-    templateId: "newyork01",
-    img: "https://i.ibb.co/JCmdVrt/new-york-cover-letter-templates.jpg",
-  },
-  {
-    templateId: "stockholm01",
-    img: "https://i.ibb.co/ZYgp496/stockholm-cover-letter-templates-1.jpg",
-  },
+  // {
+  //   templateId: "vienna01",
+  //   img: "https://i.ibb.co/k9TKstJ/vienna-cover-letter-templates.jpg",
+  // },
+  // {
+  //   templateId: "newyork01",
+  //   img: "https://i.ibb.co/JCmdVrt/new-york-cover-letter-templates.jpg",
+  // },
+  // {
+  //   templateId: "stockholm01",
+  //   img: "https://i.ibb.co/ZYgp496/stockholm-cover-letter-templates-1.jpg",
+  // },
 
-  {
-    templateId: "toronto01",
-    img: "https://i.ibb.co/rmkbnC4/toronto-cover-letter-templates.jpg",
-  },
+  // {
+  //   templateId: "toronto01",
+  //   img: "https://i.ibb.co/rmkbnC4/toronto-cover-letter-templates.jpg",
+  // },
 ];
