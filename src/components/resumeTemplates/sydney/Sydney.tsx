@@ -53,7 +53,7 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
           parseFloat(resume.size.height.slice(0, -2)) > 1190.14 ? "bottom" : "",
         transition: "transform 0.5s",
       }}>
-      <div style={styleCommon.container}>
+      <div className=" bg-white" style={styleCommon.container}>
         <div style={styleCommon.header}>
           <img
             style={styleCommon.Image}
