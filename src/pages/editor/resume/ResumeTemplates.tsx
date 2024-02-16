@@ -41,4 +41,9 @@ const resumeTemplate = [
     img: images.resume2,
     style: { ...resumeStyle["stockholm01"].style.require },
   },
+  {
+    templateId: "sydney01",
+    img: "https://i.ibb.co/TKPqbjH/stockholm-resume-templates.webp",
+    style: { ...resumeStyle["sydney01"].style.require },
+  },
 ];
