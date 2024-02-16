@@ -105,7 +105,7 @@ const AddSingleReference: React.FC<IAddSingleReference> = ({
               />
               <InputText
                 onChange={(e) =>
-                  setState((prev) => ({ ...prev, level: e.target.value }))
+                  setState((prev) => ({ ...prev, phone: e.target.value }))
                 }
                 value={state.phone}
                 name="phone"
