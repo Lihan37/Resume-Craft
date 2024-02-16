@@ -31,6 +31,7 @@ const SingleCard: React.FC<ISingleCard> = ({ history }) => {
   const handleNavigate = () => {
     navigate(`/edit/resume/${history.resumeId}`);
   };
+
   const onTitleClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {

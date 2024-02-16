@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import AddSingleEmploymentHistory from "./AddSingleEmploymentHistory";
 import { FaPlus } from "react-icons/fa6";
-import createArrayUpToNumber from "../../../utils/createArrayUpToNumber";
 import { TypeOfSingleEmploymentHistory } from "../../../types/resumeEditor";
 import compareArrays from "../../../utils/compareArrays";
+import { nanoid } from "@reduxjs/toolkit";
 
 interface IAddEmploymentHistory {
   getValue?: (data: TypeOfSingleEmploymentHistory[]) => void;
@@ -18,9 +18,6 @@ const AddEmploymentHistory: React.FC<IAddEmploymentHistory> = ({
   initialValue,
   initialFocusedValue,
 }) => {
-  const [addMore, setAddMore] = useState<number>(
-    initialValue && initialValue?.length > 0 ? initialValue?.length : 1
-  );
   const [employmentHistory, setEmploymentHistory] = useState<
     TypeOfSingleEmploymentHistory[]
   >(initialValue || []);
@@ -52,32 +49,50 @@ const AddEmploymentHistory: React.FC<IAddEmploymentHistory> = ({
   useEffect(() => {
     if (
       typeof getValue === "function" &&
-      employmentHistory.length > 0 &&
       !compareArrays(employmentHistory, initialValue || [])
     ) {
       getValue(employmentHistory);
     }
   }, [employmentHistory]);
 
+  const handleDelete = (id: string | number) => {
+    const filteredData = employmentHistory.filter((item) => item._id !== id);
+    setEmploymentHistory(filteredData);
+  };
+
   return (
     <div className=" space-y-3 bg-white overflow-hidden">
-      {createArrayUpToNumber(addMore).map((item: number) => {
+      {employmentHistory.map((item: TypeOfSingleEmploymentHistory) => {
         const initialSingleData = employmentHistory?.find(
-          (i) => i._id === item
+          (i) => i._id === item._id
         );
         return (
           <AddSingleEmploymentHistory
-            id={item}
+            id={item._id}
             getValue={handleSingleHistory}
-            key={item}
+            key={item._id}
             initialValue={initialSingleData}
             getFocusedInputValue={getFocusedInputValue}
             initialFocusedValue={initialFocusedValue}
+            getDelete={handleDelete}
           />
         );
       })}
       <button
-        onClick={() => setAddMore((prev) => prev + 1)}
+        onClick={() => {
+          setEmploymentHistory((prv) => [
+            ...prv,
+            {
+              _id: nanoid(),
+              jobTitle: "",
+              employer: "",
+              startMontYear: "",
+              endMontYear: "",
+              city: "",
+              description: "",
+            },
+          ]);
+        }}
         className="pb-5 px-3 font-semibold hover:text-blue-700 py-1 duration-300 transition-colors  text-c-primary flex justify-start items-center gap-4 ">
         <FaPlus />
         <span> Add one more employment</span>
