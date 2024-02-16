@@ -6,7 +6,9 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import { changeTemplate } from "../../../services/resumeEditor/resumeEditorSlice";
+// import { changeTemplate as changeTemplateCoverLetter } from "../../../services/coverletterEditor/coverletterEditorSlice";
 import resumeStyle from "../../../components/resumeTemplates/style";
+// import coverLetterStyle from "../../../components/coverLetterTemplates/style";
 import { useNavigate } from "react-router-dom";
 import { ISingleUserHistory } from "../../../services/history/historySlice";
 import { createUserHistory } from "../../../services/history/historyApi";
@@ -24,8 +26,10 @@ import UserDashboardSkeleton from "../../../components/skeleton/UserDashboardSke
 
 interface State {
   activeTab: string;
-  resumeId: string;
-  historyId: string;
+  resumeId?: string;
+  historyId?: string;
+  coverLetterId?: string;
+  coverLetterHistoryId?: string;
 }
 
 const UserDashboard: React.FC = () => {
@@ -33,12 +37,15 @@ const UserDashboard: React.FC = () => {
     activeTab: "resume",
     resumeId: nanoid(),
     historyId: nanoid(),
+    coverLetterId: nanoid(),
+    coverLetterHistoryId: nanoid(),
   });
   const { activeTab, resumeId, historyId } = state;
   const dispatch = useDispatch();
   const appDispatch = useAppDispatch();
   const navigate = useNavigate();
   const allHistory = useSelector(selectAllHistory);
+
   const history = useSelector((state: RootState) =>
     selectHistory(state, activeTab)
   );
@@ -57,28 +64,45 @@ const UserDashboard: React.FC = () => {
   };
 
   const handleCreateHistory = async () => {
-    const data: ISingleUserHistory = {
-      _id: historyId,
-      user: "65bfd0f85443cc82b0f3f504",
-      title: "Untitled",
-      resumeId: resumeId,
-      thumbnail: {
-        public_id: "",
-        url: "",
-      },
-      type: "resume",
-      createdAt: "",
-      updatedAt: "",
-    };
+    let data = {};
+    if (activeTab === "resume") {
+      data = {
+        _id: historyId,
+        user: "65bfd0f85443cc82b0f3f504",
+        title: "Untitled",
+        resumeId: resumeId,
+        thumbnail: {
+          public_id: "",
+          url: "",
+        },
+        type: "resume",
+        createdAt: "",
+        updatedAt: "",
+      };
+    } else if (activeTab === "coverLetter") {
+      data = {
+        _id: historyId,
+        user: "65bfd0f85443cc82b0f3f504",
+        title: "Untitled",
+        resumeId: resumeId,
+        thumbnail: {
+          public_id: "",
+          url: "",
+        },
+        type: "coverLetter",
+        createdAt: "",
+        updatedAt: "",
+      };
+    }
 
     try {
-      await appDispatch(createUserHistory(data));
+      await appDispatch(createUserHistory(data as ISingleUserHistory));
     } catch (error) {
       console.error("Error creating history:", error);
     }
   };
 
-  const createNewResume = (value: string) => {
+  const createNew = (value: string) => {
     if (value === "resume") {
       const data = {
         ...initialState.resume,
@@ -92,6 +116,22 @@ const UserDashboard: React.FC = () => {
       handleCreateHistory();
       dispatch(changeTemplate(data));
       navigate(`/edit/resume/${data._id}`);
+      return;
+    }
+
+    if (value === "coverletter") {
+      // const data = {
+      //   ...initialState.resume,
+      //   _id: resumeId,
+      //   templateId: "sydney01",
+      //   historyId: historyId,
+      //   style: {
+      //     ...coverLetterStyle["sydney01"].style.require,
+      //   },
+      // };
+      // handleCreateHistory();
+      // dispatch(changeTemplateCoverLetter(data));
+      navigate(`/edit/coverletter/${state.coverLetterId}}`);
     }
   };
 
@@ -102,7 +142,7 @@ const UserDashboard: React.FC = () => {
           <h1 className=" text-2xl text-center md:text-start  md:text-3xl lg:text-4xl  font-bold text-gray-700">
             Resumes & Cover Letters & Portfolio
           </h1>
-          <Button onClick={() => createNewResume(activeTab)} icon={false}>
+          <Button onClick={() => createNew(activeTab)} icon={false}>
             {buttonLabels[activeTab]}
           </Button>
         </div>
@@ -131,7 +171,7 @@ const UserDashboard: React.FC = () => {
               exit={{ y: -10, opacity: 0 }}
               transition={{ duration: 0.2 }}>
               <TabSection
-                createNewResume={createNewResume}
+                createNew={createNew}
                 buttonLabel={{
                   value: activeTab,
                   label: buttonLabels[activeTab],

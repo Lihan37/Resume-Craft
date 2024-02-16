@@ -1,16 +1,19 @@
 import React from "react";
 import InputText from "../../../components/common/InputText";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setFocus } from "../../../services/generalEditor/generalEditorSlice";
 import { setValue } from "../../../services/coverletterEditor/coverletterEditorSlice";
+import { selectCoverLetter } from "../../../services/coverletterEditor/coverletterEditorSelector";
 
 const LeftSideBarOptions: React.FC = () => {
   const dispatch = useDispatch();
+  const coverLetter = useSelector(selectCoverLetter);
   return (
     <div>
-      <div className="px-5 text-c-dark space-y-4">
+      <div className="px-5 text-c-dark space-y-4 pb-20">
         <h1 className=" font-semibold text-xl">Personal Details :</h1>
         <InputText
+          value={coverLetter.fullName}
           onFocus={() => {
             dispatch(setFocus({ focusInput: "fullName" }));
           }}
@@ -20,6 +23,7 @@ const LeftSideBarOptions: React.FC = () => {
           placeholder="Full Name"
         />
         <InputText
+          value={coverLetter.JobTitle}
           onFocus={() => {
             dispatch(setFocus({ focusInput: "JobTitle" }));
           }}
@@ -29,6 +33,7 @@ const LeftSideBarOptions: React.FC = () => {
           placeholder="Job Title"
         />
         <InputText
+          value={coverLetter.address}
           onFocus={() => {
             dispatch(setFocus({ focusInput: "address" }));
           }}
@@ -38,6 +43,7 @@ const LeftSideBarOptions: React.FC = () => {
           placeholder="Address"
         />
         <InputText
+          value={coverLetter.email}
           onFocus={() => {
             dispatch(setFocus({ focusInput: "email" }));
           }}
@@ -47,6 +53,7 @@ const LeftSideBarOptions: React.FC = () => {
           placeholder="Email"
         />
         <InputText
+          value={coverLetter.phoneNumber}
           onFocus={() => {
             dispatch(setFocus({ focusInput: "phoneNumber" }));
           }}
@@ -58,6 +65,7 @@ const LeftSideBarOptions: React.FC = () => {
 
         <h1 className=" font-semibold text-xl">Employer Details :</h1>
         <InputText
+          value={coverLetter.companyName}
           onFocus={() => {
             dispatch(setFocus({ focusInput: "companyName" }));
           }}
@@ -67,6 +75,7 @@ const LeftSideBarOptions: React.FC = () => {
           placeholder="Company Name"
         />
         <InputText
+          value={coverLetter.managerName}
           onFocus={() => {
             dispatch(setFocus({ focusInput: "managerName" }));
           }}
@@ -77,6 +86,7 @@ const LeftSideBarOptions: React.FC = () => {
         />
         <h1 className=" font-semibold text-xl">Letter Details :</h1>
         <InputText
+          value={coverLetter.details}
           onFocus={() => {
             dispatch(setFocus({ focusInput: "details" }));
           }}
