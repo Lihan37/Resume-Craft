@@ -10,12 +10,10 @@ const Stockholm: React.ForwardRefRenderFunction<HTMLDivElement, IStockholm> = (
   { resume },
   ref
 ) => {
-  const sectionTitleStyle = resume.style.sectionTitles;
   const personalInfo = resume.personalInfo;
   const personalInfoSectionTitle =
     (personalInfo.email || personalInfo.phoneNumber || personalInfo.country) &&
     resume.sectionTitles.personalInfo;
-  const personalInfoStyle = resume.style.personalInfo;
 
   return (
     <div
@@ -48,50 +46,58 @@ const Stockholm: React.ForwardRefRenderFunction<HTMLDivElement, IStockholm> = (
           </div>
         )}
         <div>
-          <h1
-            style={{
-              ...personalInfoStyle.firstName,
-              textAlign: personalInfoStyle.firstName.textAlign as any,
-            }}
-            className="text-xl font-semibold w-full">
-            {personalInfo.firstName} {personalInfo.lastName}
+          <h1>
+            <span
+              style={{
+                ...resume.style.personalInfo.firstName,
+                textAlign: resume.style.personalInfo.firstName.textAlign as any,
+              }}>
+              {personalInfo.firstName}
+            </span>{" "}
+            <span
+              style={{
+                ...resume.style.personalInfo.lastName,
+                textAlign: resume.style.personalInfo.lastName.textAlign as any,
+              }}>
+              {personalInfo.lastName}
+            </span>
           </h1>
           {/* <span className=" mx-auto my-2 w-10 h-[1px] block bg-white"></span> */}
           <h3
             style={{
-              ...personalInfoStyle.jobTitle,
-              textAlign: personalInfoStyle.jobTitle.textAlign as any,
-            }}
-            className=" uppercase ">
+              ...resume.style.personalInfo.jobTitle,
+              textAlign: resume.style.personalInfo.jobTitle.textAlign as any,
+            }}>
             {personalInfo.jobTitle}
           </h3>
-          <div className=" my-4">
+          <div>
             <h1
               style={{
-                ...sectionTitleStyle.personalInfoStyle,
-                textAlign: sectionTitleStyle.personalInfoStyle.textAlign as any,
-              }}
-              className=" font-semibold text-lg text-white">
+                ...resume.style.sectionTitles.personalInfoStyle,
+                textAlign: resume.style.sectionTitles.personalInfoStyle
+                  .textAlign as any,
+              }}>
               {personalInfoSectionTitle}
             </h1>
             <p
               style={{
-                ...personalInfoStyle.email,
-                textAlign: personalInfoStyle.email.textAlign as any,
+                ...resume.style.personalInfo.email,
+                textAlign: resume.style.personalInfo.email.textAlign as any,
               }}>
               {personalInfo.email}
             </p>
             <p
               style={{
-                ...personalInfoStyle.phoneNumber,
-                textAlign: personalInfoStyle.phoneNumber.textAlign as any,
+                ...resume.style.personalInfo.phoneNumber,
+                textAlign: resume.style.personalInfo.phoneNumber
+                  .textAlign as any,
               }}>
               {personalInfo.phoneNumber}
             </p>
             <p
               style={{
-                ...personalInfoStyle.country,
-                textAlign: personalInfoStyle.country.textAlign as any,
+                ...resume.style.personalInfo.country,
+                textAlign: resume.style.personalInfo.country.textAlign as any,
               }}>
               {personalInfo.country}
             </p>

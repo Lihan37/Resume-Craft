@@ -140,7 +140,7 @@ const RightSideBarOptions: React.FC = () => {
                     fieldName: focusInput as focusInput,
                     value: {
                       ...style,
-                      size: data,
+                      fontSize: data,
                     } as TypeOfStyleText,
                   })
                 );

@@ -55,11 +55,9 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
       }}>
       <div className=" bg-white" style={styleCommon.container}>
         <div style={styleCommon.header}>
-          <img
-            style={styleCommon.Image}
-            src="https://i.ibb.co/MpZjhN1/Screen-Shot-20231026001002.png"
-            alt=""
-          />
+          {resume.avatar.url && (
+            <img style={styleCommon.Image} src={resume.avatar.url} alt="" />
+          )}
           <div>
             {resume.personalInfo.firstName && (
               <span
