@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa6";
-import createArrayUpToNumber from "../../../utils/createArrayUpToNumber";
 import { TypeOfLanguage } from "../../../types/resumeEditor";
 import AddSingleLanguage from "./AddSingleLanguage";
 import compareArrays from "../../../utils/compareArrays";
+import { nanoid } from "@reduxjs/toolkit";
 
 interface IAddLanguages {
   getValue?: (data: TypeOfLanguage[]) => void;
@@ -18,9 +18,6 @@ const AddLanguages: React.FC<IAddLanguages> = ({
   getFocusedInputValue = () => {},
   initialFocusedValue,
 }) => {
-  const [addMore, setAddMore] = useState<number>(
-    initialValue && initialValue?.length > 0 ? initialValue?.length : 1
-  );
   const [languages, setLanguages] = useState<TypeOfLanguage[]>(
     initialValue || []
   );
@@ -48,30 +45,40 @@ const AddLanguages: React.FC<IAddLanguages> = ({
   useEffect(() => {
     if (
       typeof getValue === "function" &&
-      languages.length > 0 &&
       !compareArrays(languages, initialValue || [])
     ) {
       getValue(languages);
     }
   }, [languages]);
 
+  const handleDelete = (id: string | number) => {
+    const filteredData = languages.filter((item) => item._id !== id);
+    setLanguages(filteredData);
+  };
+
   return (
     <div className=" space-y-3 bg-white overflow-hidden">
-      {createArrayUpToNumber(addMore).map((item) => {
-        const initialSingleData = languages?.find((i) => i._id === item);
+      {languages.map((item) => {
+        const initialSingleData = languages?.find((i) => i._id === item._id);
         return (
           <AddSingleLanguage
-            id={item}
+            id={item._id}
             getValue={handleSingleHistory}
-            key={item}
+            key={item._id}
             initialValue={initialSingleData}
             getFocusedInputValue={getFocusedInputValue}
             initialFocusedValue={initialFocusedValue}
+            getDelete={handleDelete}
           />
         );
       })}
       <button
-        onClick={() => setAddMore((prev) => prev + 1)}
+        onClick={() => {
+          setLanguages((prev) => [
+            ...prev,
+            { _id: nanoid(), language: "", level: "" },
+          ]);
+        }}
         className=" px-3 font-semibold hover:text-blue-700 py-1 duration-300 transition-colors  text-c-primary flex justify-start items-center gap-4">
         <FaPlus />
         <span> Add one more Language</span>
