@@ -1,17 +1,7 @@
 import React from "react";
-import AddEmploymentHistory from "./editor/resume/AddEmploymentHistory";
 
 const Demo: React.FC = () => {
-  return (
-    <div>
-      Demo
-      <AddEmploymentHistory
-        getValue={(data) => {
-          console.log("DemoPage", data);
-        }}
-      />
-    </div>
-  );
+  return <div className="">Demo</div>;
 };
 
 export default Demo;

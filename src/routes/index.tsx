@@ -19,8 +19,8 @@ import BlogDetails from "../pages/blog/BlogDetails";
 import Blogs from "../pages/dashboard/admin/blog";
 import CreateBlog from "../pages/dashboard/admin/blog/CreateBlog";
 // import Vienna from "../components/resumeTemplates/vienna/Vienna";
-// import { PDFViewer } from "@react-pdf/renderer";
-// import ViennaPDF from "../components/resumeTemplates/vienna/ViennaPDF";
+import { PDFViewer } from "@react-pdf/renderer";
+import ViennaPDF from "../components/resumeTemplates/vienna/ViennaPDF";
 // import Madrid from "../components/resumeTemplates/madrid/Madrid";
 import CoverLetter from "../pages/editor/CoverLetter";
 import Demo from "../pages/Demo";
@@ -129,14 +129,14 @@ const router = createBrowserRouter([
   //   path: "/madrid",
   //   element: <Madrid />,
   // },
-  // {
-  //   path: "/demopdf",
-  //   element: (
-  //     <PDFViewer width={1000} height={1300}>
-  //       <ViennaPDF />
-  //     </PDFViewer>
-  //   ),
-  // },
+  {
+    path: "/demopdf",
+    element: (
+      <PDFViewer width={1000} height={1300}>
+        <ViennaPDF />
+      </PDFViewer>
+    ),
+  },
 ]);
 
 export default router;
