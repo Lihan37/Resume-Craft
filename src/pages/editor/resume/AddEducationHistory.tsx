@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa6";
-import createArrayUpToNumber from "../../../utils/createArrayUpToNumber";
 import { TypeOfSingleEducationHistory } from "../../../types/resumeEditor";
 import AddSingleEducationHistory from "./AddSingleEducationHistory";
 import compareArrays from "../../../utils/compareArrays";
+import { nanoid } from "@reduxjs/toolkit";
 
 interface IAddEducationHistory {
   getValue?: (data: TypeOfSingleEducationHistory[]) => void;
@@ -18,10 +18,6 @@ const AddEducationHistory: React.FC<IAddEducationHistory> = ({
   getFocusedInputValue = () => {},
   initialFocusedValue,
 }) => {
-  const [addMore, setAddMore] = useState<number>(
-    initialValue && initialValue?.length > 0 ? initialValue?.length : 1
-  );
-
   const [educationHistory, setEducationHistory] = useState<
     TypeOfSingleEducationHistory[]
   >(initialValue || []);
@@ -54,30 +50,49 @@ const AddEducationHistory: React.FC<IAddEducationHistory> = ({
   useEffect(() => {
     if (
       typeof getValue === "function" &&
-      educationHistory.length > 0 &&
       !compareArrays(educationHistory, initialValue || [])
     ) {
       getValue(educationHistory);
     }
   }, [educationHistory]);
 
+  const handleDelete = (id: string | number) => {
+    const filteredData = educationHistory.filter((item) => item._id !== id);
+    setEducationHistory(filteredData);
+  };
   return (
     <div className=" space-y-3 bg-white overflow-hidden">
-      {createArrayUpToNumber(addMore).map((item) => {
-        const initialSingleData = educationHistory?.find((i) => i._id === item);
+      {educationHistory.map((item) => {
+        const initialSingleData = educationHistory?.find(
+          (i) => i._id === item._id
+        );
         return (
           <AddSingleEducationHistory
-            id={item}
+            id={item._id}
             getValue={handleSingleHistory}
-            key={item}
+            key={item._id}
             initialValue={initialSingleData}
             getFocusedInputValue={getFocusedInputValue}
             initialFocusedValue={initialFocusedValue}
+            getDelete={handleDelete}
           />
         );
       })}
       <button
-        onClick={() => setAddMore((prev) => prev + 1)}
+        onClick={() => {
+          setEducationHistory((prev) => [
+            ...prev,
+            {
+              _id: nanoid(),
+              school: "",
+              degree: "",
+              startMontYear: "",
+              endMontYear: "",
+              city: "",
+              description: "",
+            },
+          ]);
+        }}
         className=" px-3 font-semibold hover:text-blue-700 py-1 duration-300 transition-colors  text-c-primary flex justify-start items-center gap-4">
         <FaPlus />
         <span> Add one more education</span>
