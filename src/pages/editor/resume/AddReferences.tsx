@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa6";
-import createArrayUpToNumber from "../../../utils/createArrayUpToNumber";
 import { TypeOfReference } from "../../../types/resumeEditor";
 import AddSingleReference from "./AddSingleReference";
 import compareArrays from "../../../utils/compareArrays";
+import { nanoid } from "@reduxjs/toolkit";
 
 interface IAddReferences {
   getValue?: (data: TypeOfReference[]) => void;
@@ -18,9 +18,6 @@ const AddReferences: React.FC<IAddReferences> = ({
   initialValue,
   initialFocusedValue,
 }) => {
-  const [addMore, setAddMore] = useState<number>(
-    initialValue && initialValue?.length > 0 ? initialValue?.length : 1
-  );
   const [references, setReferences] = useState<TypeOfReference[]>(
     initialValue || []
   );
@@ -53,31 +50,47 @@ const AddReferences: React.FC<IAddReferences> = ({
   useEffect(() => {
     if (
       typeof getValue === "function" &&
-      references.length > 0 &&
       !compareArrays(references, initialValue || [])
     ) {
       getValue(references);
     }
   }, [references]);
 
+  const handleDelete = (id: string | number) => {
+    const filteredData = references.filter((item) => item._id !== id);
+    setReferences(filteredData);
+  };
+
   return (
     <div className=" space-y-3 bg-white overflow-hidden">
-      {createArrayUpToNumber(addMore).map((item) => {
-        const initialSingleData = references?.find((i) => i._id === item);
+      {references.map((item) => {
+        const initialSingleData = references?.find((i) => i._id === item._id);
 
         return (
           <AddSingleReference
-            id={item}
+            id={item._id}
             getValue={handleSingleHistory}
-            key={item}
+            key={item._id}
             initialValue={initialSingleData}
             getFocusedInputValue={getFocusedInputValue}
             initialFocusedValue={initialFocusedValue}
+            getDelete={handleDelete}
           />
         );
       })}
       <button
-        onClick={() => setAddMore((prev) => prev + 1)}
+        onClick={() => {
+          setReferences((prev) => [
+            ...prev,
+            {
+              _id: nanoid(),
+              name: "",
+              company: "",
+              phone: "",
+              email: "",
+            },
+          ]);
+        }}
         className=" px-3 font-semibold hover:text-blue-700 py-1 duration-300 transition-colors  text-c-primary flex justify-start items-center gap-4">
         <FaPlus />
         <span> Add one more references</span>
