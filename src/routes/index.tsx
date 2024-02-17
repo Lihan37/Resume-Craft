@@ -23,7 +23,7 @@ import { PDFViewer } from "@react-pdf/renderer";
 import ViennaPDF from "../components/resumeTemplates/vienna/ViennaPDF";
 // import Madrid from "../components/resumeTemplates/madrid/Madrid";
 import CoverLetter from "../pages/editor/CoverLetter";
-import Demo from "../pages/Demo";
+// import Demo from "../pages/Demo";
 
 const router = createBrowserRouter([
   {
@@ -116,13 +116,18 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "/demo",
-    element: <Demo />,
-  },
+  // {
+  //   path: "/demo",
+  //   element: <Demo />,
+  // },
 
   // {
   //   path: "/demo",
+  //   element: <Vienna />,
+  // },
+
+  // {
+  //   path: "/Vienna",
   //   element: <Vienna />,
   // },
   // {

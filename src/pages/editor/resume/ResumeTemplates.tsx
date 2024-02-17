@@ -46,4 +46,9 @@ const resumeTemplate = [
     img: "https://i.ibb.co/TKPqbjH/stockholm-resume-templates.webp",
     style: { ...resumeStyle["sydney01"].style.require },
   },
+  {
+    templateId: "vienna01",
+    img: "https://i.ibb.co/C2Qfdpy/vienna-resume-templates.webp",
+    style: { ...resumeStyle["vienna01"].style.require },
+  },
 ];

@@ -6,7 +6,6 @@ import {
   Document,
   StyleSheet,
   Image,
-  Text,
   Font,
 } from "@react-pdf/renderer";
 import styleVienna from "./ViennaStyle";
@@ -72,39 +71,6 @@ const ViennaPDF: React.FC = () => {
     },
     headerDivOne: styleVienna.common.headerDivOne,
     headerDivTwo: styleVienna.common.headerDivTwo,
-
-    text2: {
-      textAlign: styleVienna.require.personalInfo.firstName.textAlign as any,
-      fontSize: styleVienna.require.personalInfo.firstName.fontSize as any,
-      fontFamily: "Open Sans",
-      fontWeight: 200,
-    },
-    text22: {
-      textAlign: styleVienna.require.personalInfo.firstName.textAlign as any,
-      fontSize: styleVienna.require.personalInfo.firstName.fontSize as any,
-      fontFamily: "Nunito Sans",
-      fontWeight: 200,
-    },
-
-    text4: {
-      textAlign: styleVienna.require.personalInfo.firstName.textAlign as any,
-      fontSize: styleVienna.require.personalInfo.firstName.fontSize as any,
-      fontFamily: "Open Sans",
-      fontWeight: 400,
-    },
-
-    text6: {
-      textAlign: styleVienna.require.personalInfo.firstName.textAlign as any,
-      fontSize: styleVienna.require.personalInfo.firstName.fontSize as any,
-      fontFamily: "Open Sans",
-      fontWeight: 600,
-    },
-    text7: {
-      textAlign: styleVienna.require.personalInfo.firstName.textAlign as any,
-      fontSize: styleVienna.require.personalInfo.firstName.fontSize as any,
-      fontFamily: "Open Sans",
-      fontWeight: 700,
-    },
   });
 
   return (
@@ -114,11 +80,6 @@ const ViennaPDF: React.FC = () => {
           <View style={styles.headerDivOne}>
             <Image src={resume.avatar.url} />
           </View>
-          <Text style={styles.text2}>Section #2</Text>
-          <Text style={styles.text22}>Section #2</Text>
-          <Text style={styles.text4}>Section #4</Text>
-          <Text style={styles.text6}>Section #6</Text>
-          <Text style={styles.text7}>Section #7</Text>
         </View>
       </Page>
     </Document>

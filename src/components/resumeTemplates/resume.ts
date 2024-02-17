@@ -58,14 +58,14 @@ export const resume = {
   ],
   sectionTitles: {
     _id: "",
-    personalInfo: "Personal",
+    personalInfo: "Personal Data",
     professionalSummary: "Professional Summary",
     workExperience: "Employment",
     skills: "Skills",
     languages: "Languages",
     references: "References",
     educations: "Education",
-    socialProfiles: "Websites & Social",
+    socialProfiles: "Social",
   },
   size: {
     height: "1190.14px",

@@ -107,10 +107,10 @@ const UserDashboard: React.FC = () => {
       const data = {
         ...initialState.resume,
         _id: resumeId,
-        templateId: "stockholm01",
+        templateId: "vienna01",
         historyId: historyId,
         style: {
-          ...resumeStyle["stockholm01"].style.require,
+          ...resumeStyle["vienna01"].style.require,
         },
       };
       handleCreateHistory();
