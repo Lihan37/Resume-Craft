@@ -19,6 +19,7 @@ import BlogDetails from "../pages/blog/BlogDetails";
 import Blogs from "../pages/dashboard/admin/blog";
 import CreateBlog from "../pages/dashboard/admin/blog/CreateBlog";
 import Vienna from "../components/resumeTemplates/vienna/Vienna";
+import Athens from "../components/resumeTemplates/athens/Athens";
 import { PDFViewer } from "@react-pdf/renderer";
 import ViennaPDF from "../components/resumeTemplates/vienna/ViennaPDF";
 
@@ -112,6 +113,10 @@ const router = createBrowserRouter([
   {
     path: "/demo",
     element: <Vienna />,
+  },
+  {
+    path: "/athens",
+    element: <Athens />
   },
   {
     path: "/demopdf",

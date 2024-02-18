@@ -1,6 +1,55 @@
 // https://i.ibb.co/VSvZBY6/athens-resume-templates.webp
 
 const styleAthens = {
+  common: {
+    container: {
+      padding: "48px 48px",
+      width: "100%",
+      height: "100%",
+    },
+    header: {
+      display: "flex",
+      gap: "4px",
+    },
+
+    headerDivOne: {
+      width: "300px",
+      minHeight: "200px",
+      maxHeight: "250px",
+    },
+    headerDivOneImage: {
+      marginTop: "2%",
+      marginLeft: "10%",
+      marginBottom: "20px",
+      width: "200px",
+      minHeight: "60px",
+      maxHeight: "100px",
+      borderRadius: "100%"
+    },
+    headerDivTwo: {
+      marginLeft: "-20px",
+      padding: "34px 0",
+      width: "100%",
+    },
+    body: {
+      display: "flex",
+      gap: "20px",
+      padding: "40px 0px 0px 0px",
+    },
+    bodyDivOne: {
+      width: "300px",
+    },
+    bodyDivTwo: {
+      padding: "30px",
+      width: "100%",
+    },
+    personalInfoLabel: {
+      color: "#002B18",
+      fontFamily: "'Lato', sans-serif",
+      fontWeight: 700,
+      size: "35px",
+    },
+  },
   require: {
     theme: "#EF8E38",
     themeOptions: ["#EF8E38", "#64AA3A", "#8989D1", "#5F8CC9"],
@@ -9,24 +58,24 @@ const styleAthens = {
     personalInfo: {
       jobTitle: {
         color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        size: "",
-        textAlign: "",
+        fontFamily:  "'Lato', sans-serif",
+        fontWeight: 400,
+        size: "15px",
+        textAlign: "start",
       },
       firstName: {
         color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        size: "",
-        textAlign: "",
+        fontFamily: "'Lato', sans-serif",
+        fontWeight: 800,
+        size: "20px",
+        textAlign: "start",
       },
       lastName: {
         color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        size: "",
-        textAlign: "",
+        fontFamily:  "'Lato', sans-serif",
+        fontWeight: 800,
+        size: "20px",
+        textAlign: "start",
       },
       email: {
         color: "",
