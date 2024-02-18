@@ -115,6 +115,9 @@ const coverLetterEditorSlice = createSlice({
     changeTemplate(state, action) {
       state.coverLetter = { ...state.coverLetter, ...action.payload };
     },
+    setZoomIn(state, action) {
+      state.coverLetter.zoom = action.payload;
+    },
   },
 
   extraReducers: (builder) => {
@@ -152,6 +155,7 @@ export const {
   changeStyleCovetLetter,
   changeTemplate,
   changeZoom,
+  setZoomIn,
 } = coverLetterEditorSlice.actions;
 
 export default coverLetterEditorSlice.reducer;

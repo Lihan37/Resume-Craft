@@ -87,6 +87,24 @@ export const updateHistoryThumbnail = createAsyncThunk(
   }
 );
 
+export const deleteUserHistory = createAsyncThunk(
+  "history/deleteUserHistory",
+  async (id: string | number, { rejectWithValue }) => {
+    try {
+      const response = await fetch(`${baseUrl}/history/v1/delete/${id}`, {
+        method: "DELETE",
+      });
+      const data = await response.json();
+      console.log(data);
+      return { id: id, success: data.success };
+    } catch (error) {
+      return rejectWithValue(
+        (error as Error).message || "An error occurred during Delete History"
+      );
+    }
+  }
+);
+
 const taskApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllHistory: builder.query({
