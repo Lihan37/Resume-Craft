@@ -10,7 +10,7 @@ export interface ISingleUserHistory {
   _id: string | number;
   title: string;
   user: string | number;
-  resumeId: string | number;
+  templateId: string | number;
   createdAt: string;
   updatedAt: string;
   thumbnail: {

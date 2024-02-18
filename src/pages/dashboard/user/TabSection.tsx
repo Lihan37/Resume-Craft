@@ -16,7 +16,13 @@ const TabSection: React.FC<ITabSection> = ({
   return (
     <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
       {data?.length > 0 &&
-        data.map((item) => <SingleCard key={item._id} history={item} />)}
+        data.map((item) => (
+          <SingleCard
+            buttonLabel={buttonLabel?.value}
+            key={item._id}
+            history={item}
+          />
+        ))}
 
       <div
         onClick={() => createNew(buttonLabel?.value || "")}

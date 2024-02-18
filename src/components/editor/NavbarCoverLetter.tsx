@@ -32,7 +32,7 @@ const NavbarCoverLetter: React.FC = () => {
             <Logo name={false} />
             <div className=" flex justify-start items-center gap-5 xl:gap-10">
               <Breadcrumbs back="/" label="Home" />
-              <Breadcrumbs back="/dashboard" label="Resumes" />
+              <Breadcrumbs back="/dashboard" label="Cover-Letter" />
 
               <Title />
 

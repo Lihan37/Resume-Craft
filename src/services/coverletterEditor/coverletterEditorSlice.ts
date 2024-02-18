@@ -1,5 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TypeOfStyleText, styleInitialState } from "./../../types/editor";
+import {
+  createCoverLetterAndUpdate,
+  getSingleCoverLetterData,
+} from "./coverletterEditorApi";
 
 export interface ICoverLetterStyle {
   theme: string;
@@ -111,6 +115,33 @@ const coverLetterEditorSlice = createSlice({
     changeTemplate(state, action) {
       state.coverLetter = { ...state.coverLetter, ...action.payload };
     },
+  },
+
+  extraReducers: (builder) => {
+    builder
+      .addCase(createCoverLetterAndUpdate.pending, (state) => {
+        state.isSyncing = true;
+        state.error = null;
+      })
+      .addCase(createCoverLetterAndUpdate.fulfilled, (state) => {
+        state.isSyncing = false;
+      })
+      .addCase(createCoverLetterAndUpdate.rejected, (state, action) => {
+        state.isSyncing = false;
+        state.error = action.payload as string;
+      })
+      .addCase(getSingleCoverLetterData.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getSingleCoverLetterData.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.coverLetter = action.payload.coverLetter;
+      })
+      .addCase(getSingleCoverLetterData.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload as string;
+      });
   },
 });
 

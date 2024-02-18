@@ -13,6 +13,7 @@ interface IButtonOption {
 
 interface ISingleCard {
   history: ISingleUserHistory;
+  buttonLabel?: string;
 }
 
 const ButtonOption: React.FC<IButtonOption> = ({ children }) => {
@@ -23,13 +24,21 @@ const ButtonOption: React.FC<IButtonOption> = ({ children }) => {
   );
 };
 
-const SingleCard: React.FC<ISingleCard> = ({ history }) => {
+const SingleCard: React.FC<ISingleCard> = ({ history, buttonLabel }) => {
   const [title, setTitle] = useState<string>(history.title);
   const navigate = useNavigate();
   const appDispatch = useAppDispatch();
 
   const handleNavigate = () => {
-    navigate(`/edit/resume/${history.resumeId}`);
+    console.log(buttonLabel);
+    if (buttonLabel === "resume") {
+      navigate(`/edit/resume/${history.templateId}`);
+      return;
+    }
+    if (buttonLabel === "coverletter") {
+      navigate(`/edit/coverletter/${history.templateId}`);
+      return;
+    }
   };
 
   const onTitleClick = (

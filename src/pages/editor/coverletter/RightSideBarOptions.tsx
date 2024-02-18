@@ -49,81 +49,83 @@ const RightSideBarOptions: React.FC = () => {
           dispatch(changeSize(data));
         }}
       />
-      <div className=" space-y-2">
-        <h1 className=" font-semibold text-2xl capitalize ">Text</h1>
-        <div className=" space-y-5">
-          <FontFamilySelect
-            isSelectedValue={style?.fontFamily}
-            getValue={(data: string) => {
-              dispatch(
-                changeStyleCovetLetter({
-                  fieldName: focusInput as keyof ICoverLetterStyle,
-                  value: {
-                    ...style,
-                    fontFamily: data,
-                  } as TypeOfStyleText,
-                })
-              );
-            }}
-          />
-          <FontWeightSelect
-            isSelectedValue={style?.fontWeight}
-            getValue={(data: number) => {
-              dispatch(
-                changeStyleCovetLetter({
-                  fieldName: focusInput as keyof ICoverLetterStyle,
-                  value: {
-                    ...style,
-                    fontWeight: data,
-                  } as TypeOfStyleText,
-                })
-              );
-            }}
-          />
-          <FontColorSelect
-            isSelectedValue={style?.color}
-            getValue={(data: string) => {
-              dispatch(
-                changeStyleCovetLetter({
-                  fieldName: focusInput as keyof ICoverLetterStyle,
-                  value: {
-                    ...style,
-                    color: data,
-                  } as TypeOfStyleText,
-                })
-              );
-            }}
-          />
-          <FontSizeSelect
-            isSelectedValue={style?.fontSize}
-            getValue={(data: string) => {
-              dispatch(
-                changeStyleCovetLetter({
-                  fieldName: focusInput as keyof ICoverLetterStyle,
-                  value: {
-                    ...style,
-                    fontSize: data,
-                  } as TypeOfStyleText,
-                })
-              );
-            }}
-          />
-          <FontAlignSelect
-            isSelectedValue={style?.textAlign}
-            getValue={(data: string) => {
-              dispatch(
-                changeStyleCovetLetter({
-                  fieldName: focusInput as keyof ICoverLetterStyle,
-                  value: {
-                    ...style,
-                    textAlign: data,
-                  } as TypeOfStyleText,
-                })
-              );
-            }}
-          />
+      {focusInput && (
+        <div className=" space-y-2">
+          <h1 className=" font-semibold text-2xl capitalize ">Text</h1>
+          <div className=" space-y-5">
+            <FontFamilySelect
+              isSelectedValue={style?.fontFamily}
+              getValue={(data: string) => {
+                dispatch(
+                  changeStyleCovetLetter({
+                    fieldName: focusInput as keyof ICoverLetterStyle,
+                    value: {
+                      ...style,
+                      fontFamily: data,
+                    } as TypeOfStyleText,
+                  })
+                );
+              }}
+            />
+            <FontWeightSelect
+              isSelectedValue={style?.fontWeight}
+              getValue={(data: number) => {
+                dispatch(
+                  changeStyleCovetLetter({
+                    fieldName: focusInput as keyof ICoverLetterStyle,
+                    value: {
+                      ...style,
+                      fontWeight: data,
+                    } as TypeOfStyleText,
+                  })
+                );
+              }}
+            />
+            <FontColorSelect
+              isSelectedValue={style?.color}
+              getValue={(data: string) => {
+                dispatch(
+                  changeStyleCovetLetter({
+                    fieldName: focusInput as keyof ICoverLetterStyle,
+                    value: {
+                      ...style,
+                      color: data,
+                    } as TypeOfStyleText,
+                  })
+                );
+              }}
+            />
+            <FontSizeSelect
+              isSelectedValue={style?.fontSize}
+              getValue={(data: string) => {
+                dispatch(
+                  changeStyleCovetLetter({
+                    fieldName: focusInput as keyof ICoverLetterStyle,
+                    value: {
+                      ...style,
+                      fontSize: data,
+                    } as TypeOfStyleText,
+                  })
+                );
+              }}
+            />
+            <FontAlignSelect
+              isSelectedValue={style?.textAlign}
+              getValue={(data: string) => {
+                dispatch(
+                  changeStyleCovetLetter({
+                    fieldName: focusInput as keyof ICoverLetterStyle,
+                    value: {
+                      ...style,
+                      textAlign: data,
+                    } as TypeOfStyleText,
+                  })
+                );
+              }}
+            />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
