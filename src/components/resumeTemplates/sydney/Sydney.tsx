@@ -97,7 +97,7 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
       className="mx-auto"
       ref={ref}
       style={{
-        // transform: `scale(${resume.zoom})`,
+        transform: `scale(${resume.zoom})`,
         height: resume.size.height,
         width: resume.size.width,
         transformOrigin:
@@ -662,15 +662,6 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-     
-        <PDFViewer width={1200} height={1000}>
-          <SydneyPDF></SydneyPDF>
-          {/* <ViennaPDF></ViennaPDF> */}
-          </PDFViewer>
-     
-=======
->>>>>>> 3e89c960c1e6c90fb776daf54f7f79d3719103fd
     </div>
   );
 };

@@ -10,7 +10,6 @@ const styleSydney = {
     header: {
       display: "flex",
       gap: "14px",
-
     },
     personalInfoLabel: {
       color: "",
@@ -38,36 +37,33 @@ const styleSydney = {
     Image: {
       width: "100px",
       height: "100px",
-      borderRadius: '10px'
+      borderRadius: "10px",
     },
-    
+
     proDate: {
-
       color: "",
-
     },
     icon: {
       width: "14px",
       height: "14px",
-      marginTop:"5px"
+      marginTop: "5px",
     },
     headerIcon: {
       display: "flex",
       gap: "10px",
-      alignItems: 'center',
+      alignItems: "center",
       marginLeft: "-25px",
     },
     bar: {
       padding: "5px",
       width: "100%",
       height: "10px",
-      backgroundColor: '#4FC2D8',
-      borderRadius: '10px'
+      backgroundColor: "#4FC2D8",
+      borderRadius: "10px",
     },
-    marginTop:{
-      marginTop:'5px'
-    }
-
+    marginTop: {
+      marginTop: "5px",
+    },
   },
   require: {
     theme: "#4AFBB9",
