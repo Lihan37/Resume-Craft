@@ -69,7 +69,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     flexDirection: "row",
   },
-  fullName: {},
+  fullName: {
+    fontSize: "40px",
+    maxWidth: "163.2px",
+  },
 });
 const SydneyPDF: React.FC = () => {
   //   const commonStyle = styleVienna.common;
