@@ -3,10 +3,10 @@ import { IoIosArrowDown } from "react-icons/io";
 import useOutsideClick from "../../hooks/useOutsideClick";
 
 const options = [
-  { value: 0.3, label: "25%" },
-  { value: 0.4, label: "50%" },
-  { value: 0.5, label: "75%" },
-  { value: 0.7, label: "100%" },
+  { value: 0.5, label: "25%" },
+  { value: 0.6, label: "50%" },
+  { value: 0.8, label: "75%" },
+  { value: 1, label: "100%" },
 ];
 
 interface IZoomIn {
