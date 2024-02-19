@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import {
   Page,
@@ -6,7 +7,8 @@ import {
   StyleSheet,
   Image,
   Font,
-  Text
+  Text,
+  Link
 } from "@react-pdf/renderer";
 
 import { resume } from "../resume";
@@ -148,65 +150,163 @@ const SydneyPDF: React.FC = () => {
     container: styleSydney.common.container,
     header: {
       display: "flex",
-      flexDirection:'row',
-      gap: "20px",
+      flexDirection: 'row',
+      gap: "5px",
     },
     headerViewOne: styleSydney.common.headerDivOne,
     headerViewTwo: styleSydney.common.headerDivTwo,
+    firstName: {
+      ...styleSydney.require.personalInfo.firstName,
+      textAlign: styleSydney.require.personalInfo.firstName.textAlign as any,
+
+    },
+    lastName: {
+      ...style.personalInfo.lastName,
+      textAlign: style.personalInfo.lastName.textAlign as any,
+
+    },
+    jobTitle: {
+      ...style.personalInfo.jobTitle,
+      textAlign: style.personalInfo.jobTitle.textAlign as any,
+    },
+    imageAva: styleSydney.common.Image,
+    headerIcon: {
+      display: "flex",
+      flexDirection: 'row',
+      gap: "10px",
+      alignItems: 'center',
+      marginLeft: "-25px",
+    },
+    icon: styleSydney.common.icon,
+
+    sectionTitles: {
+      ...styleSydney.require.sectionTitles.professionalSummaryStyle,
+      textAlign: styleSydney.require.sectionTitles.professionalSummaryStyle
+        .textAlign as any,
+    },
+
+    summery: {
+      ...styleSydney.require.professionalSummary.summery,
+      textAlign: styleSydney.require.professionalSummary.summery.textAlign as any,
+    },
+    workExperienceStyle: {
+      ...styleSydney.require.sectionTitles.workExperienceStyle,
+      textAlign: styleSydney.require.sectionTitles.workExperienceStyle.textAlign as any,
+      marginTop: "10px",
+    },
+    workExperience: {
+      ...styleSydney.require.workExperience.jobTitle,
+      textAlign: styleSydney.require.workExperience.jobTitle.textAlign as any,
+    },
+    startMontYear: {
+      ...styleSydney.require.workExperience.startMontYear,
+      textAlign: styleSydney.require.workExperience.startMontYear.textAlign as any,
+    },
+    endMontYear: {
+      ...styleSydney.require.workExperience.endMontYear,
+      textAlign: styleSydney.require.workExperience.endMontYear.textAlign as any,
+    },
+    description: {
+      ...styleSydney.require.workExperience.description,
+      textAlign: styleSydney.require.workExperience.description.textAlign as any,
+    },
+    educationsStyle: {
+      ...styleSydney.require.sectionTitles.educationsStyle,
+      textAlign: styleSydney.require.sectionTitles.educationsStyle
+        .textAlign as any,
+      marginTop: "10px",
+    },
+    degree: {
+      ...styleSydney.require.educations.degree,
+      textAlign: styleSydney.require.educations.degree.textAlign as any,
+    },
+    school: {
+      ...styleSydney.require.educations.school,
+      textAlign: styleSydney.require.educations.school.textAlign as any,
+    },
+    city: {
+      ...styleSydney.require.educations.city,
+      textAlign: styleSydney.require.educations.city.textAlign as any,
+    },
+    startMontYearEdu: {
+      ...styleSydney.require.educations.startMontYear,
+      textAlign: styleSydney.require.educations.startMontYear.textAlign as any,
+    },
+    endMontYearEdu: {
+      ...styleSydney.require.educations.endMontYear,
+      textAlign: styleSydney.require.educations.endMontYear
+        .textAlign as any,
+    },
+    eduDes: {
+      ...styleSydney.require.educations.description,
+      textAlign: styleSydney.require.educations.description
+        .textAlign as any,
+    },
+    referencesStyle: {
+      ...styleSydney.require.sectionTitles.referencesStyle,
+      textAlign: style.sectionTitles.referencesStyle
+        .textAlign as any,
+      marginTop: "10px",
+    },
+    refName: {
+      ...styleSydney.require.references.name,
+      textAlign: styleSydney.require.references.name.textAlign as any,
+    },
+    refCom: {
+      ...styleSydney.require.references.company,
+      textAlign: styleSydney.require.references.company.textAlign as any,
+    },
+refEmail:{
+      ...styleSydney.require.references.email,
+      textAlign: styleSydney.require.references.email.textAlign as any
+    },
+   refPhone: {
+      ...styleSydney.require.references.phone,
+      textAlign: styleSydney.require.references.phone.textAlign as any,
+    }
   });
   return <Document>
     <Page style={styles.container}>
       <View style={styles.header}>
         {resume.avatar.url && (
-          <Image style={styleCommon.Image} src={resume.avatar.url} />
+          <Image style={styles.imageAva} src={resume.avatar.url} />
+
         )}
         <View>
-          {resume.personalInfo.firstName && (
+          <Text>{resume.personalInfo.firstName && (
             <Text
-              style={{
-                ...style.personalInfo.firstName,
-                textAlign: style.personalInfo.firstName.textAlign as any,
-              }}>
+              style={styles.firstName}>
               {resume.personalInfo.firstName}
             </Text>
           )}
           {resume.personalInfo.lastName && (
             <Text
-              style={{
-                ...style.personalInfo.lastName,
-                textAlign: style.personalInfo.lastName.textAlign as any,
-              }}>
+              style={styles.lastName}>
               {" "}
               {resume.personalInfo.lastName}
             </Text>
-          )}
+          )}</Text>
           {resume.personalInfo.jobTitle && (
             <Text
-              style={{
-                ...style.personalInfo.jobTitle,
-                textAlign: style.personalInfo.jobTitle.textAlign as any,
-              }}>
+              style={styles.jobTitle}>
               {resume.personalInfo.jobTitle}
             </Text>
           )}
         </View>
+
       </View>
-      <View style={styleCommon.header}>
-        <View style={styleCommon.headerViewTwo}>
+      <View style={styles.header}>
+        <View style={styles.headerViewTwo}>
           <View>
-            <View style={styleCommon.headerIcon}>
+            <View style={styles.headerIcon}>
               <Image
-                style={styleCommon.icon}
-                src="https://i.ibb.co/rfthK7T/profile-user.png"
-              
+                style={styles.icon}
+                src="https://i.ibb.co/DYGJf39/account.png"
+
               />
               {professionalSummarySectionTitle && (
                 <Text
-                  style={{
-                    ...style.sectionTitles.professionalSummaryStyle,
-                    textAlign: style.sectionTitles.professionalSummaryStyle
-                      .textAlign as any,
-                  }}>
+                  style={styles.sectionTitles}>
                   {professionalSummarySectionTitle}
                 </Text>
               )}
@@ -214,28 +314,21 @@ const SydneyPDF: React.FC = () => {
             </View>
             {resume.professionalSummary && (
               <Text
-                style={{
-                  ...style.professionalSummary.summery,
-                  textAlign: style.professionalSummary.summery.textAlign as any,
-                }}>
+                style={styles.summery}>
                 {resume.professionalSummary}
               </Text>
             )}
           </View>
           <View>
-            <View style={styleCommon.headerIcon}>
+            <View style={styles.headerIcon}>
               <Image
-                style={styleCommon.icon}
-                src="https://i.ibb.co/3MQtzRg/portfolio.png"
-                
+                style={styles.icon}
+                src="https://i.ibb.co/WGX4jFD/suitcase.png"
+
               />
               {workExperienceSectionTitle && (
                 <Text
-                  style={{
-                    ...style.sectionTitles.workExperienceStyle,
-                    textAlign: style.sectionTitles.workExperienceStyle.textAlign as any,
-                    marginTop: "10px",
-                  }}>
+                  style={styles.workExperienceStyle}>
                   {workExperienceSectionTitle}
                 </Text>
               )}
@@ -256,10 +349,7 @@ const SydneyPDF: React.FC = () => {
                     <Text>
                       {item.jobTitle && (
                         <Text
-                          style={{
-                            ...style.workExperience.jobTitle,
-                            textAlign: style.workExperience.jobTitle.textAlign as any,
-                          }}>
+                          style={styles.workExperience}>
                           {item.jobTitle},{" "}
                         </Text>
                       )}
@@ -284,27 +374,18 @@ const SydneyPDF: React.FC = () => {
                     </Text>
                     <Text>
                       <Text
-                        style={{
-                          ...style.workExperience.startMontYear,
-                          textAlign: style.workExperience.startMontYear.textAlign as any,
-                        }}>
+                        style={styles.startMontYear}>
                         {item.startMontYear}
                       </Text>{" "}
                       {item.startMontYear && item.endMontYear && " - "}
                       <Text
-                        style={{
-                          ...style.workExperience.endMontYear,
-                          textAlign: style.workExperience.endMontYear.textAlign as any,
-                        }}>
+                        style={styles.endMontYear}>
                         {item.endMontYear}
                       </Text>
                     </Text>
                     {item.description && (
                       <Text
-                        style={{
-                          ...style.workExperience.description,
-                          textAlign: style.workExperience.description.textAlign as any,
-                        }}>
+                        style={styles.description}>
                         {item.description}
                       </Text>
                     )}
@@ -314,20 +395,15 @@ const SydneyPDF: React.FC = () => {
             })}
           </View>
           <View>
-            <View style={styleCommon.headerIcon}>
+            <View style={styles.headerIcon}>
               <Image
-                style={styleCommon.icon}
+                style={styles.icon}
                 src="https://i.ibb.co/v3s3Y7z/mortarboard.png"
-                
+
               />
               {educationsSectionTitle && (
                 <Text
-                  style={{
-                    ...style.sectionTitles.educationsStyle,
-                    textAlign: style.sectionTitles.educationsStyle
-                      .textAlign as any,
-                    marginTop: "10px",
-                  }}>
+                  style={styles.educationsStyle}>
                   {educationsSectionTitle}
                 </Text>
               )}
@@ -345,59 +421,38 @@ const SydneyPDF: React.FC = () => {
                     <Text>
                       {item.degree && (
                         <Text
-                          style={{
-                            ...style.educations.degree,
-                            textAlign: style.educations.degree.textAlign as any,
-                          }}>
+                          style={styles.degree}>
                           {item.degree},{" "}
                         </Text>
                       )}
                       {item.school && (
                         <Text
-                          style={{
-                            ...style.educations.school,
-                            textAlign: style.educations.school.textAlign as any,
-                          }}>
+                          style={styles.school}>
                           {item.school},{" "}
                         </Text>
                       )}
                       {item.city && (
                         <Text
-                          style={{
-                            ...style.educations.city,
-                            textAlign: style.educations.city.textAlign as any,
-                          }}>
+                          style={styles.city}>
                           {item.city}
                         </Text>
                       )}
                     </Text>
                     <Text>
                       <Text
-                        style={{
-                          ...style.educations.startMontYear,
-                          textAlign: style.educations.startMontYear
-                            .textAlign as any,
-                        }}>
+                        style={styles.startMontYearEdu}>
                         {item.startMontYear}
                       </Text>{" "}
                       {item.startMontYear && item.endMontYear && " - "}
                       <Text
-                        style={{
-                          ...style.educations.endMontYear,
-                          textAlign: style.educations.endMontYear
-                            .textAlign as any,
-                        }}>
+                        style={styles.endMontYearEdu}>
                         {item.endMontYear}
                       </Text>
                     </Text>
 
                     {item.description && (
                       <Text
-                        style={{
-                          ...style.educations.description,
-                          textAlign: style.educations.description
-                            .textAlign as any,
-                        }}>
+                        style={styles.eduDes}>
                         {item.description}
                       </Text>
                     )}
@@ -407,20 +462,15 @@ const SydneyPDF: React.FC = () => {
             })}
           </View>
           <View>
-            <View style={styleCommon.headerIcon}>
+            <View style={styles.headerIcon}>
               <Image
-                style={styleCommon.icon}
-                src="https://i.ibb.co/Dkf2QTy/refer.png"
-                
+                style={styles.icon}
+                src="https://i.ibb.co/6Hj7JNX/exchange.png"
+
               />
               {referencesSectionTitle && (
                 <Text
-                  style={{
-                    ...style.sectionTitles.referencesStyle,
-                    textAlign: style.sectionTitles.referencesStyle
-                      .textAlign as any,
-                    marginTop: "10px",
-                  }}>
+                  style={styles.referencesStyle}>
                   {referencesSectionTitle}
                 </Text>
               )}
@@ -432,19 +482,13 @@ const SydneyPDF: React.FC = () => {
                   <Text>
                     {item.name && (
                       <Text
-                        style={{
-                          ...style.references.name,
-                          textAlign: style.references.name.textAlign as any,
-                        }}>
+                        style={styles.refName}>
                         {item.name},{" "}
                       </Text>
                     )}
                     {item.company && (
                       <Text
-                        style={{
-                          ...style.references.company,
-                          textAlign: style.references.company.textAlign as any,
-                        }}>
+                        style={styles.refCom}>
                         {item.company}
                       </Text>
                     )}
@@ -452,20 +496,14 @@ const SydneyPDF: React.FC = () => {
                   <Text>
                     {item.email && (
                       <Text
-                        style={{
-                          ...style.references.email,
-                          textAlign: style.references.email.textAlign as any,
-                        }}>
+                        style={styles.refEmail }>
                         {item.email}
                       </Text>
                     )}
                     {item.phone && item.email && "  |  "}
                     {item.phone && (
                       <Text
-                        style={{
-                          ...style.references.phone,
-                          textAlign: style.references.phone.textAlign as any,
-                        }}>
+                        style={styles.refPhone}>
                         {item.phone}
                       </Text>
                     )}
@@ -475,7 +513,7 @@ const SydneyPDF: React.FC = () => {
             })}
           </View>
         </View>
-        <View style={styleCommon.headerDivOne}>
+        {/* <View style={styleCommon.headerDivOne}>
           <View>
             {personalInfoSectionTitle && (
               <Text
@@ -487,12 +525,13 @@ const SydneyPDF: React.FC = () => {
                 {personalInfoSectionTitle}
               </Text>
             )}
-            <Text>
+            
               {" "}
               {resume.personalInfo.address &&
                 <Text style={styleCommon.personalInfoLabel}>Address</Text>
               }
-              {resume.personalInfo.address && (
+             <Text>
+             {resume.personalInfo.address && (
                 <Text
                   style={{
                     ...style.personalInfo.address,
@@ -532,6 +571,7 @@ const SydneyPDF: React.FC = () => {
                   {resume.personalInfo.country}
                 </Text>
               )}
+             </Text>
 
               {resume.personalInfo.email && (
                 <View>
@@ -541,9 +581,9 @@ const SydneyPDF: React.FC = () => {
                       ...style.personalInfo.email,
                       textAlign: style.personalInfo.email.textAlign as any,
                     }}>
-                    <a href={`mailto:${resume.personalInfo.email}`}>
+                    <Link href={`mailto:${resume.personalInfo.email}`}>
                       {resume.personalInfo.email}
-                    </a>
+                    </Link>
                   </Text>
                 </View>
               )}
@@ -596,7 +636,7 @@ const SydneyPDF: React.FC = () => {
                   </Text>
                 </>
               )}
-            </Text>
+            
           </View>
           <View>
             {skillSectionTitle && (
@@ -694,8 +734,10 @@ const SydneyPDF: React.FC = () => {
               );
             })}
           </View>
-        </View>
+        </View> */}
       </View>
+
+
     </Page>
   </Document>;
 };
