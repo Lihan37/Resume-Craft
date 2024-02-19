@@ -3,6 +3,7 @@ import React, { forwardRef } from "react";
 import { IResumeData } from "../../../services/resumeEditor/resumeEditorSlice";
 import { resume } from "../resume";
 import styleMadrid from "./MadridStyle";
+import createArrayUpToNumber from "../../../utils/createArrayUpToNumber";
 // import createArrayUpToNumber from "../../../utils/createArrayUpToNumber";
 export interface IMadrid {
   resume?: IResumeData;
@@ -39,9 +40,18 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
     ) &&
     resume.sectionTitles.educations;
 
+    const skillsSectionTitle =
+    resume.sectionTitles.skills && resume.sectionTitles.skills !== "Untitled" && resume.skills.length > 0 && resume.skills.find((item) => item.label || item.level) && resume.sectionTitles.skills;
+    const languagesSectionTitle =
+    resume.sectionTitles.languages && resume.sectionTitles.languages !== "Untitled" && resume.languages.length > 0 && resume.languages.find((item) => item.language || item.level) && resume.sectionTitles.languages;
+    const socialSectionTitle =
+    resume.sectionTitles.socialProfiles && resume.sectionTitles.socialProfiles !== "Untitled" && resume.socialProfiles.length > 0 && resume.socialProfiles.find((item) => item.label || item.link) && resume.sectionTitles.socialProfiles;
+
+
+
   return (
     <div
-      className="bg-blue-500"
+      // className="bg-blue-500"
       ref={ref}
       style={{
         // transform: `scale(${resume.zoom})`,
@@ -112,7 +122,6 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
             )}
             {resume.personalInfo.email && (
               <>
-                {/* <h1 style={{ ...styleCommon.personalInfoLabel }}>Email :</h1> */}
                 <h1
                   style={{
                     fontFamily: style.personalInfo.email.fontFamily,
@@ -134,6 +143,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
             {personalSectionTitle && (
               <h1
                 style={{
+                  ...styleCommon.commonMarginTop,
                   ...style.sectionTitles.personalInfoStyle,
                   textAlign: style.sectionTitles.personalInfoStyle
                     .textAlign as any,
@@ -182,7 +192,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                       ...style.personalInfo.country,
                       textAlign: style.personalInfo.city.textAlign as any,
                     }}>
-                    {resume.personalInfo.country},
+                    {resume.personalInfo.country}
                   </span>
                 )}
               </h1>
@@ -226,28 +236,6 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
               </h1>
             )}
 
-            {resume.personalInfo.city && (
-              <>
-                {/* <h1 style={{ ...styleCommon.personalInfoLabel }}>City :</h1> */}
-                <h1
-                  style={{
-                    ...style.personalInfo.city,
-                    textAlign: style.personalInfo.city.textAlign as any,
-                  }}>
-                  {resume.personalInfo.city}
-                </h1>
-              </>
-            )}
-
-            {resume.personalInfo.country && (
-              <h1
-                style={{
-                  ...style.personalInfo.country,
-                  textAlign: style.personalInfo.country.textAlign as any,
-                }}>
-                {resume.personalInfo.country}
-              </h1>
-            )}
             {resume.personalInfo.drivingLicense && (
               <h1
                 style={{
@@ -264,6 +252,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
             {personalSummaryTitle && (
               <h1
                 style={{
+                 ...styleCommon.commonMarginTop,
                   ...style.sectionTitles.professionalSummaryStyle,
                   textAlign: style.sectionTitles.professionalSummaryStyle
                     .textAlign as any,
@@ -290,6 +279,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
             {educationSectionTitle && (
               <h1
                 style={{
+                  ...styleCommon.commonMarginTop,
                   ...style.sectionTitles.educationsStyle,
                   textAlign: style.sectionTitles.educationsStyle
                     .textAlign as any,
@@ -302,24 +292,231 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
 
             {resume.educations.map((item, i) => (
               <div key={i}>
-                <h1>{item.school}</h1>
+                {item.school && (
+                  <h1
+                    >
+                     
+                     <span style={{
+                      ...style.educations.school,
+                      textAlign: style.educations.school.textAlign as any,
+                    }}>School Name :</span>
+                    {item.school}
+                  </h1>
+
+                )}
+                {item.degree && (
+                  <h1
+                    >
+                     
+                     <span style={{
+                      ...style.educations.degree,
+                      textAlign: style.educations.degree.textAlign as any,
+                    }}>Degree :</span>
+                    {item.degree}
+                  </h1>
+
+                )}
+                {item.city && (
+                  <h1
+                    >
+                     
+                     <span style={{
+                      ...style.educations.city,
+                      textAlign: style.educations.city.textAlign as any,
+                    }}>City :</span>
+                    {item.city}
+                  </h1>
+
+                )}
+                {item.startMontYear  && (
+                  <h1
+                    >
+                     
+                     <span style={{
+                      ...style.educations.startMontYear,
+                      textAlign: style.educations.startMontYear.textAlign as any,
+                    }}>Start Date :</span>
+                    {item.startMontYear}
+                  </h1>
+
+                )}
+                {item.endMontYear && (
+                  <h1
+                    >
+                     
+                     <span style={{
+                      ...style.educations.MontYear,
+                      textAlign: style.educations.MontYear.textAlign as any,
+                    }}>End Date :</span>
+                    {item.endMontYear}
+                  </h1>
+
+                )}
+                {item.description && (
+                  <h1
+                    >
+                     
+                     <span style={{
+                      ...style.educations.description,
+                      textAlign: style.educations.description.textAlign as any,
+                    }}>Description :</span>
+                    {item.description}
+                  </h1>
+
+                )}
+
               </div>
             ))}
           </div>
         </div>
+        {/* skills */}
+        <div>
+          {skillsSectionTitle && (
+            <h1
+              style={{
+                ...styleCommon.commonMarginTop,
+                ...style.sectionTitles.skillsStyle,
+                textAlign: style.sectionTitles.skillsStyle.textAlign as any,
+              }}>
+              <span style={{ ...styleCommon.sectionTitle }}>
+                {skillsSectionTitle}
+              </span>
+            </h1>
+          )}
+          <div>
+            {resume.skills.map((item, i) => (
+              <div key={i}>
+                {item.label && (
+                  <h1>
+                     <span style={{
+                      ...style.skills.label,
+                      textAlign: style.skills.label.textAlign as any,
+                    }}>Skill :</span>
+                    {item.label}
+                  </h1>
 
-        {/* {resume.skills.map((item) => {
-          return (
-            <div className="w-80 flex justify-start items-center h-2 bg-red-200 mt-5">
+                )}
+                {item.level && (
+                  <h1
+                    >
+                     
+                     <span style={{
+                      ...style.skills.level,
+                      textAlign: style.skills.level.textAlign as any,
+                    }}>Level :</span>
+                    <div 
+                    style={{...styleCommon.skills}}>
               {createArrayUpToNumber(item.level / 20).map((i) => (
                 <div
                   key={i}
-                  style={{ width: `20%` }}
-                  className=" h-full bg-red-600 block mr-1"></div>
+                  style={{ ...styleCommon.skillsLevel }}
+                  ></div>
               ))}
             </div>
-          );
-        })} */}
+                  </h1>
+
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* languages */}
+        <div>
+          {languagesSectionTitle && (
+            <h1
+            // className="mt-4"
+              style={{
+              ...styleCommon.commonMarginTop,
+                ...style.sectionTitles.languagesStyle,
+                textAlign: style.sectionTitles.languagesStyle.textAlign as any,
+              }}>
+              <span style={{ ...styleCommon.sectionTitle }}>
+                {languagesSectionTitle}
+              </span>
+            </h1>
+          )}
+          <div>
+            {resume.languages.map((item, i) => (
+              <div key={i}>
+                {item.language && (
+                  <h1>
+                     <span style={{
+                      ...style.languages.language,
+                      textAlign: style.languages.language.textAlign as any,
+                    }}>Language :</span>
+                    {item.language}
+                  </h1>
+
+                )}
+                {item.level && (
+                  <h1
+                    >
+                     
+                     <span style={{
+                      ...style.languages.level,
+                      textAlign: style.languages.level.textAlign as any,
+                    }}>Level :</span>
+                    <div 
+                    style={{...styleCommon.skills}}>
+              {createArrayUpToNumber(parseInt(item.level) ).map((i) => (
+                <div
+                  key={i}
+                  style={{ ...styleCommon.skillsLevel }}
+                  ></div>
+              ))}
+            </div>
+                  </h1>
+
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* social */}
+        <div>
+          {socialSectionTitle && (
+            <h1
+              style={{
+                ...styleCommon.commonMarginTop,
+                ...style.sectionTitles.socialProfilesStyle,
+                textAlign: style.sectionTitles.socialProfilesStyle.textAlign as any,
+              }}>
+              <span style={{ ...styleCommon.sectionTitle }}>
+                {socialSectionTitle}
+              </span>
+            </h1>
+          )}
+          <div>
+            {resume.socialProfiles.map((item, i) => (
+              <div key={i}>
+                {item.label && (
+                  <h1>
+                     <span style={{
+                      ...style.languages.language,
+                      textAlign: style.languages.language.textAlign as any,
+                    }}>Label :</span>
+                    {item.label}
+                  </h1>
+
+                )}
+                {item.link && (
+                  <h1
+                    >
+                     
+                     <span style={{
+                      ...style.languages.level,
+                      textAlign: style.languages.level.textAlign as any,
+                    }}>Link :</span>
+                    {item.link}
+                  </h1>
+
+                )}
+              </div>
+            ))}
+          </div>
+          
+        </div>
+        
       </div>
     </div>
   );
