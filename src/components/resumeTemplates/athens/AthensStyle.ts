@@ -19,7 +19,7 @@ const styleAthens = {
     },
     headerDivOneImage: {
       marginTop: "2%",
-      marginLeft: "10%",
+      marginLeft: "2%",
       marginBottom: "20px",
       width: "200px",
       minHeight: "60px",
@@ -27,7 +27,7 @@ const styleAthens = {
       borderRadius: "100%"
     },
     headerDivTwo: {
-      marginLeft: "-20px",
+      marginLeft: "-45px",
       padding: "34px 0",
       width: "100%",
     },
@@ -38,6 +38,7 @@ const styleAthens = {
     },
     bodyDivOne: {
       width: "300px",
+      marginLeft: "3%",
     },
     bodyDivTwo: {
       padding: "30px",
