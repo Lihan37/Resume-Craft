@@ -32,6 +32,11 @@ export default ResumeTemplates;
 
 const resumeTemplate = [
   {
+    templateId: "vienna01",
+    img: "https://i.ibb.co/9NzKxBm/vhdjggsvncvo6hzwiyv5.png",
+    style: { ...resumeStyle["vienna01"].style.require },
+  },
+  {
     templateId: "toronto01",
     img: images.resume1,
     style: { ...resumeStyle["toronto01"].style.require },
@@ -45,10 +50,5 @@ const resumeTemplate = [
     templateId: "sydney01",
     img: "https://i.ibb.co/TKPqbjH/stockholm-resume-templates.webp",
     style: { ...resumeStyle["sydney01"].style.require },
-  },
-  {
-    templateId: "vienna01",
-    img: "https://i.ibb.co/C2Qfdpy/vienna-resume-templates.webp",
-    style: { ...resumeStyle["vienna01"].style.require },
   },
 ];

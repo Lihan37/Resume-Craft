@@ -48,6 +48,7 @@ const styleVienna = {
       height: "3px",
       display: "flex",
       gap: "2px",
+      marginTop: "4px",
     },
 
     skillsLevel: { width: `20%`, backgroundColor: "#3a3139", height: "100%" },

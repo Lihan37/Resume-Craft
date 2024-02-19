@@ -94,6 +94,7 @@ const Vienna: React.ForwardRefRenderFunction<HTMLDivElement, IVienna> = (
       ? resume.sectionTitles.references
       : null;
 
+  const skillLevelHide = resume.style.skillLevel;
   return (
     <div
       ref={ref}
@@ -330,14 +331,17 @@ const Vienna: React.ForwardRefRenderFunction<HTMLDivElement, IVienna> = (
                       style={{
                         ...style.skills.label,
                         textAlign: style.skills.label.textAlign as any,
+                        lineHeight: skillLevelHide ? "12px" : "18px",
                       }}>
                       {item.label}
                     </h1>
-                    <div style={styleCommon.skillsLevelContainer}>
-                      {createArrayUpToNumber(item.level / 20).map((i) => (
-                        <span key={i} style={styleCommon.skillsLevel}></span>
-                      ))}
-                    </div>
+                    {!skillLevelHide && (
+                      <h1 style={styleCommon.skillsLevelContainer}>
+                        {createArrayUpToNumber(item.level / 20).map((i) => (
+                          <span key={i} style={styleCommon.skillsLevel}></span>
+                        ))}
+                      </h1>
+                    )}
                   </div>
                 )
               );

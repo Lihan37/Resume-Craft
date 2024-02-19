@@ -31,7 +31,7 @@ export default CoverLetterTemplates;
 const coverLetterTemplate = [
   {
     templateId: "sydney01",
-    img: "https://i.ibb.co/DDfZsj1/sydney-cover-letter-templates.jpg",
+    img: "https://i.ibb.co/BLXdJgY/Screenshot-3.png",
     style: { ...coverLetterStyle["sydney01"].style.require },
   },
   // {

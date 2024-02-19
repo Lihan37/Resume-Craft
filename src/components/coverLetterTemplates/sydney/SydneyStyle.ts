@@ -30,7 +30,7 @@ const styleSydney = {
       color: "#262626",
       fontFamily: "Nunito Sans",
       fontWeight: 700,
-      fontSize: "24px",
+      fontSize: "36px",
       textAlign: "start",
     },
     JobTitle: {
@@ -79,7 +79,7 @@ const styleSydney = {
       color: "#262626",
       fontFamily: "Nunito Sans",
       fontWeight: 400,
-      fontSize: "10px",
+      fontSize: "12px",
       textAlign: "start",
     },
   },
