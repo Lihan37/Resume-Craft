@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import {
   createUserHistory,
+  deleteUserHistory,
   updateHistoryThumbnail,
   updateUserHistory,
   userHistory,
@@ -10,7 +11,7 @@ export interface ISingleUserHistory {
   _id: string | number;
   title: string;
   user: string | number;
-  resumeId: string | number;
+  templateId: string | number;
   createdAt: string;
   updatedAt: string;
   thumbnail: {
@@ -106,6 +107,19 @@ const historySlice = createSlice({
           }
           return item;
         });
+      })
+      .addCase(deleteUserHistory.pending, (state) => {
+        state.error = null;
+      })
+      .addCase(deleteUserHistory.fulfilled, (state, action) => {
+        const filterData = state.history.filter(
+          (item) => item._id !== action.payload.id
+        );
+        state.history = action.payload.success ? filterData : state.history;
+        state.error = action.payload.success ? null : "some thing wrong";
+      })
+      .addCase(deleteUserHistory.rejected, (state) => {
+        state.error = "some thing wrong";
       });
   },
 });

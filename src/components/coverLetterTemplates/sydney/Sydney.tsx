@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { forwardRef } from "react";
 import { ICoverLetter } from "../../../services/coverletterEditor/coverletterEditorSlice";
+import styleSydney from "./SydneyStyle";
 
 export interface ISydney {
   coverLetter: ICoverLetter;
@@ -9,6 +11,9 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
   { coverLetter },
   ref
 ) => {
+  const commonStyle = styleSydney.common;
+  const style = coverLetter.style;
+
   return (
     <div
       ref={ref}
@@ -21,27 +26,86 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
             ? "bottom"
             : "",
         transition: "transform 0.5s",
+        backgroundColor: "#fff",
       }}>
-      <div className=" w-full  p-[48px] h-full bg-white text-neutral-800 ">
-        <div className=" flex gap-3 justify-between items-start font-bold ">
-          <div className=" max-w-[10.2rem] text-7xl">
+      <div style={commonStyle.container}>
+        <div style={commonStyle.header}>
+          <div
+            style={{
+              ...style.fullName,
+              textAlign: style.fullName.textAlign as any,
+              lineHeight: "72px",
+              maxWidth: "163.2px",
+            }}>
             {coverLetter.fullName}
           </div>
-          <div className="w-fit">
-            <h1 className=" font-bold  text-neutral-700 text-3xl ">
+          <div style={{ width: "fit" }}>
+            <h1
+              style={{
+                ...style.JobTitle,
+                textAlign: style.JobTitle.textAlign as any,
+                lineHeight: "36px",
+              }}>
               {coverLetter.JobTitle}
             </h1>
-            <h1 className=" text-xl font-semibold">{coverLetter.email}</h1>
-            <h1 className=" text-xl font-semibold">
+            <h1
+              style={{
+                ...style.email,
+                textAlign: style.email.textAlign as any,
+                lineHeight: "28px",
+              }}>
+              {coverLetter.email}
+            </h1>
+            <h1
+              style={{
+                ...style.phoneNumber,
+                textAlign: style.phoneNumber.textAlign as any,
+                lineHeight: "28px",
+              }}>
               {coverLetter.phoneNumber}
             </h1>
-            <h1 className=" text-xl font-semibold">{coverLetter.address}</h1>
+            <h1
+              style={{
+                ...style.address,
+                textAlign: style.address.textAlign as any,
+                lineHeight: "28px",
+              }}>
+              {coverLetter.address}
+            </h1>
           </div>
         </div>
-        <h1 className=" mx-auto mt-10 font-semibold text-2xl text-center w-fit px-5 py-1 bg-neutral-800 text-white">
-          TO : {coverLetter.managerName}, {coverLetter.companyName}
+        <h1
+          style={{
+            ...commonStyle.nameAndCompany,
+            backgroundColor: style.theme,
+          }}>
+          TO :{" "}
+          <span
+            style={{
+              ...style.managerName,
+              textAlign: style.managerName.textAlign as any,
+              lineHeight: "32px",
+            }}>
+            {coverLetter.managerName}
+          </span>{" "}
+          <span
+            style={{
+              ...style.companyName,
+              textAlign: style.companyName.textAlign as any,
+              lineHeight: "32px",
+            }}>
+            {coverLetter.companyName}
+          </span>
         </h1>
-        <div className=" mt-10 border-t-4 pt-10 border-violet-950 text-xl">
+        <div
+          style={{
+            ...style.details,
+            textAlign: style.details.textAlign as any,
+            marginTop: "40px",
+            paddingTop: "40px",
+            borderTopWidth: "4px",
+            borderColor: style.theme,
+          }}>
           {coverLetter.details}
         </div>
       </div>

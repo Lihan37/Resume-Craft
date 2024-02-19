@@ -79,13 +79,9 @@ const ResumeEditor: React.FC = () => {
           }
 
           const formData = new FormData();
-          formData.append(
-            "resumeCraftResumeThumbnail",
-            blob,
-            "resumeThumbnail.png"
-          );
+          formData.append("Thumbnail", blob, "resumeThumbnail.png");
 
-          if (resume.templateId) {
+          if (resume.historyId) {
             try {
               await dispatch(
                 updateHistoryThumbnail({

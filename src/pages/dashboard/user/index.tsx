@@ -6,13 +6,14 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import { changeTemplate } from "../../../services/resumeEditor/resumeEditorSlice";
-// import { changeTemplate as changeTemplateCoverLetter } from "../../../services/coverletterEditor/coverletterEditorSlice";
+import { changeTemplate as changeTemplateCoverLetter } from "../../../services/coverletterEditor/coverletterEditorSlice";
 import resumeStyle from "../../../components/resumeTemplates/style";
-// import coverLetterStyle from "../../../components/coverLetterTemplates/style";
+import coverLetterStyle from "../../../components/coverLetterTemplates/style";
 import { useNavigate } from "react-router-dom";
 import { ISingleUserHistory } from "../../../services/history/historySlice";
 import { createUserHistory } from "../../../services/history/historyApi";
 import { initialState } from "../../../services/resumeEditor/resumeEditorSlice";
+import { initialState as coverLetterInitialState } from "../../../services/coverletterEditor/coverletterEditorSlice";
 import { AnimatePresence, motion } from "framer-motion";
 import { RootState, useAppDispatch } from "../../../app/store";
 import { userHistory } from "../../../services/history/historyApi";
@@ -40,7 +41,13 @@ const UserDashboard: React.FC = () => {
     coverLetterId: nanoid(),
     coverLetterHistoryId: nanoid(),
   });
-  const { activeTab, resumeId, historyId } = state;
+  const {
+    activeTab,
+    resumeId,
+    historyId,
+    coverLetterId,
+    coverLetterHistoryId,
+  } = state;
   const dispatch = useDispatch();
   const appDispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -64,41 +71,49 @@ const UserDashboard: React.FC = () => {
   };
 
   const handleCreateHistory = async () => {
-    let data = {};
     if (activeTab === "resume") {
-      data = {
-        _id: historyId,
-        user: "65bfd0f85443cc82b0f3f504",
-        title: "Untitled",
-        resumeId: resumeId,
-        thumbnail: {
-          public_id: "",
-          url: "",
-        },
-        type: "resume",
-        createdAt: "",
-        updatedAt: "",
-      };
-    } else if (activeTab === "coverLetter") {
-      data = {
-        _id: historyId,
-        user: "65bfd0f85443cc82b0f3f504",
-        title: "Untitled",
-        resumeId: resumeId,
-        thumbnail: {
-          public_id: "",
-          url: "",
-        },
-        type: "coverLetter",
-        createdAt: "",
-        updatedAt: "",
-      };
+      try {
+        await appDispatch(
+          createUserHistory({
+            _id: historyId,
+            user: "65bfd0f85443cc82b0f3f504",
+            title: "Untitled",
+            templateId: resumeId,
+            thumbnail: {
+              public_id: "",
+              url: "",
+            },
+            type: "resume",
+            createdAt: "",
+            updatedAt: "",
+          } as ISingleUserHistory)
+        );
+      } catch (error) {
+        console.error("Error creating history:", error);
+      }
+      return;
     }
-
-    try {
-      await appDispatch(createUserHistory(data as ISingleUserHistory));
-    } catch (error) {
-      console.error("Error creating history:", error);
+    if (activeTab === "coverletter") {
+      try {
+        await appDispatch(
+          createUserHistory({
+            _id: coverLetterHistoryId,
+            user: "65bfd0f85443cc82b0f3f504",
+            title: "Untitled",
+            templateId: coverLetterId,
+            thumbnail: {
+              public_id: "",
+              url: "",
+            },
+            type: "coverletter",
+            createdAt: "",
+            updatedAt: "",
+          } as ISingleUserHistory)
+        );
+      } catch (error) {
+        console.error("Error creating history:", error);
+      }
+      return;
     }
   };
 
@@ -120,18 +135,19 @@ const UserDashboard: React.FC = () => {
     }
 
     if (value === "coverletter") {
-      // const data = {
-      //   ...initialState.resume,
-      //   _id: resumeId,
-      //   templateId: "sydney01",
-      //   historyId: historyId,
-      //   style: {
-      //     ...coverLetterStyle["sydney01"].style.require,
-      //   },
-      // };
-      // handleCreateHistory();
-      // dispatch(changeTemplateCoverLetter(data));
-      navigate(`/edit/coverletter/${state.coverLetterId}}`);
+      const data = {
+        ...coverLetterInitialState.coverLetter,
+        _id: coverLetterId,
+        templateId: "sydney01",
+        historyId: coverLetterHistoryId,
+        style: {
+          ...coverLetterStyle["sydney01"].style.require,
+        },
+      };
+      handleCreateHistory();
+      dispatch(changeTemplateCoverLetter(data));
+      navigate(`/edit/coverletter/${data._id}`);
+      return;
     }
   };
 

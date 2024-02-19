@@ -16,12 +16,18 @@ const TabSection: React.FC<ITabSection> = ({
   return (
     <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
       {data?.length > 0 &&
-        data.map((item) => <SingleCard key={item._id} history={item} />)}
+        data.map((item) => (
+          <SingleCard
+            buttonLabel={buttonLabel?.value}
+            key={item._id}
+            history={item}
+          />
+        ))}
 
-      <div
-        onClick={() => createNew(buttonLabel?.value || "")}
-        className="flex justify-start items-start gap-5 ">
-        <div className="min-h-56 lg:min-h-72 xl:min-h-56 2xl:min-h-72  group cursor-pointer w-full rounded-lg border-gray-300 h-full border-2 border-dashed flex flex-col justify-center items-center gap-4">
+      <div className="flex justify-start items-start gap-5 ">
+        <div
+          onClick={() => createNew(buttonLabel?.value || "")}
+          className="min-h-56 lg:min-h-72 xl:min-h-56 2xl:min-h-72  group cursor-pointer w-full rounded-lg border-gray-300 h-full border-2 border-dashed flex flex-col justify-center items-center gap-4">
           <div className="p-2 group-hover:text-c-primary group-hover:bg-blue-50 group-hover:border-c-primary duration-300 transition-colors text-5xl border-gray-300 text-gray-300 border-2 border-dashed rounded-lg">
             <IoMdAdd />
           </div>
