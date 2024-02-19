@@ -3,18 +3,12 @@ import Logo from "../common/Logo";
 import Breadcrumbs from "../common/Breadcrumbs";
 import Title from "./Title";
 import { IoIosCloudy } from "react-icons/io";
+import { TbLoader2 } from "react-icons/tb";
 import { FiSend } from "react-icons/fi";
 import { FiDownload } from "react-icons/fi";
 import ZoomIn from "./ZoomIn";
 import { useDispatch, useSelector } from "react-redux";
-import { setZoomIn } from "../../services/resumeEditor/resumeEditorSlice";
-import {
-  selectResume,
-  selectResumeEditor,
-  selectZoomIn,
-} from "../../services/resumeEditor/resumeEditorSelector";
-import { TbLoader2 } from "react-icons/tb";
-import { ISingleUserHistory } from "../../services/history/historySlice";
+import {} from "../../services/resumeEditor/resumeEditorSelector";
 import {
   updateUserHistory,
   userHistory,
@@ -24,25 +18,31 @@ import {
   selectAllHistory,
   selectSingleHistory,
 } from "../../services/history/historySelector";
+import {
+  selectCoverLetter,
+  selectCoverLetterEditor,
+  selectCoverLetterZoom,
+} from "../../services/coverletterEditor/coverletterEditorSelector";
+import { setZoomIn } from "../../services/coverletterEditor/coverletterEditorSlice";
+import { ISingleUserHistory } from "../../services/history/historySlice";
 
-const EditorNavbar: React.FC = () => {
-  const dispatch = useDispatch();
+const NavbarCoverLetter: React.FC = () => {
   const appDispatch = useAppDispatch();
-  const editor = useSelector(selectResumeEditor);
-  const zoom = useSelector(selectZoomIn);
-  const resume = useSelector(selectResume);
-
-  const history = useSelector((state: RootState) =>
-    selectSingleHistory(state, resume._id)
-  );
-
+  const editor = useSelector(selectCoverLetterEditor);
   const allHistory = useSelector(selectAllHistory);
+  const dispatch = useDispatch();
+  const zoom = useSelector(selectCoverLetterZoom);
+  const coverLetter = useSelector(selectCoverLetter);
 
   useEffect(() => {
     if (!(allHistory.length > 0)) {
       appDispatch(userHistory());
     }
   }, []);
+
+  const history = useSelector((state: RootState) =>
+    selectSingleHistory(state, coverLetter._id)
+  );
 
   const [title, setTitle] = useState<string>(history?.title || "");
 
@@ -74,7 +74,7 @@ const EditorNavbar: React.FC = () => {
             <Logo name={false} />
             <div className=" flex justify-start items-center gap-5 xl:gap-10">
               <Breadcrumbs back="/" label="Home" />
-              <Breadcrumbs back="/dashboard" label="Resumes" />
+              <Breadcrumbs back="/dashboard" label="Cover-Letter" />
 
               {history?._id && (
                 <Title
@@ -83,7 +83,7 @@ const EditorNavbar: React.FC = () => {
                 />
               )}
 
-              <div className="flex justify-start items-center gap-2 mt-1 w-28">
+              <div className="hidden md:flex justify-start items-center gap-2 mt-1 md:w-28">
                 {editor?.isSyncing ? (
                   <TbLoader2 className="animate-spin text-c-primary text-2xl lg:text-2xl" />
                 ) : (
@@ -102,23 +102,23 @@ const EditorNavbar: React.FC = () => {
               </div>
             </div>
           </div>
-          {!editor.isLoading && (
+          <div className="hidden md:block">
             <ZoomIn
               initialValue={zoom}
               getValue={(data: number) => {
                 dispatch(setZoomIn(data));
               }}
             />
-          )}
+          </div>
 
           <div className=" flex justify-start items-center gap-5 xl:gap-10">
-            <button className=" text-c-dark font-semibold flex justify-start items-center gap-2 px-4 py-1 lg:py-2 bg-gray-100 rounded-full text-base lg:text-xl">
+            <button className=" text-c-dark font-semibold flex justify-start  items-center lg:gap-2 lg:px-4 p-2 lg:py-2 bg-gray-100 rounded-full text-base lg:text-xl">
               <FiDownload />
-              <span>Download</span>
+              <span className=" hidden lg:block">Download</span>
             </button>
-            <button className=" flex justify-start items-center gap-2 px-4 py-1 lg:py-2 bg-c-primary text-white rounded-full text-base lg:text-xl">
+            <button className=" flex justify-start items-center lg:gap-2 lg:px-4 p-2  lg:py-2 bg-c-primary text-white rounded-full text-base lg:text-xl">
               <FiSend />
-              <span>Share</span>
+              <span className=" hidden lg:block">Share</span>
             </button>
           </div>
         </div>
@@ -127,4 +127,4 @@ const EditorNavbar: React.FC = () => {
   );
 };
 
-export default React.memo(EditorNavbar);
+export default React.memo(NavbarCoverLetter);

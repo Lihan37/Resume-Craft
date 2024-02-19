@@ -1,3 +1,4 @@
+import { styleInitialState } from "../../types/editor";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
@@ -17,7 +18,6 @@ import {
   TypeOfSingleEmploymentHistory,
   TypeOfSingleSocialWebSite,
   TypeOfSkill,
-  TypeOfStyleText,
   IPersonalInfo,
 } from "../../types/resumeEditor";
 import {
@@ -25,6 +25,7 @@ import {
   getSingleResumeData,
   updateResumeAvatar,
 } from "./resumeEditorApi";
+import { TypeOfStyleText } from "../../types/editor";
 
 export interface IPayloadChangeStyleResume {
   sectionTitle: keyof TypeOfResumeStyle;
@@ -77,13 +78,6 @@ interface IResumeEditorState {
   resume: IResumeData;
 }
 
-const styleInitialState: TypeOfStyleText = {
-  color: "",
-  fontFamily: "",
-  fontWeight: 0,
-  size: "",
-  textAlign: "",
-};
 export const initialState: IResumeEditorState = {
   isLoading: false,
   isSyncing: false,
@@ -95,7 +89,7 @@ export const initialState: IResumeEditorState = {
       url: "",
     },
 
-    historyId: "Schema.Types.Mixed",
+    historyId: "",
     templateId: "",
     personalInfo: {
       jobTitle: "",

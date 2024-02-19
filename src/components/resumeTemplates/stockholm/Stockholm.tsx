@@ -10,12 +10,10 @@ const Stockholm: React.ForwardRefRenderFunction<HTMLDivElement, IStockholm> = (
   { resume },
   ref
 ) => {
-  const sectionTitleStyle = resume.style.sectionTitles;
   const personalInfo = resume.personalInfo;
   const personalInfoSectionTitle =
     (personalInfo.email || personalInfo.phoneNumber || personalInfo.country) &&
     resume.sectionTitles.personalInfo;
-  const personalInfoStyle = resume.style.personalInfo;
 
   return (
     <div
@@ -48,68 +46,58 @@ const Stockholm: React.ForwardRefRenderFunction<HTMLDivElement, IStockholm> = (
           </div>
         )}
         <div>
-          <h1
-            style={{
-              fontFamily: personalInfoStyle.firstName.fontFamily,
-              textAlign: personalInfoStyle.firstName.textAlign as any,
-              fontWeight: personalInfoStyle.firstName.fontWeight,
-              color: personalInfoStyle.firstName.color,
-              fontSize: personalInfoStyle.firstName.size,
-            }}
-            className="text-xl font-semibold w-full">
-            {personalInfo.firstName} {personalInfo.lastName}
+          <h1>
+            <span
+              style={{
+                ...resume.style.personalInfo.firstName,
+                textAlign: resume.style.personalInfo.firstName.textAlign as any,
+              }}>
+              {personalInfo.firstName}
+            </span>{" "}
+            <span
+              style={{
+                ...resume.style.personalInfo.lastName,
+                textAlign: resume.style.personalInfo.lastName.textAlign as any,
+              }}>
+              {personalInfo.lastName}
+            </span>
           </h1>
           {/* <span className=" mx-auto my-2 w-10 h-[1px] block bg-white"></span> */}
           <h3
             style={{
-              fontFamily: personalInfoStyle.jobTitle.fontFamily,
-              textAlign: personalInfoStyle.jobTitle.textAlign as any,
-              fontWeight: personalInfoStyle.jobTitle.fontWeight,
-              color: personalInfoStyle.jobTitle.color,
-              fontSize: personalInfoStyle.jobTitle.size,
-            }}
-            className=" uppercase ">
+              ...resume.style.personalInfo.jobTitle,
+              textAlign: resume.style.personalInfo.jobTitle.textAlign as any,
+            }}>
             {personalInfo.jobTitle}
           </h3>
-          <div className=" my-4">
+          <div>
             <h1
               style={{
-                fontFamily: sectionTitleStyle.personalInfoStyle.fontFamily,
-                textAlign: sectionTitleStyle.personalInfoStyle.textAlign as any,
-                fontWeight: sectionTitleStyle.personalInfoStyle.fontWeight,
-                color: sectionTitleStyle.personalInfoStyle.color,
-                fontSize: sectionTitleStyle.personalInfoStyle.size,
-              }}
-              className=" font-semibold text-lg text-white">
+                ...resume.style.sectionTitles.personalInfoStyle,
+                textAlign: resume.style.sectionTitles.personalInfoStyle
+                  .textAlign as any,
+              }}>
               {personalInfoSectionTitle}
             </h1>
             <p
               style={{
-                fontFamily: personalInfoStyle.email.fontFamily,
-                textAlign: personalInfoStyle.email.textAlign as any,
-                fontWeight: personalInfoStyle.email.fontWeight,
-                color: personalInfoStyle.email.color,
-                fontSize: personalInfoStyle.email.size,
+                ...resume.style.personalInfo.email,
+                textAlign: resume.style.personalInfo.email.textAlign as any,
               }}>
               {personalInfo.email}
             </p>
             <p
               style={{
-                fontFamily: personalInfoStyle.phoneNumber.fontFamily,
-                textAlign: personalInfoStyle.phoneNumber.textAlign as any,
-                fontWeight: personalInfoStyle.phoneNumber.fontWeight,
-                color: personalInfoStyle.phoneNumber.color,
-                fontSize: personalInfoStyle.phoneNumber.size,
+                ...resume.style.personalInfo.phoneNumber,
+                textAlign: resume.style.personalInfo.phoneNumber
+                  .textAlign as any,
               }}>
               {personalInfo.phoneNumber}
             </p>
             <p
               style={{
-                fontFamily: personalInfoStyle.country.fontFamily,
-                textAlign: personalInfoStyle.country.textAlign as any,
-                fontWeight: personalInfoStyle.country.fontWeight,
-                color: personalInfoStyle.country.color,
-                fontSize: personalInfoStyle.country.size,
+                ...resume.style.personalInfo.country,
+                textAlign: resume.style.personalInfo.country.textAlign as any,
               }}>
               {personalInfo.country}
             </p>

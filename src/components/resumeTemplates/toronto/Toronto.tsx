@@ -1,13 +1,17 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { IResumeData } from "../../../services/resumeEditor/resumeEditorSlice";
 
 export interface IToronto {
   resume: IResumeData;
 }
 
-const Toronto: React.FC<IToronto> = ({ resume }) => {
+const Toronto: React.ForwardRefRenderFunction<HTMLDivElement, IToronto> = (
+  { resume },
+  ref
+) => {
   return (
     <div
+      ref={ref}
       style={{
         transform: `scale(${resume.zoom})`,
         height: resume.size.height,
@@ -39,4 +43,4 @@ const Toronto: React.FC<IToronto> = ({ resume }) => {
   );
 };
 
-export default Toronto;
+export default forwardRef(Toronto);

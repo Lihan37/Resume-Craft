@@ -3,12 +3,14 @@ import InputText from "../../../components/common/InputText";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { TypeOfLanguage } from "../../../types/resumeEditor";
+import { MdDelete } from "react-icons/md";
 
 interface IAddSingleLanguage {
   id: string | number;
   getValue?: (data: TypeOfLanguage) => void;
   initialValue?: TypeOfLanguage;
   getFocusedInputValue?: (data: string) => void;
+  getDelete?: (data: string | number) => void;
   initialFocusedValue?: string;
 }
 
@@ -22,6 +24,7 @@ const AddSingleLanguage: React.FC<IAddSingleLanguage> = ({
   id,
   getValue = () => {},
   getFocusedInputValue = () => {},
+  getDelete = () => {},
   initialValue,
   initialFocusedValue,
 }) => {
@@ -63,17 +66,29 @@ const AddSingleLanguage: React.FC<IAddSingleLanguage> = ({
     }
   }, [state]);
 
+  const handleDelete = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    event.stopPropagation();
+    getDelete(state._id);
+  };
+
   return (
     <div className="mx-2 border-[1.8px] rounded-md text-c-dark overflow-hidden">
       <motion.div
         onClick={() => setIsOpen((prev) => !prev)}
         className="w-full py-3 px-3 cursor-pointer font-semibold flex justify-between items-center">
         <span> {title}</span>
-        {!isOpen ? (
-          <IoIosArrowDown className=" text-xl" />
-        ) : (
-          <IoIosArrowUp className=" text-xl" />
-        )}
+        <div className=" flex justify-between gap-2 items-center">
+          <button onClick={handleDelete}>
+            <MdDelete className=" text-2xl text-red-400 hover:text-red-500 duration-300" />
+          </button>
+          {!isOpen ? (
+            <IoIosArrowDown className=" text-xl" />
+          ) : (
+            <IoIosArrowUp className=" text-xl" />
+          )}
+        </div>
       </motion.div>
       <AnimatePresence initial={false}>
         {isOpen && (

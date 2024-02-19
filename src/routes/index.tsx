@@ -10,18 +10,17 @@ import SignUp from "../pages/auth/SignUp";
 import ResumesTemplates from "../pages/templates/resumes/ResumesTemplates";
 import CoverLetterTemplates from "../pages/templates/coverletter/CoverLetterTemplates";
 import EditorWrapper from "../layouts/EditorWrapper";
-import ResumeEditor from "../pages/editor";
+import ResumeEditor from "../pages/editor/ResumeEditor";
 import Pricing from "../pages/pricing";
 import AuthWrapper from "../layouts/AuthWrapper";
-import Resume from "../pages/dashboard/user";
+import UserDashboard from "../pages/dashboard/user";
 import AdminDashboard from "../pages/dashboard/admin";
 import BlogDetails from "../pages/blog/BlogDetails";
 import Blogs from "../pages/dashboard/admin/blog";
 import CreateBlog from "../pages/dashboard/admin/blog/CreateBlog";
-import Vienna from "../components/resumeTemplates/vienna/Vienna";
-import Athens from "../components/resumeTemplates/athens/Athens";
 import { PDFViewer } from "@react-pdf/renderer";
-import ViennaPDF from "../components/resumeTemplates/vienna/ViennaPDF";
+import CoverLetter from "../pages/editor/CoverLetter";
+import SydneyPDF from "../components/coverLetterTemplates/sydney/SydneyPDF";
 
 const router = createBrowserRouter([
   {
@@ -52,7 +51,7 @@ const router = createBrowserRouter([
       // for dashboard
       {
         path: "/dashboard",
-        element: <Resume />,
+        element: <UserDashboard />,
       },
 
       {
@@ -89,6 +88,10 @@ const router = createBrowserRouter([
         path: "resume/:id",
         element: <ResumeEditor />,
       },
+      {
+        path: "coverletter/:id",
+        element: <CoverLetter />,
+      },
     ],
   },
   {
@@ -103,17 +106,13 @@ const router = createBrowserRouter([
         path: "blog",
         element: <Blogs />,
       },
-      // for admin blog post
       {
         path: "create-blog",
         element: <CreateBlog />,
       },
     ],
   },
-  {
-    path: "/demo",
-    element: <Vienna />,
-  },
+
   {
     path: "/athens",
     element: <Athens />
@@ -122,7 +121,7 @@ const router = createBrowserRouter([
     path: "/demopdf",
     element: (
       <PDFViewer width={1000} height={1300}>
-        <ViennaPDF />
+        <SydneyPDF />
       </PDFViewer>
     ),
   },

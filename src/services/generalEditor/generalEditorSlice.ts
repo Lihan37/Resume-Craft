@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TypeOfStyleText } from "../../types/resumeEditor";
+import { TypeOfStyleText } from "../../types/editor";
 
 export interface ITextStylePayload {
   name: keyof TypeOfStyleText;
@@ -8,7 +8,7 @@ export interface ITextStylePayload {
 
 export interface IFocus {
   focusInput: string;
-  focusSection: string;
+  focusSection?: string;
 }
 interface IGeneralEditorState {
   focus: IFocus;
@@ -17,14 +17,14 @@ interface IGeneralEditorState {
 
 const initialState: IGeneralEditorState = {
   focus: {
-    focusInput: "jobTitle",
-    focusSection: "personalInfo",
+    focusInput: "",
+    focusSection: "",
   },
   textStyle: {
     color: "",
     fontFamily: "",
     fontWeight: 0,
-    size: "",
+    fontSize: "",
     textAlign: "",
   },
 };

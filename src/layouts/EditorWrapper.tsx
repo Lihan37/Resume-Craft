@@ -1,12 +1,19 @@
 import React from "react";
-import EditorNavbar from "../components/editor/Navbar";
-import { Outlet } from "react-router-dom";
+import NavbarResume from "../components/editor/NavbarResume";
+import { Outlet, useLocation } from "react-router-dom";
+import NavbarCoverLetter from "../components/editor/NavbarCoverLetter";
 
 const EditorWrapper: React.FC = () => {
+  const { pathname } = useLocation();
+  console.log(pathname.includes("/edit/resume/"));
   return (
     <div>
       <>
-        <EditorNavbar />
+        {pathname.includes("/edit/resume/") ? (
+          <NavbarResume />
+        ) : (
+          <NavbarCoverLetter />
+        )}
         <div className="2xl:max-w-[1800px] mx-auto px-10 2xl:px-0">
           <Outlet />
         </div>

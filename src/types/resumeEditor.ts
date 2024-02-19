@@ -1,3 +1,5 @@
+import { TypeOfStyleText } from "./editor";
+
 export interface IResumePersonalInfo {
   jobTitle: string;
   firstName: string;
@@ -67,13 +69,6 @@ export interface TypeOfSectionTitle {
   _id: string;
 }
 
-export interface TypeOfStyleText {
-  color: string;
-  fontFamily: string;
-  fontWeight: number;
-  size: string;
-  textAlign: string;
-}
 export interface TypeOfResumeStyle {
   theme: string;
   skillLevel: boolean;

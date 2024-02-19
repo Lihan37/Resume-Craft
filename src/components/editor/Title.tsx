@@ -58,7 +58,6 @@ const Title: React.FC<ITitle> = ({
 
   useEffect(() => {
     if (typeof getValue === "function" && initialValue !== title) {
-      console.count("Title getValue");
       getValue(title);
     }
   }, [title]);

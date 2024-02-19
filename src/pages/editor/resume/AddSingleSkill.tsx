@@ -4,12 +4,14 @@ import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { TypeOfSkill } from "../../../types/resumeEditor";
 import SkillLevel from "./SkillLevel";
+import { MdDelete } from "react-icons/md";
 
 interface IAddSingleSkill {
   id: string | number;
   getValue?: (data: TypeOfSkill) => void;
   initialValue?: TypeOfSkill;
   getFocusedInputValue?: (data: string) => void;
+  getDelete?: (data: string | number) => void;
   initialFocusedValue?: string;
   skillLevel?: boolean;
 }
@@ -24,6 +26,7 @@ const AddSingleSkill: React.FC<IAddSingleSkill> = ({
   id,
   getValue = () => {},
   getFocusedInputValue = () => {},
+  getDelete = () => {},
   initialValue,
   initialFocusedValue,
   skillLevel = false,
@@ -69,17 +72,30 @@ const AddSingleSkill: React.FC<IAddSingleSkill> = ({
   const handleSkillLevel = (data: number) => {
     setState((prev) => ({ ...prev, _id: id, level: data }));
   };
+
+  const handleDelete = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    event.stopPropagation();
+    getDelete(state._id);
+  };
+
   return (
     <div className="mx-2 border-[1.8px] rounded-md text-c-dark overflow-hidden">
       <motion.div
         onClick={() => setIsOpen((prev) => !prev)}
         className="w-full py-3 px-3 cursor-pointer font-semibold flex justify-between items-center">
         <span> {title}</span>
-        {!isOpen ? (
-          <IoIosArrowDown className=" text-xl" />
-        ) : (
-          <IoIosArrowUp className=" text-xl" />
-        )}
+        <div className=" flex justify-between gap-2 items-center">
+          <button onClick={handleDelete}>
+            <MdDelete className=" text-2xl text-red-400 hover:text-red-500 duration-300" />
+          </button>
+          {!isOpen ? (
+            <IoIosArrowDown className=" text-xl" />
+          ) : (
+            <IoIosArrowUp className=" text-xl" />
+          )}
+        </div>
       </motion.div>
       <AnimatePresence initial={false}>
         {isOpen && (

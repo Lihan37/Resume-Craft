@@ -8,7 +8,7 @@ const ResumeTemplates: React.FC = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className=" px-5 flex justify-center items-center flex-col gap-3 my-10 mt-5">
+    <div className=" px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1 justify-center items-center gap-3 my-10 mt-5">
       {resumeTemplate.map((item, i) => (
         <div
           key={i}
@@ -21,7 +21,7 @@ const ResumeTemplates: React.FC = () => {
             );
           }}
           className=" cursor-pointer shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px]">
-          <img src={item.img} alt="" />
+          <img src={item.img} alt={item.templateId} />
         </div>
       ))}
     </div>
@@ -40,5 +40,15 @@ const resumeTemplate = [
     templateId: "stockholm01",
     img: images.resume2,
     style: { ...resumeStyle["stockholm01"].style.require },
+  },
+  {
+    templateId: "sydney01",
+    img: "https://i.ibb.co/TKPqbjH/stockholm-resume-templates.webp",
+    style: { ...resumeStyle["sydney01"].style.require },
+  },
+  {
+    templateId: "vienna01",
+    img: "https://i.ibb.co/C2Qfdpy/vienna-resume-templates.webp",
+    style: { ...resumeStyle["vienna01"].style.require },
   },
 ];

@@ -3,13 +3,14 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import useOutsideClick from "../../../hooks/useOutsideClick";
 
 const fontFamily = [
-  { value: "'Lato', sans-serif", label: "Lato" },
-  { value: "'Montserrat', sans-serif", label: "Montserrat" },
-  { value: "'Playfair Display', serif", label: "Playfair" },
-  { value: "'Poppins', sans-serif", label: "Poppins" },
-  { value: "'Roboto', sans-serif", label: "Roboto" },
-  { value: "'Roboto Mono', monospace", label: "Roboto Mono" },
-  { value: "'Titillium Web', sans-serif", label: "Titillium" },
+  { value: "Advent Pro", label: "Advent Pro" },
+  { value: "Roboto", label: "Roboto" },
+  { value: "Poppins", label: "Poppins" },
+  { value: "Nunito", label: "Nunito" },
+  { value: "Nunito Sans", label: "Nunito Sans" },
+  { value: "Open Sans", label: "Open Sans" },
+  { value: "Palanquin", label: "Palanquin" },
+  { value: "Playfair Display", label: "Playfair Display" },
 ];
 
 interface IFontFamilySelect {
