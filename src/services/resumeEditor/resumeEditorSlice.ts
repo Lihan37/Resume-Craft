@@ -125,10 +125,10 @@ export const initialState: IResumeEditorState = {
       socialProfiles: "Websites & Social",
       _id: "",
     },
-    zoom: 0.7,
+    zoom: 1,
     size: {
-      height: "1190.14px",
-      width: "852px",
+      height: "792px",
+      width: "612px",
     },
     style: {
       theme: "",
