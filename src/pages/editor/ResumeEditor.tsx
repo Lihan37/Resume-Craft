@@ -66,7 +66,7 @@ const ResumeEditor: React.FC = () => {
       if (!editor.isLoading) {
         if (templateRef.current && param.id) {
           const divToCapture = templateRef.current;
-          const canvas = await html2canvas(divToCapture);
+          const canvas = await html2canvas(divToCapture, { useCORS: true });
 
           // Convert canvas to blob
           const blob = await new Promise<Blob | null>((resolve) => {
