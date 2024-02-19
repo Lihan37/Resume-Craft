@@ -44,7 +44,6 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
               style={{
                 ...style.JobTitle,
                 textAlign: style.JobTitle.textAlign as any,
-                lineHeight: "20px",
               }}>
               {coverLetter.JobTitle}
             </h1>
@@ -52,7 +51,6 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
               style={{
                 ...style.email,
                 textAlign: style.email.textAlign as any,
-                lineHeight: "18px",
               }}>
               {coverLetter.email}
             </h1>
@@ -60,7 +58,6 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
               style={{
                 ...style.phoneNumber,
                 textAlign: style.phoneNumber.textAlign as any,
-                lineHeight: "18px",
               }}>
               {coverLetter.phoneNumber}
             </h1>
@@ -68,7 +65,6 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
               style={{
                 ...style.address,
                 textAlign: style.address.textAlign as any,
-                lineHeight: "18px",
               }}>
               {coverLetter.address}
             </h1>
@@ -84,7 +80,7 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
             style={{
               ...style.managerName,
               textAlign: style.managerName.textAlign as any,
-              lineHeight: "20px",
+              // lineHeight: "20px",
             }}>
             {coverLetter.managerName}
           </span>{" "}
@@ -92,7 +88,7 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
             style={{
               ...style.companyName,
               textAlign: style.companyName.textAlign as any,
-              lineHeight: "20px",
+              // lineHeight: "20px",
             }}>
             {coverLetter.companyName}
           </span>

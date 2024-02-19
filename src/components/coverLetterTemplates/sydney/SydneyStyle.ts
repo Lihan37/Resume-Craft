@@ -3,7 +3,7 @@ const styleSydney = {
     container: {
       height: "100%",
       width: "100%",
-      padding: "48px",
+      padding: "24px",
     },
 
     header: {
@@ -12,8 +12,8 @@ const styleSydney = {
       justifyContent: "start",
     },
     nameAndCompany: {
-      margin: "25px auto",
-      color: "#fff",
+      margin: "15px auto",
+      color: "#ffffff",
       fontWeight: 600,
       fontSize: "18px",
       width: "fit-content",
@@ -43,33 +43,33 @@ const styleSydney = {
     address: {
       color: "#262626",
       fontFamily: "Nunito Sans",
-      fontWeight: 600,
+      fontWeight: 400,
       fontSize: "14px",
       textAlign: "start",
     },
     email: {
       color: "#262626",
       fontFamily: "Nunito Sans",
-      fontWeight: 600,
+      fontWeight: 400,
       fontSize: "14px",
       textAlign: "start",
     },
     phoneNumber: {
       color: "#262626",
       fontFamily: "Nunito Sans",
-      fontWeight: 600,
+      fontWeight: 400,
       fontSize: "14px",
       textAlign: "start",
     },
     companyName: {
-      color: "#fff",
+      color: "#ffffff",
       fontFamily: "Nunito Sans",
       fontWeight: 600,
       fontSize: "18px",
       textAlign: "center",
     },
     managerName: {
-      color: "#fff",
+      color: "#ffffff",
       fontFamily: "Nunito Sans",
       fontWeight: 600,
       fontSize: "18px",
