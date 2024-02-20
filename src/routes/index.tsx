@@ -19,7 +19,8 @@ import BlogDetails from "../pages/blog/BlogDetails";
 import Blogs from "../pages/dashboard/admin/blog";
 import CreateBlog from "../pages/dashboard/admin/blog/CreateBlog";
 import CoverLetter from "../pages/editor/CoverLetter";
-import Demo from "../pages/Demo";
+import SydneyPDF from "../components/coverLetterTemplates/sydney/SydneyPDF";
+import Sydney from "../components/resumeTemplates/sydney/Sydney";
 
 const router = createBrowserRouter([
   {
@@ -113,8 +114,16 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/demo",
-    element: <Demo />,
+    path: "/demopdf",
+    element: (
+      <PDFViewer width={1000} height={1300}>
+        <SydneyPDF />
+      </PDFViewer>
+    ),
+  },
+  {
+    path: "sweeny",
+    element: <Sydney />,
   },
 ]);
 
