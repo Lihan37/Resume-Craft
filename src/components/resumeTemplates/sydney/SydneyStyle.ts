@@ -59,9 +59,9 @@ const styleSydney = {
       marginLeft: "-25px",
     },
     bar: {
-      padding: "5px",
+      // padding: "5px",
       width: "100%",
-      height: "5px",
+      height: "4px",
       backgroundColor: '#4FC2D8',
       borderRadius: '10px'
     },

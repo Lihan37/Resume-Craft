@@ -20,7 +20,7 @@ import Blogs from "../pages/dashboard/admin/blog";
 import CreateBlog from "../pages/dashboard/admin/blog/CreateBlog";
 import { PDFViewer } from "@react-pdf/renderer";
 import CoverLetter from "../pages/editor/CoverLetter";
-import SydneyPDF from "../components/coverLetterTemplates/sydney/SydneyPDF";
+// import SydneyPDF from "../components/coverLetterTemplates/sydney/SydneyPDF";
 import Sydney from "../components/resumeTemplates/sydney/Sydney";
 
 const router = createBrowserRouter([

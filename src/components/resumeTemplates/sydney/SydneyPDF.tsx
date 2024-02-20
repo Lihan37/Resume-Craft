@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import React from "react";
 import {
   Page,
@@ -728,7 +728,7 @@ const SydneyPDF: React.FC = () => {
                       // display: "block",
                     }}
                     href={item.link}
-                    target="_blank">
+                   >
                     {item.label}
                   </Link>
                 )
