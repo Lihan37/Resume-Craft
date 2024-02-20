@@ -83,7 +83,7 @@ const ViennaPDF: React.FC<IVienna> = ({ resume }) => {
       padding: "0px 24px 0px 0px",
       backgroundColor: style.theme,
     },
-    headerDivOne: { width: "213.3px", height: "125px" },
+    headerDivOne: { width: "213.3px" },
     headerDivTwo: {
       width: "100%",
       padding: !resume.avatar.url ? "10px 40px 10px 40px" : "10px 0px 0px 0px",
@@ -168,36 +168,36 @@ const ViennaPDF: React.FC<IVienna> = ({ resume }) => {
     personalInfoNationality: {
       ...style.personalInfo.nationality,
       textAlign: style.personalInfo.nationality.textAlign as any,
-      marginBottom: "6px",
+      marginBottom: "4px",
     },
     personalInfoDrivingLicense: {
       ...style.personalInfo.drivingLicense,
       textAlign: style.personalInfo.drivingLicense.textAlign as any,
-      marginBottom: "6px",
+      marginBottom: "4px",
     },
     personalInfoPlaceOfBirth: {
       ...style.personalInfo.placeOfBirth,
       textAlign: style.personalInfo.placeOfBirth.textAlign as any,
-      marginBottom: "6px",
+      marginBottom: "4px",
     },
     personalInfoDateOfBirth: {
       ...style.personalInfo.DateOfBirth,
       textAlign: style.personalInfo.DateOfBirth.textAlign as any,
-      marginBottom: "6px",
+      marginBottom: "4px",
     },
     skillSectionTitle: {
       ...style.sectionTitles.skillsStyle,
       textAlign: style.sectionTitles.skillsStyle.textAlign as any,
       marginTop: "5px",
-      marginBottom: "6px",
+      marginBottom: "4px",
     },
     skillsItems: {
-      marginBottom: "6px",
+      marginBottom: "4px",
     },
     skillsLabel: {
       ...style.skills.label,
       textAlign: style.skills.label.textAlign as any,
-      marginBottom: "4px",
+      // marginBottom: "4px",
     },
     skillsLevelContainer: {
       width: "100%",
@@ -576,7 +576,7 @@ const ViennaPDF: React.FC<IVienna> = ({ resume }) => {
             {resume.languages.map((item) => {
               return (
                 item.language && (
-                  <View key={item._id}>
+                  <View key={item._id} style={styles.textFlex}>
                     <Text style={styles.languagesLanguage}>
                       {item.language}
                     </Text>

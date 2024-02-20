@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import {
   selectResume,
   selectResumeEditor,
+  selectZoomIn,
 } from "../../services/resumeEditor/resumeEditorSelector";
 import resumes, {
   ResumeTemplatesType,
@@ -42,6 +43,7 @@ const ResumeEditor: React.FC = () => {
   const [rightSideBarIsOpen, setRightSideBarIsOpen] = useState<boolean>(false);
   const [editorDashboardIsOpen, setEditorDashboardIsOpen] =
     useState<boolean>(false);
+  const zoom = useSelector(selectZoomIn);
 
   useEffect(() => {
     if (param.id && param.id !== resume._id) {
@@ -143,8 +145,13 @@ const ResumeEditor: React.FC = () => {
           id="resumeEditorDashboard"
           className={`${
             editorDashboardIsOpen ? "block" : " hidden"
-          } w-full xl:flex overflow-auto justify-center items-center bg-zinc-100 `}>
-          {Template && <Template ref={templateRef} resume={resume} />}
+          } w-full xl:flex  justify-center items-center bg-zinc-100 overflow-auto  `}>
+          <div
+            className={`${
+              zoom > 1 && "w-[1600px] h-[1300px] pt-[250px] "
+            }  flex justify-center items-center`}>
+            {Template && <Template ref={templateRef} resume={resume} />}
+          </div>
         </div>
 
         <div

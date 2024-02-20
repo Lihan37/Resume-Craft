@@ -7,6 +7,7 @@ const options = [
   { value: 0.6, label: "50%" },
   { value: 0.8, label: "75%" },
   { value: 1, label: "100%" },
+  { value: 1.3, label: "125%" },
 ];
 
 interface IZoomIn {

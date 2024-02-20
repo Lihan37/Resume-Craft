@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import {
   selectCoverLetter,
   selectCoverLetterEditor,
+  selectCoverLetterZoom,
 } from "../../services/coverletterEditor/coverletterEditorSelector";
 import coverLetters, {
   CoverLettersTemplatesType,
@@ -39,6 +40,7 @@ const CoverLetter: React.FC = () => {
   const leftSideRef = useRef(null);
   const rightSideBarOpenButtonRef = useRef(null);
   const dispatch = useAppDispatch();
+  const zoom = useSelector(selectCoverLetterZoom);
 
   useEffect(() => {
     if (param.id && param.id !== coverLetter._id) {
@@ -146,9 +148,14 @@ const CoverLetter: React.FC = () => {
             className={`${
               editorDashboardIsOpen ? "block" : " hidden"
             } w-full xl:flex overflow-auto justify-center items-center bg-zinc-100 `}>
-            {Template && (
-              <Template ref={templateRef} coverLetter={editor.coverLetter} />
-            )}
+            <div
+              className={`${
+                zoom > 1 && "w-[1600px] h-[1300px] pt-[250px] "
+              }  flex justify-center items-center`}>
+              {Template && (
+                <Template ref={templateRef} coverLetter={editor.coverLetter} />
+              )}
+            </div>
           </div>
           <div
             ref={rightSideBarOpenButtonRef}
