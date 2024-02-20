@@ -230,7 +230,7 @@ export const resume = {
         color: "#172554",
         fontFamily: "Roboto",
         fontWeight: 600,
-        fontSize: "17px",
+        fontSize: "14px",
         textAlign: "start",
       },
       description: {

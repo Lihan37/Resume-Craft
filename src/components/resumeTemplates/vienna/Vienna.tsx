@@ -127,7 +127,7 @@ const Vienna: React.ForwardRefRenderFunction<HTMLDivElement, IVienna> = (
             style={{
               ...styleCommon.headerDivTwo,
               padding: !resume.avatar.url
-                ? "10px 24px 10px 24px"
+                ? "10px 40px 10px 40px"
                 : "10px 0px 0px 0px",
             }}>
             {(personalInfo.firstName || personalInfo.lastName) && (

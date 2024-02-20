@@ -33,7 +33,7 @@ export default ResumeTemplates;
 const resumeTemplate = [
   {
     templateId: "vienna01",
-    img: "https://i.ibb.co/9NzKxBm/vhdjggsvncvo6hzwiyv5.png",
+    img: "https://i.ibb.co/f9hPVf8/qmjkonlrz25liia1llek.png",
     style: { ...resumeStyle["vienna01"].style.require },
   },
   {

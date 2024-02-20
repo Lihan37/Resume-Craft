@@ -12,7 +12,6 @@ import {
 } from "@react-pdf/renderer";
 import styleVienna from "./ViennaStyle";
 
-import { resume } from "../resume";
 import {
   AdventPro,
   Nunito,
@@ -24,6 +23,7 @@ import {
   Roboto,
 } from "../../../utils/font";
 import createArrayUpToNumber from "../../../utils/createArrayUpToNumber";
+import { IResumeData } from "../../../services/resumeEditor/resumeEditorSlice";
 
 Font.register({
   family: "Advent Pro",
@@ -65,8 +65,12 @@ Font.register({
   fonts: PlayfairDisplay,
 });
 
-const ViennaPDF: React.FC = () => {
-  const style = styleVienna.require;
+export interface IVienna {
+  resume: IResumeData;
+}
+
+const ViennaPDF: React.FC<IVienna> = ({ resume }) => {
+  const style = resume.style;
   const styleCommon = styleVienna.common;
   const skillLevelHide = resume.style.skillLevel;
 
@@ -79,16 +83,16 @@ const ViennaPDF: React.FC = () => {
       padding: "0px 24px 0px 0px",
       backgroundColor: style.theme,
     },
-    headerDivOne: { width: "189px", height: "125px" },
+    headerDivOne: { width: "213.3px", height: "125px" },
     headerDivTwo: {
       width: "100%",
-      padding: !resume.avatar.url ? "10px 24px 10px 24px" : "10px 0px 0px 0px",
+      padding: !resume.avatar.url ? "10px 40px 10px 40px" : "10px 0px 0px 0px",
     },
 
     body: {
       display: "flex",
       gap: "15px",
-      padding: "15px 24px 0px 24px",
+      padding: "15px 40px 0px 40px",
       flexDirection: "row",
     },
     bodyDivOne: { width: "150px" },
@@ -98,6 +102,8 @@ const ViennaPDF: React.FC = () => {
       display: "flex",
       flexDirection: "row",
       gap: "2px",
+      alignItems: "center",
+      alignContent: "center",
     },
     personalInfoAddressCityPostalCode: {
       display: "flex",
@@ -154,7 +160,7 @@ const ViennaPDF: React.FC = () => {
 
     personalInfoLabel: {
       color: "#002B18",
-      fontFamily: "Roboto",
+      fontFamily: "Nunito Sans",
       fontWeight: 600,
       fontSize: "12px",
       marginBottom: "4px",
@@ -237,27 +243,33 @@ const ViennaPDF: React.FC = () => {
     professionalSummarySectionTitle: {
       ...style.sectionTitles.professionalSummaryStyle,
       textAlign: style.sectionTitles.professionalSummaryStyle.textAlign as any,
+      marginBottom: "6px",
     },
     professionalSummarySummery: {
       ...style.professionalSummary.summery,
       textAlign: style.professionalSummary.summery.textAlign as any,
+      lineHeight: 1.5,
     },
     workExperienceStyle: {
       ...style.sectionTitles.workExperienceStyle,
       textAlign: style.sectionTitles.workExperienceStyle.textAlign as any,
       marginTop: "5px",
+      marginBottom: "6px",
     },
     workExperienceJobTitle: {
       ...style.workExperience.jobTitle,
       textAlign: style.workExperience.jobTitle.textAlign as any,
+      marginBottom: "4px",
     },
     workExperienceEmployer: {
       ...style.workExperience.employer,
       textAlign: style.workExperience.employer.textAlign as any,
+      marginBottom: "4px",
     },
     workExperienceCity: {
       ...style.workExperience.city,
       textAlign: style.workExperience.city.textAlign as any,
+      marginBottom: "4px",
     },
     workExperienceStartMontYear: {
       ...style.workExperience.startMontYear,
@@ -270,56 +282,70 @@ const ViennaPDF: React.FC = () => {
     workExperienceDescription: {
       ...style.workExperience.description,
       textAlign: style.workExperience.description.textAlign as any,
+      lineHeight: 1.5,
+      marginTop: "-12px",
     },
     educationsStyle: {
       ...style.sectionTitles.educationsStyle,
       textAlign: style.sectionTitles.educationsStyle.textAlign as any,
+      marginBottom: "6px",
       marginTop: "5px",
     },
     educationsDegree: {
       ...style.educations.degree,
       textAlign: style.educations.degree.textAlign as any,
+      marginBottom: "4px",
     },
     educationsSchool: {
       ...style.educations.school,
       textAlign: style.educations.school.textAlign as any,
+      marginBottom: "4px",
     },
     educationsCity: {
       ...style.educations.city,
       textAlign: style.educations.city.textAlign as any,
+      marginBottom: "4px",
     },
     educationsStartMontYear: {
       ...style.educations.startMontYear,
       textAlign: style.educations.startMontYear.textAlign as any,
+      marginBottom: "6px",
     },
     educationsEndMontYear: {
       ...style.educations.endMontYear,
       textAlign: style.educations.endMontYear.textAlign as any,
+      marginBottom: "6px",
     },
     educationsDescription: {
       ...style.educations.description,
       textAlign: style.educations.description.textAlign as any,
+      lineHeight: 1.5,
     },
     referencesStyle: {
       ...style.sectionTitles.referencesStyle,
       textAlign: style.sectionTitles.referencesStyle.textAlign as any,
       marginTop: "5px",
+      marginBottom: "6px",
     },
     referencesName: {
       ...style.references.name,
       textAlign: style.references.name.textAlign as any,
+      marginBottom: "4px",
     },
     referencesCompany: {
       ...style.references.company,
       textAlign: style.references.company.textAlign as any,
+      marginBottom: "4px",
     },
     referencesEmail: {
       ...style.references.email,
       textAlign: style.references.email.textAlign as any,
+      marginBottom: "4px",
     },
     referencesPhone: {
       ...style.references.phone,
       textAlign: style.references.phone.textAlign as any,
+      marginBottom: "4px",
     },
   });
 
@@ -600,6 +626,7 @@ const ViennaPDF: React.FC = () => {
             )}
             {resume.workExperience.map((item, i) => {
               const marginBottom = resume.workExperience.length === i + 1;
+
               return (
                 (item.city ||
                   item.description ||
@@ -608,8 +635,8 @@ const ViennaPDF: React.FC = () => {
                   item.startMontYear ||
                   item.endMontYear) && (
                   <View
-                    style={{ marginBottom: !marginBottom ? "8px" : "0px" }}
-                    key={item._id}>
+                    key={item._id}
+                    style={{ marginBottom: !marginBottom ? "8px" : "0px" }}>
                     <View style={styles.textFlex}>
                       {item.jobTitle && (
                         <Text style={styles.workExperienceJobTitle}>
@@ -631,7 +658,9 @@ const ViennaPDF: React.FC = () => {
                       <Text style={styles.workExperienceStartMontYear}>
                         {item.startMontYear}
                       </Text>
-                      {item.startMontYear && item.endMontYear && " - "}
+                      {item.startMontYear && item.endMontYear && (
+                        <Text> - </Text>
+                      )}
                       <Text style={styles.workExperienceEndMontYear}>
                         {item.endMontYear}
                       </Text>
@@ -679,7 +708,9 @@ const ViennaPDF: React.FC = () => {
                       <Text style={styles.educationsStartMontYear}>
                         {item.startMontYear}
                       </Text>
-                      {item.startMontYear && item.endMontYear && " - "}
+                      {item.startMontYear && item.endMontYear && (
+                        <Text> - </Text>
+                      )}
                       <Text style={styles.educationsEndMontYear}>
                         {item.endMontYear}
                       </Text>
