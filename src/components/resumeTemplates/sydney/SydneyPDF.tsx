@@ -257,11 +257,11 @@ const SydneyPDF: React.FC = () => {
       ...styleSydney.require.references.company,
       textAlign: styleSydney.require.references.company.textAlign as any,
     },
-refEmail:{
+    refEmail: {
       ...styleSydney.require.references.email,
       textAlign: styleSydney.require.references.email.textAlign as any
     },
-   refPhone: {
+    refPhone: {
       ...styleSydney.require.references.phone,
       textAlign: styleSydney.require.references.phone.textAlign as any,
     }
@@ -280,13 +280,13 @@ refEmail:{
               {resume.personalInfo.firstName}
             </Text>
           )}
-          {resume.personalInfo.lastName && (
-            <Text
-              style={styles.lastName}>
-              {" "}
-              {resume.personalInfo.lastName}
-            </Text>
-          )}</Text>
+            {resume.personalInfo.lastName && (
+              <Text
+                style={styles.lastName}>
+                {" "}
+                {resume.personalInfo.lastName}
+              </Text>
+            )}</Text>
           {resume.personalInfo.jobTitle && (
             <Text
               style={styles.jobTitle}>
@@ -296,7 +296,7 @@ refEmail:{
         </View>
 
       </View>
-      <View style={styles.header}>
+      <View style={{ ...styles.header, alignItems: 'center', }}>
         <View style={styles.headerViewTwo}>
           <View>
             <View style={styles.headerIcon}>
@@ -497,7 +497,7 @@ refEmail:{
                   <Text>
                     {item.email && (
                       <Text
-                        style={styles.refEmail }>
+                        style={styles.refEmail}>
                         {item.email}
                       </Text>
                     )}
@@ -514,7 +514,7 @@ refEmail:{
             })}
           </View>
         </View>
-        {/* <View style={styleCommon.headerDivOne}>
+        <View style={styleCommon.headerDivOne}>
           <View>
             {personalInfoSectionTitle && (
               <Text
@@ -526,13 +526,13 @@ refEmail:{
                 {personalInfoSectionTitle}
               </Text>
             )}
-            
-              {" "}
-              {resume.personalInfo.address &&
-                <Text style={styleCommon.personalInfoLabel}>Address</Text>
-              }
-             <Text>
-             {resume.personalInfo.address && (
+
+            {" "}
+            {resume.personalInfo.address &&
+              <Text style={styleCommon.personalInfoLabel}>Address</Text>
+            }
+            <Text>
+              {resume.personalInfo.address && (
                 <Text
                   style={{
                     ...style.personalInfo.address,
@@ -572,72 +572,72 @@ refEmail:{
                   {resume.personalInfo.country}
                 </Text>
               )}
-             </Text>
+            </Text>
 
-              {resume.personalInfo.email && (
-                <View>
-                  <Text style={styleCommon.personalInfoLabel}>Email</Text>
-                  <Text
-                    style={{
-                      ...style.personalInfo.email,
-                      textAlign: style.personalInfo.email.textAlign as any,
-                    }}>
-                    <Link href={`mailto:${resume.personalInfo.email}`}>
-                      {resume.personalInfo.email}
-                    </Link>
-                  </Text>
-                </View>
-              )}
-              {personalInfo.nationality && (
-                <>
-                  <Text style={styleCommon.personalInfoLabel}>Nationality</Text>
-                  <Text
-                    style={{
-                      ...style.personalInfo.nationality,
-                      textAlign: style.personalInfo.nationality.textAlign as any,
-                    }}>
-                    {personalInfo.nationality}
-                  </Text>
-                </>
-              )}
-              {personalInfo.drivingLicense && (
-                <>
-                  <Text style={styleCommon.personalInfoLabel}>DrivingLicense</Text>
-                  <Text
-                    style={{
-                      ...style.personalInfo.drivingLicense,
-                      textAlign: style.personalInfo.drivingLicense
-                        .textAlign as any,
-                    }}>
-                    {personalInfo.drivingLicense}
-                  </Text>
-                </>
-              )}
-              {personalInfo.placeOfBirth && (
-                <>
-                  <Text style={styleCommon.personalInfoLabel}>Place Of Birth</Text>
-                  <Text
-                    style={{
-                      ...style.personalInfo.placeOfBirth,
-                      textAlign: style.personalInfo.placeOfBirth.textAlign as any,
-                    }}>
-                    {personalInfo.placeOfBirth}
-                  </Text>
-                </>
-              )}
-              {personalInfo.DateOfBirth && (
-                <>
-                  <Text style={styleCommon.personalInfoLabel}>Date Of Birth</Text>
-                  <Text
-                    style={{
-                      ...style.personalInfo.DateOfBirth,
-                      textAlign: style.personalInfo.DateOfBirth.textAlign as any,
-                    }}>
-                    {personalInfo.DateOfBirth}
-                  </Text>
-                </>
-              )}
-            
+            {resume.personalInfo.email && (
+              <View>
+                <Text style={styleCommon.personalInfoLabel}>Email</Text>
+                <Text
+                  style={{
+                    ...style.personalInfo.email,
+                    textAlign: style.personalInfo.email.textAlign as any,
+                  }}>
+                  <Link href={`mailto:${resume.personalInfo.email}`}>
+                    {resume.personalInfo.email}
+                  </Link>
+                </Text>
+              </View>
+            )}
+            {personalInfo.nationality && (
+              <>
+                <Text style={styleCommon.personalInfoLabel}>Nationality</Text>
+                <Text
+                  style={{
+                    ...style.personalInfo.nationality,
+                    textAlign: style.personalInfo.nationality.textAlign as any,
+                  }}>
+                  {personalInfo.nationality}
+                </Text>
+              </>
+            )}
+            {personalInfo.drivingLicense && (
+              <>
+                <Text style={styleCommon.personalInfoLabel}>DrivingLicense</Text>
+                <Text
+                  style={{
+                    ...style.personalInfo.drivingLicense,
+                    textAlign: style.personalInfo.drivingLicense
+                      .textAlign as any,
+                  }}>
+                  {personalInfo.drivingLicense}
+                </Text>
+              </>
+            )}
+            {personalInfo.placeOfBirth && (
+              <>
+                <Text style={styleCommon.personalInfoLabel}>Place Of Birth</Text>
+                <Text
+                  style={{
+                    ...style.personalInfo.placeOfBirth,
+                    textAlign: style.personalInfo.placeOfBirth.textAlign as any,
+                  }}>
+                  {personalInfo.placeOfBirth}
+                </Text>
+              </>
+            )}
+            {personalInfo.DateOfBirth && (
+              <>
+                <Text style={styleCommon.personalInfoLabel}>Date Of Birth</Text>
+                <Text
+                  style={{
+                    ...style.personalInfo.DateOfBirth,
+                    textAlign: style.personalInfo.DateOfBirth.textAlign as any,
+                  }}>
+                  {personalInfo.DateOfBirth}
+                </Text>
+              </>
+            )}
+
           </View>
           <View>
             {skillSectionTitle && (
@@ -685,23 +685,23 @@ refEmail:{
               return (
                 item.language && (
                   <View key={item._id}>
-                    <Text
+                    <Text><Text
                       style={{
                         ...style.languages.language,
                         textAlign: style.languages.language.textAlign as any,
                       }}>
                       {item.language}
                     </Text>{" "}
-                    {
-                      item.level &&
-                      <Text
-                        style={{
-                          ...style.languages.level,
-                          textAlign: style.languages.level.textAlign as any,
-                        }}>
-                        ( {item.level})
-                      </Text>
-                    }
+                      {
+                        item.level &&
+                        <Text
+                          style={{
+                            ...style.languages.level,
+                            textAlign: style.languages.level.textAlign as any,
+                          }}>
+                          ({item.level})
+                        </Text>
+                      }</Text>
                   </View>
                 )
               );
@@ -720,27 +720,27 @@ refEmail:{
             {resume.socialProfiles.map((item) => {
               return (
                 item.label && (
-                  <a
+                  <Link
                     key={item._id}
                     style={{
                       ...style.socialProfiles.label,
                       textAlign: style.socialProfiles.label.textAlign as any,
-                      display: "block",
+                      // display: "block",
                     }}
                     href={item.link}
                     target="_blank">
                     {item.label}
-                  </a>
+                  </Link>
                 )
               );
             })}
           </View>
-        </View> */}
+        </View>
       </View>
 
 
     </Page>
-  </Document>;
+  </Document >;
 };
 
 export default SydneyPDF;

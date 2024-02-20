@@ -21,6 +21,7 @@ import CreateBlog from "../pages/dashboard/admin/blog/CreateBlog";
 import { PDFViewer } from "@react-pdf/renderer";
 import CoverLetter from "../pages/editor/CoverLetter";
 import SydneyPDF from "../components/coverLetterTemplates/sydney/SydneyPDF";
+import Sydney from "../components/resumeTemplates/sydney/Sydney";
 
 const router = createBrowserRouter([
   {
@@ -117,9 +118,13 @@ const router = createBrowserRouter([
     path: "/demopdf",
     element: (
       <PDFViewer width={1000} height={1300}>
-        <SydneyPDF />
+        {/* <SydneyPDF /> */}
       </PDFViewer>
     ),
+  },
+  {
+    path: "sweeny",
+    element: <Sydney />,
   },
 ]);
 

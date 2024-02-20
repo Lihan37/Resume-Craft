@@ -3,13 +3,14 @@
 const styleSydney = {
   common: {
     container: {
-      padding: "40px 40px",
+      padding: "50px 50px",
       width: "100%",
       height: "100%",
     },
     header: {
       display: "flex",
-      gap: "14px",
+      gap: "10px",
+      
 
     },
     personalInfoLabel: {
@@ -20,11 +21,11 @@ const styleSydney = {
     },
 
     headerDivOne: {
-      padding: "30px",
+      padding: "10px",
       width: "300px",
     },
     headerDivTwo: {
-      padding: "30px",
+      padding: "10px",
       width: "100%",
     },
     bodyDivOne: {
@@ -60,7 +61,7 @@ const styleSydney = {
     bar: {
       padding: "5px",
       width: "100%",
-      height: "10px",
+      height: "5px",
       backgroundColor: '#4FC2D8',
       borderRadius: '10px'
     },
@@ -215,9 +216,9 @@ const styleSydney = {
       label: {
         color: "",
         fontFamily: "Roboto",
-        fontWeight: 600,
-        fontSize: "",
-        textAlign: "12px",
+        fontWeight: 500,
+        fontSize: "12px",
+        textAlign: "",
       },
       level: {
         color: "",
@@ -248,7 +249,7 @@ const styleSydney = {
         color: "",
         fontFamily: "Roboto",
         fontWeight: 0,
-        fontSize: "",
+        fontSize: "10px",
         textAlign: "",
       },
     },
@@ -271,14 +272,14 @@ const styleSydney = {
         color: "",
         fontFamily: "Roboto",
         fontWeight: 0,
-        fontSize: "",
+        fontSize: "12px",
         textAlign: "",
       },
       email: {
         color: "",
         fontFamily: "Roboto",
         fontWeight: 0,
-        fontSize: "",
+        fontSize: "12px",
         textAlign: "",
       },
     },
@@ -331,7 +332,7 @@ const styleSydney = {
         color: "",
         fontFamily: "Roboto",
         fontWeight: 0,
-        fontSize: "",
+        fontSize: "12px",
         textAlign: "",
       },
       link: {
