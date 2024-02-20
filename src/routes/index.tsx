@@ -19,6 +19,7 @@ import BlogDetails from "../pages/blog/BlogDetails";
 import Blogs from "../pages/dashboard/admin/blog";
 import CreateBlog from "../pages/dashboard/admin/blog/CreateBlog";
 import CoverLetter from "../pages/editor/CoverLetter";
+import ActiveAccount from "../pages/auth/ActiveAccount";
 
 const router = createBrowserRouter([
   {
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
       {
         path: "sign-up",
         element: <SignUp />,
+      },
+      {
+        path: "active",
+        element: <ActiveAccount />,
       },
     ],
   },
