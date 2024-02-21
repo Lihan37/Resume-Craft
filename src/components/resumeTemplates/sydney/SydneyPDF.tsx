@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 import React from "react";
 import {
   Page,
@@ -262,63 +263,74 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
       textAlign: style.references.phone.textAlign as any,
     },
   });
-  return (
-    <Document>
-      <Page style={styles.container}>
-        <View style={styles.header}>
-          {resume.avatar.url && (
-            <Image style={styles.imageAva} src={resume.avatar.url} />
-          )}
-          <View>
-            <Text>
-              {resume.personalInfo.firstName && (
-                <Text style={styles.firstName}>
-                  {resume.personalInfo.firstName}
-                </Text>
-              )}
-              {resume.personalInfo.lastName && (
-                <Text style={styles.lastName}>
-                  {resume.personalInfo.lastName}
-                </Text>
-              )}
+  return <Document>
+    <Page style={styles.container}>
+      <View style={{...styles.header,alignItems: 'center',}}>
+        {resume.avatar.url && (
+          <Image style={styles.imageAva} src={resume.avatar.url} />
+
+        )}
+        <View>
+          <Text>{resume.personalInfo.firstName && (
+            <Text
+              style={styles.firstName}>
+              {resume.personalInfo.firstName}
             </Text>
-            {resume.personalInfo.jobTitle && (
-              <Text style={styles.jobTitle}>
-                {resume.personalInfo.jobTitle}
+          )}
+            {resume.personalInfo.lastName && (
+              <Text
+                style={styles.lastName}>
+                {" "}
+                {resume.personalInfo.lastName}
+              </Text>
+            )}</Text>
+          {resume.personalInfo.jobTitle && (
+            <Text
+              style={styles.jobTitle}>
+              {resume.personalInfo.jobTitle}
+            </Text>
+          )}
+        </View>
+
+      </View>
+      <View style={{ ...styles.header,  }}>
+        <View style={styles.headerViewTwo}>
+          <View>
+            <View style={styles.headerIcon}>
+              <Image
+                style={styles.icon}
+                src="https://i.ibb.co/DYGJf39/account.png"
+
+              />
+              {professionalSummarySectionTitle && (
+                <Text
+                  style={styles.sectionTitles}>
+                  {professionalSummarySectionTitle}
+                </Text>
+              )}
+
+            </View>
+            {resume.professionalSummary && (
+              <Text
+                style={styles.summery}>
+                {resume.professionalSummary}
               </Text>
             )}
           </View>
-        </View>
-        <View style={{ ...styles.header, alignItems: "center" }}>
-          <View style={styles.headerViewTwo}>
-            <View>
-              <View style={styles.headerIcon}>
-                <Image
-                  style={styles.icon}
-                  src="https://i.ibb.co/DYGJf39/account.png"
-                />
-                {professionalSummarySectionTitle && (
-                  <Text style={styles.sectionTitles}>
-                    {professionalSummarySectionTitle}
-                  </Text>
-                )}
-              </View>
-              {resume.professionalSummary && (
-                <Text style={styles.summery}>{resume.professionalSummary}</Text>
+          <View>
+            <View style={styles.headerIcon}>
+              <Image
+                style={styles.icon}
+                src="https://i.ibb.co/WGX4jFD/suitcase.png"
+
+              />
+              {workExperienceSectionTitle && (
+                <Text
+                  style={styles.workExperienceStyle}>
+                  {workExperienceSectionTitle}
+                </Text>
               )}
             </View>
-            <View>
-              <View style={styles.headerIcon}>
-                <Image
-                  style={styles.icon}
-                  src="https://i.ibb.co/WGX4jFD/suitcase.png"
-                />
-                {workExperienceSectionTitle && (
-                  <Text style={styles.workExperienceStyle}>
-                    {workExperienceSectionTitle}
-                  </Text>
-                )}
-              </View>
 
               {resume.workExperience.map((item, i) => {
                 const marginBottom = resume.workExperience.length === i + 1;
@@ -442,258 +454,270 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
                 )}
               </View>
 
-              {resume.references.map((item) => {
-                return (
-                  <View key={item._id}>
-                    <Text>
-                      {item.name && (
-                        <Text style={styles.refName}>{item.name}, </Text>
-                      )}
-                      {item.company && (
-                        <Text style={styles.refCom}>{item.company}</Text>
-                      )}
-                    </Text>
-                    <Text>
-                      {item.email && (
-                        <Text style={styles.refEmail}>{item.email}</Text>
-                      )}
-                      {item.phone && item.email && "  |  "}
-                      {item.phone && (
-                        <Text style={styles.refPhone}>{item.phone}</Text>
-                      )}
-                    </Text>
-                  </View>
-                );
-              })}
-            </View>
-          </View>
-          <View style={styleCommon.headerDivOne}>
-            <View>
-              {personalInfoSectionTitle && (
-                <Text
-                  style={{
-                    ...style.sectionTitles.personalInfoStyle,
-                    textAlign: style.sectionTitles.personalInfoStyle
-                      .textAlign as any,
-                  }}>
-                  {personalInfoSectionTitle}
-                </Text>
-              )}
-              {resume.personalInfo.address && (
-                <Text style={styleCommon.personalInfoLabel}>Address</Text>
-              )}
-              <Text>
-                {resume.personalInfo.address && (
-                  <Text
-                    style={{
-                      ...style.personalInfo.address,
-                      textAlign: style.personalInfo.address.textAlign as any,
-                    }}>
-                    {resume.personalInfo.address},
-                  </Text>
-                )}
-                {resume.personalInfo.city && (
-                  <Text
-                    style={{
-                      ...style.personalInfo.city,
-                      textAlign: style.personalInfo.city.textAlign as any,
-                    }}>
-                    {resume.personalInfo.city},
-                  </Text>
-                )}
-                {resume.personalInfo.postalCode && (
-                  <Text
-                    style={{
-                      ...style.personalInfo.postalCode,
-                      textAlign: style.personalInfo.postalCode.textAlign as any,
-                    }}>
-                    {resume.personalInfo.postalCode},
-                  </Text>
-                )}
-                {resume.personalInfo.country && (
-                  <Text
-                    style={{
-                      ...style.personalInfo.country,
-                      textAlign: style.personalInfo.country.textAlign as any,
-                    }}>
-                    {resume.personalInfo.country}
-                  </Text>
-                )}
-              </Text>
-              {resume.personalInfo.email && (
-                <View>
-                  <Text style={styleCommon.personalInfoLabel}>Email</Text>
-                  <Link
-                    style={{
-                      ...style.personalInfo.email,
-                      textAlign: style.personalInfo.email.textAlign as any,
-                    }}
-                    href={`mailto:${resume.personalInfo.email}`}>
-                    {resume.personalInfo.email}
-                  </Link>
-                </View>
-              )}
-              {personalInfo.nationality && (
-                <>
-                  <Text style={styleCommon.personalInfoLabel}>Nationality</Text>
-                  <Text
-                    style={{
-                      ...style.personalInfo.nationality,
-                      textAlign: style.personalInfo.nationality
-                        .textAlign as any,
-                    }}>
-                    {personalInfo.nationality}
-                  </Text>
-                </>
-              )}
-              {personalInfo.drivingLicense && (
-                <>
-                  <Text style={styleCommon.personalInfoLabel}>
-                    DrivingLicense
-                  </Text>
-                  <Text
-                    style={{
-                      ...style.personalInfo.drivingLicense,
-                      textAlign: style.personalInfo.drivingLicense
-                        .textAlign as any,
-                    }}>
-                    {personalInfo.drivingLicense}
-                  </Text>
-                </>
-              )}
-              {personalInfo.placeOfBirth && (
-                <>
-                  <Text style={styleCommon.personalInfoLabel}>
-                    Place Of Birth
-                  </Text>
-                  <Text
-                    style={{
-                      ...style.personalInfo.placeOfBirth,
-                      textAlign: style.personalInfo.placeOfBirth
-                        .textAlign as any,
-                    }}>
-                    {personalInfo.placeOfBirth}
-                  </Text>
-                </>
-              )}
-              {personalInfo.DateOfBirth && (
-                <>
-                  <Text style={styleCommon.personalInfoLabel}>
-                    Date Of Birth
-                  </Text>
-                  <Text
-                    style={{
-                      ...style.personalInfo.DateOfBirth,
-                      textAlign: style.personalInfo.DateOfBirth
-                        .textAlign as any,
-                    }}>
-                    {personalInfo.DateOfBirth}
-                  </Text>
-                </>
-              )}
-            </View>
-            <View>
-              {skillSectionTitle && (
-                <Text
-                  style={{
-                    ...style.sectionTitles.skillsStyle,
-                    textAlign: style.sectionTitles.skillsStyle.textAlign as any,
-                    marginTop: "5px",
-                  }}>
-                  {skillSectionTitle}
-                </Text>
-              )}
-              <View>
-                {resume.skills.map((skill, index) => (
-                  <View key={index}>
-                    <Text
-                      style={{
-                        ...style.skills.label,
-                        textAlign: style.skills.label.textAlign as any,
-                      }}>
-                      {skill.label}
-                    </Text>
-                    <View
-                      style={{
-                        ...styleCommon.bar,
-                        width: `${skill.level}%`,
-                      }}></View>
-                  </View>
-                ))}
-              </View>
-            </View>
-            <View>
-              {languageSectionTitle && (
-                <Text
-                  style={{
-                    ...style.sectionTitles.languagesStyle,
-                    textAlign: style.sectionTitles.languagesStyle
-                      .textAlign as any,
-                    marginTop: "5px",
-                  }}>
-                  {languageSectionTitle}
-                </Text>
-              )}
-              {resume.languages.map((item) => {
-                return (
-                  item.language && (
-                    <View key={item._id}>
-                      <Text>
-                        <Text
-                          style={{
-                            ...style.languages.language,
-                            textAlign: style.languages.language
-                              .textAlign as any,
-                          }}>
-                          {item.language}
-                        </Text>
-                        {item.level && (
-                          <Text
-                            style={{
-                              ...style.languages.level,
-                              textAlign: style.languages.level.textAlign as any,
-                            }}>
-                            ({item.level})
-                          </Text>
-                        )}
+            {resume.references.map((item) => {
+              return (
+                <View key={item._id}>
+                  <Text>
+                    {item.name && (
+                      <Text
+                        style={styles.refName}>
+                        {item.name},{" "}
                       </Text>
-                    </View>
-                  )
-                );
-              })}
-              {socialProfilesSectionTitle && (
-                <Text
-                  style={{
-                    ...style.sectionTitles.socialProfilesStyle,
-                    textAlign: style.sectionTitles.socialProfilesStyle
-                      .textAlign as any,
-                    marginTop: "5px",
-                  }}>
-                  {socialProfilesSectionTitle}
-                </Text>
-              )}
-              {resume.socialProfiles.map((item) => {
-                return (
-                  item.label && (
-                    <Link
-                      key={item._id}
-                      style={{
-                        ...style.socialProfiles.label,
-                        textAlign: style.socialProfiles.label.textAlign as any,
-                        // display: "block",
-                      }}
-                      href={item.link}>
-                      {item.label}
-                    </Link>
-                  )
-                );
-              })}
-            </View>
+                    )}
+                    {item.company && (
+                      <Text
+                        style={styles.refCom}>
+                        {item.company}
+                      </Text>
+                    )}
+                  </Text>
+                  <Text>
+                    {item.email && (
+                      <Text
+                        style={styles.refEmail}>
+                        {item.email}
+                      </Text>
+                    )}
+                    {item.phone && item.email && "  |  "}
+                    {item.phone && (
+                      <Text
+                        style={styles.refPhone}>
+                        {item.phone}
+                      </Text>
+                    )}
+                  </Text>
+                </View>
+              );
+            })}
           </View>
         </View>
-      </Page>
-    </Document>
-  );
+        <View style={styleCommon.headerDivOne}>
+          <View>
+            {personalInfoSectionTitle && (
+              <Text
+                style={{
+                  ...style.sectionTitles.personalInfoStyle,
+                  textAlign: style.sectionTitles.personalInfoStyle
+                    .textAlign as any,
+                }}>
+                {personalInfoSectionTitle}
+              </Text>
+            )}
+
+            {" "}
+            {resume.personalInfo.address &&
+              <Text style={styleCommon.personalInfoLabel}>Address</Text>
+            }
+            <Text>
+              {resume.personalInfo.address && (
+                <Text
+                  style={{
+                    ...style.personalInfo.address,
+                    textAlign: style.personalInfo.address.textAlign as any,
+                  }}>
+                  {" "}
+                  {resume.personalInfo.address},
+                </Text>
+              )}
+              {resume.personalInfo.city && (
+                <Text
+                  style={{
+                    ...style.personalInfo.city,
+                    textAlign: style.personalInfo.city.textAlign as any,
+                  }}>
+                  {" "}
+                  {resume.personalInfo.city},
+                </Text>
+              )}
+              {resume.personalInfo.postalCode && (
+                <Text
+                  style={{
+                    ...style.personalInfo.postalCode,
+                    textAlign: style.personalInfo.postalCode.textAlign as any,
+                  }}>
+                  {" "}
+                  {resume.personalInfo.postalCode},
+                </Text>
+              )}
+              {resume.personalInfo.country && (
+                <Text
+                  style={{
+                    ...style.personalInfo.country,
+                    textAlign: style.personalInfo.country.textAlign as any,
+                  }}>
+                  {" "}
+                  {resume.personalInfo.country}
+                </Text>
+              )}
+            </Text>
+
+            {resume.personalInfo.email && (
+              <View>
+                <Text style={styleCommon.personalInfoLabel}>Email</Text>
+                <Text
+                  style={{
+                    ...style.personalInfo.email,
+                    textAlign: style.personalInfo.email.textAlign as any,
+                  }}>
+                  <Link href={`mailto:${resume.personalInfo.email}`}>
+                    {resume.personalInfo.email}
+                  </Link>
+                </Text>
+              </View>
+            )}
+            {personalInfo.nationality && (
+              <>
+                <Text style={styleCommon.personalInfoLabel}>Nationality</Text>
+                <Text
+                  style={{
+                    ...style.personalInfo.nationality,
+                    textAlign: style.personalInfo.nationality.textAlign as any,
+                  }}>
+                  {personalInfo.nationality}
+                </Text>
+              </>
+            )}
+            {personalInfo.drivingLicense && (
+              <>
+                <Text style={styleCommon.personalInfoLabel}>DrivingLicense</Text>
+                <Text
+                  style={{
+                    ...style.personalInfo.drivingLicense,
+                    textAlign: style.personalInfo.drivingLicense
+                      .textAlign as any,
+                  }}>
+                  {personalInfo.drivingLicense}
+                </Text>
+              </>
+            )}
+            {personalInfo.placeOfBirth && (
+              <>
+                <Text style={styleCommon.personalInfoLabel}>Place Of Birth</Text>
+                <Text
+                  style={{
+                    ...style.personalInfo.placeOfBirth,
+                    textAlign: style.personalInfo.placeOfBirth.textAlign as any,
+                  }}>
+                  {personalInfo.placeOfBirth}
+                </Text>
+              </>
+            )}
+            {personalInfo.DateOfBirth && (
+              <>
+                <Text style={styleCommon.personalInfoLabel}>Date Of Birth</Text>
+                <Text
+                  style={{
+                    ...style.personalInfo.DateOfBirth,
+                    textAlign: style.personalInfo.DateOfBirth.textAlign as any,
+                  }}>
+                  {personalInfo.DateOfBirth}
+                </Text>
+              </>
+            )}
+
+          </View>
+          <View>
+            {skillSectionTitle && (
+              <Text
+                style={{
+                  ...style.sectionTitles.skillsStyle,
+                  textAlign: style.sectionTitles.skillsStyle.textAlign as any,
+                  marginTop: "5px",
+                }}>
+                {skillSectionTitle}
+              </Text>
+            )}
+            <View>
+              {resume.skills.map((skill, index) => (
+                <View key={index}>
+                  <Text
+                    style={{
+                      ...style.skills.label,
+                      textAlign: style.skills.label.textAlign as any,
+                    }}>
+                    {skill.label}
+                  </Text>
+                  <View
+                    style={{
+                      ...styleCommon.bar,
+                      width: `${skill.level}%`,
+                    }}></View>
+                </View>
+              ))}
+            </View>
+          </View>
+          <View>
+            {languageSectionTitle && (
+              <Text
+                style={{
+                  ...style.sectionTitles.languagesStyle,
+                  textAlign: style.sectionTitles.languagesStyle
+                    .textAlign as any,
+                  marginTop: "5px",
+                }}>
+                {languageSectionTitle}
+              </Text>
+            )}
+            {resume.languages.map((item) => {
+              return (
+                item.language && (
+                  <View key={item._id}>
+                    <Text><Text
+                      style={{
+                        ...style.languages.language,
+                        textAlign: style.languages.language.textAlign as any,
+                      }}>
+                      {item.language}
+                    </Text>{" "}
+                      {
+                        item.level &&
+                        <Text
+                          style={{
+                            ...style.languages.level,
+                            textAlign: style.languages.level.textAlign as any,
+                          }}>
+                          ({item.level})
+                        </Text>
+                      }</Text>
+                  </View>
+                )
+              );
+            })}
+            {socialProfilesSectionTitle && (
+              <Text
+                style={{
+                  ...style.sectionTitles.socialProfilesStyle,
+                  textAlign: style.sectionTitles.socialProfilesStyle
+                    .textAlign as any,
+                  marginTop: "5px",
+                }}>
+                {socialProfilesSectionTitle}
+              </Text>
+            )}
+            {resume.socialProfiles.map((item) => {
+              return (
+                item.label && (
+                  <Link
+                    key={item._id}
+                    style={{
+                      ...style.socialProfiles.label,
+                      textAlign: style.socialProfiles.label.textAlign as any,
+                      // display: "block",
+                    }}
+                    href={item.link}
+                   >
+                    {item.label}
+                  </Link>
+                )
+              );
+            })}
+          </View>
+        </View>
+      </View>
+
+
+    </Page>
+  </Document >;
 };
 
 export default SydneyPDF;
