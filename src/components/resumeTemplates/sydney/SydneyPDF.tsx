@@ -268,7 +268,7 @@ const SydneyPDF: React.FC = () => {
   });
   return <Document>
     <Page style={styles.container}>
-      <View style={styles.header}>
+      <View style={{...styles.header,alignItems: 'center',}}>
         {resume.avatar.url && (
           <Image style={styles.imageAva} src={resume.avatar.url} />
 
@@ -296,7 +296,7 @@ const SydneyPDF: React.FC = () => {
         </View>
 
       </View>
-      <View style={{ ...styles.header, alignItems: 'center', }}>
+      <View style={{ ...styles.header,  }}>
         <View style={styles.headerViewTwo}>
           <View>
             <View style={styles.headerIcon}>

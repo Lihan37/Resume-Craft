@@ -29,7 +29,7 @@ const styleSydney = {
       width: "100%",
     },
     bodyDivOne: {
-      width: "300px",
+      // width: "300px",
     },
     bodyDivTwo: {
       padding: "30px",
