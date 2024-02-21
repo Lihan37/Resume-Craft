@@ -9,6 +9,7 @@ export const userHistory = createAsyncThunk(
     try {
       const response = await fetch(`${baseUrl}/history/v1`, {
         method: "GET",
+        credentials: "include",
       });
       const data = await response.json();
       return data.history;
@@ -26,6 +27,7 @@ export const createUserHistory = createAsyncThunk(
     try {
       const response = await fetch(`${baseUrl}/history/v1/create`, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -48,9 +50,8 @@ export const updateUserHistory = createAsyncThunk(
     try {
       const response = await fetch(`${baseUrl}/history/v1/create`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(historyData),
       });
       const data = await response.json();
@@ -73,6 +74,7 @@ export const updateHistoryThumbnail = createAsyncThunk(
     try {
       const response = await fetch(`${baseUrl}/history/v1/upload/${id}`, {
         method: "PATCH",
+        credentials: "include",
         body: fileData,
       });
       const data = await response.json();
@@ -93,6 +95,7 @@ export const deleteUserHistory = createAsyncThunk(
     try {
       const response = await fetch(`${baseUrl}/history/v1/delete/${id}`, {
         method: "DELETE",
+        credentials: "include",
       });
       const data = await response.json();
       console.log(data);

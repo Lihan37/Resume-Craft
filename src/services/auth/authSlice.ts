@@ -4,6 +4,7 @@ interface IUser {
   _id: string;
   name: string;
   email: string;
+  role: string;
   avatar: {
     url: string;
     public_id: string;
@@ -11,20 +12,12 @@ interface IUser {
 }
 
 interface InitialState {
-  user: IUser;
+  user: IUser | null;
   loading: boolean;
   accessToken: string;
 }
 const initialState: InitialState = {
-  user: {
-    _id: "",
-    name: "",
-    email: "",
-    avatar: {
-      url: "",
-      public_id: "",
-    },
-  },
+  user: null,
   accessToken: "",
   loading: false,
 };
@@ -38,6 +31,7 @@ const authSlice = createSlice({
         _id: action.payload.user._id,
         name: action.payload.user.name,
         email: action.payload.user.email,
+        role: action.payload.user.role,
         avatar: {
           url: action.payload.user?.avatar?.url || "",
           public_id: action.payload.user?.avatar?.public_id || "",
@@ -48,9 +42,12 @@ const authSlice = createSlice({
     setLoading(state, action) {
       state.loading = action.payload;
     },
+    removeUser(state) {
+      state.user = null;
+    },
   },
 });
 
-export const { setUser, setLoading } = authSlice.actions;
+export const { setUser, setLoading, removeUser } = authSlice.actions;
 
 export default authSlice.reducer;

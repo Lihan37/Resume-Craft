@@ -20,7 +20,7 @@ const styleSydney = {
 
     headerDivOne: {
       padding: "10px",
-      width: "150px",
+      width: "300px",
     },
     headerDivTwo: {
       padding: "10px",

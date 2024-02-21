@@ -20,6 +20,7 @@ import Blogs from "../pages/dashboard/admin/blog";
 import CreateBlog from "../pages/dashboard/admin/blog/CreateBlog";
 import CoverLetter from "../pages/editor/CoverLetter";
 import ActiveAccount from "../pages/auth/ActiveAccount";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -50,7 +51,11 @@ const router = createBrowserRouter([
       // for dashboard
       {
         path: "/dashboard",
-        element: <UserDashboard />,
+        element: (
+          <PrivateRoutes>
+            <UserDashboard />
+          </PrivateRoutes>
+        ),
       },
 
       {

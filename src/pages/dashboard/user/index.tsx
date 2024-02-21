@@ -76,7 +76,7 @@ const UserDashboard: React.FC = () => {
         await appDispatch(
           createUserHistory({
             _id: historyId,
-            user: "65bfd0f85443cc82b0f3f504",
+            user: "",
             title: "Untitled",
             templateId: resumeId,
             thumbnail: {
@@ -98,7 +98,7 @@ const UserDashboard: React.FC = () => {
         await appDispatch(
           createUserHistory({
             _id: coverLetterHistoryId,
-            user: "65bfd0f85443cc82b0f3f504",
+            user: "",
             title: "Untitled",
             templateId: coverLetterId,
             thumbnail: {

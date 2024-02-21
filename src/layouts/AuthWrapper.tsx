@@ -1,12 +1,18 @@
 import React from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Navigate, Outlet, useLocation } from "react-router-dom";
 import Logo from "../components/common/Logo";
 import Button from "../components/common/Button";
 import SocialLogin from "../pages/auth/SocialLogin";
+import { useSelector } from "react-redux";
+import { selectUser } from "../services/auth/authSelector";
 
 const AuthWrapper: React.FC = () => {
   const { pathname } = useLocation();
-  return (
+  const user = useSelector(selectUser);
+
+  return user?._id ? (
+    <Navigate to={`/dashboard`} />
+  ) : (
     <div className="flex flex-col md:flex-row md:justify-between  bg-white  w-full h-[800px] md:h-screen ">
       <div className=" w-full  p-8 text-center h-full flex justify-center items-center relative">
         <div className=" min-w-full md:min-w-[470px] mt-20">

@@ -9,6 +9,7 @@ export const createCoverLetterAndUpdate = createAsyncThunk(
     try {
       const response = await fetch(`${baseUrl}/coverLetter/v1/create`, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -30,6 +31,7 @@ export const getSingleCoverLetterData = createAsyncThunk(
     try {
       const response = await fetch(`${baseUrl}/coverLetter/v1/${id}`, {
         method: "GET",
+        credentials: "include",
       });
       const data = await response.json();
       return data;

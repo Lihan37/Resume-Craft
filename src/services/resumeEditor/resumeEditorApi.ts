@@ -8,6 +8,7 @@ export const createResumeAndUpdate = createAsyncThunk(
     try {
       const response = await fetch(`${baseUrl}/resume/v1/create`, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -29,6 +30,7 @@ export const getSingleResumeData = createAsyncThunk(
     try {
       const response = await fetch(`${baseUrl}/resume/v1/${id}`, {
         method: "GET",
+        credentials: "include",
       });
       const data = await response.json();
       return data;
@@ -49,6 +51,7 @@ export const updateResumeAvatar = createAsyncThunk(
     try {
       const response = await fetch(`${baseUrl}/resume/v1/upload/${id}`, {
         method: "PATCH",
+        credentials: "include",
         body: fileData,
       });
       const data = await response.json();

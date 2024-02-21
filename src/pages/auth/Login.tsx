@@ -41,7 +41,11 @@ const Login: React.FC = () => {
         setLoading(false);
         console.log(data);
         dispatch(setUser({ user: data.user, accessToken: data.accessToken }));
-        navigate("/dashboard");
+        if (data.user.role === "user") {
+          navigate("/dashboard");
+        } else if (data.user.role === "admin") {
+          navigate("/admin");
+        }
         Swal.fire({
           icon: "success",
           text: "Login Successfully !",

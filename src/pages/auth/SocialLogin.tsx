@@ -35,7 +35,11 @@ const SocialLogin: React.FC = () => {
             text: "Login Successfully !",
             showConfirmButton: false,
           });
-          navigate("/");
+          if (data.user.role === "user") {
+            navigate("/dashboard");
+          } else if (data.user.role === "admin") {
+            navigate("/admin");
+          }
         }
       })
       .catch((err) => console.log(err));
