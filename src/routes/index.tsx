@@ -22,6 +22,7 @@ import CoverLetter from "../pages/editor/CoverLetter";
 import ActiveAccount from "../pages/auth/ActiveAccount";
 import PrivateRoutes from "./PrivateRoutes";
 import ForgotPassword from "../pages/auth/ForgotPassword";
+import NewPassword from "../pages/auth/NewPassword";
 
 const router = createBrowserRouter([
   {
@@ -89,6 +90,10 @@ const router = createBrowserRouter([
       {
         path: "forget-password",
         element: <ForgotPassword />,
+      },
+      {
+        path: "forget-password/:id",
+        element: <NewPassword />,
       },
     ],
   },

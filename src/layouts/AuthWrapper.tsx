@@ -34,8 +34,9 @@ const AuthWrapper: React.FC = () => {
             </p>
 
             <Outlet />
-            {!(pathname === "/auth/active") &&
-              !(pathname === "/auth/forget-password") && <SocialLogin />}
+            {(pathname === "/auth/sign-up" || pathname === "/auth/login") && (
+              <SocialLogin />
+            )}
 
             {pathname === "/auth/login" && (
               <div className=" text-blue-500 my-10">
@@ -50,24 +51,21 @@ const AuthWrapper: React.FC = () => {
           <Logo />
         </div>
       </div>
-      {!(pathname === "/auth/active") &&
-        !(pathname === "/auth/forget-password") && (
-          <div className=" w-full md:w-1/3 p-8  space-y-5 bg-c-primary flex flex-col items-center justify-center text-center text-white">
-            <p className=" font-semibold font-mono text-xl lg:text-3xl xl:text-5xl max-w-lg">
-              {pathname === "/auth/sign-up"
-                ? "Already have an account?"
-                : "Don't have an account ?"}
-            </p>
-            <Link
-              to={
-                pathname === "/auth/sign-up" ? "/auth/login" : "/auth/sign-up"
-              }>
-              <Button icon={false} outline={true}>
-                {pathname === "/auth/sign-up" ? "Login" : "Sign up"}
-              </Button>
-            </Link>
-          </div>
-        )}
+      {(pathname === "/auth/sign-up" || pathname === "/auth/login") && (
+        <div className=" w-full md:w-1/3 p-8  space-y-5 bg-c-primary flex flex-col items-center justify-center text-center text-white">
+          <p className=" font-semibold font-mono text-xl lg:text-3xl xl:text-5xl max-w-lg">
+            {pathname === "/auth/sign-up"
+              ? "Already have an account?"
+              : "Don't have an account ?"}
+          </p>
+          <Link
+            to={pathname === "/auth/sign-up" ? "/auth/login" : "/auth/sign-up"}>
+            <Button icon={false} outline={true}>
+              {pathname === "/auth/sign-up" ? "Login" : "Sign up"}
+            </Button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
