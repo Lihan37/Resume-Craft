@@ -158,7 +158,7 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
       flexDirection: "row",
       gap: "5px",
     },
-    headerViewOne: styleSydney.common.headerDivOne,
+    headerViewOne: { ...styleSydney.common.headerDivOne, flex: 1 },
     headerViewTwo: styleSydney.common.headerDivTwo,
     firstName: {
       ...style.personalInfo.firstName,
@@ -178,7 +178,7 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
       flexDirection: "row",
       gap: "10px",
       alignItems: "center",
-      marginLeft: "-25px",
+      // marginLeft: "-25px",
     },
     icon: styleSydney.common.icon,
 
@@ -332,7 +332,7 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
                     item.startMontYear ||
                     item.endMontYear) && (
                     <View
-                      style={{ marginBottom: !marginBottom ? "8px" : "0px" }}
+                      style={{ marginBottom: !marginBottom ? "5px" : "0px" }}
                       key={item._id}>
                       <Text>
                         {item.jobTitle && (
@@ -361,6 +361,7 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
                           </Text>
                         )}
                       </Text>
+
                       <Text>
                         <Text style={styles.startMontYear}>
                           {item.startMontYear}
@@ -370,11 +371,9 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
                           {item.endMontYear}
                         </Text>
                       </Text>
-                      {item.description && (
-                        <Text style={styles.description}>
-                          {item.description}
-                        </Text>
-                      )}
+                      <Text style={styles.description}>
+                        {item.description && <Text>{item.description}</Text>}
+                      </Text>
                     </View>
                   )
                 );
@@ -382,12 +381,15 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
             </View>
             <View>
               <View style={styles.headerIcon}>
-                <Image
-                  style={styles.icon}
-                  src="https://i.ibb.co/v3s3Y7z/mortarboard.png"
-                />
                 {educationsSectionTitle && (
-                  <Text style={styles.educationsStyle}>
+                  <Image
+                    style={styles.icon}
+                    src="https://i.ibb.co/v3s3Y7z/mortarboard.png"
+                  />
+                )}
+                {educationsSectionTitle && (
+                  <Text
+                    style={{ ...styles.educationsStyle, marginBottom: "5px" }}>
                     {educationsSectionTitle}
                   </Text>
                 )}
@@ -433,12 +435,15 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
             </View>
             <View>
               <View style={styles.headerIcon}>
-                <Image
-                  style={styles.icon}
-                  src="https://i.ibb.co/6Hj7JNX/exchange.png"
-                />
                 {referencesSectionTitle && (
-                  <Text style={styles.referencesStyle}>
+                  <Image
+                    style={styles.icon}
+                    src="https://i.ibb.co/6Hj7JNX/exchange.png"
+                  />
+                )}
+                {referencesSectionTitle && (
+                  <Text
+                    style={{ ...styles.referencesStyle, marginBottom: "5px" }}>
                     {referencesSectionTitle}
                   </Text>
                 )}

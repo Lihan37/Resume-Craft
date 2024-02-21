@@ -25,6 +25,7 @@ import ForgotPassword from "../pages/auth/ForgotPassword";
 import NewPassword from "../pages/auth/NewPassword";
 import Account from "../pages/dashboard/user/account/Account";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
