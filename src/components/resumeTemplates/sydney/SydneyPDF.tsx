@@ -76,78 +76,78 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
 
   const personalInfoSectionTitle =
     resume?.sectionTitles.personalInfo &&
-    resume.sectionTitles.personalInfo !== "Untitled" &&
-    (resume.personalInfo.drivingLicense ||
-      resume.personalInfo.nationality ||
-      resume.personalInfo.DateOfBirth ||
-      resume.personalInfo.placeOfBirth)
+      resume.sectionTitles.personalInfo !== "Untitled" &&
+      (resume.personalInfo.drivingLicense ||
+        resume.personalInfo.nationality ||
+        resume.personalInfo.DateOfBirth ||
+        resume.personalInfo.placeOfBirth)
       ? resume.sectionTitles.personalInfo
       : null;
 
   const skillSectionTitle =
     resume?.sectionTitles.skills &&
-    resume.sectionTitles.skills !== "Untitled" &&
-    resume.skills.find((item) => item.label)
+      resume.sectionTitles.skills !== "Untitled" &&
+      resume.skills.find((item) => item.label)
       ? resume.sectionTitles.skills
       : null;
 
   const languageSectionTitle =
     resume?.sectionTitles.languages &&
-    resume.sectionTitles.languages !== "Untitled" &&
-    resume.languages.find((item) => item.language)
+      resume.sectionTitles.languages !== "Untitled" &&
+      resume.languages.find((item) => item.language)
       ? resume.sectionTitles.languages
       : null;
 
   const socialProfilesSectionTitle =
     resume?.sectionTitles.socialProfiles &&
-    resume.sectionTitles.socialProfiles !== "Untitled" &&
-    resume.socialProfiles.find((item) => item.label)
+      resume.sectionTitles.socialProfiles !== "Untitled" &&
+      resume.socialProfiles.find((item) => item.label)
       ? resume.sectionTitles.socialProfiles
       : null;
 
   const professionalSummarySectionTitle =
     resume?.sectionTitles.professionalSummary &&
-    resume.sectionTitles.professionalSummary !== "Untitled" &&
-    resume.professionalSummary
+      resume.sectionTitles.professionalSummary !== "Untitled" &&
+      resume.professionalSummary
       ? resume.sectionTitles.professionalSummary
       : null;
 
   const workExperienceSectionTitle =
     resume?.sectionTitles.workExperience &&
-    resume.sectionTitles.workExperience !== "Untitled" &&
-    resume.workExperience.find(
-      (item) =>
-        item.city ||
-        item.description ||
-        item.employer ||
-        item.jobTitle ||
-        item.startMontYear ||
-        item.endMontYear
-    )
+      resume.sectionTitles.workExperience !== "Untitled" &&
+      resume.workExperience.find(
+        (item) =>
+          item.city ||
+          item.description ||
+          item.employer ||
+          item.jobTitle ||
+          item.startMontYear ||
+          item.endMontYear
+      )
       ? resume.sectionTitles.workExperience
       : null;
 
   const educationsSectionTitle =
     resume?.sectionTitles.educations &&
-    resume.sectionTitles.educations !== "Untitled" &&
-    resume.educations.find(
-      (item) =>
-        item.city ||
-        item.description ||
-        item.school ||
-        item.degree ||
-        item.startMontYear ||
-        item.endMontYear
-    )
+      resume.sectionTitles.educations !== "Untitled" &&
+      resume.educations.find(
+        (item) =>
+          item.city ||
+          item.description ||
+          item.school ||
+          item.degree ||
+          item.startMontYear ||
+          item.endMontYear
+      )
       ? resume.sectionTitles.educations
       : null;
 
   const referencesSectionTitle =
     resume?.sectionTitles.references &&
-    resume.sectionTitles.references !== "Untitled" &&
-    resume.references.find(
-      (item) => item.name || item.company || item.email || item.phone
-    )
+      resume.sectionTitles.references !== "Untitled" &&
+      resume.references.find(
+        (item) => item.name || item.company || item.email || item.phone
+      )
       ? resume.sectionTitles.references
       : null;
 
@@ -158,11 +158,11 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
       flexDirection: "row",
       gap: "5px",
     },
-    headerViewOne: styleSydney.common.headerDivOne,
+    headerViewOne: { ...styleSydney.common.headerDivOne, flex: 1 },
     headerViewTwo: styleSydney.common.headerDivTwo,
     firstName: {
-      ...styleSydney.require.personalInfo.firstName,
-      textAlign: styleSydney.require.personalInfo.firstName.textAlign as any,
+      ...style.personalInfo.firstName,
+      textAlign: style.personalInfo.firstName.textAlign as any,
     },
     lastName: {
       ...style.personalInfo.lastName,
@@ -178,101 +178,102 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
       flexDirection: "row",
       gap: "10px",
       alignItems: "center",
-      marginLeft: "-25px",
+      // marginLeft: "-25px",
     },
     icon: styleSydney.common.icon,
 
     sectionTitles: {
-      ...styleSydney.require.sectionTitles.professionalSummaryStyle,
-      textAlign: styleSydney.require.sectionTitles.professionalSummaryStyle
+      ...style.sectionTitles.professionalSummaryStyle,
+      textAlign: style.sectionTitles.professionalSummaryStyle
         .textAlign as any,
     },
 
     summery: {
-      ...styleSydney.require.professionalSummary.summery,
-      textAlign: styleSydney.require.professionalSummary.summery
+      ...style.professionalSummary.summery,
+      textAlign: style.professionalSummary.summery
         .textAlign as any,
     },
     workExperienceStyle: {
-      ...styleSydney.require.sectionTitles.workExperienceStyle,
-      textAlign: styleSydney.require.sectionTitles.workExperienceStyle
+      ...style.sectionTitles.workExperienceStyle,
+      textAlign: style.sectionTitles.workExperienceStyle
         .textAlign as any,
       marginTop: "10px",
     },
     workExperience: {
-      ...styleSydney.require.workExperience.jobTitle,
-      textAlign: styleSydney.require.workExperience.jobTitle.textAlign as any,
+      ...style.workExperience.jobTitle,
+      textAlign: style.workExperience.jobTitle.textAlign as any,
     },
     startMontYear: {
-      ...styleSydney.require.workExperience.startMontYear,
-      textAlign: styleSydney.require.workExperience.startMontYear
+      ...style.workExperience.startMontYear,
+      textAlign: style.workExperience.startMontYear
         .textAlign as any,
     },
     endMontYear: {
-      ...styleSydney.require.workExperience.endMontYear,
-      textAlign: styleSydney.require.workExperience.endMontYear
+      ...style.workExperience.endMontYear,
+      textAlign: style.workExperience.endMontYear
         .textAlign as any,
     },
     description: {
-      ...styleSydney.require.workExperience.description,
-      textAlign: styleSydney.require.workExperience.description
+      ...style.workExperience.description,
+      textAlign: style.workExperience.description
         .textAlign as any,
+      marginTop: '-12px'
     },
     educationsStyle: {
-      ...styleSydney.require.sectionTitles.educationsStyle,
-      textAlign: styleSydney.require.sectionTitles.educationsStyle
+      ...style.sectionTitles.educationsStyle,
+      textAlign: style.sectionTitles.educationsStyle
         .textAlign as any,
       marginTop: "10px",
     },
     degree: {
-      ...styleSydney.require.educations.degree,
-      textAlign: styleSydney.require.educations.degree.textAlign as any,
+      ...style.educations.degree,
+      textAlign: style.educations.degree.textAlign as any,
     },
     school: {
-      ...styleSydney.require.educations.school,
-      textAlign: styleSydney.require.educations.school.textAlign as any,
+      ...style.educations.school,
+      textAlign: style.educations.school.textAlign as any,
     },
     city: {
-      ...styleSydney.require.educations.city,
-      textAlign: styleSydney.require.educations.city.textAlign as any,
+      ...style.educations.city,
+      textAlign: style.educations.city.textAlign as any,
     },
     startMontYearEdu: {
-      ...styleSydney.require.educations.startMontYear,
-      textAlign: styleSydney.require.educations.startMontYear.textAlign as any,
+      ...style.educations.startMontYear,
+      textAlign: style.educations.startMontYear.textAlign as any,
     },
     endMontYearEdu: {
-      ...styleSydney.require.educations.endMontYear,
-      textAlign: styleSydney.require.educations.endMontYear.textAlign as any,
+      ...style.educations.endMontYear,
+      textAlign: style.educations.endMontYear.textAlign as any,
     },
     eduDes: {
-      ...styleSydney.require.educations.description,
-      textAlign: styleSydney.require.educations.description.textAlign as any,
+      ...style.educations.description,
+      textAlign: style.educations.description.textAlign as any,
     },
     referencesStyle: {
-      ...styleSydney.require.sectionTitles.referencesStyle,
+      ...style.sectionTitles.referencesStyle,
       textAlign: style.sectionTitles.referencesStyle.textAlign as any,
       marginTop: "10px",
     },
     refName: {
-      ...styleSydney.require.references.name,
-      textAlign: styleSydney.require.references.name.textAlign as any,
+      ...style.references.name,
+      textAlign: style.references.name.textAlign as any,
     },
     refCom: {
-      ...styleSydney.require.references.company,
-      textAlign: styleSydney.require.references.company.textAlign as any,
+      ...style.references.company,
+      textAlign: style.references.company.textAlign as any,
     },
     refEmail: {
-      ...styleSydney.require.references.email,
-      textAlign: styleSydney.require.references.email.textAlign as any,
+      ...style.references.email,
+      textAlign: style.references.email.textAlign as any,
     },
     refPhone: {
-      ...styleSydney.require.references.phone,
-      textAlign: styleSydney.require.references.phone.textAlign as any,
+      ...style.references.phone,
+      textAlign: style.references.phone.textAlign as any,
     },
   });
   return <Document>
     <Page style={styles.container}>
-      <View style={{...styles.header,alignItems: 'center',}}>
+      <View style={{ ...styles.header, alignItems: 'center', }}>
         {resume.avatar.url && (
           <Image style={styles.imageAva} src={resume.avatar.url} />
 
@@ -287,7 +288,7 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
             {resume.personalInfo.lastName && (
               <Text
                 style={styles.lastName}>
-                {" "}
+
                 {resume.personalInfo.lastName}
               </Text>
             )}</Text>
@@ -300,15 +301,16 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
         </View>
 
       </View>
-      <View style={{ ...styles.header,  }}>
+      <View style={{ ...styles.header, }}>
         <View style={styles.headerViewTwo}>
           <View>
-            <View style={styles.headerIcon}>
-              <Image
-                style={styles.icon}
-                src="https://i.ibb.co/DYGJf39/account.png"
+            <View style={{ ...styles.headerIcon, marginBottom: '5px' }} >
+              {professionalSummarySectionTitle && (
+                <Image
+                  style={styles.icon}
+                  src="https://i.ibb.co/DYGJf39/account.png"
 
-              />
+                />)}
               {professionalSummarySectionTitle && (
                 <Text
                   style={styles.sectionTitles}>
@@ -326,140 +328,146 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
           </View>
           <View>
             <View style={styles.headerIcon}>
+            {workExperienceSectionTitle && (
               <Image
                 style={styles.icon}
                 src="https://i.ibb.co/WGX4jFD/suitcase.png"
 
-              />
+              />)}
               {workExperienceSectionTitle && (
                 <Text
-                  style={styles.workExperienceStyle}>
+                  style={{...styles.workExperienceStyle ,marginBottom:'5px'}}>
                   {workExperienceSectionTitle}
                 </Text>
               )}
             </View>
 
-              {resume.workExperience.map((item, i) => {
-                const marginBottom = resume.workExperience.length === i + 1;
-                return (
-                  (item.city ||
-                    item.description ||
-                    item.employer ||
-                    item.jobTitle ||
-                    item.startMontYear ||
-                    item.endMontYear) && (
-                    <View
-                      style={{ marginBottom: !marginBottom ? "8px" : "0px" }}
-                      key={item._id}>
-                      <Text>
-                        {item.jobTitle && (
-                          <Text style={styles.workExperience}>
-                            {item.jobTitle},
-                          </Text>
-                        )}
-                        {item.employer && (
-                          <Text
-                            style={{
-                              ...style.workExperience.employer,
-                              textAlign: style.workExperience.employer
-                                .textAlign as any,
-                            }}>
-                            {item.employer},
-                          </Text>
-                        )}
-                        {item.city && (
-                          <Text
-                            style={{
-                              ...style.workExperience.city,
-                              textAlign: style.workExperience.city
-                                .textAlign as any,
-                            }}>
-                            {item.city}
-                          </Text>
-                        )}
-                      </Text>
-                      <Text>
-                        <Text style={styles.startMontYear}>
-                          {item.startMontYear}
+            {resume.workExperience.map((item, i) => {
+              const marginBottom = resume.workExperience.length === i + 1;
+              return (
+                (item.city ||
+                  item.description ||
+                  item.employer ||
+                  item.jobTitle ||
+                  item.startMontYear ||
+                  item.endMontYear) && (
+                  <View
+                    style={{ marginBottom: !marginBottom ? "5px" : "0px" }}
+                    key={item._id}>
+                    <Text>
+                      {item.jobTitle && (
+                        <Text style={styles.workExperience}>
+                          {item.jobTitle},
                         </Text>
-                        {item.startMontYear && item.endMontYear && " - "}
-                        <Text style={styles.endMontYear}>
-                          {item.endMontYear}
+                      )}
+                      {item.employer && (
+                        <Text
+                          style={{
+                            ...style.workExperience.employer,
+                            textAlign: style.workExperience.employer
+                              .textAlign as any,
+                          }}>
+                          {item.employer},
                         </Text>
+                      )}
+                      {item.city && (
+                        <Text
+                          style={{
+                            ...style.workExperience.city,
+                            textAlign: style.workExperience.city
+                              .textAlign as any,
+                          }}>
+                          {item.city}
+                        </Text>
+                      )}
+                    </Text>
+
+                    <Text>
+                      <Text style={styles.startMontYear}>
+                        {item.startMontYear}
                       </Text>
+                      {item.startMontYear && item.endMontYear && " - "}
+                      <Text style={styles.endMontYear}>
+                        {item.endMontYear}
+                      </Text>
+                    </Text>
+                    <Text style={styles.description}>
                       {item.description && (
-                        <Text style={styles.description}>
+                        <Text >
                           {item.description}
                         </Text>
                       )}
-                    </View>
-                  )
-                );
-              })}
+                    </Text>
+                  </View>
+                )
+              );
+            })}
+          </View>
+          <View>
+            <View style={styles.headerIcon}>
+            {educationsSectionTitle && (
+              <Image
+                style={styles.icon}
+                src="https://i.ibb.co/v3s3Y7z/mortarboard.png"
+              />)}
+              {educationsSectionTitle && (
+                <Text style={{...styles.educationsStyle,marginBottom:'5px'}}>
+                  {educationsSectionTitle}
+                </Text>
+              )}
             </View>
-            <View>
-              <View style={styles.headerIcon}>
-                <Image
-                  style={styles.icon}
-                  src="https://i.ibb.co/v3s3Y7z/mortarboard.png"
-                />
-                {educationsSectionTitle && (
-                  <Text style={styles.educationsStyle}>
-                    {educationsSectionTitle}
-                  </Text>
-                )}
-              </View>
 
-              {resume.educations.map((item) => {
-                return (
-                  (item.city ||
-                    item.description ||
-                    item.school ||
-                    item.degree ||
-                    item.startMontYear ||
-                    item.endMontYear) && (
-                    <View key={item._id}>
-                      <Text>
-                        {item.degree && (
-                          <Text style={styles.degree}>{item.degree}, </Text>
-                        )}
-                        {item.school && (
-                          <Text style={styles.school}>{item.school}, </Text>
-                        )}
-                        {item.city && (
-                          <Text style={styles.city}>{item.city}</Text>
-                        )}
-                      </Text>
-                      <Text>
-                        <Text style={styles.startMontYearEdu}>
-                          {item.startMontYear}
-                        </Text>
-                        {item.startMontYear && item.endMontYear && " - "}
-                        <Text style={styles.endMontYearEdu}>
-                          {item.endMontYear}
-                        </Text>
-                      </Text>
-
-                      {item.description && (
-                        <Text style={styles.eduDes}>{item.description}</Text>
+            {resume.educations.map((item) => {
+              return (
+                (item.city ||
+                  item.description ||
+                  item.school ||
+                  item.degree ||
+                  item.startMontYear ||
+                  item.endMontYear) && (
+                  <View key={item._id}>
+                    <Text>
+                      {item.degree && (
+                        <Text style={styles.degree}>{item.degree}, </Text>
                       )}
-                    </View>
-                  )
-                );
-              })}
+                      {item.school && (
+                        <Text style={styles.school}>{item.school}, </Text>
+                      )}
+                      {item.city && (
+                        <Text style={styles.city}>{item.city}</Text>
+                      )}
+                    </Text>
+                    <Text>
+                      <Text style={styles.startMontYearEdu}>
+                        {item.startMontYear}
+                      </Text>
+                      {item.startMontYear && item.endMontYear && " - "}
+                      <Text style={styles.endMontYearEdu}>
+                        {item.endMontYear}
+                      </Text>
+                    </Text>
+
+                    {item.description && (
+                      <Text style={styles.eduDes}>{item.description}</Text>
+                    )}
+                  </View>
+                )
+              );
+            })}
+          </View>
+          <View>
+            <View style={styles.headerIcon}>
+            {referencesSectionTitle && (
+              <Image
+                style={styles.icon}
+                src="https://i.ibb.co/6Hj7JNX/exchange.png"
+              />)}
+              {referencesSectionTitle && (
+                <Text style={{...styles.referencesStyle, marginBottom:'5px'}}>
+                  {referencesSectionTitle}
+                </Text>
+              )}
             </View>
-            <View>
-              <View style={styles.headerIcon}>
-                <Image
-                  style={styles.icon}
-                  src="https://i.ibb.co/6Hj7JNX/exchange.png"
-                />
-                {referencesSectionTitle && (
-                  <Text style={styles.referencesStyle}>
-                    {referencesSectionTitle}
-                  </Text>
-                )}
-              </View>
 
             {resume.references.map((item) => {
               return (
@@ -478,7 +486,7 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
                       </Text>
                     )}
                   </Text>
-                  <Text>
+                  <Text style={{ marginBottom: '5px' }}>
                     {item.email && (
                       <Text
                         style={styles.refEmail}>
@@ -511,7 +519,7 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
               </Text>
             )}
 
-            {" "}
+
             {resume.personalInfo.address &&
               <Text style={styleCommon.personalInfoLabel}>Address</Text>
             }
@@ -522,7 +530,7 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
                     ...style.personalInfo.address,
                     textAlign: style.personalInfo.address.textAlign as any,
                   }}>
-                  {" "}
+
                   {resume.personalInfo.address},
                 </Text>
               )}
@@ -561,15 +569,14 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
             {resume.personalInfo.email && (
               <View>
                 <Text style={styleCommon.personalInfoLabel}>Email</Text>
-                <Text
-                  style={{
-                    ...style.personalInfo.email,
-                    textAlign: style.personalInfo.email.textAlign as any,
-                  }}>
-                  <Link href={`mailto:${resume.personalInfo.email}`}>
-                    {resume.personalInfo.email}
-                  </Link>
+
+                <Text style={{
+                  ...style.personalInfo.email,
+                  textAlign: style.personalInfo.email.textAlign as any,
+                }} >
+                  {resume.personalInfo.email}
                 </Text>
+
               </View>
             )}
             {personalInfo.nationality && (
@@ -644,11 +651,14 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
                     }}>
                     {skill.label}
                   </Text>
-                  <View
-                    style={{
-                      ...styleCommon.bar,
-                      width: `${skill.level}%`,
-                    }}></View>
+                  <View style={{ backgroundColor: '#C7C8CC' }}>
+                    <View
+                      style={{
+                        ...styleCommon.bar,
+                        width: `${skill.level}%`,
+                      }}></View>
+                  </View>
+
                 </View>
               ))}
             </View>
@@ -712,7 +722,7 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
                       // display: "block",
                     }}
                     href={item.link}
-                   >
+                  >
                     {item.label}
                   </Link>
                 )

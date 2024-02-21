@@ -22,6 +22,7 @@ import CoverLetter from "../pages/editor/CoverLetter";
 import ActiveAccount from "../pages/auth/ActiveAccount";
 import ForgotPassword from "../pages/auth/ForgotPassword";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
