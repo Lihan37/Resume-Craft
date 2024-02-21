@@ -13,7 +13,7 @@ import EditorWrapper from "../layouts/EditorWrapper";
 import ResumeEditor from "../pages/editor/ResumeEditor";
 import Pricing from "../pages/pricing";
 import AuthWrapper from "../layouts/AuthWrapper";
-import UserDashboard from "../pages/dashboard/user";
+import UserDashboard from "../pages/dashboard/user/history";
 import AdminDashboard from "../pages/dashboard/admin";
 import BlogDetails from "../pages/blog/BlogDetails";
 import Blogs from "../pages/dashboard/admin/blog";
@@ -23,6 +23,7 @@ import ActiveAccount from "../pages/auth/ActiveAccount";
 import PrivateRoutes from "./PrivateRoutes";
 import ForgotPassword from "../pages/auth/ForgotPassword";
 import NewPassword from "../pages/auth/NewPassword";
+import Account from "../pages/dashboard/user/account/Account";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoutes>
             <UserDashboard />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/account",
+        element: (
+          <PrivateRoutes>
+            <Account />
           </PrivateRoutes>
         ),
       },

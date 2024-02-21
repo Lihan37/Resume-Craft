@@ -81,7 +81,8 @@ const Navbar: React.FC = () => {
                 windowWidth < 769 &&
                 "absolute  bg-gradient-to-r  from-blue-50 to-violet-100 "
               } ${
-                pathname === "/dashboard" && "hidden"
+                (pathname === "/dashboard" || pathname === "/account") &&
+                "hidden"
               } top-20 right-10 py-5 rounded-xl lg:rounded-none w-72 lg:w-fit  uppercase flex flex-col lg:flex-row z-50 justify-start items-center gap-4 xl:gap-12 font-semibold text-lg text-c-dark font-mono`}>
               <div className="lg:hidden px-5 text-3xl w-full ">
                 <button onClick={handleMobileMenu} className="w-fit">
@@ -106,7 +107,7 @@ const Navbar: React.FC = () => {
             </div>
           )}
 
-          {pathname === "/dashboard" ? (
+          {pathname === "/dashboard" || pathname === "/account" ? (
             <div ref={accountRef} className="relative">
               <div
                 onClick={() => setIsOpenAccount((prev) => !prev)}
@@ -121,7 +122,9 @@ const Navbar: React.FC = () => {
               </div>
               {isOpenAccount && (
                 <div className=" rounded-md overflow-hidden min-w-56 max-w-80 bg-white text-c-dark absolute  border-[1.4px] right-8 top-10">
-                  <button className="border-b-2 text-start w-full p-4 group flex justify-center items-center">
+                  <NavLink
+                    to="/account"
+                    className="border-b-2 text-start w-full p-4 group flex justify-center items-center">
                     <div className="w-full">
                       <h1 className=" group-hover:text-c-primary duration-300 font-semibold text-lg w-fit">
                         {user?.name.slice(0, 15)}
@@ -132,10 +135,15 @@ const Navbar: React.FC = () => {
                       </h1>
                     </div>
                     <IoIosArrowForward className=" text-2xl group-hover:text-c-primary duration-300 " />
-                  </button>
+                  </NavLink>
+                  <NavLink
+                    to="/dashboard"
+                    className=" text-lg p-4 py-2 block text-neutral-500 hover:text-c-primary duration-300 font-semibold">
+                    Dashboard
+                  </NavLink>
                   <button
                     onClick={handleLogout}
-                    className=" text-lg p-4 text-neutral-500 hover:text-red-500 duration-300 font-semibold">
+                    className=" text-lg p-4 py-2 text-neutral-500 hover:text-red-500 duration-300 font-semibold">
                     Log Out
                   </button>
                 </div>
@@ -154,7 +162,7 @@ const Navbar: React.FC = () => {
 
           <button
             className={`text-3xl lg:hidden w-fit ${
-              pathname === "/dashboard" && "hidden"
+              (pathname === "/dashboard" || pathname === "/account") && "hidden"
             }`}
             onClick={handleMobileMenu}>
             {isOpen ? <IoMdClose /> : <HiMiniBars3CenterLeft />}

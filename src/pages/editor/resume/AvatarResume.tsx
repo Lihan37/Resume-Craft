@@ -9,6 +9,7 @@ import {
 } from "../../../services/resumeEditor/resumeEditorSelector";
 import { MdDelete } from "react-icons/md";
 import { removeResumeAvatar } from "../../../services/resumeEditor/resumeEditorSlice";
+import Swal from "sweetalert2";
 
 const allowedFileTypes = ["image/jpg", "image/jpeg", "image/png"];
 
@@ -40,13 +41,18 @@ const AvatarResume: React.FC = () => {
   };
 
   useEffect(() => {
+    if (avatarFile && !allowedFileTypes.includes(avatarFile?.type)) {
+      Swal.fire({
+        icon: "error",
+        text: `Not allowed ${avatarFile?.type} format image`,
+        showConfirmButton: false,
+      });
+      return;
+    }
     if (avatarFile && allowedFileTypes.includes(avatarFile?.type) && resumeID) {
       const formData = new FormData();
       formData.append("resumeCraftResumeAvatar", avatarFile);
       handleUpload(resumeID, formData);
-    }
-    if (avatarFile && !allowedFileTypes.includes(avatarFile?.type)) {
-      console.log("not allow");
     }
   }, [avatarFile]);
 
