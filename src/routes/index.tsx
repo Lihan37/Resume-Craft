@@ -21,6 +21,7 @@ import CreateBlog from "../pages/dashboard/admin/blog/CreateBlog";
 import CoverLetter from "../pages/editor/CoverLetter";
 import ActiveAccount from "../pages/auth/ActiveAccount";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
