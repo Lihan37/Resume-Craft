@@ -25,6 +25,9 @@ import {
 } from "../../services/coverletterEditor/coverletterEditorSelector";
 import { setZoomIn } from "../../services/coverletterEditor/coverletterEditorSlice";
 import { ISingleUserHistory } from "../../services/history/historySlice";
+import coverLetterPDF from "../coverLetterTemplates/coverLetterPDF";
+import { CoverLettersTemplatesType } from "../coverLetterTemplates/template";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 
 const NavbarCoverLetter: React.FC = () => {
   const appDispatch = useAppDispatch();
@@ -33,6 +36,16 @@ const NavbarCoverLetter: React.FC = () => {
   const dispatch = useDispatch();
   const zoom = useSelector(selectCoverLetterZoom);
   const coverLetter = useSelector(selectCoverLetter);
+
+  const Template =
+    !editor.isLoading &&
+    coverLetterPDF[
+      editor.coverLetter.templateId as keyof CoverLettersTemplatesType
+    ]
+      ? coverLetterPDF[
+          editor.coverLetter.templateId as keyof CoverLettersTemplatesType
+        ].template
+      : null;
 
   useEffect(() => {
     if (!(allHistory.length > 0)) {
@@ -112,10 +125,15 @@ const NavbarCoverLetter: React.FC = () => {
           </div>
 
           <div className=" flex justify-start items-center gap-5 xl:gap-10">
-            <button className=" text-c-dark font-semibold flex justify-start  items-center lg:gap-2 lg:px-4 p-2 lg:py-2 bg-gray-100 rounded-full text-base lg:text-xl">
-              <FiDownload />
-              <span className=" hidden lg:block">Download</span>
-            </button>
+            {Template && (
+              <PDFDownloadLink
+                className="text-c-dark font-semibold flex justify-start  items-center lg:gap-2 lg:px-4 p-2 lg:py-2 bg-gray-100 rounded-full text-base lg:text-xl"
+                document={<Template coverLetter={coverLetter} />}
+                fileName="resumeCraft.pdf">
+                <FiDownload />
+                <span className=" hidden lg:block">Download</span>
+              </PDFDownloadLink>
+            )}
             <button className=" flex justify-start items-center lg:gap-2 lg:px-4 p-2  lg:py-2 bg-c-primary text-white rounded-full text-base lg:text-xl">
               <FiSend />
               <span className=" hidden lg:block">Share</span>

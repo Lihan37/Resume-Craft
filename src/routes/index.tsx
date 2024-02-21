@@ -18,10 +18,8 @@ import AdminDashboard from "../pages/dashboard/admin";
 import BlogDetails from "../pages/blog/BlogDetails";
 import Blogs from "../pages/dashboard/admin/blog";
 import CreateBlog from "../pages/dashboard/admin/blog/CreateBlog";
-import { PDFViewer } from "@react-pdf/renderer";
 import CoverLetter from "../pages/editor/CoverLetter";
-// import SydneyPDF from "../components/coverLetterTemplates/sydney/SydneyPDF";
-import Sydney from "../components/resumeTemplates/sydney/Sydney";
+import ActiveAccount from "../pages/auth/ActiveAccount";
 
 const router = createBrowserRouter([
   {
@@ -78,6 +76,10 @@ const router = createBrowserRouter([
         path: "sign-up",
         element: <SignUp />,
       },
+      {
+        path: "active",
+        element: <ActiveAccount />,
+      },
     ],
   },
 
@@ -112,19 +114,6 @@ const router = createBrowserRouter([
         element: <CreateBlog />,
       },
     ],
-  },
-
-  {
-    path: "/demopdf",
-    element: (
-      <PDFViewer width={1000} height={1300}>
-        {/* <SydneyPDF /> */}
-      </PDFViewer>
-    ),
-  },
-  {
-    path: "sweeny",
-    element: <Sydney />,
   },
 ]);
 

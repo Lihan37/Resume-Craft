@@ -9,10 +9,9 @@ import {
   Image,
   Font,
   Text,
-  Link
+  Link,
 } from "@react-pdf/renderer";
 
-import { resume } from "../resume";
 import {
   AdventPro,
   Nunito,
@@ -24,6 +23,7 @@ import {
   Roboto,
 } from "../../../utils/font";
 import styleSydney from "./SydneyStyle";
+import { IResumeData } from "../../../services/resumeEditor/resumeEditorSlice";
 
 Font.register({
   family: "Advent Pro",
@@ -65,85 +65,89 @@ Font.register({
   fonts: PlayfairDisplay,
 });
 
-const SydneyPDF: React.FC = () => {
-  const style = styleSydney.require;
+export interface ISydney {
+  resume: IResumeData;
+}
+
+const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
+  const style = resume.style;
   const styleCommon = styleSydney.common;
   const personalInfo = resume?.personalInfo;
 
   const personalInfoSectionTitle =
     resume?.sectionTitles.personalInfo &&
-      resume.sectionTitles.personalInfo !== "Untitled" &&
-      (resume.personalInfo.drivingLicense ||
-        resume.personalInfo.nationality ||
-        resume.personalInfo.DateOfBirth ||
-        resume.personalInfo.placeOfBirth)
+    resume.sectionTitles.personalInfo !== "Untitled" &&
+    (resume.personalInfo.drivingLicense ||
+      resume.personalInfo.nationality ||
+      resume.personalInfo.DateOfBirth ||
+      resume.personalInfo.placeOfBirth)
       ? resume.sectionTitles.personalInfo
       : null;
 
   const skillSectionTitle =
     resume?.sectionTitles.skills &&
-      resume.sectionTitles.skills !== "Untitled" &&
-      resume.skills.find((item) => item.label)
+    resume.sectionTitles.skills !== "Untitled" &&
+    resume.skills.find((item) => item.label)
       ? resume.sectionTitles.skills
       : null;
 
   const languageSectionTitle =
     resume?.sectionTitles.languages &&
-      resume.sectionTitles.languages !== "Untitled" &&
-      resume.languages.find((item) => item.language)
+    resume.sectionTitles.languages !== "Untitled" &&
+    resume.languages.find((item) => item.language)
       ? resume.sectionTitles.languages
       : null;
 
   const socialProfilesSectionTitle =
     resume?.sectionTitles.socialProfiles &&
-      resume.sectionTitles.socialProfiles !== "Untitled" &&
-      resume.socialProfiles.find((item) => item.label)
+    resume.sectionTitles.socialProfiles !== "Untitled" &&
+    resume.socialProfiles.find((item) => item.label)
       ? resume.sectionTitles.socialProfiles
       : null;
 
   const professionalSummarySectionTitle =
     resume?.sectionTitles.professionalSummary &&
-      resume.sectionTitles.professionalSummary !== "Untitled" &&
-      resume.professionalSummary
+    resume.sectionTitles.professionalSummary !== "Untitled" &&
+    resume.professionalSummary
       ? resume.sectionTitles.professionalSummary
       : null;
 
   const workExperienceSectionTitle =
     resume?.sectionTitles.workExperience &&
-      resume.sectionTitles.workExperience !== "Untitled" &&
-      resume.workExperience.find(
-        (item) =>
-          item.city ||
-          item.description ||
-          item.employer ||
-          item.jobTitle ||
-          item.startMontYear ||
-          item.endMontYear
-      )
+    resume.sectionTitles.workExperience !== "Untitled" &&
+    resume.workExperience.find(
+      (item) =>
+        item.city ||
+        item.description ||
+        item.employer ||
+        item.jobTitle ||
+        item.startMontYear ||
+        item.endMontYear
+    )
       ? resume.sectionTitles.workExperience
       : null;
 
   const educationsSectionTitle =
     resume?.sectionTitles.educations &&
-      resume.sectionTitles.educations !== "Untitled" &&
-      resume.educations.find(
-        (item) =>
-          item.city ||
-          item.description ||
-          item.school ||
-          item.degree ||
-          item.startMontYear ||
-          item.endMontYear
-      )
+    resume.sectionTitles.educations !== "Untitled" &&
+    resume.educations.find(
+      (item) =>
+        item.city ||
+        item.description ||
+        item.school ||
+        item.degree ||
+        item.startMontYear ||
+        item.endMontYear
+    )
       ? resume.sectionTitles.educations
       : null;
 
   const referencesSectionTitle =
     resume?.sectionTitles.references &&
-      resume.sectionTitles.references !== "Untitled" &&
-      resume.references.find(
-        (item) => item.name || item.company || item.email || item.phone
-      )
+    resume.sectionTitles.references !== "Untitled" &&
+    resume.references.find(
+      (item) => item.name || item.company || item.email || item.phone
+    )
       ? resume.sectionTitles.references
       : null;
 
@@ -151,7 +155,7 @@ const SydneyPDF: React.FC = () => {
     container: styleSydney.common.container,
     header: {
       display: "flex",
-      flexDirection: 'row',
+      flexDirection: "row",
       gap: "5px",
     },
     headerViewOne: styleSydney.common.headerDivOne,
@@ -159,12 +163,10 @@ const SydneyPDF: React.FC = () => {
     firstName: {
       ...styleSydney.require.personalInfo.firstName,
       textAlign: styleSydney.require.personalInfo.firstName.textAlign as any,
-
     },
     lastName: {
       ...style.personalInfo.lastName,
       textAlign: style.personalInfo.lastName.textAlign as any,
-
     },
     jobTitle: {
       ...style.personalInfo.jobTitle,
@@ -173,9 +175,9 @@ const SydneyPDF: React.FC = () => {
     imageAva: styleSydney.common.Image,
     headerIcon: {
       display: "flex",
-      flexDirection: 'row',
+      flexDirection: "row",
       gap: "10px",
-      alignItems: 'center',
+      alignItems: "center",
       marginLeft: "-25px",
     },
     icon: styleSydney.common.icon,
@@ -188,11 +190,13 @@ const SydneyPDF: React.FC = () => {
 
     summery: {
       ...styleSydney.require.professionalSummary.summery,
-      textAlign: styleSydney.require.professionalSummary.summery.textAlign as any,
+      textAlign: styleSydney.require.professionalSummary.summery
+        .textAlign as any,
     },
     workExperienceStyle: {
       ...styleSydney.require.sectionTitles.workExperienceStyle,
-      textAlign: styleSydney.require.sectionTitles.workExperienceStyle.textAlign as any,
+      textAlign: styleSydney.require.sectionTitles.workExperienceStyle
+        .textAlign as any,
       marginTop: "10px",
     },
     workExperience: {
@@ -201,15 +205,18 @@ const SydneyPDF: React.FC = () => {
     },
     startMontYear: {
       ...styleSydney.require.workExperience.startMontYear,
-      textAlign: styleSydney.require.workExperience.startMontYear.textAlign as any,
+      textAlign: styleSydney.require.workExperience.startMontYear
+        .textAlign as any,
     },
     endMontYear: {
       ...styleSydney.require.workExperience.endMontYear,
-      textAlign: styleSydney.require.workExperience.endMontYear.textAlign as any,
+      textAlign: styleSydney.require.workExperience.endMontYear
+        .textAlign as any,
     },
     description: {
       ...styleSydney.require.workExperience.description,
-      textAlign: styleSydney.require.workExperience.description.textAlign as any,
+      textAlign: styleSydney.require.workExperience.description
+        .textAlign as any,
     },
     educationsStyle: {
       ...styleSydney.require.sectionTitles.educationsStyle,
@@ -235,18 +242,15 @@ const SydneyPDF: React.FC = () => {
     },
     endMontYearEdu: {
       ...styleSydney.require.educations.endMontYear,
-      textAlign: styleSydney.require.educations.endMontYear
-        .textAlign as any,
+      textAlign: styleSydney.require.educations.endMontYear.textAlign as any,
     },
     eduDes: {
       ...styleSydney.require.educations.description,
-      textAlign: styleSydney.require.educations.description
-        .textAlign as any,
+      textAlign: styleSydney.require.educations.description.textAlign as any,
     },
     referencesStyle: {
       ...styleSydney.require.sectionTitles.referencesStyle,
-      textAlign: style.sectionTitles.referencesStyle
-        .textAlign as any,
+      textAlign: style.sectionTitles.referencesStyle.textAlign as any,
       marginTop: "10px",
     },
     refName: {
@@ -259,12 +263,12 @@ const SydneyPDF: React.FC = () => {
     },
     refEmail: {
       ...styleSydney.require.references.email,
-      textAlign: styleSydney.require.references.email.textAlign as any
+      textAlign: styleSydney.require.references.email.textAlign as any,
     },
     refPhone: {
       ...styleSydney.require.references.phone,
       textAlign: styleSydney.require.references.phone.textAlign as any,
-    }
+    },
   });
   return <Document>
     <Page style={styles.container}>
@@ -335,147 +339,127 @@ const SydneyPDF: React.FC = () => {
               )}
             </View>
 
-            {resume.workExperience.map((item, i) => {
-              const marginBottom = resume.workExperience.length === i + 1;
-              return (
-                (item.city ||
-                  item.description ||
-                  item.employer ||
-                  item.jobTitle ||
-                  item.startMontYear ||
-                  item.endMontYear) && (
-                  <View
-                    style={{ marginBottom: !marginBottom ? "8px" : "0px" }}
-                    key={item._id}>
-                    <Text>
-                      {item.jobTitle && (
-                        <Text
-                          style={styles.workExperience}>
-                          {item.jobTitle},{" "}
-                        </Text>
-                      )}
-                      {item.employer && (
-                        <Text
-                          style={{
-                            ...style.workExperience.employer,
-                            textAlign: style.workExperience.employer.textAlign as any,
-                          }}>
-                          {item.employer},{" "}
-                        </Text>
-                      )}
-                      {item.city && (
-                        <Text
-                          style={{
-                            ...style.workExperience.city,
-                            textAlign: style.workExperience.city.textAlign as any,
-                          }}>
-                          {item.city}{" "}
-                        </Text>
-                      )}
-                    </Text>
-                    <Text>
-                      <Text
-                        style={styles.startMontYear}>
-                        {item.startMontYear}
-                      </Text>{" "}
-                      {item.startMontYear && item.endMontYear && " - "}
-                      <Text
-                        style={styles.endMontYear}>
-                        {item.endMontYear}
+              {resume.workExperience.map((item, i) => {
+                const marginBottom = resume.workExperience.length === i + 1;
+                return (
+                  (item.city ||
+                    item.description ||
+                    item.employer ||
+                    item.jobTitle ||
+                    item.startMontYear ||
+                    item.endMontYear) && (
+                    <View
+                      style={{ marginBottom: !marginBottom ? "8px" : "0px" }}
+                      key={item._id}>
+                      <Text>
+                        {item.jobTitle && (
+                          <Text style={styles.workExperience}>
+                            {item.jobTitle},
+                          </Text>
+                        )}
+                        {item.employer && (
+                          <Text
+                            style={{
+                              ...style.workExperience.employer,
+                              textAlign: style.workExperience.employer
+                                .textAlign as any,
+                            }}>
+                            {item.employer},
+                          </Text>
+                        )}
+                        {item.city && (
+                          <Text
+                            style={{
+                              ...style.workExperience.city,
+                              textAlign: style.workExperience.city
+                                .textAlign as any,
+                            }}>
+                            {item.city}
+                          </Text>
+                        )}
                       </Text>
-                    </Text>
-                    {item.description && (
-                      <Text
-                        style={styles.description}>
-                        {item.description}
+                      <Text>
+                        <Text style={styles.startMontYear}>
+                          {item.startMontYear}
+                        </Text>
+                        {item.startMontYear && item.endMontYear && " - "}
+                        <Text style={styles.endMontYear}>
+                          {item.endMontYear}
+                        </Text>
                       </Text>
-                    )}
-                  </View>
-                )
-              );
-            })}
-          </View>
-          <View>
-            <View style={styles.headerIcon}>
-              <Image
-                style={styles.icon}
-                src="https://i.ibb.co/v3s3Y7z/mortarboard.png"
-
-              />
-              {educationsSectionTitle && (
-                <Text
-                  style={styles.educationsStyle}>
-                  {educationsSectionTitle}
-                </Text>
-              )}
+                      {item.description && (
+                        <Text style={styles.description}>
+                          {item.description}
+                        </Text>
+                      )}
+                    </View>
+                  )
+                );
+              })}
             </View>
+            <View>
+              <View style={styles.headerIcon}>
+                <Image
+                  style={styles.icon}
+                  src="https://i.ibb.co/v3s3Y7z/mortarboard.png"
+                />
+                {educationsSectionTitle && (
+                  <Text style={styles.educationsStyle}>
+                    {educationsSectionTitle}
+                  </Text>
+                )}
+              </View>
 
-            {resume.educations.map((item) => {
-              return (
-                (item.city ||
-                  item.description ||
-                  item.school ||
-                  item.degree ||
-                  item.startMontYear ||
-                  item.endMontYear) && (
-                  <View key={item._id}>
-                    <Text>
-                      {item.degree && (
-                        <Text
-                          style={styles.degree}>
-                          {item.degree},{" "}
-                        </Text>
-                      )}
-                      {item.school && (
-                        <Text
-                          style={styles.school}>
-                          {item.school},{" "}
-                        </Text>
-                      )}
-                      {item.city && (
-                        <Text
-                          style={styles.city}>
-                          {item.city}
-                        </Text>
-                      )}
-                    </Text>
-                    <Text>
-                      <Text
-                        style={styles.startMontYearEdu}>
-                        {item.startMontYear}
-                      </Text>{" "}
-                      {item.startMontYear && item.endMontYear && " - "}
-                      <Text
-                        style={styles.endMontYearEdu}>
-                        {item.endMontYear}
+              {resume.educations.map((item) => {
+                return (
+                  (item.city ||
+                    item.description ||
+                    item.school ||
+                    item.degree ||
+                    item.startMontYear ||
+                    item.endMontYear) && (
+                    <View key={item._id}>
+                      <Text>
+                        {item.degree && (
+                          <Text style={styles.degree}>{item.degree}, </Text>
+                        )}
+                        {item.school && (
+                          <Text style={styles.school}>{item.school}, </Text>
+                        )}
+                        {item.city && (
+                          <Text style={styles.city}>{item.city}</Text>
+                        )}
                       </Text>
-                    </Text>
-
-                    {item.description && (
-                      <Text
-                        style={styles.eduDes}>
-                        {item.description}
+                      <Text>
+                        <Text style={styles.startMontYearEdu}>
+                          {item.startMontYear}
+                        </Text>
+                        {item.startMontYear && item.endMontYear && " - "}
+                        <Text style={styles.endMontYearEdu}>
+                          {item.endMontYear}
+                        </Text>
                       </Text>
-                    )}
-                  </View>
-                )
-              );
-            })}
-          </View>
-          <View>
-            <View style={styles.headerIcon}>
-              <Image
-                style={styles.icon}
-                src="https://i.ibb.co/6Hj7JNX/exchange.png"
 
-              />
-              {referencesSectionTitle && (
-                <Text
-                  style={styles.referencesStyle}>
-                  {referencesSectionTitle}
-                </Text>
-              )}
+                      {item.description && (
+                        <Text style={styles.eduDes}>{item.description}</Text>
+                      )}
+                    </View>
+                  )
+                );
+              })}
             </View>
+            <View>
+              <View style={styles.headerIcon}>
+                <Image
+                  style={styles.icon}
+                  src="https://i.ibb.co/6Hj7JNX/exchange.png"
+                />
+                {referencesSectionTitle && (
+                  <Text style={styles.referencesStyle}>
+                    {referencesSectionTitle}
+                  </Text>
+                )}
+              </View>
 
             {resume.references.map((item) => {
               return (

@@ -24,6 +24,10 @@ import {
   selectAllHistory,
   selectSingleHistory,
 } from "../../services/history/historySelector";
+import resumePDF, {
+  ResumePDFTemplatesType,
+} from "../resumeTemplates/resumePDF";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 
 const EditorNavbar: React.FC = () => {
   const dispatch = useDispatch();
@@ -31,6 +35,13 @@ const EditorNavbar: React.FC = () => {
   const editor = useSelector(selectResumeEditor);
   const zoom = useSelector(selectZoomIn);
   const resume = useSelector(selectResume);
+
+  const Template =
+    !editor.isLoading &&
+    resumePDF[editor.resume.templateId as keyof ResumePDFTemplatesType]
+      ? resumePDF[editor.resume.templateId as keyof ResumePDFTemplatesType]
+          .template
+      : null;
 
   const history = useSelector((state: RootState) =>
     selectSingleHistory(state, resume._id)
@@ -114,10 +125,15 @@ const EditorNavbar: React.FC = () => {
           </div>
 
           <div className=" flex justify-start items-center gap-5 xl:gap-10">
-            <button className=" text-c-dark font-semibold flex justify-start  items-center lg:gap-2 lg:px-4 p-2 lg:py-2 bg-gray-100 rounded-full text-base lg:text-xl">
-              <FiDownload />
-              <span className=" hidden lg:block">Download</span>
-            </button>
+            {Template && (
+              <PDFDownloadLink
+                className="text-c-dark font-semibold flex justify-start  items-center lg:gap-2 lg:px-4 p-2 lg:py-2 bg-gray-100 rounded-full text-base lg:text-xl"
+                document={<Template resume={resume} />}
+                fileName="resumeCraft.pdf">
+                <FiDownload />
+                <span className=" hidden lg:block">Download</span>
+              </PDFDownloadLink>
+            )}
             <button className=" flex justify-start items-center lg:gap-2 lg:px-4 p-2  lg:py-2 bg-c-primary text-white rounded-full text-base lg:text-xl">
               <FiSend />
               <span className=" hidden lg:block">Share</span>

@@ -94,6 +94,7 @@ const Vienna: React.ForwardRefRenderFunction<HTMLDivElement, IVienna> = (
       ? resume.sectionTitles.references
       : null;
 
+  const skillLevelHide = resume.style.skillLevel;
   return (
     <div
       ref={ref}
@@ -122,7 +123,13 @@ const Vienna: React.ForwardRefRenderFunction<HTMLDivElement, IVienna> = (
               />
             </div>
           )}
-          <div style={styleCommon.headerDivTwo}>
+          <div
+            style={{
+              ...styleCommon.headerDivTwo,
+              padding: !resume.avatar.url
+                ? "10px 40px 10px 40px"
+                : "10px 0px 0px 0px",
+            }}>
             {(personalInfo.firstName || personalInfo.lastName) && (
               <h1>
                 {personalInfo.firstName && (
@@ -130,6 +137,7 @@ const Vienna: React.ForwardRefRenderFunction<HTMLDivElement, IVienna> = (
                     style={{
                       ...style.personalInfo.firstName,
                       textAlign: style.personalInfo.firstName.textAlign as any,
+                      // lineHeight: "26px",
                     }}>
                     {personalInfo.firstName}
                   </span>
@@ -139,6 +147,7 @@ const Vienna: React.ForwardRefRenderFunction<HTMLDivElement, IVienna> = (
                     style={{
                       ...style.personalInfo.lastName,
                       textAlign: style.personalInfo.lastName.textAlign as any,
+                      // lineHeight: "26px",
                     }}>
                     {personalInfo.lastName}
                   </span>
@@ -150,6 +159,7 @@ const Vienna: React.ForwardRefRenderFunction<HTMLDivElement, IVienna> = (
                 style={{
                   ...style.personalInfo.jobTitle,
                   textAlign: style.personalInfo.jobTitle.textAlign as any,
+                  // lineHeight: "20px",
                 }}>
                 {personalInfo.jobTitle}
               </h1>
@@ -164,6 +174,7 @@ const Vienna: React.ForwardRefRenderFunction<HTMLDivElement, IVienna> = (
                     style={{
                       ...style.personalInfo.address,
                       textAlign: style.personalInfo.address.textAlign as any,
+                      // lineHeight: "18px",
                     }}>
                     {personalInfo.address},
                   </span>
@@ -173,6 +184,7 @@ const Vienna: React.ForwardRefRenderFunction<HTMLDivElement, IVienna> = (
                     style={{
                       ...style.personalInfo.city,
                       textAlign: style.personalInfo.city.textAlign as any,
+                      // lineHeight: "18px",
                     }}>
                     {" "}
                     {personalInfo.city},
@@ -183,6 +195,7 @@ const Vienna: React.ForwardRefRenderFunction<HTMLDivElement, IVienna> = (
                     style={{
                       ...style.personalInfo.postalCode,
                       textAlign: style.personalInfo.postalCode.textAlign as any,
+                      // lineHeight: "18px",
                     }}>
                     {" "}
                     {personalInfo.postalCode},
@@ -193,6 +206,7 @@ const Vienna: React.ForwardRefRenderFunction<HTMLDivElement, IVienna> = (
                     style={{
                       ...style.personalInfo.country,
                       textAlign: style.personalInfo.country.textAlign as any,
+                      // lineHeight: "18px",
                     }}>
                     {" "}
                     {personalInfo.country}
@@ -209,6 +223,7 @@ const Vienna: React.ForwardRefRenderFunction<HTMLDivElement, IVienna> = (
                       ...style.personalInfo.phoneNumber,
                       textAlign: style.personalInfo.phoneNumber
                         .textAlign as any,
+                      // lineHeight: "14px",
                     }}>
                     {personalInfo.phoneNumber}
                   </span>
@@ -218,6 +233,7 @@ const Vienna: React.ForwardRefRenderFunction<HTMLDivElement, IVienna> = (
                     style={{
                       ...style.personalInfo.email,
                       textAlign: style.personalInfo.email.textAlign as any,
+                      // lineHeight: "14px",
                       ...styleCommon.personalInfoEmail,
                     }}>
                     <a href={`mailto:${personalInfo.email}`}>
@@ -315,14 +331,17 @@ const Vienna: React.ForwardRefRenderFunction<HTMLDivElement, IVienna> = (
                       style={{
                         ...style.skills.label,
                         textAlign: style.skills.label.textAlign as any,
+                        lineHeight: skillLevelHide ? "12px" : "18px",
                       }}>
                       {item.label}
                     </h1>
-                    <div style={styleCommon.skillsLevelContainer}>
-                      {createArrayUpToNumber(item.level / 20).map((i) => (
-                        <span key={i} style={styleCommon.skillsLevel}></span>
-                      ))}
-                    </div>
+                    {!skillLevelHide && (
+                      <h1 style={styleCommon.skillsLevelContainer}>
+                        {createArrayUpToNumber(item.level / 20).map((i) => (
+                          <span key={i} style={styleCommon.skillsLevel}></span>
+                        ))}
+                      </h1>
+                    )}
                   </div>
                 )
               );
@@ -423,7 +442,7 @@ const Vienna: React.ForwardRefRenderFunction<HTMLDivElement, IVienna> = (
                   ...style.sectionTitles.workExperienceStyle,
                   textAlign: style.sectionTitles.workExperienceStyle
                     .textAlign as any,
-                  marginTop: "10px",
+                  marginTop: "5px",
                 }}>
                 {workExperienceSectionTitle}
               </h1>
@@ -512,7 +531,7 @@ const Vienna: React.ForwardRefRenderFunction<HTMLDivElement, IVienna> = (
                   ...style.sectionTitles.educationsStyle,
                   textAlign: style.sectionTitles.educationsStyle
                     .textAlign as any,
-                  marginTop: "10px",
+                  marginTop: "5px",
                 }}>
                 {educationsSectionTitle}
               </h1>
@@ -596,7 +615,7 @@ const Vienna: React.ForwardRefRenderFunction<HTMLDivElement, IVienna> = (
                   ...style.sectionTitles.referencesStyle,
                   textAlign: style.sectionTitles.referencesStyle
                     .textAlign as any,
-                  marginTop: "10px",
+                  marginTop: "5px",
                 }}>
                 {referencesSectionTitle}
               </h1>

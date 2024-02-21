@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import historyReducer from "../services/history/historySlice";
 import apiSlice from "../services/api/api";
 import coverletterEditorReducer from "../services/coverletterEditor/coverletterEditorSlice";
+import authReducer from "../services/auth/authSlice";
 
 const store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ const store = configureStore({
     resumeEditor: resumeEditorReducer,
     coverLetterEditor: coverletterEditorReducer,
     history: historyReducer,
+    auth: authReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),
