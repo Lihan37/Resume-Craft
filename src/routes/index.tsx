@@ -21,6 +21,7 @@ import CreateBlog from "../pages/dashboard/admin/blog/CreateBlog";
 import CoverLetter from "../pages/editor/CoverLetter";
 import ActiveAccount from "../pages/auth/ActiveAccount";
 import PrivateRoutes from "./PrivateRoutes";
+import ForgotPassword from "../pages/auth/ForgotPassword";
 
 const router = createBrowserRouter([
   {
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
       {
         path: "active",
         element: <ActiveAccount />,
+      },
+      {
+        path: "forget-password",
+        element: <ForgotPassword />,
       },
     ],
   },
