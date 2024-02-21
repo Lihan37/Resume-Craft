@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 import React from "react";
 import {
   Page,
@@ -265,7 +266,7 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
   return (
     <Document>
       <Page style={styles.container}>
-        <View style={styles.header}>
+        <View style={{ ...styles.header, alignItems: "center" }}>
           {resume.avatar.url && (
             <Image style={styles.imageAva} src={resume.avatar.url} />
           )}
@@ -278,6 +279,7 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
               )}
               {resume.personalInfo.lastName && (
                 <Text style={styles.lastName}>
+                  {" "}
                   {resume.personalInfo.lastName}
                 </Text>
               )}
@@ -289,7 +291,7 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
             )}
           </View>
         </View>
-        <View style={{ ...styles.header, alignItems: "center" }}>
+        <View style={{ ...styles.header }}>
           <View style={styles.headerViewTwo}>
             <View>
               <View style={styles.headerIcon}>
@@ -478,7 +480,7 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
                   }}>
                   {personalInfoSectionTitle}
                 </Text>
-              )}
+              )}{" "}
               {resume.personalInfo.address && (
                 <Text style={styleCommon.personalInfoLabel}>Address</Text>
               )}
@@ -489,6 +491,7 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
                       ...style.personalInfo.address,
                       textAlign: style.personalInfo.address.textAlign as any,
                     }}>
+                    {" "}
                     {resume.personalInfo.address},
                   </Text>
                 )}
@@ -498,6 +501,7 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
                       ...style.personalInfo.city,
                       textAlign: style.personalInfo.city.textAlign as any,
                     }}>
+                    {" "}
                     {resume.personalInfo.city},
                   </Text>
                 )}
@@ -507,6 +511,7 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
                       ...style.personalInfo.postalCode,
                       textAlign: style.personalInfo.postalCode.textAlign as any,
                     }}>
+                    {" "}
                     {resume.personalInfo.postalCode},
                   </Text>
                 )}
@@ -516,6 +521,7 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
                       ...style.personalInfo.country,
                       textAlign: style.personalInfo.country.textAlign as any,
                     }}>
+                    {" "}
                     {resume.personalInfo.country}
                   </Text>
                 )}
@@ -523,14 +529,15 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
               {resume.personalInfo.email && (
                 <View>
                   <Text style={styleCommon.personalInfoLabel}>Email</Text>
-                  <Link
+                  <Text
                     style={{
                       ...style.personalInfo.email,
                       textAlign: style.personalInfo.email.textAlign as any,
-                    }}
-                    href={`mailto:${resume.personalInfo.email}`}>
-                    {resume.personalInfo.email}
-                  </Link>
+                    }}>
+                    <Link href={`mailto:${resume.personalInfo.email}`}>
+                      {resume.personalInfo.email}
+                    </Link>
+                  </Text>
                 </View>
               )}
               {personalInfo.nationality && (
@@ -646,7 +653,7 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
                               .textAlign as any,
                           }}>
                           {item.language}
-                        </Text>
+                        </Text>{" "}
                         {item.level && (
                           <Text
                             style={{
