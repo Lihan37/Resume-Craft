@@ -93,7 +93,7 @@ const Navbar: React.FC = () => {
                 <NavLink
                   key={item.link}
                   to={item.link}
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => setIsOpen(windowWidth < 769 ? false : true)}
                   className={({ isActive }) =>
                     isActive
                       ? `text-c-primary ${
