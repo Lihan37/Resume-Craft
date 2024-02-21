@@ -160,8 +160,8 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
     headerViewOne: styleSydney.common.headerDivOne,
     headerViewTwo: styleSydney.common.headerDivTwo,
     firstName: {
-      ...styleSydney.require.personalInfo.firstName,
-      textAlign: styleSydney.require.personalInfo.firstName.textAlign as any,
+      ...style.personalInfo.firstName,
+      textAlign: style.personalInfo.firstName.textAlign as any,
     },
     lastName: {
       ...style.personalInfo.lastName,
@@ -182,91 +182,84 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
     icon: styleSydney.common.icon,
 
     sectionTitles: {
-      ...styleSydney.require.sectionTitles.professionalSummaryStyle,
-      textAlign: styleSydney.require.sectionTitles.professionalSummaryStyle
-        .textAlign as any,
+      ...style.sectionTitles.professionalSummaryStyle,
+      textAlign: style.sectionTitles.professionalSummaryStyle.textAlign as any,
     },
 
     summery: {
-      ...styleSydney.require.professionalSummary.summery,
-      textAlign: styleSydney.require.professionalSummary.summery
-        .textAlign as any,
+      ...style.professionalSummary.summery,
+      textAlign: style.professionalSummary.summery.textAlign as any,
     },
     workExperienceStyle: {
-      ...styleSydney.require.sectionTitles.workExperienceStyle,
-      textAlign: styleSydney.require.sectionTitles.workExperienceStyle
-        .textAlign as any,
+      ...style.sectionTitles.workExperienceStyle,
+      textAlign: style.sectionTitles.workExperienceStyle.textAlign as any,
       marginTop: "10px",
     },
     workExperience: {
-      ...styleSydney.require.workExperience.jobTitle,
-      textAlign: styleSydney.require.workExperience.jobTitle.textAlign as any,
+      ...style.workExperience.jobTitle,
+      textAlign: style.workExperience.jobTitle.textAlign as any,
     },
     startMontYear: {
-      ...styleSydney.require.workExperience.startMontYear,
-      textAlign: styleSydney.require.workExperience.startMontYear
-        .textAlign as any,
+      ...style.workExperience.startMontYear,
+      textAlign: style.workExperience.startMontYear.textAlign as any,
     },
     endMontYear: {
-      ...styleSydney.require.workExperience.endMontYear,
-      textAlign: styleSydney.require.workExperience.endMontYear
-        .textAlign as any,
+      ...style.workExperience.endMontYear,
+      textAlign: style.workExperience.endMontYear.textAlign as any,
     },
     description: {
-      ...styleSydney.require.workExperience.description,
-      textAlign: styleSydney.require.workExperience.description
-        .textAlign as any,
+      ...style.workExperience.description,
+      textAlign: style.workExperience.description.textAlign as any,
     },
     educationsStyle: {
-      ...styleSydney.require.sectionTitles.educationsStyle,
-      textAlign: styleSydney.require.sectionTitles.educationsStyle
-        .textAlign as any,
+      ...style.sectionTitles.educationsStyle,
+      textAlign: style.sectionTitles.educationsStyle.textAlign as any,
       marginTop: "10px",
     },
     degree: {
-      ...styleSydney.require.educations.degree,
-      textAlign: styleSydney.require.educations.degree.textAlign as any,
+      ...style.educations.degree,
+      textAlign: style.educations.degree.textAlign as any,
     },
     school: {
-      ...styleSydney.require.educations.school,
-      textAlign: styleSydney.require.educations.school.textAlign as any,
+      ...style.educations.school,
+      textAlign: style.educations.school.textAlign as any,
     },
     city: {
-      ...styleSydney.require.educations.city,
-      textAlign: styleSydney.require.educations.city.textAlign as any,
+      ...style.educations.city,
+      textAlign: style.educations.city.textAlign as any,
     },
     startMontYearEdu: {
-      ...styleSydney.require.educations.startMontYear,
-      textAlign: styleSydney.require.educations.startMontYear.textAlign as any,
+      ...style.educations.startMontYear,
+      textAlign: style.educations.startMontYear.textAlign as any,
     },
     endMontYearEdu: {
-      ...styleSydney.require.educations.endMontYear,
-      textAlign: styleSydney.require.educations.endMontYear.textAlign as any,
+      ...style.educations.endMontYear,
+      textAlign: style.educations.endMontYear.textAlign as any,
     },
     eduDes: {
-      ...styleSydney.require.educations.description,
-      textAlign: styleSydney.require.educations.description.textAlign as any,
+      ...style.educations.description,
+      textAlign: style.educations.description.textAlign as any,
     },
     referencesStyle: {
-      ...styleSydney.require.sectionTitles.referencesStyle,
+      ...style.sectionTitles.referencesStyle,
       textAlign: style.sectionTitles.referencesStyle.textAlign as any,
       marginTop: "10px",
     },
     refName: {
-      ...styleSydney.require.references.name,
-      textAlign: styleSydney.require.references.name.textAlign as any,
+      ...style.references.name,
+      textAlign: style.references.name.textAlign as any,
     },
     refCom: {
-      ...styleSydney.require.references.company,
-      textAlign: styleSydney.require.references.company.textAlign as any,
+      ...style.references.company,
+      textAlign: style.references.company.textAlign as any,
     },
     refEmail: {
-      ...styleSydney.require.references.email,
-      textAlign: styleSydney.require.references.email.textAlign as any,
+      ...style.references.email,
+      textAlign: style.references.email.textAlign as any,
     },
     refPhone: {
-      ...styleSydney.require.references.phone,
-      textAlign: styleSydney.require.references.phone.textAlign as any,
+      ...style.references.phone,
+      textAlign: style.references.phone.textAlign as any,
     },
   });
   return (
@@ -530,15 +523,14 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
               {resume.personalInfo.email && (
                 <View>
                   <Text style={styleCommon.personalInfoLabel}>Email</Text>
-                  <Text
+                  <Link
                     style={{
                       ...style.personalInfo.email,
                       textAlign: style.personalInfo.email.textAlign as any,
-                    }}>
-                    <Link href={`mailto:${resume.personalInfo.email}`}>
-                      {resume.personalInfo.email}
-                    </Link>
-                  </Text>
+                    }}
+                    href={`mailto:${resume.personalInfo.email}`}>
+                    {resume.personalInfo.email}
+                  </Link>
                 </View>
               )}
               {personalInfo.nationality && (

@@ -10,8 +10,6 @@ const styleSydney = {
     header: {
       display: "flex",
       gap: "10px",
-      
-
     },
     personalInfoLabel: {
       color: "",
@@ -22,7 +20,7 @@ const styleSydney = {
 
     headerDivOne: {
       padding: "10px",
-      width: "300px",
+      width: "150px",
     },
     headerDivTwo: {
       padding: "10px",
@@ -60,8 +58,8 @@ const styleSydney = {
       padding: "5px",
       width: "100%",
       height: "5px",
-      backgroundColor: '#4FC2D8',
-      borderRadius: '10px'
+      backgroundColor: "#4FC2D8",
+      borderRadius: "10px",
     },
     marginTop: {
       marginTop: "5px",
