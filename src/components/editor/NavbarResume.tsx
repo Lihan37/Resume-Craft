@@ -29,6 +29,7 @@ import resumePDF, {
   ResumePDFTemplatesType,
 } from "../resumeTemplates/resumePDF";
 import { PDFDownloadLink } from "@react-pdf/renderer";
+import { BiLoaderAlt } from "react-icons/bi";
 
 const EditorNavbar: React.FC = () => {
   const dispatch = useDispatch();
@@ -130,8 +131,21 @@ const EditorNavbar: React.FC = () => {
                 className="text-c-dark font-semibold flex justify-start  items-center lg:gap-2 lg:px-4 p-2 lg:py-2 bg-gray-100 rounded-full text-base lg:text-xl"
                 document={<Template resume={resume} />}
                 fileName="resumeCraft.pdf">
-                <FiDownload />
-                <span className=" hidden lg:block">Download</span>
+                {({ blob, url, loading, error }) => {
+                  console.log("blob........", blob);
+                  console.log("url........", url);
+                  console.log("error........", error);
+                  return (
+                    <div className=" flex justify-center items-center gap-1">
+                      {loading ? (
+                        <BiLoaderAlt className="animate-spin text-xl" />
+                      ) : (
+                        <FiDownload />
+                      )}
+                      <span className="hidden lg:block">Download</span>
+                    </div>
+                  );
+                }}
               </PDFDownloadLink>
             )}
 
