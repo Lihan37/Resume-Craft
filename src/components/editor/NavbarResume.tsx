@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from "react";
 import Logo from "../common/Logo";
 import Breadcrumbs from "../common/Breadcrumbs";
@@ -93,7 +94,6 @@ const EditorNavbar: React.FC = () => {
                   getValue={(data: string) => setTitle(data)}
                 />
               )}
-
               <div className="hidden md:flex justify-start items-center gap-2 mt-1 md:w-28">
                 {editor?.isSyncing ? (
                   <TbLoader2 className="animate-spin text-c-primary text-2xl lg:text-2xl" />
@@ -134,6 +134,7 @@ const EditorNavbar: React.FC = () => {
                 <span className=" hidden lg:block">Download</span>
               </PDFDownloadLink>
             )}
+
             <button className=" flex justify-start items-center lg:gap-2 lg:px-4 p-2  lg:py-2 bg-c-primary text-white rounded-full text-base lg:text-xl">
               <FiSend />
               <span className=" hidden lg:block">Share</span>
