@@ -15,7 +15,7 @@ import { createUserHistory } from "../../../../services/history/historyApi";
 import { initialState } from "../../../../services/resumeEditor/resumeEditorSlice";
 import { initialState as coverLetterInitialState } from "../../../../services/coverletterEditor/coverletterEditorSlice";
 import { AnimatePresence, motion } from "framer-motion";
-import { RootState, useAppDispatch } from "../../../../app/store";
+import { AppDispatch, RootState, useAppDispatch } from "../../../../app/store";
 import { userHistory } from "../../../../services/history/historyApi";
 import { useSelector } from "react-redux";
 import {
@@ -49,7 +49,7 @@ const UserDashboard: React.FC = () => {
     coverLetterHistoryId,
   } = state;
   const dispatch = useDispatch();
-  const appDispatch = useAppDispatch();
+  const appDispatch: AppDispatch = useAppDispatch();
   const navigate = useNavigate();
   const allHistory = useSelector(selectAllHistory);
 

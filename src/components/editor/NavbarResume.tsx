@@ -85,7 +85,7 @@ const EditorNavbar: React.FC = () => {
             <Logo name={false} />
             <div className=" flex justify-start items-center gap-5 xl:gap-10">
               <Breadcrumbs back="/" label="Home" />
-              <Breadcrumbs back="/dashboard" label="Resumes" />
+              <Breadcrumbs back="/dashboard" label="Dashboard" />
 
               {history?._id && (
                 <Title

@@ -53,6 +53,7 @@ const CoverLetterTemplates: React.FC = () => {
           description=" Craft impactful cover letters effortlessly with our intuitive generator tool. Tailor each letter to your industry, and level up your job application game. Whether you're a seasoned professional or a recent graduate, our collection of templates and writing guides ensures you make a lasting impression on employers."
           button="Create Cover letter"
           image={images.coverlatterTemplate}
+          create="coverletter"
         />
       </div>
       <Container>
