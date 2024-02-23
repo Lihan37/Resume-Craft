@@ -13,7 +13,7 @@ import EditorWrapper from "../layouts/EditorWrapper";
 import ResumeEditor from "../pages/editor/ResumeEditor";
 import Pricing from "../pages/pricing";
 import AuthWrapper from "../layouts/AuthWrapper";
-import UserDashboard from "../pages/dashboard/user";
+import UserDashboard from "../pages/dashboard/user/history";
 import AdminDashboard from "../pages/dashboard/admin";
 import BlogDetails from "../pages/blog/BlogDetails";
 import Blogs from "../pages/dashboard/admin/blog";
@@ -21,6 +21,12 @@ import CreateBlog from "../pages/dashboard/admin/blog/CreateBlog";
 import CoverLetter from "../pages/editor/CoverLetter";
 import ActiveAccount from "../pages/auth/ActiveAccount";
 import PrivateRoutes from "./PrivateRoutes";
+import ForgotPassword from "../pages/auth/ForgotPassword";
+import NewPassword from "../pages/auth/NewPassword";
+import Account from "../pages/dashboard/user/account/Account";
+import Vienna from "../components/resumeTemplates/vienna/Vienna";
+import Madrid from "../components/resumeTemplates/madrid/Madrid";
+
 
 const router = createBrowserRouter([
   {
@@ -44,6 +50,11 @@ const router = createBrowserRouter([
         path: "/pricing",
         element: <Pricing />,
       },
+      // madrid
+      {
+        path: "/madrid",
+        element: <Madrid  />,
+      },
       {
         path: "/faq",
         element: <Faq />,
@@ -54,6 +65,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoutes>
             <UserDashboard />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/account",
+        element: (
+          <PrivateRoutes>
+            <Account />
           </PrivateRoutes>
         ),
       },
@@ -84,6 +103,14 @@ const router = createBrowserRouter([
       {
         path: "active",
         element: <ActiveAccount />,
+      },
+      {
+        path: "forget-password",
+        element: <ForgotPassword />,
+      },
+      {
+        path: "forget-password/:id",
+        element: <NewPassword />,
       },
     ],
   },

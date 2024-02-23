@@ -20,7 +20,6 @@ const App: React.FC = () => {
         credentials: "include",
       });
       const data = await response.json();
-      console.log(data);
       if (data.user || data.message) {
         setLoading(false);
       }

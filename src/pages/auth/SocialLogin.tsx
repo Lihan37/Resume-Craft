@@ -34,6 +34,7 @@ const SocialLogin: React.FC = () => {
             icon: "success",
             text: "Login Successfully !",
             showConfirmButton: false,
+            timer: 1000,
           });
           if (data.user.role === "user") {
             navigate("/dashboard");

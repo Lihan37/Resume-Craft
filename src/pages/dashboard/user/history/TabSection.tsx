@@ -1,6 +1,6 @@
 import { IoMdAdd } from "react-icons/io";
 import SingleCard from "./SingleCard";
-import { ISingleUserHistory } from "../../../services/history/historySlice";
+import { ISingleUserHistory } from "../../../../services/history/historySlice";
 
 interface ITabSection {
   data: ISingleUserHistory[];

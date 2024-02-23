@@ -20,7 +20,6 @@ import {
   Poppins,
   Roboto,
 } from "../../../utils/font";
-// import coverLetter from "../coverLetter";
 
 Font.register({
   family: "Advent Pro",

@@ -21,6 +21,7 @@ const AuthWrapper: React.FC = () => {
               {pathname === "/auth/sign-up" && " Create Your Account"}
               {pathname === "/auth/login" && "Log In To Your Account"}
               {pathname === "/auth/active" && "Active Your Account"}
+              {pathname === "/auth/forget-password" && "Enter Your Email"}
             </h2>
 
             <p className="my-4 text-c-dark-light text-xs md:text-base">
@@ -33,11 +34,13 @@ const AuthWrapper: React.FC = () => {
             </p>
 
             <Outlet />
-            {!(pathname === "/auth/active") && <SocialLogin />}
+            {(pathname === "/auth/sign-up" || pathname === "/auth/login") && (
+              <SocialLogin />
+            )}
 
             {pathname === "/auth/login" && (
               <div className=" text-blue-500 my-10">
-                <Link className=" underline" to="/">
+                <Link className=" underline" to="/auth/forget-password">
                   Forgot password?
                 </Link>
               </div>
@@ -48,7 +51,7 @@ const AuthWrapper: React.FC = () => {
           <Logo />
         </div>
       </div>
-      {!(pathname === "/auth/active") && (
+      {(pathname === "/auth/sign-up" || pathname === "/auth/login") && (
         <div className=" w-full md:w-1/3 p-8  space-y-5 bg-c-primary flex flex-col items-center justify-center text-center text-white">
           <p className=" font-semibold font-mono text-xl lg:text-3xl xl:text-5xl max-w-lg">
             {pathname === "/auth/sign-up"

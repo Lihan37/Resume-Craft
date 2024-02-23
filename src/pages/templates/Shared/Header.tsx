@@ -1,12 +1,14 @@
 import Button from "../../../components/common/Button";
 import { Container } from "../../../components/common/Container";
 import SectionHeader from "../../../components/common/SectionHeader";
-
+import useCreateResume from "../../../hooks/useCreateResume";
+import useCreateCoverLetter from "../../../hooks/useCreateCoverLetter";
 interface HeaderForCV {
   sectionHeader: string;
   button: string;
   description: string;
   image: string;
+  create: string;
 }
 
 const HeaderResume: React.FC<HeaderForCV> = ({
@@ -14,7 +16,22 @@ const HeaderResume: React.FC<HeaderForCV> = ({
   description,
   button,
   image,
+  create = "resume",
 }) => {
+  const [createResume] = useCreateResume();
+  const [createCoverLetter] = useCreateCoverLetter();
+
+  const createNew = () => {
+    if (create === "resume") {
+      createResume();
+      return;
+    }
+    if (create === "coverletter") {
+      createCoverLetter();
+      return;
+    }
+  };
+
   return (
     <Container>
       <div className="flex flex-col-reverse md:flex-row justify-between items-center">
@@ -26,7 +43,7 @@ const HeaderResume: React.FC<HeaderForCV> = ({
             {description}
           </p>
           <div className=" flex justify-center md:justify-start items-center gap-10 ">
-            <Button>{button}</Button>
+            <Button onClick={createNew}>{button}</Button>
           </div>
         </div>
         <div className="lg:w-[1100px]">

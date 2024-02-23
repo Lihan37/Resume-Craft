@@ -2,36 +2,23 @@ import React, { useState } from "react";
 import Button from "../../components/common/Button";
 import InputText from "../../components/common/InputText";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { BiLoaderAlt } from "react-icons/bi";
 const baseUrl = import.meta.env.VITE_BASE_URL_API;
 
-const ActiveAccount: React.FC = () => {
-  const [code, setCode] = useState<string>("");
+const NewPassword: React.FC = () => {
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
-  const token = localStorage.getItem("activationToken");
+  const { id } = useParams();
 
-  const handleActive = async (e: React.FormEvent) => {
+  const handleForget = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!token) {
+    if (password !== confirmPassword) {
       Swal.fire({
         icon: "error",
-        title: "Create Your Account",
-        confirmButtonText: "Create Account",
-        confirmButtonColor: "#3B82F6",
-      }).then((res) => {
-        if (res.isConfirmed) {
-          localStorage.setItem("activationToken", "");
-          navigate("/auth/sign-up");
-        }
-      });
-      return;
-    }
-    if (!code) {
-      Swal.fire({
-        icon: "error",
-        text: "Add Active Code Check Your Email!",
+        text: "Password Not Match",
         showConfirmButton: false,
         timer: 1000,
       });
@@ -39,16 +26,15 @@ const ActiveAccount: React.FC = () => {
     }
     try {
       setLoading(true);
-      const response = await fetch(`${baseUrl}/auth/v1/activate`, {
+      const response = await fetch(`${baseUrl}/auth/v1/password/new`, {
         method: "POST",
         credentials: "include",
-
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          activateToken: JSON.parse(token),
-          activateCode: code,
+          password: password,
+          token: id,
         }),
       });
       const data = await response.json();
@@ -63,10 +49,10 @@ const ActiveAccount: React.FC = () => {
       }
       if (data.success) {
         setLoading(false);
-        setCode("");
         Swal.fire({
-          title: "Login Your Account!",
-          text: "Your Account Successfully Active!",
+          icon: "success",
+          title: "Login Your Account",
+          text: data.message,
           confirmButtonText: "Login",
           confirmButtonColor: "#3B82F6",
         }).then((res) => {
@@ -81,19 +67,29 @@ const ActiveAccount: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleActive} className="mx-auto ">
+    <form onSubmit={handleForget} className="mx-auto ">
       <div className="mb-4">
         <InputText
-          type="code"
-          placeholder="Code"
-          value={code}
-          onChange={(e) => setCode(e.target.value)}
+          required
+          type="password"
+          placeholder="New Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
+      <div className="mb-4">
+        <InputText
+          type="password"
+          required
+          placeholder="Confirm Password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
         />
       </div>
       <div className=" flex justify-center items-center w-full">
         <Button disabled={loading} icon={false}>
           <div className=" flex justify-start items-center gap-1">
-            ActiveAccount
+            Send
             {loading && <BiLoaderAlt className="animate-spin text-xl" />}
           </div>
         </Button>
@@ -102,4 +98,4 @@ const ActiveAccount: React.FC = () => {
   );
 };
 
-export default ActiveAccount;
+export default NewPassword;
