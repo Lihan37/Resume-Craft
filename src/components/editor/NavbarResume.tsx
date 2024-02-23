@@ -80,7 +80,7 @@ const EditorNavbar: React.FC = () => {
 
   return (
     <div className="border-b-2">
-      <div className=" 2xl:max-w-[1800px] mx-auto px-10 2xl:px-0 py-5 ">
+      <div className=" max-w-[1800px] mx-auto  py-5 pr-3 ">
         <div className="flex justify-between items-center">
           <div className=" flex justify-start items-center gap-5 xl:gap-10">
             <Logo name={false} />

@@ -3,6 +3,7 @@ import React, { forwardRef } from "react";
 import { IResumeData } from "../../../services/resumeEditor/resumeEditorSlice";
 
 import styleSydney from "./SydneyStyle";
+import useDisplay from "../../../hooks/useDisplay";
 
 export interface ISydney {
   resume: IResumeData;
@@ -15,92 +16,96 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
   const style = resume.style;
   const styleCommon = styleSydney.common;
   const personalInfo = resume?.personalInfo;
+  const [windowWidth] = useDisplay();
 
   const personalInfoSectionTitle =
     resume?.sectionTitles.personalInfo &&
-      resume.sectionTitles.personalInfo !== "Untitled" &&
-      (resume.personalInfo.drivingLicense ||
-        resume.personalInfo.nationality ||
-        resume.personalInfo.DateOfBirth ||
-        resume.personalInfo.placeOfBirth)
+    resume.sectionTitles.personalInfo !== "Untitled" &&
+    (resume.personalInfo.drivingLicense ||
+      resume.personalInfo.nationality ||
+      resume.personalInfo.DateOfBirth ||
+      resume.personalInfo.placeOfBirth)
       ? resume.sectionTitles.personalInfo
       : null;
 
   const skillSectionTitle =
     resume?.sectionTitles.skills &&
-      resume.sectionTitles.skills !== "Untitled" &&
-      resume.skills.find((item) => item.label)
+    resume.sectionTitles.skills !== "Untitled" &&
+    resume.skills.find((item) => item.label)
       ? resume.sectionTitles.skills
       : null;
 
   const languageSectionTitle =
     resume?.sectionTitles.languages &&
-      resume.sectionTitles.languages !== "Untitled" &&
-      resume.languages.find((item) => item.language)
+    resume.sectionTitles.languages !== "Untitled" &&
+    resume.languages.find((item) => item.language)
       ? resume.sectionTitles.languages
       : null;
 
   const socialProfilesSectionTitle =
     resume?.sectionTitles.socialProfiles &&
-      resume.sectionTitles.socialProfiles !== "Untitled" &&
-      resume.socialProfiles.find((item) => item.label)
+    resume.sectionTitles.socialProfiles !== "Untitled" &&
+    resume.socialProfiles.find((item) => item.label)
       ? resume.sectionTitles.socialProfiles
       : null;
 
   const professionalSummarySectionTitle =
     resume?.sectionTitles.professionalSummary &&
-      resume.sectionTitles.professionalSummary !== "Untitled" &&
-      resume.professionalSummary
+    resume.sectionTitles.professionalSummary !== "Untitled" &&
+    resume.professionalSummary
       ? resume.sectionTitles.professionalSummary
       : null;
 
   const workExperienceSectionTitle =
     resume?.sectionTitles.workExperience &&
-      resume.sectionTitles.workExperience !== "Untitled" &&
-      resume.workExperience.find(
-        (item) =>
-          item.city ||
-          item.description ||
-          item.employer ||
-          item.jobTitle ||
-          item.startMontYear ||
-          item.endMontYear
-      )
+    resume.sectionTitles.workExperience !== "Untitled" &&
+    resume.workExperience.find(
+      (item) =>
+        item.city ||
+        item.description ||
+        item.employer ||
+        item.jobTitle ||
+        item.startMontYear ||
+        item.endMontYear
+    )
       ? resume.sectionTitles.workExperience
       : null;
 
   const educationsSectionTitle =
     resume?.sectionTitles.educations &&
-      resume.sectionTitles.educations !== "Untitled" &&
-      resume.educations.find(
-        (item) =>
-          item.city ||
-          item.description ||
-          item.school ||
-          item.degree ||
-          item.startMontYear ||
-          item.endMontYear
-      )
+    resume.sectionTitles.educations !== "Untitled" &&
+    resume.educations.find(
+      (item) =>
+        item.city ||
+        item.description ||
+        item.school ||
+        item.degree ||
+        item.startMontYear ||
+        item.endMontYear
+    )
       ? resume.sectionTitles.educations
       : null;
 
   const referencesSectionTitle =
     resume?.sectionTitles.references &&
-      resume.sectionTitles.references !== "Untitled" &&
-      resume.references.find(
-        (item) => item.name || item.company || item.email || item.phone
-      )
+    resume.sectionTitles.references !== "Untitled" &&
+    resume.references.find(
+      (item) => item.name || item.company || item.email || item.phone
+    )
       ? resume.sectionTitles.references
       : null;
   const skillLevelHide = resume.style.skillLevel;
+
   return (
     <div
       className="mx-auto"
       ref={ref}
       style={{
-        transform: `scale(${resume.zoom})`,
-        height: resume.size.height,
-        width: resume.size.width,
+        transform: `scale(${windowWidth < 768 ? 0.6 : resume.zoom})`,
+        minHeight: resume?.size.height,
+        maxHeight: resume?.size.height,
+        minWidth: resume?.size.width,
+        maxWidth: resume?.size.width,
         transformOrigin:
           parseFloat(resume.size.height.slice(0, -2)) > 1190.14 ? "bottom" : "",
         transition: "transform 0.5s",
@@ -147,12 +152,13 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
           <div style={styleCommon.headerDivTwo}>
             <div>
               <div style={styleCommon.headerIcon}>
-              {professionalSummarySectionTitle && (
-                <img
-                  style={styleCommon.icon}
-                  src="https://i.ibb.co/rfthK7T/profile-user.png"
-                  alt=""
-                />)}
+                {professionalSummarySectionTitle && (
+                  <img
+                    style={styleCommon.icon}
+                    src="https://i.ibb.co/rfthK7T/profile-user.png"
+                    alt=""
+                  />
+                )}
                 {professionalSummarySectionTitle && (
                   <h1
                     style={{
@@ -177,12 +183,13 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
             </div>
             <div>
               <div style={styleCommon.headerIcon}>
-              {workExperienceSectionTitle && (
-                <img
-                  style={styleCommon.icon}
-                  src="https://i.ibb.co/3MQtzRg/portfolio.png"
-                  alt=""
-                />)}
+                {workExperienceSectionTitle && (
+                  <img
+                    style={styleCommon.icon}
+                    src="https://i.ibb.co/3MQtzRg/portfolio.png"
+                    alt=""
+                  />
+                )}
                 {workExperienceSectionTitle && (
                   <h1
                     style={{
@@ -276,12 +283,13 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
             </div>
             <div>
               <div style={styleCommon.headerIcon}>
-              {educationsSectionTitle && (
-                <img
-                  style={styleCommon.icon}
-                  src="https://i.ibb.co/v3s3Y7z/mortarboard.png"
-                  alt=""
-                />)}
+                {educationsSectionTitle && (
+                  <img
+                    style={styleCommon.icon}
+                    src="https://i.ibb.co/v3s3Y7z/mortarboard.png"
+                    alt=""
+                  />
+                )}
                 {educationsSectionTitle && (
                   <h1
                     style={{
@@ -309,7 +317,8 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
                           <span
                             style={{
                               ...style.educations.degree,
-                              textAlign: style.educations.degree.textAlign as any,
+                              textAlign: style.educations.degree
+                                .textAlign as any,
                             }}>
                             {item.degree},{" "}
                           </span>
@@ -318,7 +327,8 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
                           <span
                             style={{
                               ...style.educations.school,
-                              textAlign: style.educations.school.textAlign as any,
+                              textAlign: style.educations.school
+                                .textAlign as any,
                             }}>
                             {item.school},{" "}
                           </span>
@@ -370,12 +380,13 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
             </div>
             <div>
               <div style={styleCommon.headerIcon}>
-              {referencesSectionTitle && (
-                <img
-                  style={styleCommon.icon}
-                  src="https://i.ibb.co/Dkf2QTy/refer.png"
-                  alt=""
-                />)}
+                {referencesSectionTitle && (
+                  <img
+                    style={styleCommon.icon}
+                    src="https://i.ibb.co/Dkf2QTy/refer.png"
+                    alt=""
+                  />
+                )}
                 {referencesSectionTitle && (
                   <h1
                     style={{
@@ -462,7 +473,6 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
                       style={{
                         ...style.personalInfo.address,
                         textAlign: style.personalInfo.address.textAlign as any,
-
                       }}>
                       {" "}
                       {resume.personalInfo.address},
@@ -473,7 +483,6 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
                       style={{
                         ...style.personalInfo.city,
                         textAlign: style.personalInfo.city.textAlign as any,
-
                       }}>
                       {" "}
                       {resume.personalInfo.city},
@@ -485,7 +494,6 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
                         ...style.personalInfo.postalCode,
                         textAlign: style.personalInfo.postalCode
                           .textAlign as any,
-
                       }}>
                       {" "}
                       {resume.personalInfo.postalCode},
@@ -496,7 +504,6 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
                       style={{
                         ...style.personalInfo.country,
                         textAlign: style.personalInfo.country.textAlign as any,
-
                       }}>
                       {" "}
                       {resume.personalInfo.country}
@@ -596,19 +603,16 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
                       }}>
                       {skill.label}
                     </h3>
-                    <div style={{backgroundColor:'#C7C8CC'}}>
-                      {
-                        !skillLevelHide && (
-                          <div
-                            style={{
-                              ...styleCommon.bar,
-                              width: `${skill.level}%`,
-                              height: '4px'
-                            }}></div>
-                        )
-                      }
+                    <div style={{ backgroundColor: "#C7C8CC" }}>
+                      {!skillLevelHide && (
+                        <div
+                          style={{
+                            ...styleCommon.bar,
+                            width: `${skill.level}%`,
+                            height: "4px",
+                          }}></div>
+                      )}
                     </div>
-
                   </div>
                 ))}
               </div>

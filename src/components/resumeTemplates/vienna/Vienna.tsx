@@ -4,6 +4,7 @@ import { IResumeData } from "../../../services/resumeEditor/resumeEditorSlice";
 // import { resume } from "../resume";
 import styleVienna from "./ViennaStyle";
 import createArrayUpToNumber from "../../../utils/createArrayUpToNumber";
+import useDisplay from "../../../hooks/useDisplay";
 
 export interface IVienna {
   resume: IResumeData;
@@ -16,6 +17,7 @@ const Vienna: React.ForwardRefRenderFunction<HTMLDivElement, IVienna> = (
   const style = resume.style;
   const styleCommon = styleVienna.common;
   const personalInfo = resume?.personalInfo;
+  const [windowWidth] = useDisplay();
 
   const personalInfoSectionTitle =
     resume?.sectionTitles.personalInfo &&
@@ -95,13 +97,16 @@ const Vienna: React.ForwardRefRenderFunction<HTMLDivElement, IVienna> = (
       : null;
 
   const skillLevelHide = resume.style.skillLevel;
+
   return (
     <div
       ref={ref}
       style={{
-        transform: `scale(${resume.zoom})`,
-        height: resume?.size.height,
-        width: resume?.size.width,
+        transform: `scale(${windowWidth < 768 ? 0.6 : resume.zoom})`,
+        minHeight: resume?.size.height,
+        maxHeight: resume?.size.height,
+        minWidth: resume?.size.width,
+        maxWidth: resume?.size.width,
         transformOrigin:
           parseFloat(resume.size.height.slice(0, -2)) > 1190.14 ? "bottom" : "",
         transition: "transform 0.5s",

@@ -2,6 +2,7 @@
 import React, { forwardRef } from "react";
 import { ICoverLetter } from "../../../services/coverletterEditor/coverletterEditorSlice";
 import styleSydney from "./SydneyStyle";
+import useDisplay from "../../../hooks/useDisplay";
 
 export interface ISydney {
   coverLetter: ICoverLetter;
@@ -13,14 +14,17 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
 ) => {
   const commonStyle = styleSydney.common;
   const style = coverLetter.style;
+  const [windowWidth] = useDisplay();
 
   return (
     <div
       ref={ref}
       style={{
-        transform: `scale(${coverLetter.zoom})`,
-        height: coverLetter.size.height,
-        width: coverLetter.size.width,
+        transform: `scale(${windowWidth < 768 ? 0.6 : coverLetter.zoom})`,
+        minHeight: coverLetter?.size.height,
+        maxHeight: coverLetter?.size.height,
+        minWidth: coverLetter?.size.width,
+        maxWidth: coverLetter?.size.width,
         transformOrigin:
           parseFloat(coverLetter.size.height.slice(0, -2)) > 792
             ? "bottom"

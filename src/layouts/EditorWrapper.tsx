@@ -14,7 +14,7 @@ const EditorWrapper: React.FC = () => {
         ) : (
           <NavbarCoverLetter />
         )}
-        <div className="2xl:max-w-[1800px] mx-auto px-10 2xl:px-0">
+        <div className="max-w-[1800px] mx-auto ">
           <Outlet />
         </div>
       </>
