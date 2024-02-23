@@ -26,6 +26,7 @@ import {
 import { useAppDispatch } from "../../app/store";
 import { updateHistoryThumbnail } from "../../services/history/historyApi";
 import html2canvas from "html2canvas";
+import useTitleSet from "../../hooks/useTitleSet";
 
 const CoverLetter: React.FC = () => {
   const [rightSideBarIsOpen, setRightSideBarIsOpen] = useState<boolean>(false);
@@ -41,6 +42,7 @@ const CoverLetter: React.FC = () => {
   const rightSideBarOpenButtonRef = useRef(null);
   const dispatch = useAppDispatch();
   const zoom = useSelector(selectCoverLetterZoom);
+  useTitleSet("Cover-Letter");
 
   useEffect(() => {
     if (param.id && param.id !== coverLetter._id) {

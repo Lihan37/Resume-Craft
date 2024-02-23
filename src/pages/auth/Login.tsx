@@ -6,6 +6,7 @@ import { BiLoaderAlt } from "react-icons/bi";
 import Swal from "sweetalert2";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../services/auth/authSlice";
+import useTitleSet from "../../hooks/useTitleSet";
 const baseUrl = import.meta.env.VITE_BASE_URL_API;
 
 const Login: React.FC = () => {
@@ -14,6 +15,7 @@ const Login: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  useTitleSet("Login");
 
   const handleEmailSignIn = async (e: React.FormEvent) => {
     e.preventDefault();

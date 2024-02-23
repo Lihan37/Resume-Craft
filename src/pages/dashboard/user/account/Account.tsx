@@ -2,8 +2,11 @@ import React from "react";
 import { Container } from "../../../../components/common/Container";
 import Avatar from "./Avatar";
 import PersonalInfo from "./PersonalInfo";
+import useTitleSet from "../../../../hooks/useTitleSet";
 
 const Account: React.FC = () => {
+  useTitleSet("Account");
+
   return (
     <div className=" text-c-dark bg-gray-100 py-8">
       <Container>

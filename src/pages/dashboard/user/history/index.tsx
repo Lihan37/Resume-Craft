@@ -15,6 +15,7 @@ import {
 import UserDashboardSkeleton from "../../../../components/skeleton/UserDashboardSkeleton";
 import useCreateCoverLetter from "../../../../hooks/useCreateCoverLetter";
 import useCreateResume from "../../../../hooks/useCreateResume";
+import useTitleSet from "../../../../hooks/useTitleSet";
 
 interface State {
   activeTab: string;
@@ -34,6 +35,7 @@ const UserDashboard: React.FC = () => {
   const loading = useSelector(selectHistoryLoading);
   const [createCoverLetter] = useCreateCoverLetter();
   const [createResume] = useCreateResume();
+  useTitleSet("History");
 
   useEffect(() => {
     if (!(allHistory.length > 0)) {

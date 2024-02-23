@@ -4,6 +4,7 @@ import InputText from "../../components/common/InputText";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { BiLoaderAlt } from "react-icons/bi";
+import useTitleSet from "../../hooks/useTitleSet";
 const baseUrl = import.meta.env.VITE_BASE_URL_API;
 
 const ActiveAccount: React.FC = () => {
@@ -11,6 +12,7 @@ const ActiveAccount: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
   const token = localStorage.getItem("activationToken");
+  useTitleSet("Active Account");
 
   const handleActive = async (e: React.FormEvent) => {
     e.preventDefault();
