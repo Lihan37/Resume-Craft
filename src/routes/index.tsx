@@ -24,9 +24,6 @@ import PrivateRoutes from "./PrivateRoutes";
 import ForgotPassword from "../pages/auth/ForgotPassword";
 import NewPassword from "../pages/auth/NewPassword";
 import Account from "../pages/dashboard/user/account/Account";
-import Vienna from "../components/resumeTemplates/vienna/Vienna";
-import Madrid from "../components/resumeTemplates/madrid/Madrid";
-
 
 const router = createBrowserRouter([
   {
@@ -50,11 +47,7 @@ const router = createBrowserRouter([
         path: "/pricing",
         element: <Pricing />,
       },
-      // madrid
-      {
-        path: "/madrid",
-        element: <Madrid  />,
-      },
+
       {
         path: "/faq",
         element: <Faq />,
