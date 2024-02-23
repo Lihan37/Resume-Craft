@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
 
   useLayoutEffect(() => {
     if (windowWidth > 769) {
-      console.log(windowWidth);
+      setIsOpen(true);
       return;
     }
     if (windowWidth < 770) {
