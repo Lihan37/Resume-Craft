@@ -33,6 +33,7 @@ const ActiveAccount: React.FC = () => {
         icon: "error",
         text: "Add Active Code Check Your Email!",
         showConfirmButton: false,
+        timer: 1000,
       });
       return;
     }
@@ -57,6 +58,7 @@ const ActiveAccount: React.FC = () => {
           icon: "error",
           text: data.message,
           showConfirmButton: false,
+          timer: 1000,
         });
       }
       if (data.success) {

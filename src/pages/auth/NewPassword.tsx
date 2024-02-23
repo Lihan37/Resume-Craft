@@ -20,6 +20,7 @@ const NewPassword: React.FC = () => {
         icon: "error",
         text: "Password Not Match",
         showConfirmButton: false,
+        timer: 1000,
       });
       return;
     }
@@ -43,6 +44,7 @@ const NewPassword: React.FC = () => {
           icon: "error",
           text: data.message,
           showConfirmButton: false,
+          timer: 1000,
         });
       }
       if (data.success) {

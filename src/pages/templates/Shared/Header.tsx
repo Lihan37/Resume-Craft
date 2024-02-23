@@ -1,22 +1,8 @@
 import Button from "../../../components/common/Button";
 import { Container } from "../../../components/common/Container";
 import SectionHeader from "../../../components/common/SectionHeader";
-import { nanoid } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
-import { useAppDispatch } from "../../../app/store";
-import { useNavigate } from "react-router-dom";
-import { createUserHistory } from "../../../services/history/historyApi";
-import { ISingleUserHistory } from "../../../services/history/historySlice";
-import {
-  changeTemplate,
-  initialState as initialStateResume,
-} from "../../../services/resumeEditor/resumeEditorSlice";
-import {
-  initialState as initialStateCoverLetter,
-  changeTemplate as changeTemplateCoverLetter,
-} from "../../../services/coverletterEditor/coverletterEditorSlice";
-import resumeStyle from "../../../components/resumeTemplates/style";
-import coverLetterStyle from "../../../components/coverLetterTemplates/style";
+import useCreateResume from "../../../hooks/useCreateResume";
+import useCreateCoverLetter from "../../../hooks/useCreateCoverLetter";
 interface HeaderForCV {
   sectionHeader: string;
   button: string;
@@ -32,90 +18,16 @@ const HeaderResume: React.FC<HeaderForCV> = ({
   image,
   create = "resume",
 }) => {
-  const templateId = nanoid();
-  const historyId = nanoid();
-
-  const dispatch = useDispatch();
-  const appDispatch = useAppDispatch();
-  const navigate = useNavigate();
-
-  const handleCreateHistory = async () => {
-    if (create === "resume") {
-      try {
-        await appDispatch(
-          createUserHistory({
-            _id: historyId,
-            user: "",
-            title: "Untitled",
-            templateId: templateId,
-            thumbnail: {
-              public_id: "",
-              url: "",
-            },
-            type: "resume",
-            createdAt: "",
-            updatedAt: "",
-          } as ISingleUserHistory)
-        );
-      } catch (error) {
-        console.error("Error creating history:", error);
-      }
-      return;
-    }
-    if (create === "coverletter") {
-      try {
-        await appDispatch(
-          createUserHistory({
-            _id: historyId,
-            user: "",
-            title: "Untitled",
-            templateId: templateId,
-            thumbnail: {
-              public_id: "",
-              url: "",
-            },
-            type: "coverletter",
-            createdAt: "",
-            updatedAt: "",
-          } as ISingleUserHistory)
-        );
-      } catch (error) {
-        console.error("Error creating history:", error);
-      }
-      return;
-    }
-  };
+  const [createResume] = useCreateResume();
+  const [createCoverLetter] = useCreateCoverLetter();
 
   const createNew = () => {
     if (create === "resume") {
-      const data = {
-        ...initialStateResume.resume,
-        _id: templateId,
-        templateId: "vienna01",
-        historyId: historyId,
-        style: {
-          ...resumeStyle["vienna01"].style.require,
-        },
-      };
-      handleCreateHistory();
-      dispatch(changeTemplate(data));
-      navigate(`/edit/resume/${data._id}`);
+      createResume();
       return;
     }
-
     if (create === "coverletter") {
-      const data = {
-        ...initialStateCoverLetter.coverLetter,
-        _id: templateId,
-        templateId: "sydney01",
-        historyId: historyId,
-        style: {
-          ...coverLetterStyle["sydney01"].style.require,
-        },
-      };
-      handleCreateHistory();
-      dispatch(changeTemplateCoverLetter(data));
-      navigate(`/edit/coverletter/${data._id}`);
+      createCoverLetter();
       return;
     }
   };

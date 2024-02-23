@@ -1,15 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { forwardRef } from "react";
 import { IResumeData } from "../../../services/resumeEditor/resumeEditorSlice";
-import { resume } from "../resume";
 import styleMadrid from "./MadridStyle";
 import createArrayUpToNumber from "../../../utils/createArrayUpToNumber";
-// import createArrayUpToNumber from "../../../utils/createArrayUpToNumber";
 export interface IMadrid {
-  resume?: IResumeData;
+  resume: IResumeData;
 }
 
-const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
+const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
+  { resume },
+  ref
+) => {
   const style = resume.style;
   const styleCommon = styleMadrid.common;
   const personalInfo = resume?.personalInfo;
@@ -108,16 +109,14 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
           parseFloat(resume.size.height.slice(0, -2)) > 1190.14 ? "bottom" : "",
         transition: "transform 0.5s",
         backgroundColor: "#ffff",
-      }}
-    >
+      }}>
       <div style={styleCommon.container}>
         {/*  header  */}
         <div
           style={{
             ...styleCommon.header,
             backgroundColor: style.theme,
-          }}
-        >
+          }}>
           {resume.avatar.url && (
             <div style={styleCommon.headerDivOne}>
               <img
@@ -133,8 +132,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
               padding: !resume.avatar.url
                 ? "10px 40px 10px 40px"
                 : "10px 0px 0px 0px",
-            }}
-          >
+            }}>
             {(personalInfo.firstName || personalInfo.lastName) && (
               <h1>
                 {personalInfo.firstName && (
@@ -142,8 +140,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                     style={{
                       ...style.personalInfo.firstName,
                       textAlign: style.personalInfo.firstName.textAlign as any,
-                    }}
-                  >
+                    }}>
                     {personalInfo.firstName}
                   </span>
                 )}{" "}
@@ -152,8 +149,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                     style={{
                       ...style.personalInfo.lastName,
                       textAlign: style.personalInfo.lastName.textAlign as any,
-                    }}
-                  >
+                    }}>
                     {personalInfo.lastName}
                   </span>
                 )}
@@ -165,8 +161,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                 style={{
                   ...style.personalInfo.jobTitle,
                   textAlign: style.personalInfo.jobTitle.textAlign as any,
-                }}
-              >
+                }}>
                 {personalInfo.jobTitle}
               </h1>
             )}
@@ -175,8 +170,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                 style={{
                   ...style.personalInfo.email,
                   textAlign: style.personalInfo.email.textAlign as any,
-                }}
-              >
+                }}>
                 {personalInfo.email}
               </h1>
             )}
@@ -197,8 +191,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                     .textAlign as any,
                   ...styleCommon.sectionTitle,
                   ...styleCommon.margin,
-                }}
-              >
+                }}>
                 {personalInfoSectionTitle}:
               </h1>
             )}
@@ -213,8 +206,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                     style={{
                       ...style.personalInfo.postalCode,
                       textAlign: style.personalInfo.postalCode.textAlign as any,
-                    }}
-                  >
+                    }}>
                     {resume.personalInfo.postalCode},
                   </span>
                 )}
@@ -223,8 +215,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                     style={{
                       ...style.personalInfo.address,
                       textAlign: style.personalInfo.address.textAlign as any,
-                    }}
-                  >
+                    }}>
                     {resume.personalInfo.address},
                   </span>
                 )}
@@ -233,8 +224,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                     style={{
                       ...style.personalInfo.city,
                       textAlign: style.personalInfo.city.textAlign as any,
-                    }}
-                  >
+                    }}>
                     {resume.personalInfo.city},
                   </span>
                 )}
@@ -243,8 +233,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                     style={{
                       ...style.personalInfo.country,
                       textAlign: style.personalInfo.city.textAlign as any,
-                    }}
-                  >
+                    }}>
                     {resume.personalInfo.country}
                   </span>
                 )}
@@ -258,8 +247,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                   style={{
                     ...style.personalInfo.nationality,
                     textAlign: style.personalInfo.nationality.textAlign as any,
-                  }}
-                >
+                  }}>
                   {personalInfo.nationality}
                 </p>
               </>
@@ -272,8 +260,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                   style={{
                     ...style.personalInfo.phoneNumber,
                     textAlign: style.personalInfo.phoneNumber.textAlign as any,
-                  }}
-                >
+                  }}>
                   {personalInfo.phoneNumber}
                 </p>
               </>
@@ -287,8 +274,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                     ...style.personalInfo.drivingLicense,
                     textAlign: style.personalInfo.drivingLicense
                       .textAlign as any,
-                  }}
-                >
+                  }}>
                   {personalInfo.drivingLicense}
                 </p>
               </>
@@ -300,8 +286,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                   style={{
                     ...style.personalInfo.placeOfBirth,
                     textAlign: style.personalInfo.placeOfBirth.textAlign as any,
-                  }}
-                >
+                  }}>
                   {personalInfo.placeOfBirth}
                 </p>
               </>
@@ -314,8 +299,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                   style={{
                     ...style.personalInfo.DateOfBirth,
                     textAlign: style.personalInfo.DateOfBirth.textAlign as any,
-                  }}
-                >
+                  }}>
                   {personalInfo.DateOfBirth}
                 </p>
               </>
@@ -333,8 +317,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                     .textAlign as any,
                   ...styleCommon.sectionTitle,
                   ...styleCommon.margin,
-                }}
-              >
+                }}>
                 {professionalSummarySectionTitle}:
               </h1>
             )}
@@ -343,8 +326,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                 style={{
                   ...style.professionalSummary.summery,
                   textAlign: style.professionalSummary.summery.textAlign as any,
-                }}
-              >
+                }}>
                 {resume.professionalSummary}
               </p>
             )}
@@ -361,8 +343,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                     .textAlign as any,
                   ...styleCommon.margin,
                   ...styleCommon.sectionTitle,
-                }}
-              >
+                }}>
                 {educationsSectionTitle}:
               </h1>
             )}
@@ -381,8 +362,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                           style={{
                             ...style.educations.degree,
                             textAlign: style.educations.degree.textAlign as any,
-                          }}
-                        >
+                          }}>
                           {item.degree},{" "}
                         </span>
                       )}
@@ -391,8 +371,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                           style={{
                             ...style.educations.school,
                             textAlign: style.educations.school.textAlign as any,
-                          }}
-                        >
+                          }}>
                           {item.school},{" "}
                         </span>
                       )}
@@ -401,8 +380,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                           style={{
                             ...style.educations.city,
                             textAlign: style.educations.city.textAlign as any,
-                          }}
-                        >
+                          }}>
                           {item.city}
                         </span>
                       )}
@@ -413,8 +391,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                           ...style.educations.startMontYear,
                           textAlign: style.educations.startMontYear
                             .textAlign as any,
-                        }}
-                      >
+                        }}>
                         {item.startMontYear}
                       </span>{" "}
                       {item.startMontYear && item.endMontYear && " - "}
@@ -423,8 +400,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                           ...style.educations.endMontYear,
                           textAlign: style.educations.endMontYear
                             .textAlign as any,
-                        }}
-                      >
+                        }}>
                         {item.endMontYear}
                       </span>
                     </h1>
@@ -435,8 +411,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                           ...style.educations.description,
                           textAlign: style.educations.description
                             .textAlign as any,
-                        }}
-                      >
+                        }}>
                         {item.description}
                       </p>
                     )}
@@ -457,8 +432,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                     .textAlign as any,
                   ...styleCommon.margin,
                   ...styleCommon.sectionTitle,
-                }}
-              >
+                }}>
                 {workExperienceSectionTitle}:
               </h1>
             )}
@@ -478,8 +452,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                             ...style.workExperience.jobTitle,
                             textAlign: style.workExperience.jobTitle
                               .textAlign as any,
-                          }}
-                        >
+                          }}>
                           {item.jobTitle},{" "}
                         </span>
                       )}
@@ -489,8 +462,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                             ...style.workExperience.employer,
                             textAlign: style.workExperience.employer
                               .textAlign as any,
-                          }}
-                        >
+                          }}>
                           {item.employer},{" "}
                         </span>
                       )}
@@ -500,8 +472,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                             ...style.workExperience.city,
                             textAlign: style.workExperience.city
                               .textAlign as any,
-                          }}
-                        >
+                          }}>
                           {item.city}
                         </span>
                       )}
@@ -512,8 +483,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                           ...style.workExperience.startMontYear,
                           textAlign: style.workExperience.startMontYear
                             .textAlign as any,
-                        }}
-                      >
+                        }}>
                         {item.startMontYear}
                       </span>{" "}
                       {item.startMontYear && item.endMontYear && " - "}
@@ -522,8 +492,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                           ...style.workExperience.endMontYear,
                           textAlign: style.workExperience.endMontYear
                             .textAlign as any,
-                        }}
-                      >
+                        }}>
                         {item.endMontYear}
                       </span>
                     </h1>
@@ -534,8 +503,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                           ...style.workExperience.description,
                           textAlign: style.workExperience.description
                             .textAlign as any,
-                        }}
-                      >
+                        }}>
                         {item.description}
                       </p>
                     )}
@@ -555,8 +523,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                   textAlign: style.sectionTitles.skillsStyle.textAlign as any,
                   ...styleCommon.margin,
                   ...styleCommon.sectionTitle,
-                }}
-              >
+                }}>
                 {skillSectionTitle} :
               </h1>
             )}
@@ -570,8 +537,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                         ...style.skills.label,
                         textAlign: style.skills.label.textAlign as any,
                         lineHeight: skillLevelHide ? "12px" : "18px",
-                      }}
-                    >
+                      }}>
                       {item.label}
                     </h1>
                     {!skillLevelHide && (
@@ -598,8 +564,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                     .textAlign as any,
                   ...styleCommon.margin,
                   ...styleCommon.sectionTitle,
-                }}
-              >
+                }}>
                 {languageSectionTitle} :
               </h1>
             )}
@@ -612,16 +577,14 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                       style={{
                         ...style.languages.language,
                         textAlign: style.languages.language.textAlign as any,
-                      }}
-                    >
+                      }}>
                       {item.language}
                     </span>{" "}
                     <span
                       style={{
                         ...style.languages.level,
                         textAlign: style.languages.level.textAlign as any,
-                      }}
-                    >
+                      }}>
                       {item.level}
                     </span>
                   </div>
@@ -641,8 +604,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                     .textAlign as any,
                   ...styleCommon.margin,
                   ...styleCommon.sectionTitle,
-                }}
-              >
+                }}>
                 {socialProfilesSectionTitle} :
               </h1>
             )}
@@ -657,8 +619,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                       display: "block",
                     }}
                     href={item.link}
-                    target="_blank"
-                  >
+                    target="_blank">
                     {item.label}
                   </a>
                 )
@@ -677,8 +638,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                     .textAlign as any,
                   ...styleCommon.margin,
                   ...styleCommon.sectionTitle,
-                }}
-              >
+                }}>
                 {referencesSectionTitle}:
               </h1>
             )}
@@ -691,8 +651,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                         style={{
                           ...style.references.name,
                           textAlign: style.references.name.textAlign as any,
-                        }}
-                      >
+                        }}>
                         {item.name}
                       </h1>
                     )}
@@ -701,8 +660,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                         style={{
                           ...style.references.company,
                           textAlign: style.references.company.textAlign as any,
-                        }}
-                      >
+                        }}>
                         {item.company}
                       </h1>
                     )}
@@ -711,8 +669,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                         style={{
                           ...style.references.email,
                           textAlign: style.references.email.textAlign as any,
-                        }}
-                      >
+                        }}>
                         {item.email}
                       </h1>
                     )}
@@ -721,8 +678,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                         style={{
                           ...style.references.phone,
                           textAlign: style.references.phone.textAlign as any,
-                        }}
-                      >
+                        }}>
                         {item.phone}
                       </h1>
                     )}

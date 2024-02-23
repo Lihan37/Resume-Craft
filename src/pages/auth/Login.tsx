@@ -34,6 +34,7 @@ const Login: React.FC = () => {
           icon: "error",
           text: data.message,
           showConfirmButton: false,
+          timer: 1000,
         });
         return;
       }
@@ -50,6 +51,7 @@ const Login: React.FC = () => {
           icon: "success",
           text: "Login Successfully !",
           showConfirmButton: false,
+          timer: 1000,
         });
       }
     } catch (error) {

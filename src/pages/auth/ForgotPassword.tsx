@@ -16,6 +16,7 @@ const ForgotPassword: React.FC = () => {
         icon: "error",
         text: "Please Enter Your Email",
         showConfirmButton: false,
+        timer: 1000,
       });
       return;
     }
@@ -38,6 +39,7 @@ const ForgotPassword: React.FC = () => {
           icon: "error",
           text: data.message,
           showConfirmButton: false,
+          timer: 1000,
         });
       }
       if (data.success) {
@@ -46,6 +48,7 @@ const ForgotPassword: React.FC = () => {
           icon: "success",
           text: data.message,
           showConfirmButton: false,
+          timer: 1000,
         });
       }
     } catch (error) {

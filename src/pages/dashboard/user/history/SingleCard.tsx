@@ -100,12 +100,16 @@ const SingleCard: React.FC<ISingleCard> = ({ history, buttonLabel }) => {
             title: "Oops...",
             text: "Something went wrong!",
             icon: "error",
+            showConfirmButton: false,
+            timer: 1000,
           });
         } else {
           Swal.fire({
             title: "Deleted!",
             text: "Your history has been deleted.",
             icon: "success",
+            showConfirmButton: false,
+            timer: 1000,
           });
         }
       }
