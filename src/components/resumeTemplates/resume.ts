@@ -128,7 +128,7 @@ export const resume = {
     },
   ],
   style: {
-    theme: "#9AEBFE",
+    theme: "#FFF66D",
     themeOptions: ["#E4E4E4", "#FED78C", "#9AEBFE", "#FFF66D", "#4BFBBA"],
     skillLevel: false,
     skillLevelDisabled: false,
