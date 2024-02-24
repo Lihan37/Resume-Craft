@@ -12,7 +12,6 @@ const EditorWrapper: React.FC = () => {
   const user = useSelector(selectUser);
   const error = useSelector(selectResumeEditorError);
   const errorCoverLetter = useSelector(selectCoverLetterEditorError);
-  console.log(error);
 
   if (error || errorCoverLetter) {
     return <Navigate to="/notfound" />;

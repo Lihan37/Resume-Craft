@@ -121,7 +121,6 @@ const CoverLetter: React.FC = () => {
   useOutsideClick(
     rightSideRef,
     () => {
-      console.log("click outSide");
       setRightSideBarIsOpen(false);
     },
     [rightSideBarOpenButtonRef, leftSideRef]

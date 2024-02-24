@@ -4,6 +4,7 @@ import router from "../routes";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../services/auth/authSelector";
 import { setUser } from "../services/auth/authSlice";
+import Loader from "../components/common/Loader";
 const baseUrl = import.meta.env.VITE_BASE_URL_API;
 
 const App: React.FC = () => {
@@ -41,7 +42,7 @@ const App: React.FC = () => {
     return () => clearInterval(tokenRefreshInterval);
   }, [user]);
 
-  return loading ? <h1>Loading....</h1> : <RouterProvider router={router} />;
+  return loading ? <Loader /> : <RouterProvider router={router} />;
 };
 
 export default App;
