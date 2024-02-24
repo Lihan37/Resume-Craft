@@ -51,10 +51,7 @@ const router = createBrowserRouter([
         element: <Pricing />,
       },
       // madrid
-      {
-        path: "/madrid",
-        element: <Madrid  />,
-      },
+      
       {
         path: "/faq",
         element: <Faq />,
@@ -87,6 +84,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+
 
   {
     path: "auth",
@@ -128,6 +126,12 @@ const router = createBrowserRouter([
         element: <CoverLetter />,
       },
     ],
+  },
+  {
+    
+      path: "/madrid",
+      element: <Madrid  />,
+    
   },
   {
     path: "admin",
