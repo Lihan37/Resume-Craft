@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Logo from "../common/Logo";
 import Breadcrumbs from "../common/Breadcrumbs";
 import Title from "./Title";
@@ -29,6 +29,8 @@ import resumePDF, {
   ResumePDFTemplatesType,
 } from "../resumeTemplates/resumePDF";
 import { PDFDownloadLink } from "@react-pdf/renderer";
+import Share from "./Share";
+import useOutsideClick from "../../hooks/useOutsideClick";
 
 const EditorNavbar: React.FC = () => {
   const dispatch = useDispatch();
@@ -36,6 +38,15 @@ const EditorNavbar: React.FC = () => {
   const editor = useSelector(selectResumeEditor);
   const zoom = useSelector(selectZoomIn);
   const resume = useSelector(selectResume);
+  const [isShare, setIsShare] = useState<boolean>(false);
+  const shareRef = useRef(null);
+  useOutsideClick(
+    shareRef,
+    () => {
+      setIsShare(false);
+    },
+    []
+  );
 
   const Template =
     !editor.isLoading &&
@@ -135,10 +146,19 @@ const EditorNavbar: React.FC = () => {
               </PDFDownloadLink>
             )}
 
-            <button className=" flex justify-start items-center lg:gap-2 lg:px-4 p-2  lg:py-2 bg-c-primary text-white rounded-full text-base lg:text-xl">
-              <FiSend />
-              <span className=" hidden lg:block">Share</span>
-            </button>
+            <div ref={shareRef} className="relative">
+              <button
+                onClick={() => setIsShare((pre) => !pre)}
+                className=" flex justify-start items-center lg:gap-2 lg:px-4 p-2  lg:py-2 bg-c-primary text-white rounded-full text-base lg:text-xl">
+                <FiSend />
+                <span className=" hidden lg:block">Share</span>
+              </button>
+              {isShare && (
+                <div className="absolute   bg-white border-[1.3px] rounded-md top-14 z-50 right-12">
+                  <Share templateId={resume._id} type="resume" />
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
