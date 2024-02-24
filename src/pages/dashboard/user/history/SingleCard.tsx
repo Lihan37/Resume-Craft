@@ -1,4 +1,3 @@
-// import { FaCloudDownloadAlt, FaCopy, FaEdit } from "react-icons/fa";
 import Title from "../../../../components/editor/Title";
 import { useNavigate } from "react-router-dom";
 import { ISingleUserHistory } from "../../../../services/history/historySlice";
@@ -12,7 +11,6 @@ import formatDateToDayMonth from "../../../../utils/formatDateToDayMonth";
 import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
 import { selectHistoryError } from "../../../../services/history/historySelector";
-// import Download from "./Download";
 
 interface IButtonOption extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
@@ -92,8 +90,6 @@ const SingleCard: React.FC<ISingleCard> = ({ history, buttonLabel }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         await appDispatch(deleteUserHistory(history._id));
-
-        console.log(error);
 
         if (error !== null) {
           Swal.fire({

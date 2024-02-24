@@ -24,6 +24,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import ForgotPassword from "../pages/auth/ForgotPassword";
 import NewPassword from "../pages/auth/NewPassword";
 import Account from "../pages/dashboard/user/account/Account";
+import ShareView from "../pages/share/ShareView";
 
 const router = createBrowserRouter([
   {
@@ -139,6 +140,11 @@ const router = createBrowserRouter([
         element: <CreateBlog />,
       },
     ],
+  },
+
+  {
+    path: "share/view/:id",
+    element: <ShareView />,
   },
 ]);
 
