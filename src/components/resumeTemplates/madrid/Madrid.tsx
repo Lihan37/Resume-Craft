@@ -108,7 +108,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
         transformOrigin:
           parseFloat(resume.size.height.slice(0, -2)) > 1190.14 ? "bottom" : "",
         transition: "transform 0.5s",
-        backgroundColor: "blue",
+        backgroundColor: "#ffff",
       }}
     >
       <div style={styleCommon.container}>
@@ -171,7 +171,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                 {personalInfo.jobTitle}
               </h1>
             )}
-            {(personalInfo.email || personalInfo.phoneNumber) && (
+            {(personalInfo.email || personalInfo.phoneNumber || personalInfo.nationality) && (
               <h1>
                  {personalInfo.email && (
                   <span
@@ -183,7 +183,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                     {personalInfo.email}
                   </span>
                  )}
-                 {personalInfo.email && personalInfo.phoneNumber &&  <span> {" "}|| {" "}</span>}
+                 {personalInfo.email && personalInfo.phoneNumber &&   <span> {" "}|| </span>}
                 {personalInfo.phoneNumber && (
                   <span
                     style={{
@@ -193,6 +193,18 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
                   >
                    {personalInfo.phoneNumber}
                   </span>
+                )}
+                {personalInfo.phoneNumber && personalInfo.nationality &&   <span> {" "}|| </span>}
+                {!personalInfo.phoneNumber && (personalInfo.email&&personalInfo.nationality) &&   <span> {" "}|| </span>}
+                {personalInfo.nationality && (
+                  <span
+                  style={{
+                    ...style.personalInfo.phoneNumber,
+                    textAlign: style.personalInfo.phoneNumber.textAlign as any,
+                  }}
+                >
+                 {personalInfo.nationality}
+                </span>
                 )}
               </h1> 
             )}
@@ -268,19 +280,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
               </h1>
             )}
 
-            {personalInfo.nationality && (
-              <>
-                
-                <p
-                  style={{
-                    ...style.personalInfo.nationality,
-                    textAlign: style.personalInfo.nationality.textAlign as any,
-                  }}
-                >
-                  {personalInfo.nationality}
-                </p>
-              </>
-            )}
+            
 
             {personalInfo.drivingLicense && (
               <>
@@ -747,7 +747,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
               return (
                 item.label && (
                   <div style={{ marginBottom: "6px",
-                   width:"20%" }} key={item._id}>
+                   width:"10%" }} key={item._id}>
                     <h1
                       style={{
                         ...style.skills.label,
@@ -773,7 +773,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
           {/* end of skills div */}
 
           {/* languages div */}
-          <div>
+          <div style={{display:"flex", gap:"10px"}}>
             {languageSectionTitle && (
               <h1
                 style={{
@@ -816,7 +816,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
           {/* end of languages div */}
 
           {/* social profile div */}
-          <div>
+          <div style={{display:"flex",gap:"10px"}}>
             {socialProfilesSectionTitle && (
               <h1
                 style={{
@@ -870,46 +870,58 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement> = ({ _ }, ref) => {
               return (
                 (item.name || item.company || item.email || item.phone) && (
                   <div key={item._id}>
-                    {item.name && (
-                      <h1
-                        style={{
-                          ...style.references.name,
-                          textAlign: style.references.name.textAlign as any,
-                        }}
-                      >
-                        {item.name}
-                      </h1>
-                    )}
-                    {item.company && (
-                      <h1
-                        style={{
-                          ...style.references.company,
-                          textAlign: style.references.company.textAlign as any,
-                        }}
-                      >
-                        {item.company}
-                      </h1>
-                    )}
-                    {item.email && (
-                      <h1
-                        style={{
-                          ...style.references.email,
-                          textAlign: style.references.email.textAlign as any,
-                        }}
-                      >
-                        {item.email}
-                      </h1>
-                    )}
-                    {item.phone && (
-                      <h1
-                        style={{
-                          ...style.references.phone,
-                          textAlign: style.references.phone.textAlign as any,
-                        }}
-                      >
-                        {item.phone}
-                      </h1>
-                    )}
+                    <h1>
+                      {item.name && (
+                        <span
+                          style={{
+                            ...style.references.name,
+                            textAlign: style.references.name.textAlign as any,
+                          }}
+                        >
+                          {item.name} 
+                        </span>
+                      )}
+                      {item.name && item.company && <span>
+                        {" - "}
+                      </span> }
+                      {item.company && (
+                        <span
+                          style={{
+                            ...style.references.company,
+                            textAlign: style.references.company.textAlign as any,
+                          }}
+                        >
+                          {item.company} 
+                        </span>
+                      )}
+                      {item.company && item.email && <span>
+                        {" - "}
+                      </span> }
+
+                      {item.email && (
+                        <span
+                          style={{
+                            ...style.references.company,
+                            textAlign: style.references.company.textAlign as any,
+                          }}
+                        >
+                          {item.email}
+                        </span>
+                      )}
+                      {item.email && item.phone && <span>
+                        {" - "} </span> }
+                      {item.phone && (
+                        <span
+                          style={{
+                            ...style.references.phone,
+                            textAlign: style.references.phone.textAlign as any,
+                          }}
+                        >
+                          {item.phone}
+                        </span>
+                      )}
+                    </h1>
+                    
                   </div>
                 )
               );
