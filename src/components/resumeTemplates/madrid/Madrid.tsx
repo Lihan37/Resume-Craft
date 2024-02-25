@@ -11,7 +11,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
   { resume },
   ref
 ) => {
-  const style = resume.style;
+  const style = styleMadrid.require;
   const styleCommon = styleMadrid.common;
   const personalInfo = resume?.personalInfo;
 
@@ -165,13 +165,48 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
                 {personalInfo.jobTitle}
               </h1>
             )}
-            {personalInfo.email && (
-              <h1
-                style={{
-                  ...style.personalInfo.email,
-                  textAlign: style.personalInfo.email.textAlign as any,
-                }}>
-                {personalInfo.email}
+            {(personalInfo.email ||
+              personalInfo.phoneNumber ||
+              personalInfo.nationality) && (
+              <h1>
+                {personalInfo.email && (
+                  <span
+                    style={{
+                      ...style.personalInfo.email,
+                      textAlign: style.personalInfo.email.textAlign as any,
+                    }}>
+                    {personalInfo.email}
+                  </span>
+                )}
+                {personalInfo.email && personalInfo.phoneNumber && (
+                  <span> || </span>
+                )}
+                {personalInfo.phoneNumber && (
+                  <span
+                    style={{
+                      ...style.personalInfo.phoneNumber,
+                      textAlign: style.personalInfo.phoneNumber
+                        .textAlign as any,
+                    }}>
+                    {personalInfo.phoneNumber}
+                  </span>
+                )}
+                {personalInfo.phoneNumber && personalInfo.nationality && (
+                  <span> || </span>
+                )}
+                {!personalInfo.phoneNumber &&
+                  personalInfo.email &&
+                  personalInfo.nationality && <span> || </span>}
+                {personalInfo.nationality && (
+                  <span
+                    style={{
+                      ...style.personalInfo.phoneNumber,
+                      textAlign: style.personalInfo.phoneNumber
+                        .textAlign as any,
+                    }}>
+                    {personalInfo.nationality}
+                  </span>
+                )}
               </h1>
             )}
           </div>
@@ -239,32 +274,6 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
               </h1>
             )}
 
-            {personalInfo.nationality && (
-              <>
-                <h1 style={styleCommon.personalInfoLabel}>Nationality:</h1>
-                <p
-                  style={{
-                    ...style.personalInfo.nationality,
-                    textAlign: style.personalInfo.nationality.textAlign as any,
-                  }}>
-                  {personalInfo.nationality}
-                </p>
-              </>
-            )}
-
-            {personalInfo.phoneNumber && (
-              <>
-                <h1 style={styleCommon.personalInfoLabel}>Phone:</h1>
-                <p
-                  style={{
-                    ...style.personalInfo.phoneNumber,
-                    textAlign: style.personalInfo.phoneNumber.textAlign as any,
-                  }}>
-                  {personalInfo.phoneNumber}
-                </p>
-              </>
-            )}
-
             {personalInfo.drivingLicense && (
               <>
                 <p
@@ -273,34 +282,36 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
                     textAlign: style.personalInfo.drivingLicense
                       .textAlign as any,
                   }}>
-                  {personalInfo.drivingLicense}
+                  Driving-License: {personalInfo.drivingLicense}
                 </p>
               </>
             )}
-            {personalInfo.placeOfBirth && (
-              <>
-                <h1 style={styleCommon.personalInfoLabel}>Place Of Birth:</h1>
-                <p
-                  style={{
-                    ...style.personalInfo.placeOfBirth,
-                    textAlign: style.personalInfo.placeOfBirth.textAlign as any,
-                  }}>
-                  {personalInfo.placeOfBirth}
-                </p>
-              </>
-            )}
-
-            {personalInfo.DateOfBirth && (
-              <>
-                <h1 style={styleCommon.personalInfoLabel}>Date Of Birth:</h1>
-                <p
-                  style={{
-                    ...style.personalInfo.DateOfBirth,
-                    textAlign: style.personalInfo.DateOfBirth.textAlign as any,
-                  }}>
-                  {personalInfo.DateOfBirth}
-                </p>
-              </>
+            {(personalInfo.placeOfBirth || personalInfo.DateOfBirth) && (
+              <h1>
+                {personalInfo.placeOfBirth && (
+                  <span
+                    style={{
+                      ...style.personalInfo.placeOfBirth,
+                      textAlign: style.personalInfo.placeOfBirth
+                        .textAlign as any,
+                    }}>
+                    {personalInfo.placeOfBirth}
+                  </span>
+                )}
+                {personalInfo.placeOfBirth && personalInfo.DateOfBirth && (
+                  <span> - </span>
+                )}
+                {personalInfo.DateOfBirth && (
+                  <span
+                    style={{
+                      ...style.personalInfo.DateOfBirth,
+                      textAlign: style.personalInfo.DateOfBirth
+                        .textAlign as any,
+                    }}>
+                    ({personalInfo.DateOfBirth})
+                  </span>
+                )}
+              </h1>
             )}
           </div>
           {/* end of personal info div */}
@@ -823,42 +834,50 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
               return (
                 (item.name || item.company || item.email || item.phone) && (
                   <div key={item._id}>
-                    {item.name && (
-                      <h1
-                        style={{
-                          ...style.references.name,
-                          textAlign: style.references.name.textAlign as any,
-                        }}>
-                        {item.name}
-                      </h1>
-                    )}
-                    {item.company && (
-                      <h1
-                        style={{
-                          ...style.references.company,
-                          textAlign: style.references.company.textAlign as any,
-                        }}>
-                        {item.company}
-                      </h1>
-                    )}
-                    {item.email && (
-                      <h1
-                        style={{
-                          ...style.references.email,
-                          textAlign: style.references.email.textAlign as any,
-                        }}>
-                        {item.email}
-                      </h1>
-                    )}
-                    {item.phone && (
-                      <h1
-                        style={{
-                          ...style.references.phone,
-                          textAlign: style.references.phone.textAlign as any,
-                        }}>
-                        {item.phone}
-                      </h1>
-                    )}
+                    <h1>
+                      {item.name && (
+                        <span
+                          style={{
+                            ...style.references.name,
+                            textAlign: style.references.name.textAlign as any,
+                          }}>
+                          {item.name}
+                        </span>
+                      )}
+                      {item.name && item.company && <span>{" - "}</span>}
+                      {item.company && (
+                        <span
+                          style={{
+                            ...style.references.company,
+                            textAlign: style.references.company
+                              .textAlign as any,
+                          }}>
+                          {item.company}
+                        </span>
+                      )}
+                      {item.company && item.email && <span>{" - "}</span>}
+
+                      {item.email && (
+                        <span
+                          style={{
+                            ...style.references.company,
+                            textAlign: style.references.company
+                              .textAlign as any,
+                          }}>
+                          {item.email}
+                        </span>
+                      )}
+                      {item.email && item.phone && <span>{" - "} </span>}
+                      {item.phone && (
+                        <span
+                          style={{
+                            ...style.references.phone,
+                            textAlign: style.references.phone.textAlign as any,
+                          }}>
+                          {item.phone}
+                        </span>
+                      )}
+                    </h1>
                   </div>
                 )
               );
