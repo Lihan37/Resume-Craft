@@ -15,6 +15,7 @@ export const resume = {
       description:
         "Educated at Dinajpur Zilla School, where I developed a strong academic foundation and demonstrated leadership skills. ",
     },
+    
   ],
   historyId: "9YYaiND53dftoljQe4lqn",
   languages: [
@@ -172,28 +173,28 @@ export const resume = {
         color: "#172554",
         fontFamily: "Roboto",
         fontWeight: 400,
-        fontSize: "16px",
+        fontSize: "12px",
         textAlign: "start",
       },
       city: {
         color: "#172554",
         fontFamily: "Roboto",
         fontWeight: 400,
-        fontSize: "16px",
+        fontSize: "12px",
         textAlign: "start",
       },
       address: {
         color: "#172554",
         fontFamily: "Roboto",
         fontWeight: 400,
-        fontSize: "16px",
+        fontSize: "12px",
         textAlign: "start",
       },
       postalCode: {
         color: "#172554",
         fontFamily: "Roboto",
         fontWeight: 400,
-        fontSize: "16px",
+        fontSize: "12px",
         textAlign: "start",
       },
       drivingLicense: {
