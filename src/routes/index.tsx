@@ -48,7 +48,6 @@ const router = createBrowserRouter([
         path: "/pricing",
         element: <Pricing />,
       },
-
       {
         path: "/faq",
         element: <Faq />,
@@ -123,6 +122,10 @@ const router = createBrowserRouter([
       },
     ],
   },
+  // {
+  //   path: "/madrid",
+  //   element: <Madrid />,
+  // },
   {
     path: "admin",
     element: <DashBoardWrapper />,

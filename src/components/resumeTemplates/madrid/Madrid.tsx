@@ -200,7 +200,6 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
               resume?.personalInfo.country ||
               resume?.personalInfo.city) && (
               <h1>
-                <h2 style={{ ...styleCommon.personalInfoLabel }}>Address:</h2>
                 {resume.personalInfo.postalCode && (
                   <span
                     style={{
@@ -268,7 +267,6 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
 
             {personalInfo.drivingLicense && (
               <>
-                <h1 style={styleCommon.personalInfoLabel}>DrivingLicense:</h1>
                 <p
                   style={{
                     ...style.personalInfo.drivingLicense,
@@ -347,78 +345,164 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
                 {educationsSectionTitle}:
               </h1>
             )}
-            {resume.educations.map((item) => {
-              return (
-                (item.city ||
-                  item.description ||
-                  item.school ||
-                  item.degree ||
-                  item.startMontYear ||
-                  item.endMontYear) && (
-                  <div key={item._id}>
-                    <h1>
-                      {item.degree && (
-                        <span
-                          style={{
-                            ...style.educations.degree,
-                            textAlign: style.educations.degree.textAlign as any,
-                          }}>
-                          {item.degree},{" "}
-                        </span>
-                      )}
-                      {item.school && (
-                        <span
-                          style={{
-                            ...style.educations.school,
-                            textAlign: style.educations.school.textAlign as any,
-                          }}>
-                          {item.school},{" "}
-                        </span>
-                      )}
-                      {item.city && (
-                        <span
-                          style={{
-                            ...style.educations.city,
-                            textAlign: style.educations.city.textAlign as any,
-                          }}>
-                          {item.city}
-                        </span>
-                      )}
-                    </h1>
-                    <h1>
-                      <span
-                        style={{
-                          ...style.educations.startMontYear,
-                          textAlign: style.educations.startMontYear
-                            .textAlign as any,
-                        }}>
-                        {item.startMontYear}
-                      </span>{" "}
-                      {item.startMontYear && item.endMontYear && " - "}
-                      <span
-                        style={{
-                          ...style.educations.endMontYear,
-                          textAlign: style.educations.endMontYear
-                            .textAlign as any,
-                        }}>
-                        {item.endMontYear}
-                      </span>
-                    </h1>
+            {resume.educations.length > 1 && (
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+                {resume.educations.map((item) => {
+                  return (
+                    (item.city ||
+                      item.description ||
+                      item.school ||
+                      item.degree ||
+                      item.startMontYear ||
+                      item.endMontYear) && (
+                      <div style={{ width: "40%" }} key={item._id}>
+                        <h1>
+                          {item.degree && (
+                            <span
+                              style={{
+                                ...style.educations.degree,
+                                textAlign: style.educations.degree
+                                  .textAlign as any,
+                              }}>
+                              {item.degree},{" "}
+                            </span>
+                          )}
+                          {item.school && (
+                            <span
+                              style={{
+                                ...style.educations.school,
+                                textAlign: style.educations.school
+                                  .textAlign as any,
+                              }}>
+                              {item.school},{" "}
+                            </span>
+                          )}
+                          {item.city && (
+                            <span
+                              style={{
+                                ...style.educations.city,
+                                textAlign: style.educations.city
+                                  .textAlign as any,
+                              }}>
+                              {item.city}
+                            </span>
+                          )}
+                        </h1>
+                        <h1>
+                          <span
+                            style={{
+                              ...style.educations.startMontYear,
+                              textAlign: style.educations.startMontYear
+                                .textAlign as any,
+                            }}>
+                            {item.startMontYear}
+                          </span>{" "}
+                          {item.startMontYear && item.endMontYear && " - "}
+                          <span
+                            style={{
+                              ...style.educations.endMontYear,
+                              textAlign: style.educations.endMontYear
+                                .textAlign as any,
+                            }}>
+                            {item.endMontYear}
+                          </span>
+                        </h1>
 
-                    {item.description && (
-                      <p
-                        style={{
-                          ...style.educations.description,
-                          textAlign: style.educations.description
-                            .textAlign as any,
-                        }}>
-                        {item.description}
-                      </p>
-                    )}
-                  </div>
-                )
-              );
-            })}
+                        {item.description && (
+                          <p
+                            style={{
+                              ...style.educations.description,
+                              textAlign: style.educations.description
+                                .textAlign as any,
+                            }}>
+                            {item.description}
+                          </p>
+                        )}
+                      </div>
+                    )
+                  );
+                })}
+              </div>
+            )}
+            {resume.educations.length <= 1 && (
+              <div>
+                {resume.educations.map((item) => {
+                  return (
+                    (item.city ||
+                      item.description ||
+                      item.school ||
+                      item.degree ||
+                      item.startMontYear ||
+                      item.endMontYear) && (
+                      <div key={item._id}>
+                        <h1>
+                          {item.degree && (
+                            <span
+                              style={{
+                                ...style.educations.degree,
+                                textAlign: style.educations.degree
+                                  .textAlign as any,
+                              }}>
+                              {item.degree},{" "}
+                            </span>
+                          )}
+                          {item.school && (
+                            <span
+                              style={{
+                                ...style.educations.school,
+                                textAlign: style.educations.school
+                                  .textAlign as any,
+                              }}>
+                              {item.school},{" "}
+                            </span>
+                          )}
+                          {item.city && (
+                            <span
+                              style={{
+                                ...style.educations.city,
+                                textAlign: style.educations.city
+                                  .textAlign as any,
+                              }}>
+                              {item.city}
+                            </span>
+                          )}
+                        </h1>
+                        <h1>
+                          <span
+                            style={{
+                              ...style.educations.startMontYear,
+                              textAlign: style.educations.startMontYear
+                                .textAlign as any,
+                            }}>
+                            {item.startMontYear}
+                          </span>{" "}
+                          {item.startMontYear && item.endMontYear && " - "}
+                          <span
+                            style={{
+                              ...style.educations.endMontYear,
+                              textAlign: style.educations.endMontYear
+                                .textAlign as any,
+                            }}>
+                            {item.endMontYear}
+                          </span>
+                        </h1>
+
+                        {item.description && (
+                          <p
+                            style={{
+                              ...style.educations.description,
+                              textAlign: style.educations.description
+                                .textAlign as any,
+                            }}>
+                            {item.description}
+                          </p>
+                        )}
+                      </div>
+                    )
+                  );
+                })}
+              </div>
+            )}
           </div>
           {/* end of education div */}
 
@@ -436,81 +520,169 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
                 {workExperienceSectionTitle}:
               </h1>
             )}
-            {resume.workExperience.map((item) => {
-              return (
-                (item.city ||
-                  item.description ||
-                  item.employer ||
-                  item.jobTitle ||
-                  item.startMontYear ||
-                  item.endMontYear) && (
-                  <div key={item._id}>
-                    <h1>
-                      {item.jobTitle && (
-                        <span
-                          style={{
-                            ...style.workExperience.jobTitle,
-                            textAlign: style.workExperience.jobTitle
-                              .textAlign as any,
-                          }}>
-                          {item.jobTitle},{" "}
-                        </span>
-                      )}
-                      {item.employer && (
-                        <span
-                          style={{
-                            ...style.workExperience.employer,
-                            textAlign: style.workExperience.employer
-                              .textAlign as any,
-                          }}>
-                          {item.employer},{" "}
-                        </span>
-                      )}
-                      {item.city && (
-                        <span
-                          style={{
-                            ...style.workExperience.city,
-                            textAlign: style.workExperience.city
-                              .textAlign as any,
-                          }}>
-                          {item.city}
-                        </span>
-                      )}
-                    </h1>
-                    <h1>
-                      <span
-                        style={{
-                          ...style.workExperience.startMontYear,
-                          textAlign: style.workExperience.startMontYear
-                            .textAlign as any,
-                        }}>
-                        {item.startMontYear}
-                      </span>{" "}
-                      {item.startMontYear && item.endMontYear && " - "}
-                      <span
-                        style={{
-                          ...style.workExperience.endMontYear,
-                          textAlign: style.workExperience.endMontYear
-                            .textAlign as any,
-                        }}>
-                        {item.endMontYear}
-                      </span>
-                    </h1>
+            {resume.workExperience.length > 1 && (
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "15px",
+                }}>
+                {resume.workExperience.map((item) => {
+                  return (
+                    (item.city ||
+                      item.description ||
+                      item.employer ||
+                      item.jobTitle ||
+                      item.startMontYear ||
+                      item.endMontYear) && (
+                      <div style={{ width: "40%" }} key={item._id}>
+                        <h1>
+                          {item.jobTitle && (
+                            <span
+                              style={{
+                                ...style.workExperience.jobTitle,
+                                textAlign: style.workExperience.jobTitle
+                                  .textAlign as any,
+                              }}>
+                              {item.jobTitle},{" "}
+                            </span>
+                          )}
+                          {item.employer && (
+                            <span
+                              style={{
+                                ...style.workExperience.employer,
+                                textAlign: style.workExperience.employer
+                                  .textAlign as any,
+                              }}>
+                              {item.employer},{" "}
+                            </span>
+                          )}
+                          {item.city && (
+                            <span
+                              style={{
+                                ...style.workExperience.city,
+                                textAlign: style.workExperience.city
+                                  .textAlign as any,
+                              }}>
+                              {item.city}
+                            </span>
+                          )}
+                        </h1>
+                        <h1>
+                          <span
+                            style={{
+                              ...style.workExperience.startMontYear,
+                              textAlign: style.workExperience.startMontYear
+                                .textAlign as any,
+                            }}>
+                            {item.startMontYear}
+                          </span>{" "}
+                          {item.startMontYear && item.endMontYear && " - "}
+                          <span
+                            style={{
+                              ...style.workExperience.endMontYear,
+                              textAlign: style.workExperience.endMontYear
+                                .textAlign as any,
+                            }}>
+                            {item.endMontYear}
+                          </span>
+                        </h1>
 
-                    {item.description && (
-                      <p
-                        style={{
-                          ...style.workExperience.description,
-                          textAlign: style.workExperience.description
-                            .textAlign as any,
-                        }}>
-                        {item.description}
-                      </p>
-                    )}
-                  </div>
-                )
-              );
-            })}
+                        {item.description && (
+                          <p
+                            style={{
+                              ...style.workExperience.description,
+                              textAlign: style.workExperience.description
+                                .textAlign as any,
+                            }}>
+                            {item.description}
+                          </p>
+                        )}
+                      </div>
+                    )
+                  );
+                })}
+              </div>
+            )}
+            {resume.workExperience.length <= 1 && (
+              <div>
+                {resume.workExperience.map((item) => {
+                  return (
+                    (item.city ||
+                      item.description ||
+                      item.employer ||
+                      item.jobTitle ||
+                      item.startMontYear ||
+                      item.endMontYear) && (
+                      <div key={item._id}>
+                        <h1>
+                          {item.jobTitle && (
+                            <span
+                              style={{
+                                ...style.workExperience.jobTitle,
+                                textAlign: style.workExperience.jobTitle
+                                  .textAlign as any,
+                              }}>
+                              {item.jobTitle},{" "}
+                            </span>
+                          )}
+                          {item.employer && (
+                            <span
+                              style={{
+                                ...style.workExperience.employer,
+                                textAlign: style.workExperience.employer
+                                  .textAlign as any,
+                              }}>
+                              {item.employer},{" "}
+                            </span>
+                          )}
+                          {item.city && (
+                            <span
+                              style={{
+                                ...style.workExperience.city,
+                                textAlign: style.workExperience.city
+                                  .textAlign as any,
+                              }}>
+                              {item.city}
+                            </span>
+                          )}
+                        </h1>
+                        <h1>
+                          <span
+                            style={{
+                              ...style.workExperience.startMontYear,
+                              textAlign: style.workExperience.startMontYear
+                                .textAlign as any,
+                            }}>
+                            {item.startMontYear}
+                          </span>{" "}
+                          {item.startMontYear && item.endMontYear && " - "}
+                          <span
+                            style={{
+                              ...style.workExperience.endMontYear,
+                              textAlign: style.workExperience.endMontYear
+                                .textAlign as any,
+                            }}>
+                            {item.endMontYear}
+                          </span>
+                        </h1>
+
+                        {item.description && (
+                          <p
+                            style={{
+                              ...style.workExperience.description,
+                              textAlign: style.workExperience.description
+                                .textAlign as any,
+                            }}>
+                            {item.description}
+                          </p>
+                        )}
+                      </div>
+                    )
+                  );
+                })}
+              </div>
+            )}
           </div>
           {/* end of work experience div */}
 
@@ -527,35 +699,40 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
                 {skillSectionTitle} :
               </h1>
             )}
-
-            {resume.skills.map((item) => {
-              return (
-                item.label && (
-                  <div style={{ marginBottom: "6px" }} key={item._id}>
-                    <h1
-                      style={{
-                        ...style.skills.label,
-                        textAlign: style.skills.label.textAlign as any,
-                        lineHeight: skillLevelHide ? "12px" : "18px",
-                      }}>
-                      {item.label}
-                    </h1>
-                    {!skillLevelHide && (
-                      <h1 style={styleCommon.skillsLevelContainer}>
-                        {createArrayUpToNumber(item.level / 20).map((i) => (
-                          <span key={i} style={styleCommon.skillsLevel}></span>
-                        ))}
+            <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+              {resume.skills.map((item) => {
+                return (
+                  item.label && (
+                    <div
+                      style={{ marginBottom: "6px", width: "10%" }}
+                      key={item._id}>
+                      <h1
+                        style={{
+                          ...style.skills.label,
+                          textAlign: style.skills.label.textAlign as any,
+                          lineHeight: skillLevelHide ? "12px" : "18px",
+                        }}>
+                        {item.label}
                       </h1>
-                    )}
-                  </div>
-                )
-              );
-            })}
+                      {!skillLevelHide && (
+                        <h1 style={styleCommon.skillsLevelContainer}>
+                          {createArrayUpToNumber(item.level / 20).map((i) => (
+                            <span
+                              key={i}
+                              style={styleCommon.skillsLevel}></span>
+                          ))}
+                        </h1>
+                      )}
+                    </div>
+                  )
+                );
+              })}
+            </div>
           </div>
           {/* end of skills div */}
 
           {/* languages div */}
-          <div>
+          <div style={{ display: "flex", gap: "10px" }}>
             {languageSectionTitle && (
               <h1
                 style={{
@@ -595,7 +772,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
           {/* end of languages div */}
 
           {/* social profile div */}
-          <div>
+          <div style={{ display: "flex", gap: "10px" }}>
             {socialProfilesSectionTitle && (
               <h1
                 style={{
