@@ -34,6 +34,11 @@ const coverLetterTemplate = [
     img: "https://i.ibb.co/BLXdJgY/Screenshot-3.png",
     style: { ...coverLetterStyle["sydney01"].style.require },
   },
+  {
+    templateId: "london01",
+    img: "https://i.ibb.co/4TctCLm/Screenshot-2.png",
+    style: { ...coverLetterStyle["london01"].style.require },
+  },
   // {
   //   templateId: "vienna01",
   //   img: "https://i.ibb.co/k9TKstJ/vienna-cover-letter-templates.jpg",

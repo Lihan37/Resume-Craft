@@ -1,79 +1,63 @@
-const styleSydney = {
+const styleLondon = {
   common: {
     container: {
       height: "100%",
       width: "100%",
       padding: "24px",
     },
-
-    header: {
-      display: "flex",
-      justifyItems: "start",
-      justifyContent: "start",
-    },
-    nameAndCompany: {
-      margin: "15px auto",
-      color: "#ffffff",
-      fontWeight: 600,
-      fontSize: "18px",
-      width: "fit-content",
-      padding: "4px 10px ",
-      fontFamily: "Nunito Sans",
-      lineHeight: "20px",
-    },
   },
 
   require: {
-    theme: "#172F53",
-    themeOptions: ["#232323", "#172F53", "#361146", "#160A45", "#324739"],
+    theme: "",
+    themeOptions: [],
     fullName: {
       color: "#262626",
       fontFamily: "Nunito Sans",
       fontWeight: 700,
-      fontSize: "36px",
+      fontSize: "38px",
       textAlign: "start",
     },
     JobTitle: {
-      color: "#262626",
+      color: "#71717a",
       fontFamily: "Nunito Sans",
-      fontWeight: 700,
-      fontSize: "18px",
+      fontWeight: 400,
+      fontSize: "20px",
       textAlign: "start",
     },
     address: {
-      color: "#262626",
+      color: "#71717a",
       fontFamily: "Nunito Sans",
       fontWeight: 400,
       fontSize: "14px",
       textAlign: "start",
     },
     email: {
-      color: "#262626",
+      color: "#71717a",
       fontFamily: "Nunito Sans",
       fontWeight: 400,
       fontSize: "14px",
       textAlign: "start",
     },
     phoneNumber: {
-      color: "#262626",
+      color: "#71717a",
       fontFamily: "Nunito Sans",
       fontWeight: 400,
       fontSize: "14px",
       textAlign: "start",
     },
     companyName: {
-      color: "#ffffff",
+      color: "#71717a",
       fontFamily: "Nunito Sans",
-      fontWeight: 600,
-      fontSize: "18px",
-      textAlign: "center",
+      fontWeight: 400,
+      fontSize: "16px",
+      textAlign: "start",
     },
     managerName: {
-      color: "#ffffff",
+      color: "#262626",
       fontFamily: "Nunito Sans",
-      fontWeight: 600,
+      fontWeight: 700,
       fontSize: "18px",
-      textAlign: "center",
+      textAlign: "start",
     },
     details: {
       color: "#262626",
@@ -85,4 +69,4 @@ const styleSydney = {
   },
 };
 
-export default styleSydney;
+export default styleLondon;

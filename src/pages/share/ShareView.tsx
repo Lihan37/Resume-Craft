@@ -60,10 +60,10 @@ const ShareView: React.FC = () => {
     !loading && (
       <div className="flex justify-center items-center w-full h-screen bg-slate-200">
         {dataResume?.type === "resume" && dataResume.data._id ? (
-          <ResumeShare data={dataResume.data} />
+          <ResumeShare data={{ ...dataResume.data, zoom: 1 }} />
         ) : null}
         {dataCoverLetter?.type === "coverletter" && dataCoverLetter.data._id ? (
-          <CoverLetterShare data={dataCoverLetter.data} />
+          <CoverLetterShare data={{ ...dataCoverLetter.data, zoom: 1 }} />
         ) : null}
       </div>
     )
