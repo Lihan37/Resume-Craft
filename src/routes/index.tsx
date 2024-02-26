@@ -25,6 +25,7 @@ import ForgotPassword from "../pages/auth/ForgotPassword";
 import NewPassword from "../pages/auth/NewPassword";
 import Account from "../pages/dashboard/user/account/Account";
 import ShareView from "../pages/share/ShareView";
+import Athens from "../components/resumeTemplates/athens/Athens";
 
 const router = createBrowserRouter([
   {
@@ -149,6 +150,10 @@ const router = createBrowserRouter([
     path: "share/view/:id",
     element: <ShareView />,
   },
+  {
+    path: "athens",
+    element: <Athens />
+  }
 ]);
 
 export default router;
