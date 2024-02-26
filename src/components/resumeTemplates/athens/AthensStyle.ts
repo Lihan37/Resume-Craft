@@ -11,15 +11,17 @@ const styleAthens = {
       display: "flex",
       gap: "4px",
     },
-
+    sideBar: {
+      width: "33.6%",
+      marginLeft: "5.4%",
+    },
     headerDivOne: {
       width: "300px",
       minHeight: "200px",
       maxHeight: "250px",
     },
     headerDivOneImage: {
-      marginTop: "2%",
-      marginLeft: "2%",
+      marginLeft: "2.5%",
       marginBottom: "20px",
       width: "200px",
       minHeight: "60px",
@@ -27,56 +29,64 @@ const styleAthens = {
       borderRadius: "100%"
     },
     headerDivTwo: {
-      marginLeft: "-45px",
-      padding: "34px 0",
+      marginLeft: "-40px",
+      padding: "4px 0",
       width: "100%",
     },
     body: {
       display: "flex",
       gap: "20px",
-      padding: "40px 0px 0px 0px",
+      padding: "15px 0px 0px 0px",
     },
-    bodyDivOne: {
-      width: "300px",
+    
+    bodyDivTwo: {
+      // padding: "0px 0px",
+      width: "60%",
+      height: "auto",
       marginLeft: "3%",
     },
-    bodyDivTwo: {
-      padding: "30px",
-      width: "100%",
+    bodyDivOne: {
+      width: "35%",
+      marginRight: "3.5%",
+      marginTop: "-1.9%"
+    },
+    children: {
+      TextAlign: "start",
+      marginLeft: "15%"
     },
     personalInfoLabel: {
       color: "#002B18",
       fontFamily: "'Lato', sans-serif",
-      fontWeight: 700,
-      size: "35px",
+      fontWeight: 400,
+      size: "3px",
     },
   },
   require: {
-    theme: "#EF8E38",
+    theme: "#5F8CC9",
     themeOptions: ["#EF8E38", "#64AA3A", "#8989D1", "#5F8CC9"],
     skillLevel: true,
     skillLevelDisabled: true,
     personalInfo: {
       jobTitle: {
         color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        fontSize: "",
-        textAlign: "",
+        fontFamily: "'Lato', sans-serif",
+        fontWeight: 500,
+        fontSize: "20px",
+        textAlign: "start",
       },
       firstName: {
         color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        fontSize: "",
-        textAlign: "",
+        fontFamily: "'Lato', sans-serif",
+        fontWeight: 700,
+        fontSize: "25px",
+        textAlign: "start",
       },
       lastName: {
         color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        fontSize: "",
-        textAlign: "",
+        fontFamily: "'Lato', sans-serif",
+        fontWeight: 700,
+        fontSize: "25px",
+        textAlign: "start",
       },
       email: {
         color: "",

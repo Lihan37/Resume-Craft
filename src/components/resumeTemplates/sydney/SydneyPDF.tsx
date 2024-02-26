@@ -72,7 +72,7 @@ const SydneyPDF: React.FC = () => {
     resume?.sectionTitles.personalInfo &&
     resume.sectionTitles.personalInfo !== "Untitled" &&
     (resume.personalInfo.drivingLicense ||
-      resume.personalInfo.nationality ||
+      resume.personalInfo.postalCode ||
       resume.personalInfo.DateOfBirth ||
       resume.personalInfo.placeOfBirth)
       ? resume.sectionTitles.personalInfo
@@ -497,17 +497,17 @@ const SydneyPDF: React.FC = () => {
               )}
               <Text>
                 {" "}
-                {resume.personalInfo.address && (
+                {resume.personalInfo.postalCode && (
                   <Text style={styleCommon.personalInfoLabel}>Address</Text>
                 )}
-                {resume.personalInfo.address && (
+                {resume.personalInfo.postalCode && (
                   <Text
                     style={{
                       ...style.personalInfo.address,
                       textAlign: style.personalInfo.address.textAlign as any,
                     }}>
                     {" "}
-                    {resume.personalInfo.address},
+                    {resume.personalInfo.postalCode},
                   </Text>
                 )}
                 {resume.personalInfo.city && (
@@ -554,7 +554,7 @@ const SydneyPDF: React.FC = () => {
                     </Text>
                   </View>
                 )}
-                {personalInfo.nationality && (
+                {personalInfo.postalCode && (
                   <>
                     <Text style={styleCommon.personalInfoLabel}>
                       Nationality
@@ -565,7 +565,7 @@ const SydneyPDF: React.FC = () => {
                         textAlign: style.personalInfo.nationality
                           .textAlign as any,
                       }}>
-                      {personalInfo.nationality}
+                      {personalInfo.postalCode}
                     </Text>
                   </>
                 )}

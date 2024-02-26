@@ -21,6 +21,7 @@ import CreateBlog from "../pages/dashboard/admin/blog/CreateBlog";
 import { PDFViewer } from "@react-pdf/renderer";
 import CoverLetter from "../pages/editor/CoverLetter";
 import SydneyPDF from "../components/coverLetterTemplates/sydney/SydneyPDF";
+import Athens from "../components/resumeTemplates/athens/Athens";
 
 const router = createBrowserRouter([
   {
@@ -112,7 +113,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-
+  
   {
     path: "/athens",
     element: <Athens />
