@@ -62,7 +62,7 @@ const London: React.ForwardRefRenderFunction<HTMLDivElement, ILondon> = (
           }}>
           <div
             style={{
-              minWidth: "180px",
+              width: "180px",
               paddingTop: "10px",
               paddingRight: "10px",
             }}>
