@@ -46,6 +46,7 @@ const AvatarResume: React.FC = () => {
         icon: "error",
         text: `Not allowed ${avatarFile?.type} format image`,
         showConfirmButton: false,
+        timer: 1000,
       });
       return;
     }

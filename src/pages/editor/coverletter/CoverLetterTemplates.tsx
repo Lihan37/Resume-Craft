@@ -6,7 +6,7 @@ const CoverLetterTemplates: React.FC = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className=" px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1 justify-center items-center gap-3 my-10 mt-5">
+    <div className=" px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 justify-center items-center gap-3 my-10 mt-5">
       {coverLetterTemplate.map((item) => (
         <div
           key={item.templateId}
@@ -33,6 +33,11 @@ const coverLetterTemplate = [
     templateId: "sydney01",
     img: "https://i.ibb.co/BLXdJgY/Screenshot-3.png",
     style: { ...coverLetterStyle["sydney01"].style.require },
+  },
+  {
+    templateId: "london01",
+    img: "https://i.ibb.co/4TctCLm/Screenshot-2.png",
+    style: { ...coverLetterStyle["london01"].style.require },
   },
   // {
   //   templateId: "vienna01",

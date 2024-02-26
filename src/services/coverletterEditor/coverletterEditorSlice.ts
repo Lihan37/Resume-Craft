@@ -139,7 +139,10 @@ const coverLetterEditorSlice = createSlice({
       })
       .addCase(getSingleCoverLetterData.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.coverLetter = action.payload.coverLetter;
+        state.coverLetter = action.payload.success
+          ? action.payload.coverLetter
+          : state.coverLetter;
+        state.error = action.payload.success ? null : action.payload.message;
       })
       .addCase(getSingleCoverLetterData.rejected, (state, action) => {
         state.isLoading = false;

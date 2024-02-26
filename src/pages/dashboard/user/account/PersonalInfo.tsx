@@ -31,6 +31,7 @@ const PersonalInfo: React.FC = () => {
           icon: "error",
           text: data.message,
           showConfirmButton: false,
+          timer: 1000,
         });
       }
       if (data.success) {

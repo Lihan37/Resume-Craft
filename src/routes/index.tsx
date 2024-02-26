@@ -24,9 +24,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import ForgotPassword from "../pages/auth/ForgotPassword";
 import NewPassword from "../pages/auth/NewPassword";
 import Account from "../pages/dashboard/user/account/Account";
-import Vienna from "../components/resumeTemplates/vienna/Vienna";
-import Madrid from "../components/resumeTemplates/madrid/Madrid";
-
+import ShareView from "../pages/share/ShareView";
 
 const router = createBrowserRouter([
   {
@@ -50,8 +48,6 @@ const router = createBrowserRouter([
         path: "/pricing",
         element: <Pricing />,
       },
-      // madrid
-      
       {
         path: "/faq",
         element: <Faq />,
@@ -84,7 +80,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-
 
   {
     path: "auth",
@@ -127,12 +122,10 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    
-      path: "/madrid",
-      element: <Madrid  />,
-    
-  },
+  // {
+  //   path: "/madrid",
+  //   element: <Madrid />,
+  // },
   {
     path: "admin",
     element: <DashBoardWrapper />,
@@ -150,6 +143,11 @@ const router = createBrowserRouter([
         element: <CreateBlog />,
       },
     ],
+  },
+
+  {
+    path: "share/view/:id",
+    element: <ShareView />,
   },
 ]);
 

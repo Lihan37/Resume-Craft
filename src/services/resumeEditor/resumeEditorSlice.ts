@@ -433,7 +433,10 @@ const resumeEditorSlice = createSlice({
       })
       .addCase(getSingleResumeData.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.resume = action.payload.resume;
+        state.resume = action.payload.success
+          ? action.payload.resume
+          : state.resume;
+        state.error = !action.payload.success ? action.payload.message : null;
       })
       .addCase(getSingleResumeData.rejected, (state, action) => {
         state.isLoading = false;

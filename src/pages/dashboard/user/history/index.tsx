@@ -3,17 +3,6 @@ import { Container } from "../../../../components/common/Container";
 import TabSection from "./TabSection";
 import Button from "../../../../components/common/Button";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { nanoid } from "@reduxjs/toolkit";
-import { changeTemplate } from "../../../../services/resumeEditor/resumeEditorSlice";
-import { changeTemplate as changeTemplateCoverLetter } from "../../../../services/coverletterEditor/coverletterEditorSlice";
-import resumeStyle from "../../../../components/resumeTemplates/style";
-import coverLetterStyle from "../../../../components/coverLetterTemplates/style";
-import { useNavigate } from "react-router-dom";
-import { ISingleUserHistory } from "../../../../services/history/historySlice";
-import { createUserHistory } from "../../../../services/history/historyApi";
-import { initialState } from "../../../../services/resumeEditor/resumeEditorSlice";
-import { initialState as coverLetterInitialState } from "../../../../services/coverletterEditor/coverletterEditorSlice";
 import { AnimatePresence, motion } from "framer-motion";
 import { AppDispatch, RootState, useAppDispatch } from "../../../../app/store";
 import { userHistory } from "../../../../services/history/historyApi";
@@ -24,39 +13,29 @@ import {
   selectHistoryLoading,
 } from "../../../../services/history/historySelector";
 import UserDashboardSkeleton from "../../../../components/skeleton/UserDashboardSkeleton";
+import useCreateCoverLetter from "../../../../hooks/useCreateCoverLetter";
+import useCreateResume from "../../../../hooks/useCreateResume";
+import useTitleSet from "../../../../hooks/useTitleSet";
 
 interface State {
   activeTab: string;
-  resumeId?: string;
-  historyId?: string;
-  coverLetterId?: string;
-  coverLetterHistoryId?: string;
 }
 
 const UserDashboard: React.FC = () => {
   const [state, setState] = useState<State>({
     activeTab: "resume",
-    resumeId: nanoid(),
-    historyId: nanoid(),
-    coverLetterId: nanoid(),
-    coverLetterHistoryId: nanoid(),
   });
-  const {
-    activeTab,
-    resumeId,
-    historyId,
-    coverLetterId,
-    coverLetterHistoryId,
-  } = state;
-  const dispatch = useDispatch();
+  const { activeTab } = state;
   const appDispatch: AppDispatch = useAppDispatch();
-  const navigate = useNavigate();
   const allHistory = useSelector(selectAllHistory);
 
   const history = useSelector((state: RootState) =>
     selectHistory(state, activeTab)
   );
   const loading = useSelector(selectHistoryLoading);
+  const [createCoverLetter] = useCreateCoverLetter();
+  const [createResume] = useCreateResume();
+  useTitleSet("History");
 
   useEffect(() => {
     if (!(allHistory.length > 0)) {
@@ -70,83 +49,14 @@ const UserDashboard: React.FC = () => {
     portfolio: "Add Portfolio",
   };
 
-  const handleCreateHistory = async () => {
-    if (activeTab === "resume") {
-      try {
-        await appDispatch(
-          createUserHistory({
-            _id: historyId,
-            user: "",
-            title: "Untitled",
-            templateId: resumeId,
-            thumbnail: {
-              public_id: "",
-              url: "",
-            },
-            type: "resume",
-            createdAt: "",
-            updatedAt: "",
-          } as ISingleUserHistory)
-        );
-      } catch (error) {
-        console.error("Error creating history:", error);
-      }
-      return;
-    }
-    if (activeTab === "coverletter") {
-      try {
-        await appDispatch(
-          createUserHistory({
-            _id: coverLetterHistoryId,
-            user: "",
-            title: "Untitled",
-            templateId: coverLetterId,
-            thumbnail: {
-              public_id: "",
-              url: "",
-            },
-            type: "coverletter",
-            createdAt: "",
-            updatedAt: "",
-          } as ISingleUserHistory)
-        );
-      } catch (error) {
-        console.error("Error creating history:", error);
-      }
-      return;
-    }
-  };
-
   const createNew = (value: string) => {
     if (value === "resume") {
-      const data = {
-        ...initialState.resume,
-        _id: resumeId,
-        templateId: "vienna01",
-        historyId: historyId,
-        style: {
-          ...resumeStyle["vienna01"].style.require,
-        },
-      };
-      handleCreateHistory();
-      dispatch(changeTemplate(data));
-      navigate(`/edit/resume/${data._id}`);
+      createResume();
       return;
     }
 
     if (value === "coverletter") {
-      const data = {
-        ...coverLetterInitialState.coverLetter,
-        _id: coverLetterId,
-        templateId: "sydney01",
-        historyId: coverLetterHistoryId,
-        style: {
-          ...coverLetterStyle["sydney01"].style.require,
-        },
-      };
-      handleCreateHistory();
-      dispatch(changeTemplateCoverLetter(data));
-      navigate(`/edit/coverletter/${data._id}`);
+      createCoverLetter();
       return;
     }
   };

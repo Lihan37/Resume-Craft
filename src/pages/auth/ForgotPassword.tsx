@@ -3,11 +3,13 @@ import Button from "../../components/common/Button";
 import InputText from "../../components/common/InputText";
 import Swal from "sweetalert2";
 import { BiLoaderAlt } from "react-icons/bi";
+import useTitleSet from "../../hooks/useTitleSet";
 const baseUrl = import.meta.env.VITE_BASE_URL_API;
 
 const ForgotPassword: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  useTitleSet("Forgot Password");
 
   const handleForget = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,6 +18,7 @@ const ForgotPassword: React.FC = () => {
         icon: "error",
         text: "Please Enter Your Email",
         showConfirmButton: false,
+        timer: 1000,
       });
       return;
     }
@@ -38,6 +41,7 @@ const ForgotPassword: React.FC = () => {
           icon: "error",
           text: data.message,
           showConfirmButton: false,
+          timer: 1000,
         });
       }
       if (data.success) {
@@ -46,6 +50,7 @@ const ForgotPassword: React.FC = () => {
           icon: "success",
           text: data.message,
           showConfirmButton: false,
+          timer: 1000,
         });
       }
     } catch (error) {

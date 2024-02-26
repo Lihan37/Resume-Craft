@@ -54,3 +54,6 @@ export const selectSkillLevel = (state: RootState) =>
 
 export const selectSkillLevelDisabled = (state: RootState) =>
   state.resumeEditor.resume.style.skillLevelDisabled;
+
+export const selectResumeEditorError = (state: RootState) =>
+  state.resumeEditor.error;

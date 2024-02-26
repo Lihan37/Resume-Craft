@@ -7,7 +7,7 @@ const firebaseConfig = {
   projectId: "resumecraft-f2b45",
   storageBucket: "resumecraft-f2b45.appspot.com",
   messagingSenderId: "104209902639",
-  appId: "1:104209902639:web:465a86227918e3b03eeada",
+  appId: "1:104209902639:web:547d56baf0c100773eeada",
 };
 
 const app = initializeApp(firebaseConfig);

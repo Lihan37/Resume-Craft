@@ -13,9 +13,9 @@ const resumeTemplates = [
     style: { ...resumeStyle["sydney01"].style.require },
   },
   {
-    templateId: "toronto01",
+    templateId: "madrid01",
     img: images.resume1,
-    style: { ...resumeStyle["toronto01"].style.require },
+    style: { ...resumeStyle["madrid01"].style.require },
   },
   {
     templateId: "stockholm01",

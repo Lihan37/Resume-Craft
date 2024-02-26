@@ -98,7 +98,6 @@ export const deleteUserHistory = createAsyncThunk(
         credentials: "include",
       });
       const data = await response.json();
-      console.log(data);
       return { id: id, success: data.success };
     } catch (error) {
       return rejectWithValue(

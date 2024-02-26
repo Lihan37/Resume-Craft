@@ -26,6 +26,7 @@ const Avatar: React.FC = () => {
         icon: "error",
         text: `Not allowed ${avatarFile?.type} format image`,
         showConfirmButton: false,
+        timer: 1000,
       });
       return;
     }
@@ -50,6 +51,7 @@ const Avatar: React.FC = () => {
             icon: "error",
             text: data.message,
             showConfirmButton: false,
+            timer: 1000,
           });
         }
         if (data.success) {

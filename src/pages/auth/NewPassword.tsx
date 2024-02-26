@@ -4,6 +4,7 @@ import InputText from "../../components/common/InputText";
 import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
 import { BiLoaderAlt } from "react-icons/bi";
+import useTitleSet from "../../hooks/useTitleSet";
 const baseUrl = import.meta.env.VITE_BASE_URL_API;
 
 const NewPassword: React.FC = () => {
@@ -12,7 +13,7 @@ const NewPassword: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
   const { id } = useParams();
-
+  useTitleSet("New Password");
   const handleForget = async (e: React.FormEvent) => {
     e.preventDefault();
     if (password !== confirmPassword) {
@@ -20,6 +21,7 @@ const NewPassword: React.FC = () => {
         icon: "error",
         text: "Password Not Match",
         showConfirmButton: false,
+        timer: 1000,
       });
       return;
     }
@@ -43,6 +45,7 @@ const NewPassword: React.FC = () => {
           icon: "error",
           text: data.message,
           showConfirmButton: false,
+          timer: 1000,
         });
       }
       if (data.success) {

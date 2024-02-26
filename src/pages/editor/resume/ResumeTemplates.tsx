@@ -7,7 +7,7 @@ const ResumeTemplates: React.FC = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className=" px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1 justify-center items-center gap-3 my-10 mt-5">
+    <div className=" px-5 grid grid-cols-1 md:grid-cols-2  lg:grid-cols-1 justify-center items-center gap-3 my-10 mt-5">
       {resumeTemplates.map((item, i) => (
         <div
           key={i}

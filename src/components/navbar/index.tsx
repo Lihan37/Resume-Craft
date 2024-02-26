@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import { Container } from "../common/Container";
 import Logo from "../common/Logo";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import useDisplay from "../../hooks/useDisplay";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { HiMiniBars3CenterLeft } from "react-icons/hi2";
@@ -35,6 +35,7 @@ const Navbar: React.FC = () => {
   const accountRef = useRef(null);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const navigate = useNavigate();
 
   useOutsideClick(accountRef, () => {
     setIsOpenAccount(false);
@@ -46,12 +47,10 @@ const Navbar: React.FC = () => {
 
   useLayoutEffect(() => {
     if (windowWidth > 769) {
-      console.log(windowWidth);
       setIsOpen(true);
       return;
     }
     if (windowWidth < 770) {
-      console.log(windowWidth);
       setIsOpen(false);
       return;
     }
@@ -65,6 +64,7 @@ const Navbar: React.FC = () => {
         credentials: "include",
       });
       dispatch(removeUser());
+      navigate("/auth/login");
     } catch (error) {
       console.log(error);
     }

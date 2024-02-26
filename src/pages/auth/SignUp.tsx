@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 const baseUrl = import.meta.env.VITE_BASE_URL_API;
 import { BiLoaderAlt } from "react-icons/bi";
+import useTitleSet from "../../hooks/useTitleSet";
 
 interface InitialState {
   name: string;
@@ -22,6 +23,9 @@ const SignUp: React.FC = () => {
   const [state, setState] = useState<InitialState>(initialState);
   const { name, email, password } = state;
   const navigate = useNavigate();
+
+  useTitleSet("SignUp");
+
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -40,6 +44,7 @@ const SignUp: React.FC = () => {
           icon: "error",
           text: data.message,
           showConfirmButton: false,
+          timer: 1000,
         });
       }
       if (data.success && data.activationToken) {

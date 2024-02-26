@@ -534,15 +534,14 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
               {resume.personalInfo.email && (
                 <View>
                   <Text style={styleCommon.personalInfoLabel}>Email</Text>
-                  <Text
+                  <Link
                     style={{
                       ...style.personalInfo.email,
                       textAlign: style.personalInfo.email.textAlign as any,
-                    }}>
-                    <Link href={`mailto:${resume.personalInfo.email}`}>
-                      {resume.personalInfo.email}
-                    </Link>
-                  </Text>
+                    }}
+                    href={`mailto:${resume.personalInfo.email}`}>
+                    {resume.personalInfo.email}
+                  </Link>
                 </View>
               )}
               {personalInfo.nationality && (

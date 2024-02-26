@@ -7,7 +7,7 @@ import { selectUser } from "../services/auth/authSelector";
 export const DashBoardWrapper: React.FC = () => {
   const user = useSelector(selectUser);
 
-  return !user ? (
+  return !user._id ? (
     <Navigate to="/auth/login" />
   ) : user?._id && user.role === "admin" ? (
     <div className="max-w-[1450px] mx-auto flex flex-col md:flex-row">
