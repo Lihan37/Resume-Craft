@@ -51,7 +51,7 @@ const UserDashboard: React.FC = () => {
 
   const createNew = (value: string) => {
     if (value === "resume") {
-      createResume();
+      createResume({ SelectedTemplateId: "vienna01" });
       return;
     }
 

@@ -14,13 +14,13 @@ const ResumeTemplates: React.FC = () => {
           onClick={() => {
             dispatch(
               changeTemplate({
-                templateId: item.templateId,
-                style: item.style,
+                templateId: item.template.templateId,
+                style: item.template.style,
               })
             );
           }}
           className=" cursor-pointer shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px]">
-          <img src={item.img} alt={item.templateId} />
+          <img src={item.template.img} alt={item.template.templateId} />
         </div>
       ))}
     </div>

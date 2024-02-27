@@ -10,6 +10,7 @@ import {
   changeTemplate,
   initialState,
 } from "../services/resumeEditor/resumeEditorSlice";
+import { ResumeTemplatesType } from "../components/resumeTemplates/template";
 
 const useCreateResume = () => {
   const templateId = nanoid();
@@ -41,7 +42,11 @@ const useCreateResume = () => {
     }
   };
 
-  const createResume = () => {
+  const createResume = ({
+    SelectedTemplateId = "vienna01",
+  }: {
+    SelectedTemplateId?: keyof ResumeTemplatesType;
+  }) => {
     if (!user._id) {
       navigate(`/auth/login`);
       return;
@@ -49,10 +54,10 @@ const useCreateResume = () => {
     const data = {
       ...initialState.resume,
       _id: templateId,
-      templateId: "vienna01",
+      templateId: SelectedTemplateId,
       historyId: historyId,
       style: {
-        ...resumeStyle["vienna01"].style.require,
+        ...resumeStyle[SelectedTemplateId].style.require,
       },
     };
     handleCreateHistory();
