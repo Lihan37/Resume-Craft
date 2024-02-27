@@ -122,7 +122,7 @@ const CreateBlog: FC = () => {
   return (
     <div
       style={{ height: window.innerHeight }}
-      className="p-4 overflow-scroll pb-20">
+      className="p-10 overflow-scroll pb-20">
       <h1 className="text-4xl text-c-dark-light font-bold ">Create Blog</h1>
       <form onSubmit={handleSubmit} className="  space-y-4 mt-10">
         <input

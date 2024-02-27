@@ -57,7 +57,7 @@ const Sidebar: React.FC = () => {
       </Link>
       <ul className="p-4">
         {sideMenu.map((item) => (
-          <li className="mt-3 text-c-dark rounded-lg">
+          <li key={item.link} className="mt-3 text-c-dark rounded-lg">
             <NavLink
               key={item.link}
               to={item.link}
@@ -65,8 +65,7 @@ const Sidebar: React.FC = () => {
                 activeRoute === item.link
                   ? "bg-c-primary text-white rounded-lg p-2"
                   : ""
-              }`}
-            >
+              }`}>
               <p className="mx-0 md:mx-auto lg:mx-0">{item.icon}</p>
               <p className="block md:hidden lg:block">{item.label}</p>
             </NavLink>
