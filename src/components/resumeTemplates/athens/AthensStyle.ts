@@ -17,10 +17,17 @@ const styleAthens = {
       fontWeight: 600,
       fontSize: "12px",
     },
-
+    headerDivThree: {
+      padding: "10px",
+      width: "190px",
+      marginLeft: '25px',
+      marginTop: "20px",
+      height: "100px"
+    },
     headerDivOne: {
       padding: "10px",
       width: "200px",
+      
     },
     headerDivTwo: {
       padding: "10px",
@@ -38,7 +45,7 @@ const styleAthens = {
       width: "100px",
       margin: "10px",
       height: "100px",
-      borderRadius: "70%",
+      borderRadius: "100%",
     },
 
     proDate: {

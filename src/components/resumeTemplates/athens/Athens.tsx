@@ -108,6 +108,7 @@ const Athens: React.ForwardRefRenderFunction<HTMLDivElement, IAthens> = (
     >
       <div style={{ ...styleCommon.container }}>
         <div style={{ ...styleCommon.header, alignItems: "center" }}>
+
           {resume.avatar.url && (
             <img style={styleCommon.Image} src={resume.avatar.url} alt="" />
           )}
@@ -145,18 +146,21 @@ const Athens: React.ForwardRefRenderFunction<HTMLDivElement, IAthens> = (
               </h1>
             )}
           </div>
+          <div style={styleCommon.headerDivThree} className="bg-blue-600">
+            
+          </div>
         </div>
         <div style={styleCommon.header}>
           <div style={styleCommon.headerDivTwo}>
             <div>
               <div style={styleCommon.headerIcon}>
-                {professionalSummarySectionTitle && (
+                {/* {professionalSummarySectionTitle && (
                   <img
                     style={styleCommon.icon}
                     src="https://i.ibb.co/rfthK7T/profile-user.png"
                     alt=""
                   />
-                )}
+                )} */}
                 {professionalSummarySectionTitle && (
                   <h1
                     style={{
