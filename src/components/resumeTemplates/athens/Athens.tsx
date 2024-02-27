@@ -11,17 +11,88 @@ const Athens: React.ForwardRefRenderFunction<HTMLDivElement, IAthens> = (
   { _ },
   ref
 ) => {
-  const style = styleAthens.require;
+  const style = resume?.style;
   const styleCommon = styleAthens.common;
-  const personalSectionTitle =
+  const personalInfo = resume?.personalInfo;
+  console.log(resume.style);
+
+  const personalInfoSectionTitle =
     resume?.sectionTitles.personalInfo &&
     resume.sectionTitles.personalInfo !== "Untitled" &&
-    (resume.personalInfo.postalCode ||
-      resume.personalInfo.placeOfBirth ||
+    (resume.personalInfo.drivingLicense ||
+      resume.personalInfo.nationality ||
       resume.personalInfo.DateOfBirth ||
-      resume.personalInfo.drivingLicense) &&
-    resume.sectionTitles.personalInfo;
-  console.log(resume?.avatar.url);
+      resume.personalInfo.placeOfBirth)
+      ? resume.sectionTitles.personalInfo
+      : null;
+
+  const skillSectionTitle =
+    resume?.sectionTitles.skills &&
+    resume.sectionTitles.skills !== "Untitled" &&
+    resume.skills.find((item) => item.label)
+      ? resume.sectionTitles.skills
+      : null;
+
+  const languageSectionTitle =
+    resume?.sectionTitles.languages &&
+    resume.sectionTitles.languages !== "Untitled" &&
+    resume.languages.find((item) => item.language)
+      ? resume.sectionTitles.languages
+      : null;
+
+  const socialProfilesSectionTitle =
+    resume?.sectionTitles.socialProfiles &&
+    resume.sectionTitles.socialProfiles !== "Untitled" &&
+    resume.socialProfiles.find((item) => item.label)
+      ? resume.sectionTitles.socialProfiles
+      : null;
+
+  const professionalSummarySectionTitle =
+    resume?.sectionTitles.professionalSummary &&
+    resume.sectionTitles.professionalSummary !== "Untitled" &&
+    resume.professionalSummary
+      ? resume.sectionTitles.professionalSummary
+      : null;
+
+  const workExperienceSectionTitle =
+    resume?.sectionTitles.workExperience &&
+    resume.sectionTitles.workExperience !== "Untitled" &&
+    resume.workExperience.find(
+      (item) =>
+        item.city ||
+        item.description ||
+        item.employer ||
+        item.jobTitle ||
+        item.startMontYear ||
+        item.endMontYear
+    )
+      ? resume.sectionTitles.workExperience
+      : null;
+
+  const educationsSectionTitle =
+    resume?.sectionTitles.educations &&
+    resume.sectionTitles.educations !== "Untitled" &&
+    resume.educations.find(
+      (item) =>
+        item.city ||
+        item.description ||
+        item.school ||
+        item.degree ||
+        item.startMontYear ||
+        item.endMontYear
+    )
+      ? resume.sectionTitles.educations
+      : null;
+
+  const referencesSectionTitle =
+    resume?.sectionTitles.references &&
+    resume.sectionTitles.references !== "Untitled" &&
+    resume.references.find(
+      (item) => item.name || item.company || item.email || item.phone
+    )
+      ? resume.sectionTitles.references
+      : null;
+  const skillLevelHide = resume.style.skillLevel;
 
   return (
     <div
@@ -35,263 +106,623 @@ const Athens: React.ForwardRefRenderFunction<HTMLDivElement, IAthens> = (
         transition: "transform 0.5s",
       }}
     >
-      <div
-        style={{
-          ...styleCommon.container,
-        }}
-      >
-        {/* Header Section start */}
+      <div style={{ ...styleCommon.container }}>
+        <div style={{ ...styleCommon.header, alignItems: "center" }}>
 
-        {/* <div style={{ ...styleCommon.header }}>
-          <div
-            style={{
-              ...styleCommon.header,
-            }}
-          >
-            {resume.avatar.url && (
-              <div
+          {resume.avatar.url && (
+            <img style={styleCommon.Image} src={resume.avatar.url} alt="" />
+          )}
+
+          <div>
+            {resume.personalInfo.firstName && (
+              <span
                 style={{
-                  ...styleCommon.headerDivOne,
-                  ...styleCommon.headerDivOneImage,
+                  ...style.personalInfo.firstName,
+                  textAlign: style.personalInfo.firstName.textAlign as any,
                 }}
               >
-                <img
-                  style={{
-                    ...styleCommon.headerDivOneImage,
-                    width: "",
-                    height: "100%",
-                  }}
-                  src={resume.avatar.url}
-                  alt="avatar"
-                />
-              </div>
+                {resume.personalInfo.firstName}
+              </span>
             )}
-            <div
-              style={{
-                ...styleCommon.headerDivTwo,
-              }}
-            >
-              {resume.personalInfo.firstName && (
-                <span
-                  style={{
-                    fontFamily: style.personalInfo.firstName.fontFamily,
-                    fontSize: style.personalInfo.firstName.fontSize,
-                    fontWeight: style.personalInfo.firstName.fontWeight,
-                    color: style.personalInfo.firstName.color,
-                    textAlign: style.personalInfo.firstName.textAlign as any,
-                  }}
-                >
-                  {resume.personalInfo.firstName}
-                </span>
-              )}
-              {resume.personalInfo.lastName && (
-                <span
-                  style={{
-                    fontFamily: style.personalInfo.lastName.fontFamily,
-                    fontSize: style.personalInfo.lastName.fontSize,
-                    fontWeight: style.personalInfo.lastName.fontWeight,
-                    color: style.personalInfo.lastName.color,
-                    textAlign: style.personalInfo.lastName.textAlign as any,
-                  }}
-                >
-                  {" "}
-                  {resume.personalInfo.lastName}
-                </span>
-              )}
-              {resume.personalInfo.jobTitle && (
-                <h1
-                  style={{
-                    fontFamily: style.personalInfo.jobTitle.fontFamily,
-                    fontSize: style.personalInfo.jobTitle.fontSize,
-                    fontWeight: style.personalInfo.jobTitle.fontWeight,
-                    color: style.personalInfo.jobTitle.color,
-                    textAlign: style.personalInfo.jobTitle.textAlign as any,
-                  }}
-                >
-                  {resume.personalInfo.jobTitle}
-                </h1>
-              )}
-            </div>
-          </div>
-          <div
-            style={{ ...styleCommon.sideBar, backgroundColor: style.theme }}
-          ></div>
-        </div> */}
-        {/* header section end  */}
-
-        <div style={{ ...styleCommon.body }}>
-          {/* left side bar section  */}
-
-          <div style={{ ...styleCommon.bodyDivTwo }}>
-            <div style={{...styleCommon.body}}>
-              <div>
-                {resume?.avatar.url && (
-                  <div
-                    style={{
-                      ...styleCommon.headerDivOneImage,
-                    }}
-                  >
-                    <img
-                      style={{
-                        ...styleCommon.headerDivOneImage,
-                        width: "",
-                        height: "100%",
-                      }}
-                      src={resume?.avatar.url}
-                      alt="avatar"
-                    />
-                  </div>
-                )}
-              </div>
-              <div
+            {resume.personalInfo.lastName && (
+              <span
                 style={{
-                  ...styleCommon.headerDivTwo,
+                  ...style.personalInfo.lastName,
+                  textAlign: style.personalInfo.lastName.textAlign as any,
                 }}
               >
-                {resume.personalInfo.firstName && (
-                  <span
-                    style={{
-                      fontFamily: style.personalInfo.firstName.fontFamily,
-                      fontSize: style.personalInfo.firstName.fontSize,
-                      fontWeight: style.personalInfo.firstName.fontWeight,
-                      color: style.personalInfo.firstName.color,
-                      textAlign: style.personalInfo.firstName.textAlign as any,
-                    }}
-                  >
-                    {resume.personalInfo.firstName}
-                  </span>
-                )}
-                {resume.personalInfo.lastName && (
-                  <span
-                    style={{
-                      fontFamily: style.personalInfo.lastName.fontFamily,
-                      fontSize: style.personalInfo.lastName.fontSize,
-                      fontWeight: style.personalInfo.lastName.fontWeight,
-                      color: style.personalInfo.lastName.color,
-                      textAlign: style.personalInfo.lastName.textAlign as any,
-                    }}
-                  >
-                    {" "}
-                    {resume.personalInfo.lastName}
-                  </span>
-                )}
-                {resume.personalInfo.jobTitle && (
-                  <h1
-                    style={{
-                      fontFamily: style.personalInfo.jobTitle.fontFamily,
-                      fontSize: style.personalInfo.jobTitle.fontSize,
-                      fontWeight: style.personalInfo.jobTitle.fontWeight,
-                      color: style.personalInfo.jobTitle.color,
-                      textAlign: style.personalInfo.jobTitle.textAlign as any,
-                    }}
-                  >
-                    {resume.personalInfo.jobTitle}
-                  </h1>
-                )}
-              </div>
-            </div>
-            <h1 style={{}}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-              atque itaque quisquam, dolor dolorum tempore nostrum vitae facere
-              pariatur delectus cupiditate, aliquid hic aut magni ducimus autem?
-              Rem, sit? Est!
-            </h1>
-          </div>
-          {/* right side bar secrion */}
-
-          <div
-            style={{ ...styleCommon.bodyDivOne, backgroundColor: style.theme }}
-          >
-            <div style={{ ...styleCommon.children }}>
+                {" "}
+                {resume.personalInfo.lastName}
+              </span>
+            )}
+            {resume.personalInfo.jobTitle && (
               <h1
                 style={{
-                  fontFamily: style.personalInfo.jobTitle.fontFamily,
-                  fontSize: style.personalInfo.jobTitle.fontSize,
-                  fontWeight: style.personalInfo.jobTitle.fontWeight,
-                  color: style.personalInfo.jobTitle.color,
+                  ...style.personalInfo.jobTitle,
                   textAlign: style.personalInfo.jobTitle.textAlign as any,
                 }}
               >
-                Details
+                {resume.personalInfo.jobTitle}
               </h1>
+            )}
+          </div>
+          <div style={styleCommon.headerDivThree} className="bg-blue-600">
+            
+          </div>
+        </div>
+        <div style={styleCommon.header}>
+          <div style={styleCommon.headerDivTwo}>
+            <div>
+              <div style={styleCommon.headerIcon}>
+                {/* {professionalSummarySectionTitle && (
+                  <img
+                    style={styleCommon.icon}
+                    src="https://i.ibb.co/rfthK7T/profile-user.png"
+                    alt=""
+                  />
+                )} */}
+                {professionalSummarySectionTitle && (
+                  <h1
+                    style={{
+                      ...style.sectionTitles.professionalSummaryStyle,
+                      textAlign: style.sectionTitles.professionalSummaryStyle
+                        .textAlign as any,
+                    }}
+                  >
+                    {professionalSummarySectionTitle}
+                  </h1>
+                )}
+              </div>
+              {resume.professionalSummary && (
+                <p
+                  style={{
+                    ...style.professionalSummary.summery,
+                    textAlign: style.professionalSummary.summery
+                      .textAlign as any,
+                  }}
+                >
+                  {resume.professionalSummary}
+                </p>
+              )}
+            </div>
+            <div>
+              <div style={styleCommon.headerIcon}>
+                {workExperienceSectionTitle && (
+                  <img
+                    style={styleCommon.icon}
+                    src="https://i.ibb.co/3MQtzRg/portfolio.png"
+                    alt=""
+                  />
+                )}
+                {workExperienceSectionTitle && (
+                  <h1
+                    style={{
+                      ...style.sectionTitles.workExperienceStyle,
+                      textAlign: style.sectionTitles.workExperienceStyle
+                        .textAlign as any,
+                      marginTop: "5px",
+                    }}
+                  >
+                    {workExperienceSectionTitle}
+                  </h1>
+                )}
+              </div>
 
-              {resume.personalInfo.postalCode && (
-                <>
-                  <p style={{ ...styleCommon.personalInfoLabel }}>
-                    {resume.personalInfo.postalCode}
-                  </p>
-                  <p
+              {resume.workExperience.map((item, i) => {
+                const marginBottom = resume.workExperience.length === i + 1;
+                return (
+                  (item.city ||
+                    item.description ||
+                    item.employer ||
+                    item.jobTitle ||
+                    item.startMontYear ||
+                    item.endMontYear) && (
+                    <div
+                      style={{ marginBottom: !marginBottom ? "5px" : "0px" }}
+                      key={item._id}
+                    >
+                      <h1 style={{ lineHeight: "13px" }}>
+                        {item.jobTitle && (
+                          <span
+                            style={{
+                              ...style.workExperience.jobTitle,
+                              textAlign: style.workExperience.jobTitle
+                                .textAlign as any,
+                            }}
+                          >
+                            {item.jobTitle},{" "}
+                          </span>
+                        )}
+                        {item.employer && (
+                          <span
+                            style={{
+                              ...style.workExperience.employer,
+                              textAlign: style.workExperience.employer
+                                .textAlign as any,
+                            }}
+                          >
+                            {item.employer},{" "}
+                          </span>
+                        )}
+                        {item.city && (
+                          <span
+                            style={{
+                              ...style.workExperience.city,
+                              textAlign: style.workExperience.city
+                                .textAlign as any,
+                            }}
+                          >
+                            {item.city}{" "}
+                          </span>
+                        )}
+                      </h1>
+                      <h1>
+                        <span
+                          style={{
+                            ...style.workExperience.startMontYear,
+                            textAlign: style.workExperience.startMontYear
+                              .textAlign as any,
+                          }}
+                        >
+                          {item.startMontYear}
+                        </span>{" "}
+                        {item.startMontYear && item.endMontYear && " - "}
+                        <span
+                          style={{
+                            ...style.workExperience.endMontYear,
+                            textAlign: style.workExperience.endMontYear
+                              .textAlign as any,
+                          }}
+                        >
+                          {item.endMontYear}
+                        </span>
+                      </h1>
+                      {item.description && (
+                        <p
+                          style={{
+                            ...style.workExperience.description,
+                            textAlign: style.workExperience.description
+                              .textAlign as any,
+                          }}
+                        >
+                          {item.description}
+                        </p>
+                      )}
+                    </div>
+                  )
+                );
+              })}
+            </div>
+            <div>
+              <div style={styleCommon.headerIcon}>
+                {educationsSectionTitle && (
+                  <img
+                    style={styleCommon.icon}
+                    src="https://i.ibb.co/v3s3Y7z/mortarboard.png"
+                    alt=""
+                  />
+                )}
+                {educationsSectionTitle && (
+                  <h1
                     style={{
-                      fontFamily: style.personalInfo.nationality.fontFamily,
-                      fontSize: style.personalInfo.nationality.fontSize,
-                      fontWeight: style.personalInfo.nationality.fontWeight,
-                      color: style.personalInfo.nationality.color,
-                      textAlign: style.personalInfo.nationality
+                      ...style.sectionTitles.educationsStyle,
+                      textAlign: style.sectionTitles.educationsStyle
                         .textAlign as any,
+                      marginTop: "5px",
                     }}
                   >
-                    {resume.personalInfo.postalCode}
-                  </p>
-                </>
-              )}
+                    {educationsSectionTitle}
+                  </h1>
+                )}
+              </div>
 
-              {resume.personalInfo.drivingLicense && (
-                <>
-                  <h1 style={{ ...styleCommon.personalInfoLabel }}>
-                    Driving License :
-                  </h1>
+              {resume.educations.map((item) => {
+                return (
+                  (item.city ||
+                    item.description ||
+                    item.school ||
+                    item.degree ||
+                    item.startMontYear ||
+                    item.endMontYear) && (
+                    <div key={item._id}>
+                      <h1 style={{ lineHeight: "13px" }}>
+                        {item.degree && (
+                          <span
+                            style={{
+                              ...style.educations.degree,
+                              textAlign: style.educations.degree
+                                .textAlign as any,
+                            }}
+                          >
+                            {item.degree},{" "}
+                          </span>
+                        )}
+                        {item.school && (
+                          <span
+                            style={{
+                              ...style.educations.school,
+                              textAlign: style.educations.school
+                                .textAlign as any,
+                            }}
+                          >
+                            {item.school},{" "}
+                          </span>
+                        )}
+                        {item.city && (
+                          <span
+                            style={{
+                              ...style.educations.city,
+                              textAlign: style.educations.city.textAlign as any,
+                            }}
+                          >
+                            {item.city}
+                          </span>
+                        )}
+                      </h1>
+                      <h1>
+                        <span
+                          style={{
+                            ...style.educations.startMontYear,
+                            textAlign: style.educations.startMontYear
+                              .textAlign as any,
+                          }}
+                        >
+                          {item.startMontYear}
+                        </span>{" "}
+                        {item.startMontYear && item.endMontYear && " - "}
+                        <span
+                          style={{
+                            ...style.educations.endMontYear,
+                            textAlign: style.educations.endMontYear
+                              .textAlign as any,
+                          }}
+                        >
+                          {item.endMontYear}
+                        </span>
+                      </h1>
+
+                      {item.description && (
+                        <p
+                          style={{
+                            ...style.educations.description,
+                            textAlign: style.educations.description
+                              .textAlign as any,
+                          }}
+                        >
+                          {item.description}
+                        </p>
+                      )}
+                    </div>
+                  )
+                );
+              })}
+            </div>
+            <div>
+              <div style={styleCommon.headerIcon}>
+                {referencesSectionTitle && (
+                  <img
+                    style={styleCommon.icon}
+                    src="https://i.ibb.co/Dkf2QTy/refer.png"
+                    alt=""
+                  />
+                )}
+                {referencesSectionTitle && (
                   <h1
                     style={{
-                      fontFamily: style.personalInfo.drivingLicense.fontFamily,
-                      fontSize: style.personalInfo.drivingLicense.fontSize,
-                      fontWeight: style.personalInfo.drivingLicense.fontWeight,
-                      color: style.personalInfo.drivingLicense.color,
-                      textAlign: style.personalInfo.drivingLicense
+                      ...style.sectionTitles.referencesStyle,
+                      textAlign: style.sectionTitles.referencesStyle
                         .textAlign as any,
+                      marginTop: "5px",
                     }}
                   >
-                    {resume.personalInfo.drivingLicense}
+                    {referencesSectionTitle}
                   </h1>
-                </>
+                )}
+              </div>
+
+              {resume.references.map((item) => {
+                return (
+                  <div key={item._id}>
+                    <h1 style={{ lineHeight: "12px" }}>
+                      {item.name && (
+                        <span
+                          style={{
+                            ...style.references.name,
+                            textAlign: style.references.name.textAlign as any,
+                          }}
+                        >
+                          {item.name},{" "}
+                        </span>
+                      )}
+                      {item.company && (
+                        <span
+                          style={{
+                            ...style.references.company,
+                            textAlign: style.references.company
+                              .textAlign as any,
+                          }}
+                        >
+                          {item.company}
+                        </span>
+                      )}
+                    </h1>
+                    <h1>
+                      {item.email && (
+                        <span
+                          style={{
+                            ...style.references.email,
+                            textAlign: style.references.email.textAlign as any,
+                          }}
+                        >
+                          {item.email}
+                        </span>
+                      )}
+                      {item.phone && item.email && "  |  "}
+                      {item.phone && (
+                        <span
+                          style={{
+                            ...style.references.phone,
+                            textAlign: style.references.phone.textAlign as any,
+                          }}
+                        >
+                          {item.phone}
+                        </span>
+                      )}
+                    </h1>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div style={styleCommon.headerDivOne} className="bg-blue-600">
+            <div>
+              {personalInfoSectionTitle && (
+                <h1
+                  style={{
+                    ...style.sectionTitles.personalInfoStyle,
+                    textAlign: style.sectionTitles.personalInfoStyle
+                      .textAlign as any,
+                  }}
+                >
+                  {personalInfoSectionTitle}
+                </h1>
               )}
-              {resume.personalInfo.placeOfBirth && (
-                <>
-                  <h1 style={{ ...styleCommon.personalInfoLabel }}>
-                    Place Of Birth
-                  </h1>
-                  <h1
-                    style={{
-                      fontFamily: style.personalInfo.placeOfBirth.fontFamily,
-                      fontSize: style.personalInfo.placeOfBirth.fontSize,
-                      fontWeight: style.personalInfo.placeOfBirth.fontWeight,
-                      color: style.personalInfo.placeOfBirth.color,
-                      textAlign: style.personalInfo.placeOfBirth
-                        .textAlign as any,
-                    }}
-                  >
-                    {resume.personalInfo.placeOfBirth}
-                  </h1>
-                </>
+              <p>
+                {" "}
+                {resume.personalInfo.address && (
+                  <h1 style={styleCommon.personalInfoLabel}>Address</h1>
+                )}
+                <p style={{ lineHeight: "13px" }}>
+                  {resume.personalInfo.address && (
+                    <span
+                      style={{
+                        ...style.personalInfo.address,
+                        textAlign: style.personalInfo.address.textAlign as any,
+                      }}
+                    >
+                      {" "}
+                      {resume.personalInfo.address},
+                    </span>
+                  )}
+                  {resume.personalInfo.city && (
+                    <span
+                      style={{
+                        ...style.personalInfo.city,
+                        textAlign: style.personalInfo.city.textAlign as any,
+                      }}
+                    >
+                      {" "}
+                      {resume.personalInfo.city},
+                    </span>
+                  )}
+                  {resume.personalInfo.postalCode && (
+                    <span
+                      style={{
+                        ...style.personalInfo.postalCode,
+                        textAlign: style.personalInfo.postalCode
+                          .textAlign as any,
+                      }}
+                    >
+                      {" "}
+                      {resume.personalInfo.postalCode},
+                    </span>
+                  )}
+                  {resume.personalInfo.country && (
+                    <span
+                      style={{
+                        ...style.personalInfo.country,
+                        textAlign: style.personalInfo.country.textAlign as any,
+                      }}
+                    >
+                      {" "}
+                      {resume.personalInfo.country}
+                    </span>
+                  )}
+                </p>
+                {resume.personalInfo.email && (
+                  <div>
+                    <h1 style={styleCommon.personalInfoLabel}>Email</h1>
+                    <h1
+                      style={{
+                        ...style.personalInfo.email,
+                        textAlign: style.personalInfo.email.textAlign as any,
+                      }}
+                    >
+                      <a href={`mailto:${resume.personalInfo.email}`}>
+                        {resume.personalInfo.email}
+                      </a>
+                    </h1>
+                  </div>
+                )}
+                {personalInfo.nationality && (
+                  <>
+                    <h1 style={styleCommon.personalInfoLabel}>Nationality</h1>
+                    <p
+                      style={{
+                        ...style.personalInfo.nationality,
+                        textAlign: style.personalInfo.nationality
+                          .textAlign as any,
+                      }}
+                    >
+                      {personalInfo.nationality}
+                    </p>
+                  </>
+                )}
+                {personalInfo.drivingLicense && (
+                  <>
+                    <h1 style={styleCommon.personalInfoLabel}>
+                      DrivingLicense
+                    </h1>
+                    <p
+                      style={{
+                        ...style.personalInfo.drivingLicense,
+                        textAlign: style.personalInfo.drivingLicense
+                          .textAlign as any,
+                      }}
+                    >
+                      {personalInfo.drivingLicense}
+                    </p>
+                  </>
+                )}
+                {personalInfo.placeOfBirth && (
+                  <>
+                    <h1 style={styleCommon.personalInfoLabel}>
+                      Place Of Birth
+                    </h1>
+                    <p
+                      style={{
+                        ...style.personalInfo.placeOfBirth,
+                        textAlign: style.personalInfo.placeOfBirth
+                          .textAlign as any,
+                      }}
+                    >
+                      {personalInfo.placeOfBirth}
+                    </p>
+                  </>
+                )}
+                {personalInfo.DateOfBirth && (
+                  <>
+                    <h1 style={styleCommon.personalInfoLabel}>Date Of Birth</h1>
+                    <p
+                      style={{
+                        ...style.personalInfo.DateOfBirth,
+                        textAlign: style.personalInfo.DateOfBirth
+                          .textAlign as any,
+                      }}
+                    >
+                      {personalInfo.DateOfBirth}
+                    </p>
+                  </>
+                )}
+              </p>
+            </div>
+            <div>
+              {skillSectionTitle && (
+                <h1
+                  style={{
+                    ...style.sectionTitles.skillsStyle,
+                    textAlign: style.sectionTitles.skillsStyle.textAlign as any,
+                    marginTop: "5px",
+                  }}
+                >
+                  {skillSectionTitle}
+                </h1>
               )}
-              {resume.personalInfo.DateOfBirth && (
-                <>
-                  <h1 style={{ ...styleCommon.personalInfoLabel }}>
-                    Date Of Birth :
-                  </h1>
-                  <h1
-                    style={{
-                      fontFamily: style.personalInfo.DateOfBirth.fontFamily,
-                      fontSize: style.personalInfo.DateOfBirth.fontSize,
-                      fontWeight: style.personalInfo.DateOfBirth.fontWeight,
-                      color: style.personalInfo.DateOfBirth.color,
-                      textAlign: style.personalInfo.DateOfBirth
-                        .textAlign as any,
-                    }}
-                  >
-                    {resume.personalInfo.DateOfBirth}
-                  </h1>
-                </>
+              <div>
+                {resume.skills.map((skill, index) => (
+                  <div key={index}>
+                    <h3
+                      style={{
+                        ...style.skills.label,
+                        textAlign: style.skills.label.textAlign as any,
+                      }}
+                    >
+                      {skill.label}
+                    </h3>
+                    <div style={{ backgroundColor: "#C7C8CC" }}>
+                      {!skillLevelHide && (
+                        <div
+                          style={{
+                            ...styleCommon.bar,
+                            width: `${skill.level}%`,
+                            height: "4px",
+                          }}
+                        ></div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              {languageSectionTitle && (
+                <h1
+                  style={{
+                    ...style.sectionTitles.languagesStyle,
+                    textAlign: style.sectionTitles.languagesStyle
+                      .textAlign as any,
+                    marginTop: "5px",
+                  }}
+                >
+                  {languageSectionTitle}
+                </h1>
               )}
+              {resume.languages.map((item) => {
+                return (
+                  item.language && (
+                    <div key={item._id} style={{ lineHeight: "13px" }}>
+                      <span
+                        style={{
+                          ...style.languages.language,
+                          textAlign: style.languages.language.textAlign as any,
+                        }}
+                      >
+                        {item.language}
+                      </span>{" "}
+                      {item.level && (
+                        <span
+                          style={{
+                            ...style.languages.level,
+                            textAlign: style.languages.level.textAlign as any,
+                          }}
+                        >
+                          ( {item.level})
+                        </span>
+                      )}
+                    </div>
+                  )
+                );
+              })}
+              {socialProfilesSectionTitle && (
+                <h1
+                  style={{
+                    ...style.sectionTitles.socialProfilesStyle,
+                    textAlign: style.sectionTitles.socialProfilesStyle
+                      .textAlign as any,
+                    marginTop: "5px",
+                  }}
+                >
+                  {socialProfilesSectionTitle}
+                </h1>
+              )}
+              {resume.socialProfiles.map((item) => {
+                return (
+                  item.label && (
+                    <a
+                      key={item._id}
+                      style={{
+                        ...style.socialProfiles.label,
+                        textAlign: style.socialProfiles.label.textAlign as any,
+                        display: "block",
+                      }}
+                      href={item.link}
+                      target="_blank"
+                    >
+                      {item.label}
+                    </a>
+                  )
+                );
+              })}
             </div>
           </div>
         </div>
