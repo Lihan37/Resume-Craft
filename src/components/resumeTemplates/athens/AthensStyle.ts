@@ -3,90 +3,100 @@
 const styleAthens = {
   common: {
     container: {
-      padding: "48px 48px",
+      padding: "40px",
       width: "100%",
       height: "100%",
     },
     header: {
       display: "flex",
-      gap: "4px",
-    },
-    sideBar: {
-      width: "33.6%",
-      marginLeft: "5.4%",
-    },
-    headerDivOne: {
-      width: "300px",
-      minHeight: "200px",
-      maxHeight: "250px",
-    },
-    headerDivOneImage: {
-      marginLeft: "2.5%",
-      marginBottom: "20px",
-      width: "200px",
-      minHeight: "60px",
-      maxHeight: "100px",
-      borderRadius: "100%"
-    },
-    headerDivTwo: {
-      marginLeft: "-40px",
-      padding: "4px 0",
-      width: "100%",
-    },
-    body: {
-      display: "flex",
-      gap: "20px",
-      padding: "15px 0px 0px 0px",
-    },
-    
-    bodyDivTwo: {
-      // padding: "0px 0px",
-      width: "60%",
-      height: "auto",
-      marginLeft: "3%",
-    },
-    bodyDivOne: {
-      width: "35%",
-      marginRight: "3.5%",
-      marginTop: "-1.9%"
-    },
-    children: {
-      TextAlign: "start",
-      marginLeft: "15%"
+      gap: "10px",
     },
     personalInfoLabel: {
-      color: "#002B18",
-      fontFamily: "'Lato', sans-serif",
-      fontWeight: 400,
-      size: "3px",
+      color: "#FFFFFF",
+      fontFamily: "Nunito Sans",
+      fontWeight: 600,
+      fontSize: "12px",
+    },
+    headerDivThree: {
+      padding: "10px",
+      width: "190px",
+      marginLeft: '25px',
+      marginTop: "20px",
+      height: "100px"
+    },
+    headerDivOne: {
+      padding: "10px",
+      width: "200px",
+      
+    },
+    headerDivTwo: {
+      padding: "10px",
+      width: "100%",
+    },
+    bodyDivOne: {
+      // width: "300px",
+    },
+    bodyDivTwo: {
+      padding: "30px",
+      width: "100%",
+    },
+
+    Image: {
+      width: "100px",
+      margin: "10px",
+      height: "100px",
+      borderRadius: "100%",
+    },
+
+    proDate: {
+      color: "#000000",
+    },
+    icon: {
+      width: "14px",
+      height: "14px",
+      marginTop: "5px",
+    },
+    headerIcon: {
+      display: "flex",
+      gap: "10px",
+      alignItems: "center",
+    },
+    bar: {
+      width: "100%",
+      height: "5px",
+      backgroundColor: "#4FC2D8",
+      borderRadius: "10px",
+    },
+    marginTop: {
+      marginTop: "5px",
     },
   },
   require: {
-    theme: "#5F8CC9",
+    theme: "#EF8E38",
     themeOptions: ["#EF8E38", "#64AA3A", "#8989D1", "#5F8CC9"],
     skillLevel: true,
     skillLevelDisabled: true,
     personalInfo: {
       jobTitle: {
         color: "",
-        fontFamily: "'Lato', sans-serif",
-        fontWeight: 500,
-        fontSize: "20px",
-        textAlign: "start",
+        fontFamily: "",
+        fontWeight: 0,
+        fontSize: "",
+        textAlign: "",
       },
       firstName: {
         color: "",
-        fontFamily: "'Lato', sans-serif",
-        fontWeight: 700,
-        fontSize: "25px",
-        textAlign: "start",
+        fontFamily: "",
+        fontWeight: 0,
+        fontSize: "",
+        textAlign: "",
       },
       lastName: {
         color: "",
-        fontFamily: "'Lato', sans-serif",
-        fontWeight: 700,
-        fontSize: "25px",
-        textAlign: "start",
+        fontFamily: "",
+        fontWeight: 0,
+        fontSize: "",
+        textAlign: "",
       },
       email: {
         color: "",
