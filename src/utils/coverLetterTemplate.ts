@@ -7,7 +7,13 @@ const coverLetterTemplate = [
       img: "https://i.ibb.co/BLXdJgY/Screenshot-3.png",
       style: { ...coverLetterStyle["sydney01"].style.require },
     },
-    tags: ["engineering", "education", "transportation", "administrative"],
+    tags: [
+      "engineering",
+      "education",
+      "transportation",
+      "administrative",
+      "most-popular",
+    ],
     name: "Government",
   },
   {
@@ -16,7 +22,13 @@ const coverLetterTemplate = [
       img: "https://i.ibb.co/4TctCLm/Screenshot-2.png",
       style: { ...coverLetterStyle["london01"].style.require },
     },
-    tags: ["engineering", "education", "transportation", "administrative"],
+    tags: [
+      "engineering",
+      "education",
+      "transportation",
+      "administrative",
+      "most-popular",
+    ],
     name: "Engineering",
   },
 ];

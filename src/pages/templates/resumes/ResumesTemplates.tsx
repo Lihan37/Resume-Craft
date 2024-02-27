@@ -3,7 +3,7 @@ import useTitleSet from "../../../hooks/useTitleSet";
 import HeaderResume from "../Shared/Header";
 import Search from "../Shared/Search";
 import Popular from "../Shared/Popular";
-import { data, images } from "../../../constant";
+import { images } from "../../../constant";
 import Catagories from "../Shared/Catagories";
 import { Container } from "../../../components/common/Container";
 import resumeTemplates from "../../../utils/resumeTemplates";
@@ -37,7 +37,9 @@ const catagories = [
 
 const ResumesTemplates: React.FC = () => {
   useTitleSet("Resume Templates");
-
+  const mostPopular = resumeTemplates.filter((i) =>
+    i.tags.includes("most-popular")
+  );
   return (
     <div className=" w-full">
       <div className=" bg-blue-50 py-20">
@@ -56,7 +58,7 @@ const ResumesTemplates: React.FC = () => {
 
       <Container>
         <Search />
-        <Popular resumes={data.resumes} />
+        <Popular data={mostPopular} type="resume" />
 
         {catagories.map((item, index) => {
           const resumes = resumeTemplates.filter((i) =>

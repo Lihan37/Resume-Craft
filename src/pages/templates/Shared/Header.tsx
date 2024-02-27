@@ -27,7 +27,7 @@ const HeaderResume: React.FC<HeaderForCV> = ({
       return;
     }
     if (create === "coverletter") {
-      createCoverLetter();
+      createCoverLetter({ SelectedTemplateId: "sydney01" });
       return;
     }
   };

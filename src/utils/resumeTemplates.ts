@@ -8,7 +8,13 @@ const resumeTemplates = [
       img: "https://i.ibb.co/nBy6gph/Screenshot-3.png",
       style: { ...resumeStyle["vienna01"].style.require },
     },
-    tags: ["professional", "ats-friendly", "modern", "creative"],
+    tags: [
+      "professional",
+      "ats-friendly",
+      "modern",
+      "creative",
+      "most-popular",
+    ],
     name: "Web Developer",
   },
   {
@@ -17,7 +23,13 @@ const resumeTemplates = [
       img: "https://i.ibb.co/N6Y0P1q/Screenshot-2.png",
       style: { ...resumeStyle["sydney01"].style.require },
     },
-    tags: ["professional", "ats-friendly", "modern", "creative"],
+    tags: [
+      "professional",
+      "ats-friendly",
+      "modern",
+      "creative",
+      "most-popular",
+    ],
     name: "Technician",
   },
   {
@@ -26,7 +38,13 @@ const resumeTemplates = [
       img: images.resume1,
       style: { ...resumeStyle["madrid01"].style.require },
     },
-    tags: ["professional", "ats-friendly", "modern", "creative"],
+    tags: [
+      "professional",
+      "ats-friendly",
+      "modern",
+      "creative",
+      "most-popular",
+    ],
     name: "Correctional Officer",
   },
   {
@@ -35,7 +53,28 @@ const resumeTemplates = [
       img: images.resume2,
       style: { ...resumeStyle["stockholm01"].style.require },
     },
-    tags: ["professional", "ats-friendly", "modern", "creative"],
+    tags: [
+      "professional",
+      "ats-friendly",
+      "modern",
+      "creative",
+      "most-popular",
+    ],
+    name: "Civil Engineer",
+  },
+  {
+    template: {
+      templateId: "stockholm01",
+      img: images.resume2,
+      style: { ...resumeStyle["stockholm01"].style.require },
+    },
+    tags: [
+      "professional",
+      "ats-friendly",
+      "modern",
+      "creative",
+      "most-popular",
+    ],
     name: "Civil Engineer",
   },
 ];
