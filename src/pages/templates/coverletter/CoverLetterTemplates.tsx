@@ -6,6 +6,7 @@ import Popular from "../Shared/Popular";
 import { data, images } from "../../../constant";
 import Catagories from "../Shared/Catagories";
 import { Container } from "../../../components/common/Container";
+import coverLetterTemplate from "../../../utils/coverLetterTemplate";
 
 const catagories = [
   {
@@ -60,11 +61,12 @@ const CoverLetterTemplates: React.FC = () => {
         <Search />
         <Popular resumes={mostPopular} />
         {catagories.map((item) => {
-          const coverLetter = data.coverletter.filter((i) =>
+          const coverLetter = coverLetterTemplate.filter((i) =>
             i.tags.includes(item.value)
           );
           return (
             <Catagories
+              type="coverletter"
               key={item.value}
               data={coverLetter}
               name={item.label}

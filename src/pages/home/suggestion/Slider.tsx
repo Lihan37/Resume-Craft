@@ -15,6 +15,7 @@ interface IResume {
     style: any;
   };
   tags: string[];
+  name: string;
 }
 
 interface ISlider {

@@ -56,7 +56,7 @@ const UserDashboard: React.FC = () => {
     }
 
     if (value === "coverletter") {
-      createCoverLetter();
+      createCoverLetter({ SelectedTemplateId: "sydney01" });
       return;
     }
   };

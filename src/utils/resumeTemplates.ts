@@ -9,6 +9,7 @@ const resumeTemplates = [
       style: { ...resumeStyle["vienna01"].style.require },
     },
     tags: ["professional", "ats-friendly", "modern", "creative"],
+    name: "Web Developer",
   },
   {
     template: {
@@ -17,6 +18,7 @@ const resumeTemplates = [
       style: { ...resumeStyle["sydney01"].style.require },
     },
     tags: ["professional", "ats-friendly", "modern", "creative"],
+    name: "Technician",
   },
   {
     template: {
@@ -25,6 +27,7 @@ const resumeTemplates = [
       style: { ...resumeStyle["madrid01"].style.require },
     },
     tags: ["professional", "ats-friendly", "modern", "creative"],
+    name: "Correctional Officer",
   },
   {
     template: {
@@ -33,6 +36,7 @@ const resumeTemplates = [
       style: { ...resumeStyle["stockholm01"].style.require },
     },
     tags: ["professional", "ats-friendly", "modern", "creative"],
+    name: "Civil Engineer",
   },
 ];
 
