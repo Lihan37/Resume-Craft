@@ -21,6 +21,7 @@ import CreateBlog from "../pages/dashboard/admin/blog/CreateBlog";
 import Vienna from "../components/resumeTemplates/vienna/Vienna";
 import { PDFViewer } from "@react-pdf/renderer";
 import ViennaPDF from "../components/resumeTemplates/vienna/ViennaPDF";
+import Toronto from "../components/resumeTemplates/toronto/Toronto";
 
 const router = createBrowserRouter([
   {
@@ -120,6 +121,10 @@ const router = createBrowserRouter([
         <ViennaPDF />
       </PDFViewer>
     ),
+  },
+  {
+    path: "/toronto",
+    element: <Toronto />,
   },
 ]);
 
