@@ -25,6 +25,7 @@ import ForgotPassword from "../pages/auth/ForgotPassword";
 import NewPassword from "../pages/auth/NewPassword";
 import Account from "../pages/dashboard/user/account/Account";
 import ShareView from "../pages/share/ShareView";
+import UpdateBlog from "../pages/dashboard/admin/blog/UpdateBlog";
 
 const router = createBrowserRouter([
   {
@@ -141,6 +142,10 @@ const router = createBrowserRouter([
       {
         path: "create-blog",
         element: <CreateBlog />,
+      },
+      {
+        path: "blog-update/:id",
+        element: <UpdateBlog />,
       },
     ],
   },

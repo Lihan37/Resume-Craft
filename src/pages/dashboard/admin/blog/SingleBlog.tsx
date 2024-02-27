@@ -1,12 +1,56 @@
 import React from "react";
 import { IBlog } from "../../../../services/blogs/blogSlice";
 import formatDateToDayMonth from "../../../../utils/formatDateToDayMonth";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../../../app/store";
+import Swal from "sweetalert2";
+import { deleteBlog } from "../../../../services/blogs/blogApi";
+import { useSelector } from "react-redux";
+import { selectBlogs } from "../../../../services/blogs/blogSelector";
 
 interface ISingleBlog {
   blog: IBlog;
 }
 
 const SingleBlog: React.FC<ISingleBlog> = ({ blog }) => {
+  const navigate = useNavigate();
+  const appDispatch = useAppDispatch();
+  const { error } = useSelector(selectBlogs);
+
+  const handleDelete = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await appDispatch(deleteBlog(blog._id));
+
+        if (error !== null) {
+          Swal.fire({
+            title: "Oops...",
+            text: "Something went wrong!",
+            icon: "error",
+            showConfirmButton: false,
+            timer: 1000,
+          });
+        } else {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your history has been deleted.",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1000,
+          });
+        }
+      }
+    });
+  };
+
   return (
     <tr>
       <td className="p-4 border-b border-blue-gray-50">
@@ -42,6 +86,9 @@ const SingleBlog: React.FC<ISingleBlog> = ({ blog }) => {
 
       <td className="p-4 border-b border-blue-gray-50">
         <button
+          onClick={() => {
+            navigate(`/blog/${blog._id}`);
+          }}
           className="relative hover:text-c-primary duration-300 align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30"
           type="button">
           <svg
@@ -64,6 +111,9 @@ const SingleBlog: React.FC<ISingleBlog> = ({ blog }) => {
           </svg>
         </button>
         <button
+          onClick={() => {
+            navigate(`/admin/blog-update/${blog._id}`);
+          }}
           className="relative hover:text-c-primary duration-300 align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30"
           type="button">
           <svg
@@ -81,6 +131,7 @@ const SingleBlog: React.FC<ISingleBlog> = ({ blog }) => {
           </svg>
         </button>
         <button
+          onClick={handleDelete}
           className="relative hover:text-red-500 duration-300 align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30"
           type="button">
           <svg

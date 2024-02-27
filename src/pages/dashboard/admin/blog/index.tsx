@@ -21,8 +21,8 @@ const Blogs: React.FC = () => {
   return (
     <div className="p-10  pb-20">
       <h1 className="text-4xl text-c-dark-light font-bold ">Blogs</h1>
-      <div className="p-6 overflow-scroll px-0">
-        <table className="mt-4 w-full min-w-max table-auto text-left min-h-[600px]">
+      <div className="p-6 overflow-scroll px-0 min-h-[600px]">
+        <table className="mt-4 w-full min-w-max table-auto text-left ">
           <thead>
             <tr>
               <th className="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
@@ -80,7 +80,7 @@ const Blogs: React.FC = () => {
           </tbody>
         </table>
       </div>
-      <div className=" flex justify-end items-center">
+      <div className=" flex justify-center items-center ">
         <ul className="flex">
           <button
             onClick={() => {
@@ -97,7 +97,7 @@ const Blogs: React.FC = () => {
             } mx-1 px-3 flex items-center py-2 bg-blue-50  rounded-lg`}>
             <span className="mx-1">previous</span>
           </button>
-          {createArrayUpToNumber(total / 6).map((item) => {
+          {createArrayUpToNumber(Math.ceil(total / 6)).map((item) => {
             const isActive = item === page;
             return (
               <li
@@ -117,9 +117,9 @@ const Blogs: React.FC = () => {
             onClick={() => {
               setPage((prev) => prev + 1);
             }}
-            disabled={total / 6 === page}
+            disabled={total / 6 === page || blogs.length !== 6}
             className={` ${
-              total / 6 === page
+              total / 6 === page || blogs.length !== 6
                 ? " text-gray-500"
                 : "hover:bg-c-primary hover:text-gray-200 "
             } mx-1 px-3 flex items-center py-2 bg-blue-50  rounded-lg`}>

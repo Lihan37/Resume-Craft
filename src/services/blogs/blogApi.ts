@@ -21,3 +21,21 @@ export const getAllBlogs = createAsyncThunk(
     }
   }
 );
+
+export const deleteBlog = createAsyncThunk(
+  "blog/deleteBlog",
+  async (id: string | number, { rejectWithValue }) => {
+    try {
+      const response = await fetch(`${baseUrl}/blog/v1/delete/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+      });
+      const data = await response.json();
+      return { id: id, success: data.success };
+    } catch (error) {
+      return rejectWithValue(
+        (error as Error).message || "An error occurred during Delete Blog"
+      );
+    }
+  }
+);

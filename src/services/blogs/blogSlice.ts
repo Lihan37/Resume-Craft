@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllBlogs } from "./blogApi";
+import { deleteBlog, getAllBlogs } from "./blogApi";
 
 interface IUser {
   _id: string;
@@ -61,6 +61,19 @@ const blogSlice = createSlice({
       .addCase(getAllBlogs.rejected, (state) => {
         state.loading = false;
         state.error = "Something wrong";
+      })
+      .addCase(deleteBlog.pending, (state) => {
+        state.error = null;
+      })
+      .addCase(deleteBlog.fulfilled, (state, action) => {
+        const filterData = state.blogs.filter(
+          (item) => item._id !== action.payload.id
+        );
+        state.blogs = action.payload.success ? filterData : state.blogs;
+        state.error = action.payload.success ? null : "some thing wrong";
+      })
+      .addCase(deleteBlog.rejected, (state) => {
+        state.error = "some thing wrong";
       });
   },
 });
