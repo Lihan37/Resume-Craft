@@ -1,7 +1,7 @@
 export const resume = {
   avatar: {
     public_id: "resumeCraft_resume_Avatar/fzzm5nmnt3ysvsabutjf",
-    url: "https://res.cloudinary.com/dvbgu8nqo/image/upload/v1708373962/resumeCraft_resume_Avatar/fzzm5nmnt3ysvsabutjf.png",
+    url: "https://i.ibb.co/MpZjhN1/Screen-Shot-20231026001002.png",
   },
   _id: "KQ_2iUYqmYYZD3l1bH8Bo",
   educations: [

@@ -11,7 +11,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
   { resume },
   ref
 ) => {
-  const style = styleMadrid.require;
+  const style = resume.style;
   const styleCommon = styleMadrid.common;
   const personalInfo = resume?.personalInfo;
 

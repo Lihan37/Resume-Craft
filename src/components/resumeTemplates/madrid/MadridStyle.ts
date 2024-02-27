@@ -10,13 +10,15 @@ const styleMadrid = {
     header: {
       display: "flex",
       gap: "15px",
-      padding: "0px 24px 10px 0px",
+      // padding: "0px 24px 10px 0px",
+      alignItems:'center',
     },
 
+
     headerDivOne: {
-      width: "213.3px",
-      height: "100%",
-      display: "block",
+      width: "213.3px"
+   
+      
     },
     headerDivTwo: {
       width: "100%",
@@ -52,7 +54,7 @@ const styleMadrid = {
     sectionTitle: {
       backgroundColor: "#9AEBFE",
       padding: "2px 2px",
-      display: "inline-block",
+      // display: "inline-block",
       
       textColor: "white",
     },
