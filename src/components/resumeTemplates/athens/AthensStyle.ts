@@ -19,19 +19,23 @@ const styleAthens = {
     },
     headerDivThree: {
       padding: "10px",
-      width: "190px",
-      marginLeft: '25px',
+      width: "208px",
+      marginLeft: '27px',
       marginTop: "20px",
-      height: "100px"
+      height: "100px",
+      backgroundColor: "#1111ed",
+      borderTopRightRadius: "20px"
     },
     headerDivOne: {
       padding: "10px",
-      width: "200px",
-      
+      width: "300px",
+      backgroundColor: "#1111ed",
+      borderBottomRightRadius: "20px"
     },
     headerDivTwo: {
       padding: "10px",
       width: "100%",
+      borderBottomLeftRadius: "20px"
     },
     bodyDivOne: {
       // width: "300px",

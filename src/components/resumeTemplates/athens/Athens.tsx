@@ -104,6 +104,7 @@ const Athens: React.ForwardRefRenderFunction<HTMLDivElement, IAthens> = (
         transformOrigin:
           parseFloat(resume.size.height.slice(0, -2)) > 1190.14 ? "bottom" : "",
         transition: "transform 0.5s",
+        backgroundColor: "red"
       }}
     >
       <div style={{ ...styleCommon.container }}>
