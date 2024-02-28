@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { forwardRef } from "react";
 import { IResumeData } from "../../../services/resumeEditor/resumeEditorSlice";
-import { resume } from "../resume";
 import styleAthens from "./AthensStyle";
 import useDisplay from "../../../hooks/useDisplay";
 
@@ -10,11 +9,12 @@ export interface IAthens {
 }
 
 const Athens: React.ForwardRefRenderFunction<HTMLDivElement, IAthens> = (
-  { _ },
+  { resume },
   ref
 ) => {
   const style = resume?.style;
   const styleCommon = styleAthens.common;
+
   const [windowWidth] = useDisplay();
 
   const personalInfoSectionTitle =

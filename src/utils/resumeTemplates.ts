@@ -64,9 +64,9 @@ const resumeTemplates = [
   },
   {
     template: {
-      templateId: "stockholm01",
+      templateId: "athens01",
       img: images.resume2,
-      style: { ...resumeStyle["stockholm01"].style.require },
+      style: { ...resumeStyle["athens01"].style.require },
     },
     tags: [
       "professional",

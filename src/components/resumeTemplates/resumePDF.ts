@@ -1,5 +1,7 @@
 import { ISydney2 } from "./Sydney2/Sydney2";
 import Sydney2PDF from "./Sydney2/Sydney2PDF";
+import { IAthens } from "./athens/Athens";
+import AthensPDF from "./athens/AthensPDF";
 import { IMadrid } from "./madrid/Madrid";
 import MadridPDF from "./madrid/MadridPDF";
 import { ISydney } from "./sydney/Sydney";
@@ -13,6 +15,7 @@ export type ResumePDFTemplatesType = {
   sydney01: { id: string; template: FC<ISydney> };
   sydney02: { id: string; template: FC<ISydney2> };
   madrid01: { id: string; template: FC<IMadrid> };
+  athens01: { id: string; template: FC<IAthens> };
 };
 
 const resumePDF = {
@@ -20,6 +23,7 @@ const resumePDF = {
   sydney01: { id: "sydney01", template: SydneyPDF },
   sydney02: { id: "sydney02", template: Sydney2PDF },
   madrid01: { id: "madrid01", template: MadridPDF },
+  athens01: { id: "athens01", template: AthensPDF },
 };
 
 export default resumePDF;
