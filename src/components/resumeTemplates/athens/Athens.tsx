@@ -414,7 +414,7 @@ const Athens: React.ForwardRefRenderFunction<HTMLDivElement, IAthens> = (
             paddingTop: "40px",
             paddingLeft: "40px",
             width: "230px",
-            backgroundColor: "#082A4D",
+            backgroundColor: resume.style.theme,
           }}>
           {personalInfoSectionTitle && (
             <h1
@@ -660,7 +660,7 @@ const Athens: React.ForwardRefRenderFunction<HTMLDivElement, IAthens> = (
                       textAlign: style.languages.language.textAlign as any,
                     }}>
                     {item.language}
-                  </span>
+                  </span>{" "}
                   <span
                     style={{
                       ...style.languages.level,

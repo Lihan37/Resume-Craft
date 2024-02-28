@@ -534,6 +534,7 @@ const MadridPDF: React.FC<IMadrid> = ({ resume }) => {
                   ...style.sectionTitles.personalInfoStyle,
                   textAlign: style.sectionTitles.personalInfoStyle
                     .textAlign as any,
+                  backgroundColor: resume.style.theme,
                   ...styleCommon.sectionTitle,
                   ...styleCommon.margin,
                 }}>
@@ -634,6 +635,7 @@ const MadridPDF: React.FC<IMadrid> = ({ resume }) => {
                   ...style.sectionTitles.professionalSummaryStyle,
                   textAlign: style.sectionTitles.professionalSummaryStyle
                     .textAlign as any,
+                  backgroundColor: resume.style.theme,
                   ...styleCommon.sectionTitle,
                   ...styleCommon.margin,
                 }}>
@@ -661,6 +663,7 @@ const MadridPDF: React.FC<IMadrid> = ({ resume }) => {
                   textAlign: style.sectionTitles.educationsStyle
                     .textAlign as any,
                   ...styleCommon.margin,
+                  backgroundColor: resume.style.theme,
                   ...styleCommon.sectionTitle,
                 }}>
                 {educationsSectionTitle}:
@@ -835,6 +838,7 @@ const MadridPDF: React.FC<IMadrid> = ({ resume }) => {
                   ...style.sectionTitles.workExperienceStyle,
                   textAlign: style.sectionTitles.workExperienceStyle
                     .textAlign as any,
+                  backgroundColor: resume.style.theme,
                   ...styleCommon.margin,
                   ...styleCommon.sectionTitle,
                 }}>
@@ -1016,6 +1020,7 @@ const MadridPDF: React.FC<IMadrid> = ({ resume }) => {
                   ...style.sectionTitles.skillsStyle,
                   textAlign: style.sectionTitles.skillsStyle.textAlign as any,
                   ...styleCommon.margin,
+                  backgroundColor: resume.style.theme,
                   ...styleCommon.sectionTitle,
                 }}>
                 {skillSectionTitle} :
@@ -1065,6 +1070,7 @@ const MadridPDF: React.FC<IMadrid> = ({ resume }) => {
                   textAlign: style.sectionTitles.languagesStyle
                     .textAlign as any,
                   ...styleCommon.margin,
+                  backgroundColor: resume.style.theme,
                   ...styleCommon.sectionTitle,
                 }}>
                 {languageSectionTitle} :
@@ -1105,6 +1111,7 @@ const MadridPDF: React.FC<IMadrid> = ({ resume }) => {
                   textAlign: style.sectionTitles.socialProfilesStyle
                     .textAlign as any,
                   ...styleCommon.margin,
+                  backgroundColor: resume.style.theme,
                   ...styleCommon.sectionTitle,
                 }}>
                 {socialProfilesSectionTitle} :
@@ -1137,6 +1144,7 @@ const MadridPDF: React.FC<IMadrid> = ({ resume }) => {
                   textAlign: style.sectionTitles.referencesStyle
                     .textAlign as any,
                   ...styleCommon.margin,
+                  backgroundColor: resume.style.theme,
                   ...styleCommon.sectionTitle,
                 }}>
                 {referencesSectionTitle}:
