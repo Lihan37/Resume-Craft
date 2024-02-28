@@ -25,6 +25,7 @@ import ForgotPassword from "../pages/auth/ForgotPassword";
 import NewPassword from "../pages/auth/NewPassword";
 import Account from "../pages/dashboard/user/account/Account";
 import UpdateBlog from "../pages/dashboard/admin/blog/UpdateBlog";
+import Athens from "../components/resumeTemplates/athens/Athens";
 
 const router = createBrowserRouter([
   {
@@ -144,6 +145,10 @@ const router = createBrowserRouter([
         element: <UpdateBlog />,
       },
     ],
+  },
+  {
+    path: "/athens",
+    element: <Athens />,
   },
 ]);
 

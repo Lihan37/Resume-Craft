@@ -3,76 +3,10 @@
 const styleAthens = {
   common: {
     container: {
-      padding: "40px",
+      padding: "0px 0px",
       width: "100%",
       height: "100%",
-    },
-    header: {
       display: "flex",
-      gap: "10px",
-    },
-    personalInfoLabel: {
-      color: "#FFFFFF",
-      fontFamily: "Nunito Sans",
-      fontWeight: 600,
-      fontSize: "12px",
-    },
-    headerDivThree: {
-      padding: "10px",
-      width: "208px",
-      marginLeft: '27px',
-      marginTop: "20px",
-      height: "100px",
-      backgroundColor: "#1111ed",
-      borderTopRightRadius: "20px"
-    },
-    headerDivOne: {
-      padding: "10px",
-      width: "300px",
-      backgroundColor: "#1111ed",
-      borderBottomRightRadius: "20px"
-    },
-    headerDivTwo: {
-      padding: "10px",
-      width: "100%",
-      borderBottomLeftRadius: "20px"
-    },
-    bodyDivOne: {
-      // width: "300px",
-    },
-    bodyDivTwo: {
-      padding: "30px",
-      width: "100%",
-    },
-
-    Image: {
-      width: "100px",
-      margin: "10px",
-      height: "100px",
-      borderRadius: "100%",
-    },
-
-    proDate: {
-      color: "#000000",
-    },
-    icon: {
-      width: "14px",
-      height: "14px",
-      marginTop: "5px",
-    },
-    headerIcon: {
-      display: "flex",
-      gap: "10px",
-      alignItems: "center",
-    },
-    bar: {
-      width: "100%",
-      height: "5px",
-      backgroundColor: "#4FC2D8",
-      borderRadius: "10px",
-    },
-    marginTop: {
-      marginTop: "5px",
     },
   },
   require: {
