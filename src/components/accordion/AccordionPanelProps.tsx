@@ -1,13 +1,18 @@
 import { FC, ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useAccordion } from "../../hooks/useAccordion";
+import { useSelector } from "react-redux";
+import { selectActiveAccordion } from "../../services/accordion/accordionSelector";
+import { RootState } from "../../app/store";
 
 interface AccordionPanelProps {
   children: ReactNode;
+  id: number;
 }
 
-const AccordionPanel: FC<AccordionPanelProps> = ({ children }) => {
-  const { isActive } = useAccordion();
+const AccordionPanel: FC<AccordionPanelProps> = ({ children, id }) => {
+  const isActive = useSelector((state: RootState) =>
+    selectActiveAccordion(state, id)
+  );
 
   return (
     <AnimatePresence initial={false}>

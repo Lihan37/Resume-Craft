@@ -4,10 +4,12 @@ import { data } from "../../constant";
 import { Container } from "../../components/common/Container";
 import { CiCalendarDate, CiSearch } from "react-icons/ci";
 import { FaFacebook, FaRegEye, FaTwitter, FaYoutube } from "react-icons/fa6";
+import useTitleSet from "../../hooks/useTitleSet";
 
 const BlogDetails: React.FC = () => {
   const { id } = useParams();
   const blog = id && data.blogs.find((items) => items.id === parseInt(id));
+  useTitleSet("Blog Details");
 
   return (
     blog && (

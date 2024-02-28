@@ -1,65 +1,98 @@
 import React, { useEffect, useState } from "react";
 import AddSingleEmploymentHistory from "./AddSingleEmploymentHistory";
 import { FaPlus } from "react-icons/fa6";
-import createArrayUpToNumber from "../../../utils/createArrayUpToNumber";
-import { TypeOfSingleEmploymentHistory } from "../../../types";
+import { TypeOfSingleEmploymentHistory } from "../../../types/resumeEditor";
+import compareArrays from "../../../utils/compareArrays";
+import { nanoid } from "@reduxjs/toolkit";
 
 interface IAddEmploymentHistory {
   getValue?: (data: TypeOfSingleEmploymentHistory[]) => void;
+  initialValue?: TypeOfSingleEmploymentHistory[];
+  getFocusedInputValue?: (data: string) => void;
+  initialFocusedValue?: string;
 }
 
 const AddEmploymentHistory: React.FC<IAddEmploymentHistory> = ({
   getValue = () => {},
+  getFocusedInputValue = () => {},
+  initialValue,
+  initialFocusedValue,
 }) => {
-  const [addMore, setAddMore] = useState<number>(1);
   const [employmentHistory, setEmploymentHistory] = useState<
     TypeOfSingleEmploymentHistory[]
-  >([]);
+  >(initialValue || []);
 
   const handleSingleHistory = (data: TypeOfSingleEmploymentHistory) => {
-    // add new history
-    const isAlreadyExist = employmentHistory?.find(
-      (item) => item._id === data._id
-    );
-
-    if (!isAlreadyExist) {
-      const filterData = employmentHistory.filter(
-        (item) => item._id !== data._id
-      );
-      return setEmploymentHistory([...filterData, data]);
-    }
-
-    // edit old history
-    const updateHistory = employmentHistory?.map((item) => {
+    const updatedHistory = employmentHistory.map((item) => {
       if (item._id === data._id) {
-        item.jobTitle = data.jobTitle;
-        item.city = data.city;
-        item.description = data.description;
-        item.startMontYear = data.startMontYear;
-        item.endMontYear = data.endMontYear;
-        item.employer = data.employer;
+        return {
+          ...item,
+          jobTitle: data.jobTitle,
+          city: data.city,
+          description: data.description,
+          startMontYear: data.startMontYear,
+          endMontYear: data.endMontYear,
+          employer: data.employer,
+        };
       }
       return item;
     });
-    setEmploymentHistory(updateHistory);
+    const isAlreadyExist = updatedHistory.find((item) => item._id === data._id);
+
+    if (!isAlreadyExist) {
+      setEmploymentHistory([...updatedHistory, data]);
+    } else {
+      setEmploymentHistory(updatedHistory);
+    }
   };
 
   useEffect(() => {
-    getValue(employmentHistory);
+    if (
+      typeof getValue === "function" &&
+      !compareArrays(employmentHistory, initialValue || [])
+    ) {
+      getValue(employmentHistory);
+    }
   }, [employmentHistory]);
 
-  // console.log("employmentHistory 2", employmentHistory);
+  const handleDelete = (id: string | number) => {
+    const filteredData = employmentHistory.filter((item) => item._id !== id);
+    setEmploymentHistory(filteredData);
+  };
+
   return (
     <div className=" space-y-3 bg-white overflow-hidden">
-      {createArrayUpToNumber(addMore).map((item) => (
-        <AddSingleEmploymentHistory
-          id={item}
-          getValue={handleSingleHistory}
-          key={item}
-        />
-      ))}
+      {employmentHistory.map((item: TypeOfSingleEmploymentHistory) => {
+        const initialSingleData = employmentHistory?.find(
+          (i) => i._id === item._id
+        );
+        return (
+          <AddSingleEmploymentHistory
+            id={item._id}
+            getValue={handleSingleHistory}
+            key={item._id}
+            initialValue={initialSingleData}
+            getFocusedInputValue={getFocusedInputValue}
+            initialFocusedValue={initialFocusedValue}
+            getDelete={handleDelete}
+          />
+        );
+      })}
       <button
-        onClick={() => setAddMore((prev) => prev + 1)}
+        onClick={() => {
+          setEmploymentHistory((prv) => [
+            ...prv,
+            {
+              _id: nanoid(),
+              jobTitle: "",
+              employer: "",
+              startMontYear: "",
+              endMontYear: "",
+              city: "",
+              description: "",
+            },
+          ]);
+        }}
         className="pb-5 px-3 font-semibold hover:text-blue-700 py-1 duration-300 transition-colors  text-c-primary flex justify-start items-center gap-4 ">
         <FaPlus />
         <span> Add one more employment</span>

@@ -11,23 +11,30 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   outline?: boolean;
   icon?: boolean;
+  disabled?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
   children,
   outline = false,
   icon = true,
+  disabled = false,
   ...props
 }) => {
   return (
     <button
+      disabled={disabled}
       {...props}
       className={`
       
       ${
         outline
           ? " border-c-primary text-c-primary bg-white shadow-blue-700"
-          : "bg-c-primary text-white hover:bg-c-primary-light border-transparent shadow-blue-200"
+          : `${
+              disabled ? "bg-blue-400 text-gray-200" : "bg-c-primary text-white"
+            }   ${
+              !disabled && "hover:bg-c-primary-light"
+            } border-transparent shadow-blue-200`
       }
       shadow-2xl flex justify-start items-center gap-8 uppercase font-mono hover:gap-10 transition-all duration-300 px-8 ${
         icon && "pr-3"

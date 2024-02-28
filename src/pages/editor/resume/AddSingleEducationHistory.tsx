@@ -1,14 +1,18 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import InputText from "../../../components/common/InputText";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import InputTextEditor from "../../../components/common/InputTextEditor";
 import InputMonthYear from "../../../components/common/InputMonthYear";
-import { TypeOfSingleEducationHistory } from "../../../types";
+import { TypeOfSingleEducationHistory } from "../../../types/resumeEditor";
+import { MdDelete } from "react-icons/md";
 
 interface IAddSingleEducationHistory {
   id: string | number;
   getValue?: (data: TypeOfSingleEducationHistory) => void;
+  initialValue?: TypeOfSingleEducationHistory;
+  getFocusedInputValue?: (data: string) => void;
+  getDelete?: (data: string | number) => void;
+  initialFocusedValue?: string;
 }
 
 const initialState = {
@@ -24,20 +28,40 @@ const initialState = {
 const AddSingleEducationHistory: React.FC<IAddSingleEducationHistory> = ({
   id,
   getValue = () => {},
+  initialValue,
+  getFocusedInputValue = () => {},
+  getDelete = () => {},
+  initialFocusedValue,
 }) => {
   const [title, setTitle] = useState<string>("(Not specified)");
-  const [state, setState] =
-    useState<TypeOfSingleEducationHistory>(initialState);
+  const [state, setState] = useState<TypeOfSingleEducationHistory>(
+    initialValue && initialValue._id ? initialValue : initialState
+  );
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const [focusedInput, setFocusedInput] = useState<string>(
+    initialFocusedValue || ""
+  );
+
+  useEffect(() => {
+    if (
+      getFocusedInputValue &&
+      typeof getFocusedInputValue === "function" &&
+      focusedInput !== initialFocusedValue
+    ) {
+      getFocusedInputValue(focusedInput);
+    }
+  }, [focusedInput]);
+
+  const handleInputFocus = (inputName: string) => {
+    setFocusedInput(inputName);
+  };
 
   const handleStartMontYear = (data: string) => {
     setState((prev) => ({ ...prev, startMontYear: data }));
   };
   const handleEndMontYear = (data: string) => {
     setState((prev) => ({ ...prev, endMontYear: data }));
-  };
-  const handleDescription = (data: string) => {
-    setState((prev) => ({ ...prev, description: data }));
   };
 
   useLayoutEffect(() => {
@@ -54,17 +78,29 @@ const AddSingleEducationHistory: React.FC<IAddSingleEducationHistory> = ({
     }
   }, [state]);
 
+  const handleDelete = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    event.stopPropagation();
+    getDelete(state._id);
+  };
+
   return (
-    <div className="mx-2 border-2 rounded-md text-c-dark overflow-hidden">
+    <div className="mx-2 border-[1.8px] rounded-md text-c-dark overflow-hidden">
       <motion.div
         onClick={() => setIsOpen((prev) => !prev)}
         className="w-full py-3 px-3 cursor-pointer font-semibold flex justify-between items-center">
         <span> {title}</span>
-        {!isOpen ? (
-          <IoIosArrowDown className=" text-xl" />
-        ) : (
-          <IoIosArrowUp className=" text-xl" />
-        )}
+        <div className=" flex justify-between gap-2 items-center">
+          <button onClick={handleDelete}>
+            <MdDelete className=" text-2xl text-red-400 hover:text-red-500 duration-300" />
+          </button>
+          {!isOpen ? (
+            <IoIosArrowDown className=" text-xl" />
+          ) : (
+            <IoIosArrowUp className=" text-xl" />
+          )}
+        </div>
       </motion.div>
       <AnimatePresence initial={false}>
         {isOpen && (
@@ -81,6 +117,7 @@ const AddSingleEducationHistory: React.FC<IAddSingleEducationHistory> = ({
                 value={state.school}
                 name="school"
                 placeholder="School"
+                onFocus={() => handleInputFocus("school")}
               />
               <InputText
                 onChange={(e) =>
@@ -89,10 +126,17 @@ const AddSingleEducationHistory: React.FC<IAddSingleEducationHistory> = ({
                 value={state.degree}
                 name="degree"
                 placeholder="Degree"
+                onFocus={() => handleInputFocus("degree")}
               />
               <div className="flex justify-between items-center gap-1">
-                <InputMonthYear getValue={handleStartMontYear} />
                 <InputMonthYear
+                  onFocus={() => handleInputFocus("startMontYear")}
+                  initialValue={state.startMontYear}
+                  getValue={handleStartMontYear}
+                />
+                <InputMonthYear
+                  onFocus={() => handleInputFocus("endMontYear")}
+                  initialValue={state.endMontYear}
                   getValue={handleEndMontYear}
                   dropdownLef="-50%"
                 />
@@ -104,11 +148,17 @@ const AddSingleEducationHistory: React.FC<IAddSingleEducationHistory> = ({
                 value={state.city}
                 name="city"
                 placeholder="City"
+                onFocus={() => handleInputFocus("city")}
               />
-              <InputTextEditor
-                getValue={handleDescription}
+              <InputText
+                textarea={true}
+                onFocus={() => handleInputFocus("description")}
+                onChange={(e) =>
+                  setState((prev) => ({ ...prev, description: e.target.value }))
+                }
+                value={state.description}
+                name="description"
                 placeholder="Descriptions.."
-                height="160px"
               />
             </div>
           </motion.div>

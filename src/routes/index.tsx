@@ -10,12 +10,23 @@ import SignUp from "../pages/auth/SignUp";
 import ResumesTemplates from "../pages/templates/resumes/ResumesTemplates";
 import CoverLetterTemplates from "../pages/templates/coverletter/CoverLetterTemplates";
 import EditorWrapper from "../layouts/EditorWrapper";
-import ResumeEditor from "../pages/editor";
+import ResumeEditor from "../pages/editor/ResumeEditor";
 import Pricing from "../pages/pricing";
 import AuthWrapper from "../layouts/AuthWrapper";
-import Resume from "../pages/dashboard/user";
+import UserDashboard from "../pages/dashboard/user/history";
 import AdminDashboard from "../pages/dashboard/admin";
 import BlogDetails from "../pages/blog/BlogDetails";
+import Blogs from "../pages/dashboard/admin/blog";
+import CreateBlog from "../pages/dashboard/admin/blog/CreateBlog";
+import CoverLetter from "../pages/editor/CoverLetter";
+import SydneyPDF from "../components/coverLetterTemplates/sydney/SydneyPDF";
+import ActiveAccount from "../pages/auth/ActiveAccount";
+import PrivateRoutes from "./PrivateRoutes";
+import ForgotPassword from "../pages/auth/ForgotPassword";
+import NewPassword from "../pages/auth/NewPassword";
+import Account from "../pages/dashboard/user/account/Account";
+import ShareView from "../pages/share/ShareView";
+import Athens from "../components/resumeTemplates/athens/Athens";
 
 const router = createBrowserRouter([
   {
@@ -46,7 +57,19 @@ const router = createBrowserRouter([
       // for dashboard
       {
         path: "/dashboard",
-        element: <Resume />,
+        element: (
+          <PrivateRoutes>
+            <UserDashboard />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/account",
+        element: (
+          <PrivateRoutes>
+            <Account />
+          </PrivateRoutes>
+        ),
       },
 
       {
@@ -72,6 +95,18 @@ const router = createBrowserRouter([
         path: "sign-up",
         element: <SignUp />,
       },
+      {
+        path: "active",
+        element: <ActiveAccount />,
+      },
+      {
+        path: "forget-password",
+        element: <ForgotPassword />,
+      },
+      {
+        path: "forget-password/:id",
+        element: <NewPassword />,
+      },
     ],
   },
 
@@ -80,20 +115,45 @@ const router = createBrowserRouter([
     element: <EditorWrapper />,
     children: [
       {
-        path: "resume",
+        path: "resume/:id",
         element: <ResumeEditor />,
+      },
+      {
+        path: "coverletter/:id",
+        element: <CoverLetter />,
       },
     ],
   },
+  // {
+  //   path: "/madrid",
+  //   element: <Madrid />,
+  // },
   {
-    path: "app",
+    path: "admin",
     element: <DashBoardWrapper />,
     children: [
       {
-        path: "admin",
+        path: "",
         element: <AdminDashboard />,
       },
+      {
+        path: "blog",
+        element: <Blogs />,
+      },
+      {
+        path: "create-blog",
+        element: <CreateBlog />,
+      },
     ],
+  },
+  
+  {
+    path: "/athens",
+    element: <Athens />
+  },
+  {
+    path: "share/view/:id",
+    element: <ShareView />,
   },
 ]);
 

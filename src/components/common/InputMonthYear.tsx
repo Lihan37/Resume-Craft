@@ -19,16 +19,20 @@ const months = [
 
 interface IInputMonthYear {
   getValue?: (data: string) => void;
+  onFocus?: () => void;
   dropdownLef?: string;
   dropdownRight?: string;
+  initialValue?: string;
 }
 
 const InputMonthYear: React.FC<IInputMonthYear> = ({
   getValue = () => {},
+  onFocus = () => {},
   dropdownLef = "0%",
   dropdownRight = "0%",
+  initialValue = "",
 }) => {
-  const [value, setValue] = useState<string>("");
+  const [value, setValue] = useState<string>(initialValue);
   const [year, setYear] = useState<number>(new Date().getFullYear());
   const [month, setMonth] = useState<number>(new Date().getMonth());
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -67,6 +71,7 @@ const InputMonthYear: React.FC<IInputMonthYear> = ({
   return (
     <div ref={dropdownRef} className=" relative z-50">
       <input
+        onFocus={onFocus}
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onClick={handleClickInput}

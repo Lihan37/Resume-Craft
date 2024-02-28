@@ -1,12 +1,17 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import InputText from "../../../components/common/InputText";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import { TypeOfSingleSocialWebSite } from "../../../types";
+import { TypeOfSingleSocialWebSite } from "../../../types/resumeEditor";
+import { MdDelete } from "react-icons/md";
 
 interface IAddSingeSocialWebSite {
   id: string | number;
   getValue?: (data: TypeOfSingleSocialWebSite) => void;
+  initialValue?: TypeOfSingleSocialWebSite;
+  getFocusedInputValue?: (data: string) => void;
+  getDelete?: (data: string | number) => void;
+  initialFocusedValue?: string;
 }
 
 const initialState = {
@@ -18,10 +23,34 @@ const initialState = {
 const AddSingeSocialWebSite: React.FC<IAddSingeSocialWebSite> = ({
   id,
   getValue = () => {},
+  getFocusedInputValue = () => {},
+  getDelete = () => {},
+  initialValue,
+  initialFocusedValue,
 }) => {
   const [title, setTitle] = useState<string>("(Not specified)");
-  const [state, setState] = useState<TypeOfSingleSocialWebSite>(initialState);
+  const [state, setState] = useState<TypeOfSingleSocialWebSite>(
+    initialValue && initialValue._id ? initialValue : initialState
+  );
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const [focusedInput, setFocusedInput] = useState<string>(
+    initialFocusedValue || ""
+  );
+
+  useEffect(() => {
+    if (
+      getFocusedInputValue &&
+      typeof getFocusedInputValue === "function" &&
+      focusedInput !== initialFocusedValue
+    ) {
+      getFocusedInputValue(focusedInput);
+    }
+  }, [focusedInput]);
+
+  const handleInputFocus = (inputName: string) => {
+    setFocusedInput(inputName);
+  };
 
   useLayoutEffect(() => {
     if (typeof getValue === "function") {
@@ -37,17 +66,29 @@ const AddSingeSocialWebSite: React.FC<IAddSingeSocialWebSite> = ({
     }
   }, [state]);
 
+  const handleDelete = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    event.stopPropagation();
+    getDelete(state._id);
+  };
+
   return (
-    <div className="mx-2 border-2 rounded-md text-c-dark overflow-hidden">
+    <div className="mx-2 border-[1.8px] rounded-md text-c-dark overflow-hidden">
       <motion.div
         onClick={() => setIsOpen((prev) => !prev)}
         className="w-full py-3 px-3 cursor-pointer font-semibold flex justify-between items-center">
         <span> {title}</span>
-        {!isOpen ? (
-          <IoIosArrowDown className=" text-xl" />
-        ) : (
-          <IoIosArrowUp className=" text-xl" />
-        )}
+        <div className=" flex justify-between gap-2 items-center">
+          <button onClick={handleDelete}>
+            <MdDelete className=" text-2xl text-red-400 hover:text-red-500 duration-300" />
+          </button>
+          {!isOpen ? (
+            <IoIosArrowDown className=" text-xl" />
+          ) : (
+            <IoIosArrowUp className=" text-xl" />
+          )}
+        </div>
       </motion.div>
       <AnimatePresence initial={false}>
         {isOpen && (
@@ -64,6 +105,7 @@ const AddSingeSocialWebSite: React.FC<IAddSingeSocialWebSite> = ({
                 value={state.label}
                 name="label"
                 placeholder="Label"
+                onFocus={() => handleInputFocus("label")}
               />
               <InputText
                 onChange={(e) =>
@@ -72,6 +114,7 @@ const AddSingeSocialWebSite: React.FC<IAddSingeSocialWebSite> = ({
                 value={state.link}
                 name="link"
                 placeholder="Link"
+                onFocus={() => handleInputFocus("link")}
               />
             </div>
           </motion.div>

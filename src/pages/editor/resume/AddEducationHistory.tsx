@@ -1,65 +1,98 @@
 import React, { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa6";
-import createArrayUpToNumber from "../../../utils/createArrayUpToNumber";
-import { TypeOfSingleEducationHistory } from "../../../types";
+import { TypeOfSingleEducationHistory } from "../../../types/resumeEditor";
 import AddSingleEducationHistory from "./AddSingleEducationHistory";
+import compareArrays from "../../../utils/compareArrays";
+import { nanoid } from "@reduxjs/toolkit";
 
 interface IAddEducationHistory {
   getValue?: (data: TypeOfSingleEducationHistory[]) => void;
+  initialValue?: TypeOfSingleEducationHistory[];
+  getFocusedInputValue?: (data: string) => void;
+  initialFocusedValue?: string;
 }
 
 const AddEducationHistory: React.FC<IAddEducationHistory> = ({
   getValue = () => {},
+  initialValue,
+  getFocusedInputValue = () => {},
+  initialFocusedValue,
 }) => {
-  const [addMore, setAddMore] = useState<number>(1);
   const [educationHistory, setEducationHistory] = useState<
     TypeOfSingleEducationHistory[]
-  >([]);
+  >(initialValue || []);
 
   const handleSingleHistory = (data: TypeOfSingleEducationHistory) => {
-    // add new history
-    const isAlreadyExist = educationHistory?.find(
-      (item) => item._id === data._id
-    );
-
-    if (!isAlreadyExist) {
-      const filterData = educationHistory.filter(
-        (item) => item._id !== data._id
-      );
-      return setEducationHistory([...filterData, data]);
-    }
-
-    // edit old history
-    const updateHistory = educationHistory?.map((item) => {
+    const updatedHistory = educationHistory.map((item) => {
       if (item._id === data._id) {
-        item.school = data.school;
-        item.city = data.city;
-        item.description = data.description;
-        item.startMontYear = data.startMontYear;
-        item.endMontYear = data.endMontYear;
-        item.degree = data.degree;
+        return {
+          ...item,
+          school: data.school,
+          city: data.city,
+          description: data.description,
+          startMontYear: data.startMontYear,
+          endMontYear: data.endMontYear,
+          degree: data.degree,
+        };
       }
       return item;
     });
-    setEducationHistory(updateHistory);
+
+    const isAlreadyExist = updatedHistory.find((item) => item._id === data._id);
+
+    if (!isAlreadyExist) {
+      setEducationHistory([...updatedHistory, data]);
+    } else {
+      setEducationHistory(updatedHistory);
+    }
   };
 
   useEffect(() => {
-    getValue(educationHistory);
+    if (
+      typeof getValue === "function" &&
+      !compareArrays(educationHistory, initialValue || [])
+    ) {
+      getValue(educationHistory);
+    }
   }, [educationHistory]);
 
-  // console.log("employmentHistory 2", employmentHistory);
+  const handleDelete = (id: string | number) => {
+    const filteredData = educationHistory.filter((item) => item._id !== id);
+    setEducationHistory(filteredData);
+  };
   return (
     <div className=" space-y-3 bg-white overflow-hidden">
-      {createArrayUpToNumber(addMore).map((item) => (
-        <AddSingleEducationHistory
-          id={item}
-          getValue={handleSingleHistory}
-          key={item}
-        />
-      ))}
+      {educationHistory.map((item) => {
+        const initialSingleData = educationHistory?.find(
+          (i) => i._id === item._id
+        );
+        return (
+          <AddSingleEducationHistory
+            id={item._id}
+            getValue={handleSingleHistory}
+            key={item._id}
+            initialValue={initialSingleData}
+            getFocusedInputValue={getFocusedInputValue}
+            initialFocusedValue={initialFocusedValue}
+            getDelete={handleDelete}
+          />
+        );
+      })}
       <button
-        onClick={() => setAddMore((prev) => prev + 1)}
+        onClick={() => {
+          setEducationHistory((prev) => [
+            ...prev,
+            {
+              _id: nanoid(),
+              school: "",
+              degree: "",
+              startMontYear: "",
+              endMontYear: "",
+              city: "",
+              description: "",
+            },
+          ]);
+        }}
         className=" px-3 font-semibold hover:text-blue-700 py-1 duration-300 transition-colors  text-c-primary flex justify-start items-center gap-4">
         <FaPlus />
         <span> Add one more education</span>

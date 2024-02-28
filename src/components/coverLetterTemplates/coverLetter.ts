@@ -1,0 +1,81 @@
+const coverLetter = {
+  _id: "BkUiPwPpp18l6PjN-enHK",
+  JobTitle: "Frontend Developer",
+  address: "Lalbag Road Rangpur , Rangpur, 5400, Bangladesh",
+  companyName: "Southtech",
+  details:
+    "I am writing to express my interest in the Frontend Developer position at Southtech, as advertised. With a strong background in frontend development and a passion for creating user-friendly interfaces, I am excited about the opportunity to contribute to your team and help Southtech achieve its goals.During my career, I have gained extensive experience in frontend technologies such as HTML, CSS, and JavaScript, as well as frameworks like React and Angular. I have successfully delivered numerous projects where I collaborated closely with designers and backend developers to create seamless user experiences. My attention to detail and problem-solving skills have allowed me to overcome challenges and deliver high-quality solutions within tight deadlines.One of my recent projects involved revamping the user interface of a web application for a client in the e-commerce sector. By implementing responsive design principles and optimizing performance, we were able to significantly improve user engagement and conversion rates. This experience not only honed my technical skills but also strengthened my ability to communicate effectively and work collaboratively within a team.Furthermore, I am committed to staying updated with the latest advancements in frontend development. Whether it's attending workshops, participating in online courses, or exploring emerging technologies, I am dedicated to continuously improving my skills and adapting to industry trends.",
+  email: "satyaranjonofficial@gmail.com",
+  fullName: "Ranjon Sharma",
+  historyId: "8qZvJkUfzsi8pls3IRaFb",
+  managerName: "Jone Don",
+  phoneNumber: "01746958640",
+  size: {
+    height: "792px",
+    width: "612px",
+  },
+  style: {
+    theme: "#172F53",
+    themeOptions: ["#232323", "#172F53", "#361146", "#160A45", "#324739"],
+    fullName: {
+      color: "#262626",
+      fontFamily: "Nunito Sans",
+      fontWeight: 700,
+      fontSize: "36px",
+      textAlign: "start",
+    },
+    JobTitle: {
+      color: "#262626",
+      fontFamily: "Nunito Sans",
+      fontWeight: 700,
+      fontSize: "18px",
+      textAlign: "start",
+    },
+    address: {
+      color: "#262626",
+      fontFamily: "Nunito Sans",
+      fontWeight: 400,
+      fontSize: "14px",
+      textAlign: "start",
+    },
+    email: {
+      color: "#262626",
+      fontFamily: "Nunito Sans",
+      fontWeight: 400,
+      fontSize: "14px",
+      textAlign: "start",
+    },
+    phoneNumber: {
+      color: "#262626",
+      fontFamily: "Nunito Sans",
+      fontWeight: 400,
+      fontSize: "14px",
+      textAlign: "start",
+    },
+    companyName: {
+      color: "#ffffff",
+      fontFamily: "Nunito Sans",
+      fontWeight: 600,
+      fontSize: "18px",
+      textAlign: "center",
+    },
+    managerName: {
+      color: "#ffffff",
+      fontFamily: "Nunito Sans",
+      fontWeight: 600,
+      fontSize: "18px",
+      textAlign: "center",
+    },
+    details: {
+      color: "#262626",
+      fontFamily: "Nunito Sans",
+      fontWeight: 400,
+      fontSize: "12px",
+      textAlign: "start",
+    },
+  },
+  templateId: "sydney01",
+  zoom: 1,
+};
+
+export default coverLetter;
