@@ -32,7 +32,7 @@ export const resume = {
   personalInfo: {
     _id: "",
     jobTitle: "Frontend Devloper",
-    firstName: "Shatya Ranjon ",
+    firstName: "Ranjon ",
     lastName: "Sharma",
     email: "khokondemo@gmail.com",
     phoneNumber: "01700000000",

@@ -114,15 +114,15 @@ const Athens: React.ForwardRefRenderFunction<HTMLDivElement, IAthens> = (
           style={{
             paddingTop: "40px",
             paddingLeft: "40px",
-            paddingRight: "40px",
+            paddingRight: "20px",
             width: "100%",
           }}>
           <div
             style={{
               display: "flex",
               gap: "10px",
-              justifyItems: "center",
-              justifyContent: "center",
+              justifyItems: "start",
+              justifyContent: "start",
               alignItems: "center",
             }}>
             {resume.avatar.url && (
@@ -132,8 +132,8 @@ const Athens: React.ForwardRefRenderFunction<HTMLDivElement, IAthens> = (
                 alt="avatar"
               />
             )}
-            <div className="">
-              <div style={{ display: "flex", gap: "5px" }}>
+            <div>
+              <div>
                 <span
                   style={{
                     ...style.personalInfo.firstName,
