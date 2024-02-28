@@ -86,34 +86,140 @@ export const initialState: IResumeEditorState = {
     _id: "",
     avatar: {
       public_id: "",
-      url: "",
+      url: "https://res.cloudinary.com/dvbgu8nqo/image/upload/v1708412949/resumeCraft_resume_Avatar/tci6iejbrm6zhhdu4att.png",
     },
 
     historyId: "",
     templateId: "",
     personalInfo: {
-      jobTitle: "",
-      firstName: "",
-      lastName: "",
-      email: "",
-      phoneNumber: "",
-      country: "",
-      city: "",
-      address: "",
-      postalCode: "",
-      drivingLicense: "",
-      nationality: "",
-      placeOfBirth: "",
-      DateOfBirth: "",
       _id: "",
+      jobTitle: "Frontend Devloper",
+      firstName: "Shatya Ranjon ",
+      lastName: "Sharma",
+      email: "khokondemo@gmail.com",
+      phoneNumber: "01700000000",
+      country: "Bangladesh",
+      city: "Rangpur",
+      address: "Lalbag",
+      postalCode: "5200",
+      drivingLicense: "01.0215.021",
+      nationality: "Bangladeshi",
+      placeOfBirth: "Rangpur",
+      DateOfBirth: "10-10-2004",
     },
-    professionalSummary: "",
-    workExperience: [],
-    skills: [],
-    languages: [],
-    references: [],
-    educations: [],
-    socialProfiles: [],
+    professionalSummary:
+      "Experienced Frontend Web Developer with a passion for crafting user-friendly interfaces. Proficient in HTML, CSS, and JavaScript, with expertise in responsive design and frameworks like React. Dedicated to delivering high-quality code and collaborating effectively in fast-paced environments",
+    workExperience: [
+      {
+        _id: "eeYQn3dNzL-ApfDlLMo9L",
+        city: "Dhaka",
+        description:
+          "\nExperienced Frontend Web Developer with a passion for crafting user-friendly interfaces. Proficient in HTML, CSS, and JavaScript, with expertise in responsive design and frameworks like React. Dedicated to delivering high-quality code and collaborating effectively in fast-paced environments.",
+        employer: "BD limited",
+        endMontYear: "Feb,2024",
+        jobTitle: "Frontend Dev",
+        startMontYear: "Feb,2020",
+      },
+      {
+        _id: "5o-BXHCdd1xNKGCYvZ2in",
+        city: "Dhaka",
+        description:
+          "\nSeasoned Backend Web Developer adept in building scalable, efficient, and secure web applications. Skilled in backend technologies such as Node.js, Python, and SQL databases. ",
+        employer: "LD limited",
+        endMontYear: "Feb,2023",
+        jobTitle: "Backend Dev",
+        startMontYear: "Feb,2022",
+      },
+    ],
+    skills: [
+      {
+        _id: "jqNWWw8uTQsyygeOCvHrB",
+        label: "Html",
+        level: 80,
+      },
+      {
+        _id: "CLJ1uSQjmDv66-sZ-yiKK",
+        label: "Javascript",
+        level: 80,
+      },
+      {
+        _id: "GDLwI-C5eVriRB7MVXW5f",
+        label: "AWS",
+        level: 60,
+      },
+      {
+        _id: "NNLm27A3HiQ_9lcqybE5U",
+        label: "Typescript",
+        level: 60,
+      },
+      {
+        _id: "IKARGF-iDuN2MqR2Qacoa",
+        label: "CSS",
+        level: 60,
+      },
+      {
+        _id: "mBfovGyUscfh7Jz4TToMU",
+        label: "ReactJS",
+        level: 80,
+      },
+      {
+        _id: "YyiGXMnvhNFQkA6rFjt0Y",
+        label: "NextJs",
+        level: 40,
+      },
+    ],
+    languages: [
+      {
+        _id: "sJHoORxv4pkJTbWDnW0eN",
+        language: "English",
+        level: "Basic",
+      },
+      {
+        _id: "-SnlMEy3XGZm20vRyi0HS",
+        language: "Bangla",
+        level: "Native",
+      },
+    ],
+    references: [
+      {
+        _id: "Dm-8YXb6joyaRdRyRwpFI",
+        name: "khokon Sharma",
+        company: "LD limited",
+        phone: "01700000000",
+        email: "khokondemo@gmail.com",
+      },
+      {
+        _id: "h5wOYGWsSfkpof7OMphi7",
+        name: "Shatya Ranjon Sharma",
+        company: "SD limited",
+        phone: "01700000000",
+        email: "khokondemo@gmail.com",
+      },
+    ],
+    educations: [
+      {
+        _id: "wywcY1ZFRV46bFydcFApK",
+        school: "Dinajpur Zilla School",
+        degree: "SSC",
+        startMontYear: "Feb,2014",
+        endMontYear: "Feb,2020",
+        city: "Dinajpur",
+        description:
+          "Educated at Dinajpur Zilla School, where I developed a strong academic foundation and demonstrated leadership skills. ",
+      },
+    ],
+    socialProfiles: [
+      {
+        _id: "rAQG-bPHrkV9rvBBVpB1n",
+        label: "Youtube",
+        link: "https://www.youtube.com/watch?v=7USf9qWTqmE",
+      },
+      {
+        _id: "PdOcN3DPUjXhK-BVj4DU1",
+        label: "Facebook",
+        link: "https://www.youtube.com/watch?v=7USf9qWTqmE",
+      },
+    ],
     sectionTitles: {
       personalInfo: "Personal Details",
       professionalSummary: "Professional Summary",
@@ -125,10 +231,10 @@ export const initialState: IResumeEditorState = {
       socialProfiles: "Websites & Social",
       _id: "",
     },
-    zoom: 0.7,
+    zoom: 1,
     size: {
-      height: "1190.14px",
-      width: "852px",
+      height: "792px",
+      width: "612px",
     },
     style: {
       theme: "",
@@ -327,7 +433,10 @@ const resumeEditorSlice = createSlice({
       })
       .addCase(getSingleResumeData.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.resume = action.payload.resume;
+        state.resume = action.payload.success
+          ? action.payload.resume
+          : state.resume;
+        state.error = !action.payload.success ? action.payload.message : null;
       })
       .addCase(getSingleResumeData.rejected, (state, action) => {
         state.isLoading = false;

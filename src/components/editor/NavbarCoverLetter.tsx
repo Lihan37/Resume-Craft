@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Logo from "../common/Logo";
 import Breadcrumbs from "../common/Breadcrumbs";
 import Title from "./Title";
@@ -25,6 +25,11 @@ import {
 } from "../../services/coverletterEditor/coverletterEditorSelector";
 import { setZoomIn } from "../../services/coverletterEditor/coverletterEditorSlice";
 import { ISingleUserHistory } from "../../services/history/historySlice";
+import coverLetterPDF from "../coverLetterTemplates/coverLetterPDF";
+import { CoverLettersTemplatesType } from "../coverLetterTemplates/template";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import Share from "./Share";
+import useOutsideClick from "../../hooks/useOutsideClick";
 
 const NavbarCoverLetter: React.FC = () => {
   const appDispatch = useAppDispatch();
@@ -33,6 +38,25 @@ const NavbarCoverLetter: React.FC = () => {
   const dispatch = useDispatch();
   const zoom = useSelector(selectCoverLetterZoom);
   const coverLetter = useSelector(selectCoverLetter);
+  const [isShare, setIsShare] = useState<boolean>(false);
+  const shareRef = useRef(null);
+  useOutsideClick(
+    shareRef,
+    () => {
+      setIsShare(false);
+    },
+    []
+  );
+
+  const Template =
+    !editor.isLoading &&
+    coverLetterPDF[
+      editor.coverLetter.templateId as keyof CoverLettersTemplatesType
+    ]
+      ? coverLetterPDF[
+          editor.coverLetter.templateId as keyof CoverLettersTemplatesType
+        ].template
+      : null;
 
   useEffect(() => {
     if (!(allHistory.length > 0)) {
@@ -68,13 +92,13 @@ const NavbarCoverLetter: React.FC = () => {
 
   return (
     <div className="border-b-2">
-      <div className=" 2xl:max-w-[1800px] mx-auto px-10 2xl:px-0 py-5 ">
+      <div className=" max-w-[1800px] mx-auto  py-5 pr-3">
         <div className="flex justify-between items-center">
           <div className=" flex justify-start items-center gap-5 xl:gap-10">
             <Logo name={false} />
             <div className=" flex justify-start items-center gap-5 xl:gap-10">
               <Breadcrumbs back="/" label="Home" />
-              <Breadcrumbs back="/dashboard" label="Cover-Letter" />
+              <Breadcrumbs back="/dashboard" label="Dashboard" />
 
               {history?._id && (
                 <Title
@@ -112,14 +136,28 @@ const NavbarCoverLetter: React.FC = () => {
           </div>
 
           <div className=" flex justify-start items-center gap-5 xl:gap-10">
-            <button className=" text-c-dark font-semibold flex justify-start  items-center lg:gap-2 lg:px-4 p-2 lg:py-2 bg-gray-100 rounded-full text-base lg:text-xl">
-              <FiDownload />
-              <span className=" hidden lg:block">Download</span>
-            </button>
-            <button className=" flex justify-start items-center lg:gap-2 lg:px-4 p-2  lg:py-2 bg-c-primary text-white rounded-full text-base lg:text-xl">
-              <FiSend />
-              <span className=" hidden lg:block">Share</span>
-            </button>
+            {Template && (
+              <PDFDownloadLink
+                className="text-c-dark font-semibold flex justify-start  items-center lg:gap-2 lg:px-4 p-2 lg:py-2 bg-gray-100 rounded-full text-base lg:text-xl"
+                document={<Template coverLetter={coverLetter} />}
+                fileName="resumeCraft.pdf">
+                <FiDownload />
+                <span className=" hidden lg:block">Download</span>
+              </PDFDownloadLink>
+            )}
+            <div ref={shareRef} className="relative">
+              <button
+                onClick={() => setIsShare((pre) => !pre)}
+                className=" flex justify-start items-center lg:gap-2 lg:px-4 p-2  lg:py-2 bg-c-primary text-white rounded-full text-base lg:text-xl">
+                <FiSend />
+                <span className=" hidden lg:block">Share</span>
+              </button>
+              {isShare && (
+                <div className="absolute   bg-white border-[1.3px] rounded-md top-14 z-50 right-12">
+                  <Share templateId={coverLetter._id} type="coverletter" />
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

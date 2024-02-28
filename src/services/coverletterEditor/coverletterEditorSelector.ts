@@ -2,6 +2,8 @@ import { RootState } from "../../app/store";
 
 export const selectCoverLetterEditor = (state: RootState) =>
   state.coverLetterEditor;
+export const selectCoverLetterEditorError = (state: RootState) =>
+  state.coverLetterEditor.error;
 
 export const selectCoverLetter = (state: RootState) =>
   state.coverLetterEditor.coverLetter;

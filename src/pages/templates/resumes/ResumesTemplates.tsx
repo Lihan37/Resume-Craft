@@ -49,6 +49,7 @@ const ResumesTemplates: React.FC = () => {
               resume examples covers various job roles and industries."
           button="Create Resume"
           image={images.resumeTemplate}
+          create="resume"
         />
       </div>
 

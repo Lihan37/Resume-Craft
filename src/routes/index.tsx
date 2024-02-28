@@ -13,14 +13,19 @@ import EditorWrapper from "../layouts/EditorWrapper";
 import ResumeEditor from "../pages/editor/ResumeEditor";
 import Pricing from "../pages/pricing";
 import AuthWrapper from "../layouts/AuthWrapper";
-import UserDashboard from "../pages/dashboard/user";
+import UserDashboard from "../pages/dashboard/user/history";
 import AdminDashboard from "../pages/dashboard/admin";
 import BlogDetails from "../pages/blog/BlogDetails";
 import Blogs from "../pages/dashboard/admin/blog";
 import CreateBlog from "../pages/dashboard/admin/blog/CreateBlog";
-import { PDFViewer } from "@react-pdf/renderer";
 import CoverLetter from "../pages/editor/CoverLetter";
 import SydneyPDF from "../components/coverLetterTemplates/sydney/SydneyPDF";
+import ActiveAccount from "../pages/auth/ActiveAccount";
+import PrivateRoutes from "./PrivateRoutes";
+import ForgotPassword from "../pages/auth/ForgotPassword";
+import NewPassword from "../pages/auth/NewPassword";
+import Account from "../pages/dashboard/user/account/Account";
+import ShareView from "../pages/share/ShareView";
 import Athens from "../components/resumeTemplates/athens/Athens";
 
 const router = createBrowserRouter([
@@ -52,7 +57,19 @@ const router = createBrowserRouter([
       // for dashboard
       {
         path: "/dashboard",
-        element: <UserDashboard />,
+        element: (
+          <PrivateRoutes>
+            <UserDashboard />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/account",
+        element: (
+          <PrivateRoutes>
+            <Account />
+          </PrivateRoutes>
+        ),
       },
 
       {
@@ -78,6 +95,18 @@ const router = createBrowserRouter([
         path: "sign-up",
         element: <SignUp />,
       },
+      {
+        path: "active",
+        element: <ActiveAccount />,
+      },
+      {
+        path: "forget-password",
+        element: <ForgotPassword />,
+      },
+      {
+        path: "forget-password/:id",
+        element: <NewPassword />,
+      },
     ],
   },
 
@@ -95,6 +124,10 @@ const router = createBrowserRouter([
       },
     ],
   },
+  // {
+  //   path: "/madrid",
+  //   element: <Madrid />,
+  // },
   {
     path: "admin",
     element: <DashBoardWrapper />,
@@ -119,12 +152,8 @@ const router = createBrowserRouter([
     element: <Athens />
   },
   {
-    path: "/demopdf",
-    element: (
-      <PDFViewer width={1000} height={1300}>
-        <SydneyPDF />
-      </PDFViewer>
-    ),
+    path: "share/view/:id",
+    element: <ShareView />,
   },
 ]);
 

@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import {
   selectCoverLetter,
   selectCoverLetterEditor,
+  selectCoverLetterZoom,
 } from "../../services/coverletterEditor/coverletterEditorSelector";
 import coverLetters, {
   CoverLettersTemplatesType,
@@ -25,6 +26,7 @@ import {
 import { useAppDispatch } from "../../app/store";
 import { updateHistoryThumbnail } from "../../services/history/historyApi";
 import html2canvas from "html2canvas";
+import useTitleSet from "../../hooks/useTitleSet";
 
 const CoverLetter: React.FC = () => {
   const [rightSideBarIsOpen, setRightSideBarIsOpen] = useState<boolean>(false);
@@ -39,6 +41,8 @@ const CoverLetter: React.FC = () => {
   const leftSideRef = useRef(null);
   const rightSideBarOpenButtonRef = useRef(null);
   const dispatch = useAppDispatch();
+  const zoom = useSelector(selectCoverLetterZoom);
+  useTitleSet("Cover-Letter");
 
   useEffect(() => {
     if (param.id && param.id !== coverLetter._id) {
@@ -117,7 +121,6 @@ const CoverLetter: React.FC = () => {
   useOutsideClick(
     rightSideRef,
     () => {
-      console.log("click outSide");
       setRightSideBarIsOpen(false);
     },
     [rightSideBarOpenButtonRef, leftSideRef]
@@ -131,8 +134,8 @@ const CoverLetter: React.FC = () => {
           <div
             ref={leftSideRef}
             className={`${
-              !editorDashboardIsOpen ? "block" : " hidden"
-            } h-full w-full xl:min-w-[400px] xl:max-w-[400px]`}>
+              !editorDashboardIsOpen ? "block" : "hidden"
+            } h-full w-full lg:min-w-[400px] lg:max-w-[400px]`}>
             <LeftSideBar
               editor={<LeftSideBarOptions />}
               templates={<CoverLetterTemplates />}
@@ -145,15 +148,20 @@ const CoverLetter: React.FC = () => {
             id="resumeEditorDashboard"
             className={`${
               editorDashboardIsOpen ? "block" : " hidden"
-            } w-full xl:flex overflow-auto justify-center items-center bg-zinc-100 `}>
-            {Template && (
-              <Template ref={templateRef} coverLetter={editor.coverLetter} />
-            )}
+            } w-full lg:flex overflow-auto justify-center items-center bg-zinc-100 `}>
+            <div
+              className={`${
+                zoom > 1 && "w-[1600px] h-[1300px] pt-[250px] "
+              }  flex justify-center items-center`}>
+              {Template && (
+                <Template ref={templateRef} coverLetter={editor.coverLetter} />
+              )}
+            </div>
           </div>
           <div
             ref={rightSideBarOpenButtonRef}
             onClick={() => setRightSideBarIsOpen(true)}
-            className="2xl:hidden fixed right-0 top-56 py-2 px-6 hover:bg-white hover:text-c-primary duration-300 transition-colors cursor-pointer text-white rounded-l-full bg-c-primary">
+            className="xl:hidden fixed right-0 top-56 py-2 px-6 hover:bg-white hover:text-c-primary duration-300 transition-colors cursor-pointer text-white rounded-l-full bg-c-primary">
             <IoSettingsOutline className="animate-spin text-4xl" />
           </div>
 
@@ -161,7 +169,7 @@ const CoverLetter: React.FC = () => {
           <div
             ref={rightSideRef}
             className={`${
-              windowWidth < 1590
+              windowWidth < 1280
                 ? `fixed top-[88px] xl:top-[98px] z-50 ${
                     rightSideBarIsOpen ? "-right-[0%]" : "-right-[1000%]"
                   }`
@@ -170,7 +178,7 @@ const CoverLetter: React.FC = () => {
             <RightSideBar>
               <div className="">
                 <RightSideBarOptions />
-                <div className="2xl:hidden mt-10 flex justify-center items-center">
+                <div className="xl:hidden mt-10 flex justify-center items-center">
                   <button
                     onClick={() => setRightSideBarIsOpen(false)}
                     className="w-fit rounded-md text-white  px-3 py-1 text-base font-semibold bg-red-400">
@@ -182,14 +190,14 @@ const CoverLetter: React.FC = () => {
           </div>
 
           {editorDashboardIsOpen ? (
-            <div className=" xl:hidden absolute top-0 left-2 z-50">
+            <div className=" lg:hidden absolute top-0 left-2 z-50">
               <FaArrowLeftLong
                 onClick={() => setEditorDashboardIsOpen(false)}
                 className=" text-5xl hover:text-c-primary text-c-dark duration-300 cursor-pointer"
               />
             </div>
           ) : (
-            <div className=" xl:hidden absolute bottom-5 right-0">
+            <div className=" lg:hidden absolute bottom-5 right-0">
               <Button onClick={() => setEditorDashboardIsOpen(true)}>
                 Preview
               </Button>

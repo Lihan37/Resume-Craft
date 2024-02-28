@@ -1,24 +1,34 @@
 import React from "react";
 import NavbarResume from "../components/editor/NavbarResume";
-import { Outlet, useLocation } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import NavbarCoverLetter from "../components/editor/NavbarCoverLetter";
+import { useSelector } from "react-redux";
+import { selectUser } from "../services/auth/authSelector";
+import { selectResumeEditorError } from "../services/resumeEditor/resumeEditorSelector";
+import { selectCoverLetterEditorError } from "../services/coverletterEditor/coverletterEditorSelector";
 
 const EditorWrapper: React.FC = () => {
   const { pathname } = useLocation();
-  console.log(pathname.includes("/edit/resume/"));
-  return (
-    <div>
-      <>
-        {pathname.includes("/edit/resume/") ? (
-          <NavbarResume />
-        ) : (
-          <NavbarCoverLetter />
-        )}
-        <div className="2xl:max-w-[1800px] mx-auto px-10 2xl:px-0">
-          <Outlet />
-        </div>
-      </>
-    </div>
+  const user = useSelector(selectUser);
+  const error = useSelector(selectResumeEditorError);
+  const errorCoverLetter = useSelector(selectCoverLetterEditorError);
+
+  if (error || errorCoverLetter) {
+    return <Navigate to="/notfound" />;
+  }
+  return !user._id ? (
+    <Navigate to="/auth/login" />
+  ) : (
+    <>
+      {pathname.includes("/edit/resume/") ? (
+        <NavbarResume />
+      ) : (
+        <NavbarCoverLetter />
+      )}
+      <div className="max-w-[1800px] mx-auto ">
+        <Outlet />
+      </div>
+    </>
   );
 };
 

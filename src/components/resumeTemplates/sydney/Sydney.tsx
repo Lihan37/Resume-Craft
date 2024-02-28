@@ -3,6 +3,7 @@ import React, { forwardRef } from "react";
 import { IResumeData } from "../../../services/resumeEditor/resumeEditorSlice";
 
 import styleSydney from "./SydneyStyle";
+import useDisplay from "../../../hooks/useDisplay";
 
 export interface ISydney {
   resume: IResumeData;
@@ -15,6 +16,7 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
   const style = resume.style;
   const styleCommon = styleSydney.common;
   const personalInfo = resume?.personalInfo;
+  const [windowWidth] = useDisplay();
 
   const personalInfoSectionTitle =
     resume?.sectionTitles.personalInfo &&
@@ -92,24 +94,29 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
     )
       ? resume.sectionTitles.references
       : null;
+  const skillLevelHide = resume.style.skillLevel;
+
   return (
     <div
       className="mx-auto"
       ref={ref}
       style={{
-        transform: `scale(${resume.zoom})`,
-        height: resume.size.height,
-        width: resume.size.width,
+        transform: `scale(${windowWidth < 768 ? 0.6 : resume.zoom})`,
+        minHeight: resume?.size.height,
+        maxHeight: resume?.size.height,
+        minWidth: resume?.size.width,
+        maxWidth: resume?.size.width,
         transformOrigin:
           parseFloat(resume.size.height.slice(0, -2)) > 1190.14 ? "bottom" : "",
         transition: "transform 0.5s",
         backgroundColor: "#ffff",
       }}>
       <div style={styleCommon.container}>
-        <div style={styleCommon.header}>
+        <div style={{ ...styleCommon.header, alignItems: "center" }}>
           {resume.avatar.url && (
             <img style={styleCommon.Image} src={resume.avatar.url} alt="" />
           )}
+
           <div>
             {resume.personalInfo.firstName && (
               <span
@@ -145,11 +152,13 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
           <div style={styleCommon.headerDivTwo}>
             <div>
               <div style={styleCommon.headerIcon}>
-                <img
-                  style={styleCommon.icon}
-                  src="https://i.ibb.co/rfthK7T/profile-user.png"
-                  alt=""
-                />
+                {professionalSummarySectionTitle && (
+                  <img
+                    style={styleCommon.icon}
+                    src="https://i.ibb.co/rfthK7T/profile-user.png"
+                    alt=""
+                  />
+                )}
                 {professionalSummarySectionTitle && (
                   <h1
                     style={{
@@ -174,18 +183,20 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
             </div>
             <div>
               <div style={styleCommon.headerIcon}>
-                <img
-                  style={styleCommon.icon}
-                  src="https://i.ibb.co/3MQtzRg/portfolio.png"
-                  alt=""
-                />
+                {workExperienceSectionTitle && (
+                  <img
+                    style={styleCommon.icon}
+                    src="https://i.ibb.co/3MQtzRg/portfolio.png"
+                    alt=""
+                  />
+                )}
                 {workExperienceSectionTitle && (
                   <h1
                     style={{
                       ...style.sectionTitles.workExperienceStyle,
                       textAlign: style.sectionTitles.workExperienceStyle
                         .textAlign as any,
-                      marginTop: "10px",
+                      marginTop: "5px",
                     }}>
                     {workExperienceSectionTitle}
                   </h1>
@@ -202,9 +213,9 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
                     item.startMontYear ||
                     item.endMontYear) && (
                     <div
-                      style={{ marginBottom: !marginBottom ? "8px" : "0px" }}
+                      style={{ marginBottom: !marginBottom ? "5px" : "0px" }}
                       key={item._id}>
-                      <h1>
+                      <h1 style={{ lineHeight: "13px" }}>
                         {item.jobTitle && (
                           <span
                             style={{
@@ -272,18 +283,20 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
             </div>
             <div>
               <div style={styleCommon.headerIcon}>
-                <img
-                  style={styleCommon.icon}
-                  src="https://i.ibb.co/v3s3Y7z/mortarboard.png"
-                  alt=""
-                />
+                {educationsSectionTitle && (
+                  <img
+                    style={styleCommon.icon}
+                    src="https://i.ibb.co/v3s3Y7z/mortarboard.png"
+                    alt=""
+                  />
+                )}
                 {educationsSectionTitle && (
                   <h1
                     style={{
                       ...style.sectionTitles.educationsStyle,
                       textAlign: style.sectionTitles.educationsStyle
                         .textAlign as any,
-                      marginTop: "10px",
+                      marginTop: "5px",
                     }}>
                     {educationsSectionTitle}
                   </h1>
@@ -299,7 +312,7 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
                     item.startMontYear ||
                     item.endMontYear) && (
                     <div key={item._id}>
-                      <h1>
+                      <h1 style={{ lineHeight: "13px" }}>
                         {item.degree && (
                           <span
                             style={{
@@ -367,18 +380,20 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
             </div>
             <div>
               <div style={styleCommon.headerIcon}>
-                <img
-                  style={styleCommon.icon}
-                  src="https://i.ibb.co/Dkf2QTy/refer.png"
-                  alt=""
-                />
+                {referencesSectionTitle && (
+                  <img
+                    style={styleCommon.icon}
+                    src="https://i.ibb.co/Dkf2QTy/refer.png"
+                    alt=""
+                  />
+                )}
                 {referencesSectionTitle && (
                   <h1
                     style={{
                       ...style.sectionTitles.referencesStyle,
                       textAlign: style.sectionTitles.referencesStyle
                         .textAlign as any,
-                      marginTop: "10px",
+                      marginTop: "5px",
                     }}>
                     {referencesSectionTitle}
                   </h1>
@@ -388,7 +403,7 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
               {resume.references.map((item) => {
                 return (
                   <div key={item._id}>
-                    <h1>
+                    <h1 style={{ lineHeight: "12px" }}>
                       {item.name && (
                         <span
                           style={{
@@ -452,46 +467,49 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
                 {resume.personalInfo.address && (
                   <h1 style={styleCommon.personalInfoLabel}>Address</h1>
                 )}
-                {resume.personalInfo.address && (
-                  <span
-                    style={{
-                      ...style.personalInfo.address,
-                      textAlign: style.personalInfo.address.textAlign as any,
-                    }}>
-                    {" "}
-                    {resume.personalInfo.address},
-                  </span>
-                )}
-                {resume.personalInfo.city && (
-                  <span
-                    style={{
-                      ...style.personalInfo.city,
-                      textAlign: style.personalInfo.city.textAlign as any,
-                    }}>
-                    {" "}
-                    {resume.personalInfo.city},
-                  </span>
-                )}
-                {resume.personalInfo.postalCode && (
-                  <span
-                    style={{
-                      ...style.personalInfo.postalCode,
-                      textAlign: style.personalInfo.postalCode.textAlign as any,
-                    }}>
-                    {" "}
-                    {resume.personalInfo.postalCode},
-                  </span>
-                )}
-                {resume.personalInfo.country && (
-                  <span
-                    style={{
-                      ...style.personalInfo.country,
-                      textAlign: style.personalInfo.country.textAlign as any,
-                    }}>
-                    {" "}
-                    {resume.personalInfo.country}
-                  </span>
-                )}
+                <p style={{ lineHeight: "13px" }}>
+                  {resume.personalInfo.address && (
+                    <span
+                      style={{
+                        ...style.personalInfo.address,
+                        textAlign: style.personalInfo.address.textAlign as any,
+                      }}>
+                      {" "}
+                      {resume.personalInfo.address},
+                    </span>
+                  )}
+                  {resume.personalInfo.city && (
+                    <span
+                      style={{
+                        ...style.personalInfo.city,
+                        textAlign: style.personalInfo.city.textAlign as any,
+                      }}>
+                      {" "}
+                      {resume.personalInfo.city},
+                    </span>
+                  )}
+                  {resume.personalInfo.postalCode && (
+                    <span
+                      style={{
+                        ...style.personalInfo.postalCode,
+                        textAlign: style.personalInfo.postalCode
+                          .textAlign as any,
+                      }}>
+                      {" "}
+                      {resume.personalInfo.postalCode},
+                    </span>
+                  )}
+                  {resume.personalInfo.country && (
+                    <span
+                      style={{
+                        ...style.personalInfo.country,
+                        textAlign: style.personalInfo.country.textAlign as any,
+                      }}>
+                      {" "}
+                      {resume.personalInfo.country}
+                    </span>
+                  )}
+                </p>
                 {resume.personalInfo.email && (
                   <div>
                     <h1 style={styleCommon.personalInfoLabel}>Email</h1>
@@ -585,11 +603,16 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
                       }}>
                       {skill.label}
                     </h3>
-                    <div
-                      style={{
-                        ...styleCommon.bar,
-                        width: `${skill.level}%`,
-                      }}></div>
+                    <div style={{ backgroundColor: "#C7C8CC" }}>
+                      {!skillLevelHide && (
+                        <div
+                          style={{
+                            ...styleCommon.bar,
+                            width: `${skill.level}%`,
+                            height: "4px",
+                          }}></div>
+                      )}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -609,7 +632,7 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
               {resume.languages.map((item) => {
                 return (
                   item.language && (
-                    <div key={item._id}>
+                    <div key={item._id} style={{ lineHeight: "13px" }}>
                       <span
                         style={{
                           ...style.languages.language,

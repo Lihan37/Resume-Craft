@@ -1,7 +1,9 @@
 import { FC, useState, ChangeEvent } from "react";
+import useTitleSet from "../../../../hooks/useTitleSet";
 
 const CreateBlog: FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  useTitleSet("Create Blog");
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0] || null;

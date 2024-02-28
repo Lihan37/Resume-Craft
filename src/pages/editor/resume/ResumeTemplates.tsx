@@ -1,15 +1,14 @@
 import React from "react";
-import { images } from "../../../constant";
 import { useDispatch } from "react-redux";
 import { changeTemplate } from "../../../services/resumeEditor/resumeEditorSlice";
-import resumeStyle from "../../../components/resumeTemplates/style";
+import resumeTemplates from "../../../utils/resumeTemplates";
 
 const ResumeTemplates: React.FC = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className=" px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1 justify-center items-center gap-3 my-10 mt-5">
-      {resumeTemplate.map((item, i) => (
+    <div className=" px-5 grid grid-cols-1 md:grid-cols-2  lg:grid-cols-1 justify-center items-center gap-3 my-10 mt-5">
+      {resumeTemplates.map((item, i) => (
         <div
           key={i}
           onClick={() => {
@@ -29,26 +28,3 @@ const ResumeTemplates: React.FC = () => {
 };
 
 export default ResumeTemplates;
-
-const resumeTemplate = [
-  {
-    templateId: "toronto01",
-    img: images.resume1,
-    style: { ...resumeStyle["toronto01"].style.require },
-  },
-  {
-    templateId: "stockholm01",
-    img: images.resume2,
-    style: { ...resumeStyle["stockholm01"].style.require },
-  },
-  {
-    templateId: "sydney01",
-    img: "https://i.ibb.co/TKPqbjH/stockholm-resume-templates.webp",
-    style: { ...resumeStyle["sydney01"].style.require },
-  },
-  {
-    templateId: "vienna01",
-    img: "https://i.ibb.co/C2Qfdpy/vienna-resume-templates.webp",
-    style: { ...resumeStyle["vienna01"].style.require },
-  },
-];
