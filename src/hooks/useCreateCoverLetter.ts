@@ -10,6 +10,7 @@ import {
   changeTemplate,
   initialState,
 } from "../services/coverletterEditor/coverletterEditorSlice";
+import { CoverLettersTemplatesType } from "../components/coverLetterTemplates/template";
 
 const useCreateCoverLetter = () => {
   const templateId = nanoid();
@@ -41,7 +42,11 @@ const useCreateCoverLetter = () => {
     }
   };
 
-  const createCoverLetter = () => {
+  const createCoverLetter = ({
+    SelectedTemplateId = "sydney01",
+  }: {
+    SelectedTemplateId?: keyof CoverLettersTemplatesType;
+  }) => {
     if (!user._id) {
       navigate(`/auth/login`);
       return;
@@ -49,10 +54,10 @@ const useCreateCoverLetter = () => {
     const data = {
       ...initialState.coverLetter,
       _id: templateId,
-      templateId: "sydney01",
+      templateId: SelectedTemplateId,
       historyId: historyId,
       style: {
-        ...coverLetterStyle["sydney01"].style.require,
+        ...coverLetterStyle[SelectedTemplateId].style.require,
       },
     };
     handleCreateHistory();

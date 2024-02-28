@@ -1,4 +1,4 @@
-import { FC, useState, useRef } from "react";
+import { FC, useState, useRef, useEffect } from "react";
 import useTitleSet from "../../../../hooks/useTitleSet";
 import { CiImageOn } from "react-icons/ci";
 import InputTextEditor from "../../../../components/common/InputTextEditor";
@@ -6,6 +6,10 @@ import Button from "../../../../components/common/Button";
 import { BiLoaderAlt } from "react-icons/bi";
 import { TagsInput } from "react-tag-input-component";
 import Swal from "sweetalert2";
+import { useSelector } from "react-redux";
+import { selectSingleBlog } from "../../../../services/blogs/blogSelector";
+import { useParams } from "react-router-dom";
+import { RootState } from "../../../../app/store";
 const baseUrl = import.meta.env.VITE_BASE_URL_API;
 const allowedFileTypes = ["image/jpg", "image/jpeg", "image/png"];
 
@@ -28,10 +32,55 @@ const initialState = {
   tags: ["News"],
 };
 
-const CreateBlog: FC = () => {
+const UpdateBlog: FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [state, setState] = useState<IState>(initialState);
+  const { id } = useParams();
+  const data = useSelector((state: RootState) =>
+    selectSingleBlog(state, id || "")
+  );
+
+  useEffect(() => {
+    setState({
+      title: data?.title || "",
+      content: data?.content || "",
+      image: {
+        public_id: data?.image.public_id || "",
+        url: data?.image.url || "",
+      },
+      tags: data?.tags || [],
+    });
+  }, [id]);
+
+  const getData = async () => {
+    try {
+      const response = await fetch(`${baseUrl}/blog/v1/single/${id}`, {
+        method: "GET",
+        credentials: "include",
+      });
+      const data = await response.json();
+      if (data.success) {
+        setState({
+          title: data.blog?.title || "",
+          content: data?.blog.content || "",
+          image: {
+            public_id: data?.blog.image.public_id || "",
+            url: data?.blog.image.url || "",
+          },
+          tags: data?.blog.tags || [],
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (!data?._id) {
+      getData();
+    }
+  }, []);
 
   useTitleSet("Create Blog");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -66,7 +115,7 @@ const CreateBlog: FC = () => {
     try {
       setLoading(true);
       if (
-        !selectedFile ||
+        !(selectedFile || state.image.url) ||
         !state.title ||
         !state.content ||
         state.tags.length === 0
@@ -83,8 +132,8 @@ const CreateBlog: FC = () => {
       const { public_id, url } = await imageUpload();
       if (public_id && url) {
         const blogData = { ...state, image: { public_id, url } };
-        const response = await fetch(`${baseUrl}/blog/v1/createBlog`, {
-          method: "POST",
+        const response = await fetch(`${baseUrl}/blog/v1/update/${id}`, {
+          method: "PATCH",
           credentials: "include",
           headers: {
             "Content-Type": "application/json",
@@ -103,11 +152,9 @@ const CreateBlog: FC = () => {
         }
         if (data.success) {
           setLoading(false);
-          setState(initialState);
-          setSelectedFile(null);
           Swal.fire({
             icon: "success",
-            text: "Successfully Create Blog",
+            text: "Successfully Update Blog",
             showConfirmButton: false,
             timer: 1000,
           });
@@ -143,6 +190,8 @@ const CreateBlog: FC = () => {
               alt="image"
               className=""
             />
+          ) : state.image.url ? (
+            <img src={state.image.url} alt="image" className="" />
           ) : (
             <CiImageOn />
           )}
@@ -177,7 +226,7 @@ const CreateBlog: FC = () => {
         <div className=" w-full flex justify-center items-center">
           <Button disabled={loading} icon={false}>
             <div className=" flex justify-start items-center gap-1">
-              Create
+              Update
               {loading && <BiLoaderAlt className="animate-spin text-xl" />}
             </div>
           </Button>
@@ -187,4 +236,4 @@ const CreateBlog: FC = () => {
   );
 };
 
-export default CreateBlog;
+export default UpdateBlog;

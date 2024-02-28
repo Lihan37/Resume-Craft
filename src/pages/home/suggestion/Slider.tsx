@@ -1,12 +1,21 @@
-import React, { useRef } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useRef, useState } from "react";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./Slider.css";
 import ButtonUse from "../../../components/common/Button";
+import useCreateResume from "../../../hooks/useCreateResume";
+import { ResumeTemplatesType } from "../../../components/resumeTemplates/template";
 interface IResume {
-  url: string;
+  template: {
+    templateId: string;
+    img: string;
+    style: any;
+  };
+  tags: string[];
+  name: string;
 }
 
 interface ISlider {
@@ -30,6 +39,7 @@ const Button: React.FC<{
 
 const Slider: React.FC<ISlider> = ({ resumes = [] }) => {
   const sliderRef = useRef<SwiperRef>();
+  const [active, setActive] = useState<number>(1);
 
   const handleSlideNext = () => {
     sliderRef.current?.swiper.slideNext();
@@ -38,6 +48,18 @@ const Slider: React.FC<ISlider> = ({ resumes = [] }) => {
   const handleSlidePrev = () => {
     sliderRef.current?.swiper.slidePrev();
   };
+  const [createResume] = useCreateResume();
+
+  const handleTemplate = () => {
+    const activeItem = resumes.find((_, i) => i === active);
+
+    if (activeItem && activeItem.template) {
+      createResume({
+        SelectedTemplateId: activeItem.template
+          .templateId as keyof ResumeTemplatesType,
+      });
+    }
+  };
 
   return (
     resumes.length > 0 && (
@@ -45,8 +67,9 @@ const Slider: React.FC<ISlider> = ({ resumes = [] }) => {
         <Swiper
           ref={sliderRef as React.RefObject<SwiperRef>}
           spaceBetween={50}
+          initialSlide={1}
           centeredSlides={true}
-          loop={true}
+          loop={false}
           breakpoints={{
             640: {
               slidesPerView: 1,
@@ -61,6 +84,9 @@ const Slider: React.FC<ISlider> = ({ resumes = [] }) => {
           navigation={{
             prevEl: ".swiper-prev",
             nextEl: ".swiper-next",
+          }}
+          onActiveIndexChange={(data) => {
+            setActive(data.activeIndex);
           }}>
           {resumes.map((item, index) => {
             return (
@@ -68,7 +94,7 @@ const Slider: React.FC<ISlider> = ({ resumes = [] }) => {
                 <div id="image_container">
                   <img
                     id="image"
-                    src={item.url}
+                    src={item.template.img}
                     alt="resumes"
                     className="pointer-events-none select-none rounded-xl h-full w-full "
                   />
@@ -80,6 +106,7 @@ const Slider: React.FC<ISlider> = ({ resumes = [] }) => {
         <div className=" absolute top-0 left-0 right-0 bottom-0 z-50">
           <div className=" w-full h-full flex justify-center items-center">
             <ButtonUse
+              onClick={handleTemplate}
               icon={false}
               className=" bg-c-primary text-white font-mono text-base uppercase font-semibold 
             px-5 py-2 rounded-full">

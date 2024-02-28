@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { FaChessQueen, FaAward, FaDeviantart, FaReceipt } from "react-icons/fa";
-import { images } from "../../../constant";
 import { AnimatePresence, motion } from "framer-motion";
 import Tab from "../../../components/common/Tab";
 import Slider from "./Slider";
@@ -9,6 +8,7 @@ import TextGradient from "../../../components/common/TextGradient";
 import { Container } from "../../../components/common/Container";
 import Button from "../../../components/common/Button";
 import { Link } from "react-router-dom";
+import resumeTemplates from "../../../utils/resumeTemplates";
 
 const tabs = [
   {
@@ -33,23 +33,6 @@ const tabs = [
   },
 ];
 
-const resumes = [
-  {
-    tags: ["professional", "ats-friendly", "modern", "creative"],
-    url: images.resume2,
-  },
-  {
-    tags: ["professional", "creative", "modern", "ats-friendly"],
-    url: images.resume3,
-  },
-  { tags: ["ats-friendly", "modern", "creative"], url: images.resume4 },
-  { tags: ["creative", "professional", "ats-friendly"], url: images.resume5 },
-  {
-    tags: ["ats-friendly", "modern", "professional", "creative"],
-    url: images.resume6,
-  },
-];
-
 const Suggestion: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>(tabs[1].value);
 
@@ -57,9 +40,9 @@ const Suggestion: React.FC = () => {
     setActiveTab(value);
   };
 
-  const filterResumes = resumes.filter((resume) => {
+  const filterResumes = resumeTemplates.filter((resume) => {
     if (resume.tags.includes(activeTab)) {
-      return { url: resume.url };
+      return resume;
     }
   });
 

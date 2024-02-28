@@ -1,22 +1,29 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from "react";
 import { PiGlobeStand } from "react-icons/pi";
 import Card from "./Card";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import useDisplay from "../../../hooks/useDisplay";
+import { ResumeTemplatesType } from "../../../components/resumeTemplates/template";
+import { CoverLettersTemplatesType } from "../../../components/coverLetterTemplates/template";
 
 interface IData {
-  _id: string | number;
-  name: string;
-  image: string;
+  template: {
+    templateId: string;
+    img: string;
+    style: any;
+  };
   tags: string[];
+  name: string;
 }
 interface ICatagories {
   data: IData[];
   name: string;
   doc: string;
+  type: string;
 }
 
-const Catagories: React.FC<ICatagories> = ({ data, name, doc }) => {
+const Catagories: React.FC<ICatagories> = ({ data, name, doc, type }) => {
   const [windowWidth] = useDisplay();
   const [more, setMore] = useState<number>(4);
 
@@ -42,8 +49,24 @@ const Catagories: React.FC<ICatagories> = ({ data, name, doc }) => {
           <p className=" w-full md:w-7/12 text-lg text-c-dark-light">{doc}</p>
         </div>
         <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {data.slice(0, more).map((item) => (
-            <Card name={item.name} imgUrl={item.image} key={item._id} />
+          {data.slice(0, more).map((item, i) => (
+            <Card
+              type={type}
+              templateId={
+                type === "resume"
+                  ? (item.template.templateId as keyof ResumeTemplatesType)
+                  : null
+              }
+              coverLetterTemplateId={
+                type === "coverletter"
+                  ? (item.template
+                      .templateId as keyof CoverLettersTemplatesType)
+                  : null
+              }
+              name={item.name}
+              imgUrl={item.template.img}
+              key={i}
+            />
           ))}
         </div>
         {data?.length > 4 && data?.length !== more && (
@@ -54,7 +77,7 @@ const Catagories: React.FC<ICatagories> = ({ data, name, doc }) => {
             <IoIosArrowDown className=" text-2xl" />
           </button>
         )}
-        {data?.length === more && (
+        {data?.length === more && data?.length > 4 && (
           <button
             onClick={() => setMore(show)}
             className="flex justify-start items-center gap-3 my-5 text-lg font-semibold text-c-primary">

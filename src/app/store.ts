@@ -7,6 +7,7 @@ import historyReducer from "../services/history/historySlice";
 import apiSlice from "../services/api/api";
 import coverletterEditorReducer from "../services/coverletterEditor/coverletterEditorSlice";
 import authReducer from "../services/auth/authSlice";
+import blogReducer from "../services/blogs/blogSlice";
 
 const store = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ const store = configureStore({
     coverLetterEditor: coverletterEditorReducer,
     history: historyReducer,
     auth: authReducer,
+    blog: blogReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),

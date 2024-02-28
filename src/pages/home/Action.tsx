@@ -2,6 +2,7 @@ import React from "react";
 import { Container } from "../../components/common/Container";
 import { images } from "../../constant";
 import Button from "../../components/common/Button";
+import { Link } from "react-router-dom";
 
 const Action: React.FC = () => {
   return (
@@ -22,9 +23,11 @@ const Action: React.FC = () => {
               interview can be much easier if they have a favorable view of your
               resume and cover letter.
             </h4>
-            <div className=" flex justify-center md:justify-start items-center">
+            <Link
+              to="/dashboard"
+              className=" flex justify-center md:justify-start items-center">
               <Button outline={true}>GET started</Button>
-            </div>
+            </Link>
           </div>
           <div className=" h-[450px] lg:h-[500px] xl:h-[550px] w-full">
             <div className="relative">

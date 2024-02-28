@@ -23,11 +23,11 @@ const HeaderResume: React.FC<HeaderForCV> = ({
 
   const createNew = () => {
     if (create === "resume") {
-      createResume();
+      createResume({ SelectedTemplateId: "vienna01" });
       return;
     }
     if (create === "coverletter") {
-      createCoverLetter();
+      createCoverLetter({ SelectedTemplateId: "sydney01" });
       return;
     }
   };

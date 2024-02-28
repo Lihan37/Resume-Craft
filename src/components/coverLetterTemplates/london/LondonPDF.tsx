@@ -149,7 +149,6 @@ const LondonPDF: React.FC<ISydney> = ({ coverLetter }) => {
           <View
             style={{
               minWidth: "180px",
-              maxWidth: "150px",
               paddingTop: "10px",
               paddingRight: "10px",
             }}>

@@ -23,8 +23,7 @@ import {
     Roboto,
 } from "../../../utils/font";
 
-import { IResumeData } from "../../../services/resumeEditor/resumeEditorSlice";
-import styleSydney22 from "./Sydney2Style";
+
 import { resume } from "../resume";
 import styleSydney2 from "./Sydney2Style";
 import createArrayUpToNumber from "../../../utils/createArrayUpToNumber";

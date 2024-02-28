@@ -492,6 +492,10 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
                 <Text style={styleCommon.personalInfoLabel}>Address</Text>
               )}
               <Text>
+                {" "}
+                {resume.personalInfo.address && (
+                  <Text style={styleCommon.personalInfoLabel}>Address</Text>
+                )}
                 {resume.personalInfo.address && (
                   <Text
                     style={{
@@ -499,7 +503,7 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
                       textAlign: style.personalInfo.address.textAlign as any,
                     }}>
                     {" "}
-                    {resume.personalInfo.address},
+                    {resume.personalInfo.postalCode},
                   </Text>
                 )}
                 {resume.personalInfo.city && (
@@ -532,78 +536,81 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
                     {resume.personalInfo.country}
                   </Text>
                 )}
+                {resume.personalInfo.email && (
+                  <View>
+                    <Text style={styleCommon.personalInfoLabel}>Email</Text>
+                    <Text
+                      style={{
+                        ...style.personalInfo.email,
+                        textAlign: style.personalInfo.email.textAlign as any,
+                      }}>
+                      <a href={`mailto:${resume.personalInfo.email}`}>
+                        {resume.personalInfo.email}
+                      </a>
+                    </Text>
+                  </View>
+                )}
+                {personalInfo.nationality && (
+                  <>
+                    <Text style={styleCommon.personalInfoLabel}>
+                      Nationality
+                    </Text>
+                    <Text
+                      style={{
+                        ...style.personalInfo.nationality,
+                        textAlign: style.personalInfo.nationality
+                          .textAlign as any,
+                      }}>
+                      {personalInfo.nationality}
+                    </Text>
+                  </>
+                )}
+                {personalInfo.drivingLicense && (
+                  <>
+                    <Text style={styleCommon.personalInfoLabel}>
+                      DrivingLicense
+                    </Text>
+                    <Text
+                      style={{
+                        ...style.personalInfo.drivingLicense,
+                        textAlign: style.personalInfo.drivingLicense
+                          .textAlign as any,
+                      }}>
+                      {personalInfo.drivingLicense}
+                    </Text>
+                  </>
+                )}
+                {personalInfo.placeOfBirth && (
+                  <>
+                    <Text style={styleCommon.personalInfoLabel}>
+                      Place Of Birth
+                    </Text>
+                    <Text
+                      style={{
+                        ...style.personalInfo.placeOfBirth,
+                        textAlign: style.personalInfo.placeOfBirth
+                          .textAlign as any,
+                      }}>
+                      {personalInfo.placeOfBirth}
+                    </Text>
+                  </>
+                )}
+                {personalInfo.DateOfBirth && (
+                  <>
+                    <Text style={styleCommon.personalInfoLabel}>
+                      Date Of Birth
+                    </Text>
+                    <Text
+                      style={{
+                        ...style.personalInfo.DateOfBirth,
+                        textAlign: style.personalInfo.DateOfBirth
+                          .textAlign as any,
+                      }}>
+                      {personalInfo.DateOfBirth}
+                    </Text>
+                  </>
+                )}
               </Text>
-              {resume.personalInfo.email && (
-                <View>
-                  <Text style={styleCommon.personalInfoLabel}>Email</Text>
-                  <Link
-                    style={{
-                      ...style.personalInfo.email,
-                      textAlign: style.personalInfo.email.textAlign as any,
-                    }}
-                    href={`mailto:${resume.personalInfo.email}`}>
-                    {resume.personalInfo.email}
-                  </Link>
-                </View>
-              )}
-              {personalInfo.nationality && (
-                <>
-                  <Text style={styleCommon.personalInfoLabel}>Nationality</Text>
-                  <Text
-                    style={{
-                      ...style.personalInfo.nationality,
-                      textAlign: style.personalInfo.nationality
-                        .textAlign as any,
-                    }}>
-                    {personalInfo.nationality}
-                  </Text>
-                </>
-              )}
-              {personalInfo.drivingLicense && (
-                <>
-                  <Text style={styleCommon.personalInfoLabel}>
-                    DrivingLicense
-                  </Text>
-                  <Text
-                    style={{
-                      ...style.personalInfo.drivingLicense,
-                      textAlign: style.personalInfo.drivingLicense
-                        .textAlign as any,
-                    }}>
-                    {personalInfo.drivingLicense}
-                  </Text>
-                </>
-              )}
-              {personalInfo.placeOfBirth && (
-                <>
-                  <Text style={styleCommon.personalInfoLabel}>
-                    Place Of Birth
-                  </Text>
-                  <Text
-                    style={{
-                      ...style.personalInfo.placeOfBirth,
-                      textAlign: style.personalInfo.placeOfBirth
-                        .textAlign as any,
-                    }}>
-                    {personalInfo.placeOfBirth}
-                  </Text>
-                </>
-              )}
-              {personalInfo.DateOfBirth && (
-                <>
-                  <Text style={styleCommon.personalInfoLabel}>
-                    Date Of Birth
-                  </Text>
-                  <Text
-                    style={{
-                      ...style.personalInfo.DateOfBirth,
-                      textAlign: style.personalInfo.DateOfBirth
-                        .textAlign as any,
-                    }}>
-                    {personalInfo.DateOfBirth}
-                  </Text>
-                </>
-              )}
             </View>
             <View>
               {skillSectionTitle && (

@@ -19,16 +19,16 @@ const InputTextEditor: React.FC<ITextEditor> = ({
 }) => {
   const modules = {
     toolbar: [
-      //   [{ size: ["small", false, "large", "huge"] }],
+      [{ size: ["small", false, "large", "huge"] }],
       ["bold", "italic", "underline", "strike", "blockquote"],
-      //   [{ list: "ordered" }, { list: "bullet" }],
+      [{ list: "ordered" }, { list: "bullet" }],
       ["link"],
       [
-        // { list: "ordered" },
-        // { list: "bullet" },
-        // { indent: "-1" },
-        // { indent: "+1" },
-        // { align: [] },
+        { list: "ordered" },
+        { list: "bullet" },
+        { indent: "-1" },
+        { indent: "+1" },
+        { align: [] },
       ],
       [
         {
@@ -103,14 +103,14 @@ const InputTextEditor: React.FC<ITextEditor> = ({
     <ReactQuill
       value={initialValue}
       onFocus={onFocus}
-      //   theme="snow"
+      theme="snow"
       modules={modules}
       formats={formats}
       placeholder={placeholder}
       onChange={handleProcedureContentChange}
       style={{
         height: height,
-        fontSize: "16px",
+        fontSize: "22px",
         border: "1.8px solid #f5f5f5",
         borderBottom: "1.8px solid #c3bebe",
         borderRadius: "0.375rem",

@@ -1,6 +1,14 @@
 // https://i.ibb.co/VSvZBY6/athens-resume-templates.webp
 
 const styleAthens = {
+  common: {
+    container: {
+      padding: "0px 0px",
+      width: "100%",
+      height: "100%",
+      display: "flex",
+    },
+  },
   require: {
     theme: "#EF8E38",
     themeOptions: ["#EF8E38", "#64AA3A", "#8989D1", "#5F8CC9"],

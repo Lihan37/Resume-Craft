@@ -24,7 +24,7 @@
 }
 
 .ql-editor {
-  font-fontsize: 1.125rem;
+  font-size: 1.125rem;
 }
 #resumeEditorDashboard::-webkit-scrollbar {
   width: 0px;
@@ -42,5 +42,12 @@
 .toggle__dotInput:checked ~ .toggle__dot {
   transform: translateX(100%);
   background-color: #3b82f6;
+}
+
+.rti--input {
+  font-size: 22px;
+}
+.rti--tag {
+  font-size: 18px;
 }
 /* // https://gist.github.com/karimnaaji/b6c9c9e819204113e9cabf290d580551 */
