@@ -5,6 +5,7 @@ import Toronto, { IToronto } from "./toronto/Toronto";
 import Sydney, { ISydney } from "./sydney/Sydney";
 import Vienna, { IVienna } from "./vienna/Vienna";
 import Madrid, { IMadrid } from "./madrid/Madrid";
+import Athens, { IAthens } from "./athens/Athens";
 
 export type ResumeTemplatesType = {
   toronto01: { id: string; template: FC<IToronto> };
@@ -12,6 +13,7 @@ export type ResumeTemplatesType = {
   sydney01: { id: string; template: FC<ISydney> };
   vienna01: { id: string; template: FC<IVienna> };
   madrid01: { id: string; template: FC<IMadrid> };
+  athens01: { id: string; template: FC<IAthens> };
 };
 
 const resumes = {
@@ -20,6 +22,7 @@ const resumes = {
   sydney01: { id: "sydney01", template: Sydney },
   vienna01: { id: "vienna01", template: Vienna },
   madrid01: { id: "madrid01", template: Madrid },
+  athens01: { id: "athens01", template: Athens },
 };
 
 export default resumes;

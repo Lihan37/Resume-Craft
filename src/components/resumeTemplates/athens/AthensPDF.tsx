@@ -1,14 +1,11 @@
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { resume } from "../resume";
-
-
 
 import React from "react";
 import {
   Page,
   View,
   Document,
-  StyleSheet,
   Image,
   Font,
   Text,
@@ -25,7 +22,6 @@ import {
   Poppins,
   Roboto,
 } from "../../../utils/font";
-import styleAthens from "./AthensStyle";
 
 Font.register({
   family: "Advent Pro",
@@ -68,94 +64,94 @@ Font.register({
 });
 const AthensPDF: React.FC = () => {
   const style = resume?.style;
-  const styleCommon = styleAthens.common;
   const personalInfoSectionTitle =
     resume?.sectionTitles.personalInfo &&
-      resume.sectionTitles.personalInfo !== "Untitled" &&
-      (resume.personalInfo.drivingLicense ||
-        resume.personalInfo.nationality ||
-        resume.personalInfo.DateOfBirth ||
-        resume.personalInfo.placeOfBirth)
+    resume.sectionTitles.personalInfo !== "Untitled" &&
+    (resume.personalInfo.drivingLicense ||
+      resume.personalInfo.nationality ||
+      resume.personalInfo.DateOfBirth ||
+      resume.personalInfo.placeOfBirth)
       ? resume.sectionTitles.personalInfo
       : null;
 
   const skillSectionTitle =
     resume?.sectionTitles.skills &&
-      resume.sectionTitles.skills !== "Untitled" &&
-      resume.skills.find((item) => item.label)
+    resume.sectionTitles.skills !== "Untitled" &&
+    resume.skills.find((item) => item.label)
       ? resume.sectionTitles.skills
       : null;
 
   const languageSectionTitle =
     resume?.sectionTitles.languages &&
-      resume.sectionTitles.languages !== "Untitled" &&
-      resume.languages.find((item) => item.language)
+    resume.sectionTitles.languages !== "Untitled" &&
+    resume.languages.find((item) => item.language)
       ? resume.sectionTitles.languages
       : null;
 
   const socialProfilesSectionTitle =
     resume?.sectionTitles.socialProfiles &&
-      resume.sectionTitles.socialProfiles !== "Untitled" &&
-      resume.socialProfiles.find((item) => item.label)
+    resume.sectionTitles.socialProfiles !== "Untitled" &&
+    resume.socialProfiles.find((item) => item.label)
       ? resume.sectionTitles.socialProfiles
       : null;
 
   const professionalSummarySectionTitle =
     resume?.sectionTitles.professionalSummary &&
-      resume.sectionTitles.professionalSummary !== "Untitled" &&
-      resume.professionalSummary
+    resume.sectionTitles.professionalSummary !== "Untitled" &&
+    resume.professionalSummary
       ? resume.sectionTitles.professionalSummary
       : null;
 
   const workExperienceSectionTitle =
     resume?.sectionTitles.workExperience &&
-      resume.sectionTitles.workExperience !== "Untitled" &&
-      resume.workExperience.find(
-        (item) =>
-          item.city ||
-          item.description ||
-          item.employer ||
-          item.jobTitle ||
-          item.startMontYear ||
-          item.endMontYear
-      )
+    resume.sectionTitles.workExperience !== "Untitled" &&
+    resume.workExperience.find(
+      (item) =>
+        item.city ||
+        item.description ||
+        item.employer ||
+        item.jobTitle ||
+        item.startMontYear ||
+        item.endMontYear
+    )
       ? resume.sectionTitles.workExperience
       : null;
 
   const educationsSectionTitle =
     resume?.sectionTitles.educations &&
-      resume.sectionTitles.educations !== "Untitled" &&
-      resume.educations.find(
-        (item) =>
-          item.city ||
-          item.description ||
-          item.school ||
-          item.degree ||
-          item.startMontYear ||
-          item.endMontYear
-      )
+    resume.sectionTitles.educations !== "Untitled" &&
+    resume.educations.find(
+      (item) =>
+        item.city ||
+        item.description ||
+        item.school ||
+        item.degree ||
+        item.startMontYear ||
+        item.endMontYear
+    )
       ? resume.sectionTitles.educations
       : null;
 
   const referencesSectionTitle =
     resume?.sectionTitles.references &&
-      resume.sectionTitles.references !== "Untitled" &&
-      resume.references.find(
-        (item) => item.name || item.company || item.email || item.phone
-      )
+    resume.sectionTitles.references !== "Untitled" &&
+    resume.references.find(
+      (item) => item.name || item.company || item.email || item.phone
+    )
       ? resume.sectionTitles.references
       : null;
   const skillLevelHide = resume.style.skillLevel;
 
   return (
     <Document>
-      <Page style={{
-        padding: "0px 0px",
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        flexDirection: 'row'
-      }}>
+      <Page
+        style={{
+          padding: "0px 0px",
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "row",
+        }}>
         <View
           style={{
             paddingTop: "40px",
@@ -166,7 +162,7 @@ const AthensPDF: React.FC = () => {
           <View
             style={{
               display: "flex",
-              flexDirection: 'row',
+              flexDirection: "row",
               gap: "10px",
               // justifyItems: "start",
               // justifyContent: "start",
@@ -176,7 +172,6 @@ const AthensPDF: React.FC = () => {
               <Image
                 style={{ width: "80px", height: "80px", borderRadius: "50%" }}
                 src={resume.avatar.url}
-
               />
             )}
             <View>
@@ -677,10 +672,8 @@ const AthensPDF: React.FC = () => {
                   style={{
                     ...style.socialProfiles.label,
                     textAlign: style.socialProfiles.label.textAlign as any,
-
                   }}
-                  href={item.link}
-                >
+                  href={item.link}>
                   {item.label}
                 </Link>
               )
@@ -720,9 +713,10 @@ const AthensPDF: React.FC = () => {
             );
           })}
         </View>
-      </Page>;
-    </Document >)
-
+      </Page>
+      ;
+    </Document>
+  );
 };
 
 export default AthensPDF;
