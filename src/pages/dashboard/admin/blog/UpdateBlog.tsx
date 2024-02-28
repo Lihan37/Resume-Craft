@@ -108,6 +108,7 @@ const UpdateBlog: FC = () => {
         console.log(error);
       }
     }
+    return { public_id: "", url: "" };
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -130,8 +131,11 @@ const UpdateBlog: FC = () => {
         return;
       }
       const { public_id, url } = await imageUpload();
-      if (public_id && url) {
-        const blogData = { ...state, image: { public_id, url } };
+      if ((public_id && url) || state.image.url) {
+        const blogData = {
+          ...state,
+          image: public_id ? { public_id, url } : state.image,
+        };
         const response = await fetch(`${baseUrl}/blog/v1/update/${id}`, {
           method: "PATCH",
           credentials: "include",
