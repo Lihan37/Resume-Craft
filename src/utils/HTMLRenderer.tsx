@@ -6,7 +6,12 @@ interface HTMLRendererProps {
 }
 
 const HTMLRenderer: React.FC<HTMLRendererProps> = ({ htmlContent }) => {
-  return <div dangerouslySetInnerHTML={{ __html: htmlContent }} />;
+  return (
+    <div
+      className=" ql-editor"
+      dangerouslySetInnerHTML={{ __html: htmlContent }}
+    />
+  );
 };
 
 export default HTMLRenderer;

@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { IBlog } from "../../services/blogs/blogSlice";
-import HTMLRenderer from "../../utils/HTMLRenderer";
 
 interface BlogCardProps {
   blog: IBlog;
@@ -13,7 +12,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
       <div className="">
         <img
           src={blog.image.url}
-          className="rounded-tl-2xl rounded-tr-2xl"
+          className="rounded-tl-2xl rounded-tr-2xl h-64 w-full"
           alt=""
         />
         <div className="border-2 border-gray-300 rounded-bl-2xl rounded-br-2xl p-4 md:p-3 lg:p-5">
@@ -30,12 +29,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
             {blog.title.slice(0, 30)}
             {blog.title.length > 30 && "..."}
           </h2>
-          <div className="text-base lg:text-lg text-justify my-5">
-            <HTMLRenderer htmlContent={blog.content.slice(0, 60)} />
-            {blog.content.length > 60 && (
-              <span className="text-c-primary text-sm"> read more...</span>
-            )}
-          </div>
+
           <div className="flex gap-5">
             <img
               src={blog.user.avatar.url}
