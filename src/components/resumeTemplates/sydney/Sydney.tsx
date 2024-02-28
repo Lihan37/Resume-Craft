@@ -98,7 +98,6 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
 
   return (
     <div
-      className="mx-auto"
       ref={ref}
       style={{
         transform: `scale(${windowWidth < 768 ? 0.6 : resume.zoom})`,
@@ -107,12 +106,17 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
         minWidth: resume?.size.width,
         maxWidth: resume?.size.width,
         transformOrigin:
-          parseFloat(resume.size.height.slice(0, -2)) > 1190.14 ? "bottom" : "",
+          parseFloat(resume.size.height.slice(0, -2)) > 792 ? "bottom" : "",
         transition: "transform 0.5s",
         backgroundColor: "#ffff",
       }}>
       <div style={styleCommon.container}>
-        <div style={{ ...styleCommon.header, alignItems: "center" }}>
+        <div
+          style={{
+            ...styleCommon.header,
+            alignItems: "center",
+            padding: "10px",
+          }}>
           {resume.avatar.url && (
             <img style={styleCommon.Image} src={resume.avatar.url} alt="" />
           )}

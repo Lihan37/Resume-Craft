@@ -106,7 +106,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
         height: resume?.size.height,
         width: resume?.size.width,
         transformOrigin:
-          parseFloat(resume.size.height.slice(0, -2)) > 1190.14 ? "bottom" : "",
+          parseFloat(resume.size.height.slice(0, -2)) > 792 ? "bottom" : "",
         transition: "transform 0.5s",
         backgroundColor: "#ffff",
       }}>

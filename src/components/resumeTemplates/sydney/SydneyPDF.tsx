@@ -178,7 +178,6 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
       flexDirection: "row",
       gap: "10px",
       alignItems: "center",
-      // marginLeft: "-25px",
     },
     icon: styleSydney.common.icon,
 
@@ -266,7 +265,8 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
   return (
     <Document>
       <Page style={styles.container}>
-        <View style={{ ...styles.header, alignItems: "center" }}>
+        <View
+          style={{ ...styles.header, alignItems: "center", padding: "10px" }}>
           {resume.avatar.url && (
             <Image style={styles.imageAva} src={resume.avatar.url} />
           )}

@@ -34,8 +34,23 @@ const resumeTemplates = [
   },
   {
     template: {
+      templateId: "sydney02",
+      img: "https://i.ibb.co/j36pPQt/Screenshot-7.png",
+      style: { ...resumeStyle["sydney02"].style.require },
+    },
+    tags: [
+      "professional",
+      "ats-friendly",
+      "modern",
+      "creative",
+      "most-popular",
+    ],
+    name: "Engineer",
+  },
+  {
+    template: {
       templateId: "madrid01",
-      img: images.resume1,
+      img: "https://i.ibb.co/YT2ckZX/Screenshot-8.png",
       style: { ...resumeStyle["madrid01"].style.require },
     },
     tags: [

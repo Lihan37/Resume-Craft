@@ -25,10 +25,6 @@ import ForgotPassword from "../pages/auth/ForgotPassword";
 import NewPassword from "../pages/auth/NewPassword";
 import Account from "../pages/dashboard/user/account/Account";
 import UpdateBlog from "../pages/dashboard/admin/blog/UpdateBlog";
-import Athens from "../components/resumeTemplates/athens/Athens";
-import MadridPDF from "../components/resumeTemplates/madrid/MadridPDF";
-import { PDFViewer } from "@react-pdf/renderer";
-import Sydney2 from "../components/resumeTemplates/Sydney2/Sydney2";
 
 const router = createBrowserRouter([
   {
@@ -126,18 +122,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "/madrid",
-    element: (
-      <PDFViewer width={1000} height={700}>
-        <MadridPDF />
-      </PDFViewer>
-    ),
-  },
-  {
-    path: "/sydney",
-    element: <Sydney2></Sydney2>,
-  },
 
   {
     path: "admin",
@@ -160,10 +144,6 @@ const router = createBrowserRouter([
         element: <UpdateBlog />,
       },
     ],
-  },
-  {
-    path: "/athens",
-    element: <Athens />,
   },
 ]);
 

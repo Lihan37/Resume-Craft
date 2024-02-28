@@ -36,7 +36,6 @@ const styleSydney = {
 
     Image: {
       width: "100px",
-      margin: "10px",
       height: "100px",
       borderRadius: "10px",
     },
