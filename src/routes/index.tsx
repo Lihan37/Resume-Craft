@@ -24,7 +24,6 @@ import PrivateRoutes from "./PrivateRoutes";
 import ForgotPassword from "../pages/auth/ForgotPassword";
 import NewPassword from "../pages/auth/NewPassword";
 import Account from "../pages/dashboard/user/account/Account";
-import ShareView from "../pages/share/ShareView";
 import UpdateBlog from "../pages/dashboard/admin/blog/UpdateBlog";
 
 const router = createBrowserRouter([
@@ -123,10 +122,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: "/madrid",
-  //   element: <Madrid />,
-  // },
+
   {
     path: "admin",
     element: <DashBoardWrapper />,
@@ -148,11 +144,6 @@ const router = createBrowserRouter([
         element: <UpdateBlog />,
       },
     ],
-  },
-
-  {
-    path: "share/view/:id",
-    element: <ShareView />,
   },
 ]);
 
