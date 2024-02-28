@@ -1,71 +1,70 @@
-// https://i.ibb.co/zJdVXq1/madrid-resume-templates.webp
+// https://i.ibb.co/TKPqbjH/stockholm-resume-templates.webp
 
-const styleMadrid = {
+
+
+const styleSydney2 = {
   common: {
     container: {
-      padding: "0px 0px",
+      padding: "40px",
       width: "100%",
       height: "100%",
     },
     header: {
       display: "flex",
-      gap: "15px",
-      // padding: "0px 24px 10px 0px",
-      alignItems:'center',
+      gap: "10px",
     },
-
+    personalInfoLabel: {
+      color: "#000000",
+      fontFamily: "Nunito Sans",
+      fontWeight: 600,
+      fontSize: "12px",
+    },
 
     headerDivOne: {
-      width: "213.3px"
-   
-      
+      padding: "10px",
+      width: "200px",
     },
     headerDivTwo: {
+      padding: "10px",
       width: "100%",
     },
-    styleSkill:{
-      display:"flex", 
-      gap:"4px",
-       flexWrap:"wrap"
+    bodyDivOne: {
+      // width: "300px",
+    },
+    bodyDivTwo: {
+      padding: "30px",
+      width: "100%",
     },
 
-    // personalInfoEmail: {
-    //   marginLeft: "10px",
-    // },
+    Image: {
+      width: "100px",
+      margin: "10px",
+      height: "100px",
+      borderRadius: "10px",
+    },
 
-    body: {
-      
-      gap: "15px",
-      padding: "5px 40px 0px 40px",
+    proDate: {
+      color: "#000000",
     },
-    // bodyDivOne: {
-    //   width: "150px",
-    // },
-    // bodyDivTwo: {
-    //   width: "100%",
-    // },
-    margin: {
-      marginTop: "2px",
-      marginBottom: "2px",
+    icon: {
+      width: "14px",
+      height: "14px",
+      marginTop: "5px",
     },
-    flex:{
+    headerIcon: {
       display: "flex",
+      gap: "10px",
+      alignItems: "center",
     },
-    sectionTitle: {
-      backgroundColor: "#9AEBFE",
-      padding: "2px 2px",
-      // display: "inline-block",
-      
-      textColor: "white",
+    bar: {
+      width: "100%",
+      height: "5px",
+      backgroundColor: "#4FC2D8",
+      borderRadius: "10px",
     },
-    
-    personalInfoLabel: {
-      color: "#002B18",
-      fontFamily: "Nunito Sans",
-      fontWeight: 700,
-      fontSize: "13px",
+    marginTop: {
+      marginTop: "5px",
     },
-
     skillsLevelContainer: {
       width: "100%",
       backgroundColor: "#d1d1d1",
@@ -78,97 +77,97 @@ const styleMadrid = {
     skillsLevel: { width: `20%`, backgroundColor: "#3a3139", height: "100%" },
   },
   require: {
-    theme: "#9AEBFE",
-    themeOptions: ["#E4E4E4", "#FED78C", "#9AEBFE", "#FFF66D", "#4BFBBA"],
+    theme: "#4AFBB9",
+    themeOptions: [],
     skillLevel: false,
     skillLevelDisabled: false,
     personalInfo: {
       jobTitle: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
-        fontWeight: 600,
-        fontSize: "14px",
+        fontWeight: 400,
+        fontSize: "12px",
         textAlign: "start",
       },
       firstName: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
-        fontWeight: 700,
-        fontSize: "20px",
+        fontWeight: 600,
+        fontSize: "24px",
         textAlign: "start",
       },
       lastName: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
-        fontWeight: 700,
-        fontSize: "20px",
+        fontWeight: 600,
+        fontSize: "24px",
         textAlign: "start",
       },
       email: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
         fontSize: "12px",
         textAlign: "start",
       },
       phoneNumber: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
         fontSize: "12px",
         textAlign: "start",
       },
       country: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
         fontSize: "12px",
         textAlign: "start",
       },
       city: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
         fontSize: "12px",
         textAlign: "start",
       },
       address: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
         fontSize: "12px",
         textAlign: "start",
       },
       postalCode: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
         fontSize: "12px",
         textAlign: "start",
       },
       drivingLicense: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
         fontSize: "12px",
         textAlign: "start",
       },
       nationality: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
         fontSize: "12px",
         textAlign: "start",
       },
       placeOfBirth: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
         fontSize: "12px",
         textAlign: "start",
       },
       DateOfBirth: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
         fontSize: "12px",
@@ -177,67 +176,67 @@ const styleMadrid = {
     },
     workExperience: {
       city: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 600,
-        fontSize: "10px",
+        fontSize: "14px",
         textAlign: "start",
       },
       description: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
-        fontSize: "10px",
+        fontSize: "12px",
         textAlign: "start",
       },
       employer: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 600,
-        fontSize: "10px",
+        fontSize: "12px",
         textAlign: "start",
       },
       endMontYear: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
-        fontSize: "10px",
+        fontSize: "11px",
         textAlign: "start",
       },
       jobTitle: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 600,
-        fontSize: "10px",
+        fontSize: "12px",
         textAlign: "start",
       },
       startMontYear: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
-        fontSize: "10px",
+        fontSize: "11px",
         textAlign: "start",
       },
     },
     skills: {
       label: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
-        fontWeight: 400,
-        fontSize: "10px",
+        fontWeight: 500,
+        fontSize: "12px",
         textAlign: "start",
       },
       level: {
-        color: "",
-        fontFamily: "",
-        fontWeight: 0,
-        fontSize: "",
-        textAlign: "",
+        color: "#000000",
+        fontFamily: "Nunito Sans",
+        fontWeight: 400,
+        fontSize: "12px",
+        textAlign: "start",
       },
     },
     professionalSummary: {
       summery: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
         fontSize: "12px",
@@ -246,14 +245,14 @@ const styleMadrid = {
     },
     languages: {
       language: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 600,
         fontSize: "12px",
         textAlign: "start",
       },
       level: {
-        color: "#6d696d",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
         fontSize: "10px",
@@ -262,72 +261,72 @@ const styleMadrid = {
     },
     references: {
       name: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 600,
-        fontSize: "10px",
+        fontSize: "11px",
         textAlign: "start",
       },
       company: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 600,
-        fontSize: "10px",
+        fontSize: "11px",
         textAlign: "start",
       },
       phone: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
-        fontSize: "10px",
+        fontSize: "12px",
         textAlign: "start",
       },
       email: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
-        fontSize: "10px",
+        fontSize: "12px",
         textAlign: "start",
       },
     },
     educations: {
       school: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 600,
-        fontSize: "12px",
+        fontSize: "11px",
         textAlign: "start",
       },
       degree: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 600,
-        fontSize: "12px",
+        fontSize: "11px",
         textAlign: "start",
       },
       startMontYear: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
-        fontSize: "12px",
+        fontSize: "11px",
         textAlign: "start",
       },
       endMontYear: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
-        fontSize: "12px",
+        fontSize: "11px",
         textAlign: "start",
       },
       city: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 600,
-        fontSize: "12px",
+        fontSize: "11px",
         textAlign: "start",
       },
       description: {
-        color: "#172554",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
         fontSize: "12px",
@@ -336,79 +335,79 @@ const styleMadrid = {
     },
     socialProfiles: {
       label: {
-        color: "#6EA3F8",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
         fontSize: "12px",
         textAlign: "start",
       },
       link: {
-        color: "#6EA3F8",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 400,
-        fontSize: "15px",
+        fontSize: "12px",
         textAlign: "start",
       },
     },
     sectionTitles: {
       personalInfoStyle: {
-        color: "#002B18",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 600,
-        fontSize: "12px",
+        fontSize: "14px",
         textAlign: "start",
       },
       professionalSummaryStyle: {
-        color: "#002B18",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 600,
-        fontSize: "12px",
+        fontSize: "14px",
         textAlign: "start",
       },
       workExperienceStyle: {
-        color: "#002B18",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 600,
-        fontSize: "12px",
+        fontSize: "14px",
         textAlign: "start",
       },
       skillsStyle: {
-        color: "#002B18",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 600,
-        fontSize: "12px",
+        fontSize: "14px",
         textAlign: "start",
       },
       languagesStyle: {
-        color: "#002B18",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 600,
-        fontSize: "12px",
+        fontSize: "14px",
         textAlign: "start",
       },
       referencesStyle: {
-        color: "#002B18",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 600,
-        fontSize: "12px",
+        fontSize: "14px",
         textAlign: "start",
       },
       educationsStyle: {
-        color: "#002B18",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 600,
-        fontSize: "12px",
+        fontSize: "14px",
         textAlign: "start",
       },
       socialProfilesStyle: {
-        color: "#002B18",
+        color: "#000000",
         fontFamily: "Nunito Sans",
         fontWeight: 600,
-        fontSize: "12px",
+        fontSize: "14px",
         textAlign: "start",
       },
     },
   },
 };
 
-export default styleMadrid;
+export default styleSydney2;

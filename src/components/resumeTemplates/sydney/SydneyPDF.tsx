@@ -73,12 +73,12 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
   const style = resume.style;
   const styleCommon = styleSydney.common;
   const personalInfo = resume?.personalInfo;
-
+  const skillLevelHide = resume.style.skillLevel;
   const personalInfoSectionTitle =
     resume?.sectionTitles.personalInfo &&
     resume.sectionTitles.personalInfo !== "Untitled" &&
     (resume.personalInfo.drivingLicense ||
-      resume.personalInfo.postalCode ||
+      resume.personalInfo.nationality ||
       resume.personalInfo.DateOfBirth ||
       resume.personalInfo.placeOfBirth)
       ? resume.sectionTitles.personalInfo
@@ -295,10 +295,13 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
           <View style={styles.headerViewTwo}>
             <View>
               <View style={styles.headerIcon}>
-                <Image
-                  style={styles.icon}
-                  src="https://i.ibb.co/DYGJf39/account.png"
-                />
+                {professionalSummarySectionTitle && (
+                  <Image
+                    style={styles.icon}
+                    src="https://i.ibb.co/DYGJf39/account.png"
+                  />
+                )}
+
                 {professionalSummarySectionTitle && (
                   <Text style={styles.sectionTitles}>
                     {professionalSummarySectionTitle}
@@ -311,10 +314,13 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
             </View>
             <View>
               <View style={styles.headerIcon}>
-                <Image
-                  style={styles.icon}
-                  src="https://i.ibb.co/WGX4jFD/suitcase.png"
-                />
+                {workExperienceSectionTitle && (
+                  <Image
+                    style={styles.icon}
+                    src="https://i.ibb.co/WGX4jFD/suitcase.png"
+                  />
+                )}
+
                 {workExperienceSectionTitle && (
                   <Text style={styles.workExperienceStyle}>
                     {workExperienceSectionTitle}
@@ -460,7 +466,7 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
                         <Text style={styles.refCom}>{item.company}</Text>
                       )}
                     </Text>
-                    <Text>
+                    <Text style={{ marginBottom: "5px" }}>
                       {item.email && (
                         <Text style={styles.refEmail}>{item.email}</Text>
                       )}
@@ -631,11 +637,13 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
                       }}>
                       {skill.label}
                     </Text>
-                    <View
-                      style={{
-                        ...styleCommon.bar,
-                        width: `${skill.level}%`,
-                      }}></View>
+                    {!skillLevelHide && (
+                      <View
+                        style={{
+                          ...styleCommon.bar,
+                          width: `${skill.level}%`,
+                        }}></View>
+                    )}
                   </View>
                 ))}
               </View>
