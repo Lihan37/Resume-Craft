@@ -86,7 +86,7 @@ export const initialState: IResumeEditorState = {
     _id: "",
     avatar: {
       public_id: "",
-      url: "https://res.cloudinary.com/dvbgu8nqo/image/upload/v1708412949/resumeCraft_resume_Avatar/tci6iejbrm6zhhdu4att.png",
+      url: "https://i.ibb.co/vVyjykX/Firefly-20231215173951-1.png",
     },
 
     historyId: "",

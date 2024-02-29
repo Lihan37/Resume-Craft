@@ -3,7 +3,6 @@ import useTitleSet from "../../hooks/useTitleSet";
 import { Container } from "../../components/common/Container";
 import SectionHeader from "../../components/common/SectionHeader";
 import TextGradient from "../../components/common/TextGradient";
-import { RxCrossCircled, RxCheckCircled } from "react-icons/rx";
 
 interface IPrice {
   premium: number;
@@ -25,6 +24,7 @@ const Pricing: React.FC = () => {
       enterprise: event.target.value === "monthly" ? 31 : enterpriseYearly,
     }));
   };
+
   return (
     <div>
       <div className=" relative py-10 bg-gradient-to-t from-blue-200 via-violet-100 to-white">
@@ -34,7 +34,7 @@ const Pricing: React.FC = () => {
               Choose Your Package
             </button>
             <SectionHeader>
-              Our plans scale <br /> with
+              Our plans scale <br /> with{" "}
               <TextGradient>your business</TextGradient>
             </SectionHeader>
             <p className="mt-5 text-c-dark-light">
@@ -45,7 +45,7 @@ const Pricing: React.FC = () => {
           </div>
           <div className=" absolute w-full h-screen top-[27rem] left-0 right-0 text-c-dark">
             <Container>
-              <div className="rounded-t-2xl  bg-white w-full h-screen relative">
+              <div className="rounded-t-2xl bg-white w-full h-[700px] relative">
                 <div className=" absolute -top-8 left-0 right-0">
                   <div className=" px-4 lg:px-10">
                     <div className="flex flex-col md:flex-row justify-between items-start gap-28 md:gap-0">
@@ -122,7 +122,8 @@ const Pricing: React.FC = () => {
                               $0
                             </h1>
                             <h2 className="text-gray-200 md:text-c-dark-light text-base lg:font-xl">
-                              Per Month
+                              Per{" "}
+                              {selectedOption === "monthly" ? "Month" : "Year"}
                             </h2>
                             <button className="py-1 w-fit px-5 md:px-3 bg-white text-c-dark  text-base md:text-xs lg:text-base font-semibold  border-2 rounded-full md:border-c-dark ">
                               Get Started
@@ -138,15 +139,14 @@ const Pricing: React.FC = () => {
                                 className={` ${
                                   eventItem ? "bg-gray-100" : " bg-white"
                                 } w-full  py-5 text-[24.2px] lg:text-[27.9px] font-semibold px-5`}>
-                                <div className=" w-full items-center flex justify-between md:justify-center gap-4 md:gap-0">
+                                <div className=" w-full items-center flex justify-between md:justify-center gap-4 md:gap-0 text-base lg:text-xl font-semibold">
                                   <span className=" md:hidden text-base ">
                                     {item.name}
                                   </span>
-                                  {item.free ? (
-                                    <RxCheckCircled className=" text-c-primary" />
-                                  ) : (
-                                    <RxCrossCircled className=" text-rose-500" />
-                                  )}
+                                  {typeof item.free === "number"
+                                    ? item.free *
+                                      (selectedOption === "monthly" ? 1 : 12)
+                                    : item.free}
                                 </div>
                               </span>
                             );
@@ -164,7 +164,8 @@ const Pricing: React.FC = () => {
                               ${prices.premium}
                             </h1>
                             <h2 className=" text-gray-200 text-base lg:font-xl">
-                              Per Month
+                              Per{" "}
+                              {selectedOption === "monthly" ? "Month" : "Year"}
                             </h2>
                             <button className="py-1 w-fit px-5 md:px-3 text-base md:text-xs lg:text-base bg-white text-neutral-900 font-semibold border-2 rounded-full ">
                               Get Started
@@ -180,15 +181,14 @@ const Pricing: React.FC = () => {
                                 className={` ${
                                   eventItem ? "bg-gray-100" : " bg-white"
                                 } w-full  py-5 text-[24.2px] lg:text-[27.9px] font-semibold px-5`}>
-                                <div className=" w-full items-center flex justify-between md:justify-center gap-4 md:gap-0">
+                                <div className=" w-full items-center flex justify-between md:justify-center gap-4 md:gap-0 text-base lg:text-xl font-semibold ">
                                   <span className=" md:hidden text-base ">
                                     {item.name}
                                   </span>
-                                  {item.premium ? (
-                                    <RxCheckCircled className=" text-c-primary" />
-                                  ) : (
-                                    <RxCrossCircled className=" text-rose-500" />
-                                  )}
+                                  {typeof item.premium === "number"
+                                    ? item.premium *
+                                      (selectedOption === "monthly" ? 1 : 12)
+                                    : item.premium}
                                 </div>
                               </span>
                             );
@@ -206,7 +206,8 @@ const Pricing: React.FC = () => {
                               ${prices.enterprise}
                             </h1>
                             <h2 className="text-gray-200 md:text-c-dark-light text-base lg:font-xl">
-                              Per Month
+                              Per{" "}
+                              {selectedOption === "monthly" ? "Month" : "Year"}
                             </h2>
                             <button className="py-1 w-fit px-5 md:px-3 bg-white text-c-dark  text-base md:text-xs lg:text-base font-semibold  border-2 rounded-full md:border-c-dark ">
                               Get Started
@@ -222,15 +223,14 @@ const Pricing: React.FC = () => {
                                 className={` ${
                                   eventItem ? "bg-gray-100" : " bg-white"
                                 } w-full  py-5 text-[24.2px] lg:text-[27.9px] font-semibold px-5`}>
-                                <div className=" w-full items-center flex justify-between md:justify-center gap-4 md:gap-0">
+                                <div className=" w-full items-center flex justify-between md:justify-center gap-4 md:gap-0 text-base lg:text-xl font-semibold">
                                   <span className=" md:hidden text-base ">
                                     {item.name}
                                   </span>
-                                  {item.enterprise ? (
-                                    <RxCheckCircled className=" text-c-primary" />
-                                  ) : (
-                                    <RxCrossCircled className=" text-rose-500" />
-                                  )}
+                                  {typeof item.enterprise === "number"
+                                    ? item.enterprise *
+                                      (selectedOption === "monthly" ? 1 : 12)
+                                    : item.enterprise}
                                 </div>
                               </span>
                             );
@@ -245,7 +245,7 @@ const Pricing: React.FC = () => {
           </div>
         </Container>
       </div>
-      <div className=" h-[2350px] md:h-[490px] lg:h-[650px] xl:h-[700px] "></div>
+      <div className=" h-[1750px] md:h-[400px] lg:h-[500px] xl:h-[500px] "></div>
     </div>
   );
 };
@@ -254,33 +254,28 @@ export default Pricing;
 
 const packagePlans = [
   {
-    name: "Basic Resume",
-    free: true,
-    premium: true,
-    enterprise: true,
+    name: "Resume",
+    free: "Yes",
+    premium: "Yes",
+    enterprise: "Yes",
   },
   {
-    name: "Basic Cover letter",
-    free: true,
-    premium: true,
-    enterprise: true,
+    name: "Cover-letter",
+    free: "Yes",
+    premium: "Yes",
+    enterprise: "Yes",
+  },
+
+  {
+    name: "Portfolio",
+    free: "No",
+    premium: "Yes",
+    enterprise: "Yes",
   },
   {
-    name: "Single User",
-    free: true,
-    premium: true,
-    enterprise: true,
-  },
-  {
-    name: "Portfolio Create",
-    free: false,
-    premium: true,
-    enterprise: true,
-  },
-  {
-    name: "10 User",
-    free: false,
-    premium: false,
-    enterprise: true,
+    name: "Resume & Coverletter download",
+    free: 10,
+    premium: 200,
+    enterprise: 400,
   },
 ];
