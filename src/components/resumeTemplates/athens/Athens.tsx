@@ -1,21 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { forwardRef } from "react";
 import { IResumeData } from "../../../services/resumeEditor/resumeEditorSlice";
-import { resume } from "../resume";
 import styleAthens from "./AthensStyle";
 import useDisplay from "../../../hooks/useDisplay";
+import { resume } from "../resume";
 
 export interface IAthens {
   resume: IResumeData;
 }
 
 const Athens: React.ForwardRefRenderFunction<HTMLDivElement, IAthens> = (
-  { _ },
+  {  },
   ref
 ) => {
-  const style = resume?.style;
+  const style = styleAthens.require;
   const styleCommon = styleAthens.common;
-  
+
   const [windowWidth] = useDisplay();
 
   const personalInfoSectionTitle =
@@ -94,7 +94,7 @@ const Athens: React.ForwardRefRenderFunction<HTMLDivElement, IAthens> = (
     )
       ? resume.sectionTitles.references
       : null;
-  const skillLevelHide = resume.style.skillLevel;
+      const skillLevelHide = resume.style.skillLevel;
 
   return (
     <div
@@ -415,7 +415,7 @@ const Athens: React.ForwardRefRenderFunction<HTMLDivElement, IAthens> = (
             paddingTop: "40px",
             paddingLeft: "40px",
             width: "230px",
-            backgroundColor: "#082A4D",
+            backgroundColor: resume.style.theme,
           }}>
           {personalInfoSectionTitle && (
             <h1
@@ -661,7 +661,7 @@ const Athens: React.ForwardRefRenderFunction<HTMLDivElement, IAthens> = (
                       textAlign: style.languages.language.textAlign as any,
                     }}>
                     {item.language}
-                  </span>
+                  </span>{" "}
                   <span
                     style={{
                       ...style.languages.level,

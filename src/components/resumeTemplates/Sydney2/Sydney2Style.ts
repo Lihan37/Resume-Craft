@@ -1,7 +1,5 @@
 // https://i.ibb.co/TKPqbjH/stockholm-resume-templates.webp
 
-
-
 const styleSydney2 = {
   common: {
     container: {
@@ -38,7 +36,6 @@ const styleSydney2 = {
 
     Image: {
       width: "100px",
-      margin: "10px",
       height: "100px",
       borderRadius: "10px",
     },

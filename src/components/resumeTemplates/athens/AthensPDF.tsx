@@ -1,6 +1,4 @@
-
-import { resume } from "../resume";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 
 import React from "react";
@@ -8,7 +6,6 @@ import {
   Page,
   View,
   Document,
-  StyleSheet,
   Image,
   Font,
   Text,
@@ -26,6 +23,8 @@ import {
   Roboto,
 } from "../../../utils/font";
 import styleAthens from "./AthensStyle";
+import { resume } from "../resume";
+
 
 Font.register({
   family: "Advent Pro",
@@ -67,95 +66,95 @@ Font.register({
   fonts: PlayfairDisplay,
 });
 const AthensPDF: React.FC = () => {
-  const style = resume?.style;
-  const styleCommon = styleAthens.common;
+  const style = styleAthens.require
   const personalInfoSectionTitle =
     resume?.sectionTitles.personalInfo &&
-      resume.sectionTitles.personalInfo !== "Untitled" &&
-      (resume.personalInfo.drivingLicense ||
-        resume.personalInfo.nationality ||
-        resume.personalInfo.DateOfBirth ||
-        resume.personalInfo.placeOfBirth)
+    resume.sectionTitles.personalInfo !== "Untitled" &&
+    (resume.personalInfo.drivingLicense ||
+      resume.personalInfo.nationality ||
+      resume.personalInfo.DateOfBirth ||
+      resume.personalInfo.placeOfBirth)
       ? resume.sectionTitles.personalInfo
       : null;
 
   const skillSectionTitle =
     resume?.sectionTitles.skills &&
-      resume.sectionTitles.skills !== "Untitled" &&
-      resume.skills.find((item) => item.label)
+    resume.sectionTitles.skills !== "Untitled" &&
+    resume.skills.find((item) => item.label)
       ? resume.sectionTitles.skills
       : null;
 
   const languageSectionTitle =
     resume?.sectionTitles.languages &&
-      resume.sectionTitles.languages !== "Untitled" &&
-      resume.languages.find((item) => item.language)
+    resume.sectionTitles.languages !== "Untitled" &&
+    resume.languages.find((item) => item.language)
       ? resume.sectionTitles.languages
       : null;
 
   const socialProfilesSectionTitle =
     resume?.sectionTitles.socialProfiles &&
-      resume.sectionTitles.socialProfiles !== "Untitled" &&
-      resume.socialProfiles.find((item) => item.label)
+    resume.sectionTitles.socialProfiles !== "Untitled" &&
+    resume.socialProfiles.find((item) => item.label)
       ? resume.sectionTitles.socialProfiles
       : null;
 
   const professionalSummarySectionTitle =
     resume?.sectionTitles.professionalSummary &&
-      resume.sectionTitles.professionalSummary !== "Untitled" &&
-      resume.professionalSummary
+    resume.sectionTitles.professionalSummary !== "Untitled" &&
+    resume.professionalSummary
       ? resume.sectionTitles.professionalSummary
       : null;
 
   const workExperienceSectionTitle =
     resume?.sectionTitles.workExperience &&
-      resume.sectionTitles.workExperience !== "Untitled" &&
-      resume.workExperience.find(
-        (item) =>
-          item.city ||
-          item.description ||
-          item.employer ||
-          item.jobTitle ||
-          item.startMontYear ||
-          item.endMontYear
-      )
+    resume.sectionTitles.workExperience !== "Untitled" &&
+    resume.workExperience.find(
+      (item) =>
+        item.city ||
+        item.description ||
+        item.employer ||
+        item.jobTitle ||
+        item.startMontYear ||
+        item.endMontYear
+    )
       ? resume.sectionTitles.workExperience
       : null;
 
   const educationsSectionTitle =
     resume?.sectionTitles.educations &&
-      resume.sectionTitles.educations !== "Untitled" &&
-      resume.educations.find(
-        (item) =>
-          item.city ||
-          item.description ||
-          item.school ||
-          item.degree ||
-          item.startMontYear ||
-          item.endMontYear
-      )
+    resume.sectionTitles.educations !== "Untitled" &&
+    resume.educations.find(
+      (item) =>
+        item.city ||
+        item.description ||
+        item.school ||
+        item.degree ||
+        item.startMontYear ||
+        item.endMontYear
+    )
       ? resume.sectionTitles.educations
       : null;
 
   const referencesSectionTitle =
     resume?.sectionTitles.references &&
-      resume.sectionTitles.references !== "Untitled" &&
-      resume.references.find(
-        (item) => item.name || item.company || item.email || item.phone
-      )
+    resume.sectionTitles.references !== "Untitled" &&
+    resume.references.find(
+      (item) => item.name || item.company || item.email || item.phone
+    )
       ? resume.sectionTitles.references
       : null;
   const skillLevelHide = resume.style.skillLevel;
 
   return (
     <Document>
-      <Page style={{
-        padding: "0px 0px",
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        flexDirection: 'row'
-      }}>
+      <Page
+        style={{
+          padding: "0px 0px",
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "row",
+        }}>
         <View
           style={{
             paddingTop: "40px",
@@ -166,7 +165,7 @@ const AthensPDF: React.FC = () => {
           <View
             style={{
               display: "flex",
-              flexDirection: 'row',
+              flexDirection: "row",
               gap: "10px",
               // justifyItems: "start",
               // justifyContent: "start",
@@ -176,7 +175,6 @@ const AthensPDF: React.FC = () => {
               <Image
                 style={{ width: "80px", height: "80px", borderRadius: "50%" }}
                 src={resume.avatar.url}
-
               />
             )}
             <View>
@@ -459,7 +457,7 @@ const AthensPDF: React.FC = () => {
             maxHeight: "100%",
             paddingRight: "40px",
             paddingTop: "40px",
-            paddingLeft: "40px",
+            paddingLeft: "25px",
             width: "230px",
             backgroundColor: "#082A4D",
           }}>
@@ -515,11 +513,11 @@ const AthensPDF: React.FC = () => {
           </Text>
           {resume.personalInfo.email && (
             <Text
-              style={{
+             >
+              <Link style={{
                 ...style.personalInfo.email,
                 textAlign: style.personalInfo.email.textAlign as any,
-              }}>
-              <Link href={`mailto:${resume.personalInfo.email}`}>
+              }} href={`mailto:${resume.personalInfo.email}`}>
                 {resume.personalInfo.email}
               </Link>
             </Text>
@@ -541,7 +539,7 @@ const AthensPDF: React.FC = () => {
                   color: "#FFFFFF",
                   fontFamily: "Nunito Sans",
                   fontWeight: 600,
-                  fontSize: "14px",
+                  fontSize: "12px",
                 }}>
                 Nationality :
               </Text>
@@ -562,7 +560,7 @@ const AthensPDF: React.FC = () => {
                   color: "#FFFFFF",
                   fontFamily: "Nunito Sans",
                   fontWeight: 600,
-                  fontSize: "14px",
+                  fontSize: "12px",
                 }}>
                 Place Of Birth :
               </Text>
@@ -582,7 +580,7 @@ const AthensPDF: React.FC = () => {
                   color: "#FFFFFF",
                   fontFamily: "Nunito Sans",
                   fontWeight: 600,
-                  fontSize: "14px",
+                  fontSize: "12px",
                 }}>
                 Date Of Birth :
               </Text>
@@ -602,7 +600,7 @@ const AthensPDF: React.FC = () => {
                   color: "#FFFFFF",
                   fontFamily: "Nunito Sans",
                   fontWeight: 600,
-                  fontSize: "14px",
+                  fontSize: "12px",
                 }}>
                 Driving License :
               </Text>
@@ -638,7 +636,7 @@ const AthensPDF: React.FC = () => {
                     {item.label}
                   </Text>
                   {!skillLevelHide && (
-                    <Text
+                    <View
                       style={{
                         width: "100%",
                         height: "3px",
@@ -646,14 +644,15 @@ const AthensPDF: React.FC = () => {
                         flexDirection:'row',
                         gap: "2px",
                         marginTop: "4px",
+                        backgroundColor: "#888",
                       }}>
-                      <Text
+                      <View
                         style={{
                           width: `${item.level}%`,
                           backgroundColor: "#FFFFFF",
                           height: "100%",
-                        }}></Text>
-                    </Text>
+                        }}></View>
+                    </View>
                   )}
                 </View>
               )
@@ -678,10 +677,8 @@ const AthensPDF: React.FC = () => {
                   style={{
                     ...style.socialProfiles.label,
                     textAlign: style.socialProfiles.label.textAlign as any,
-
                   }}
-                  href={item.link}
-                >
+                  href={item.link}>
                   {item.label}
                 </Link>
               )
@@ -721,9 +718,10 @@ const AthensPDF: React.FC = () => {
             );
           })}
         </View>
-      </Page>;
-    </Document >)
-
+      </Page>
+      ;
+    </Document>
+  );
 };
 
 export default AthensPDF;

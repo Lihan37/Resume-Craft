@@ -76,78 +76,78 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
   const skillLevelHide = resume.style.skillLevel;
   const personalInfoSectionTitle =
     resume?.sectionTitles.personalInfo &&
-      resume.sectionTitles.personalInfo !== "Untitled" &&
-      (resume.personalInfo.drivingLicense ||
-        resume.personalInfo.nationality ||
-        resume.personalInfo.DateOfBirth ||
-        resume.personalInfo.placeOfBirth)
+    resume.sectionTitles.personalInfo !== "Untitled" &&
+    (resume.personalInfo.drivingLicense ||
+      resume.personalInfo.nationality ||
+      resume.personalInfo.DateOfBirth ||
+      resume.personalInfo.placeOfBirth)
       ? resume.sectionTitles.personalInfo
       : null;
 
   const skillSectionTitle =
     resume?.sectionTitles.skills &&
-      resume.sectionTitles.skills !== "Untitled" &&
-      resume.skills.find((item) => item.label)
+    resume.sectionTitles.skills !== "Untitled" &&
+    resume.skills.find((item) => item.label)
       ? resume.sectionTitles.skills
       : null;
 
   const languageSectionTitle =
     resume?.sectionTitles.languages &&
-      resume.sectionTitles.languages !== "Untitled" &&
-      resume.languages.find((item) => item.language)
+    resume.sectionTitles.languages !== "Untitled" &&
+    resume.languages.find((item) => item.language)
       ? resume.sectionTitles.languages
       : null;
 
   const socialProfilesSectionTitle =
     resume?.sectionTitles.socialProfiles &&
-      resume.sectionTitles.socialProfiles !== "Untitled" &&
-      resume.socialProfiles.find((item) => item.label)
+    resume.sectionTitles.socialProfiles !== "Untitled" &&
+    resume.socialProfiles.find((item) => item.label)
       ? resume.sectionTitles.socialProfiles
       : null;
 
   const professionalSummarySectionTitle =
     resume?.sectionTitles.professionalSummary &&
-      resume.sectionTitles.professionalSummary !== "Untitled" &&
-      resume.professionalSummary
+    resume.sectionTitles.professionalSummary !== "Untitled" &&
+    resume.professionalSummary
       ? resume.sectionTitles.professionalSummary
       : null;
 
   const workExperienceSectionTitle =
     resume?.sectionTitles.workExperience &&
-      resume.sectionTitles.workExperience !== "Untitled" &&
-      resume.workExperience.find(
-        (item) =>
-          item.city ||
-          item.description ||
-          item.employer ||
-          item.jobTitle ||
-          item.startMontYear ||
-          item.endMontYear
-      )
+    resume.sectionTitles.workExperience !== "Untitled" &&
+    resume.workExperience.find(
+      (item) =>
+        item.city ||
+        item.description ||
+        item.employer ||
+        item.jobTitle ||
+        item.startMontYear ||
+        item.endMontYear
+    )
       ? resume.sectionTitles.workExperience
       : null;
 
   const educationsSectionTitle =
     resume?.sectionTitles.educations &&
-      resume.sectionTitles.educations !== "Untitled" &&
-      resume.educations.find(
-        (item) =>
-          item.city ||
-          item.description ||
-          item.school ||
-          item.degree ||
-          item.startMontYear ||
-          item.endMontYear
-      )
+    resume.sectionTitles.educations !== "Untitled" &&
+    resume.educations.find(
+      (item) =>
+        item.city ||
+        item.description ||
+        item.school ||
+        item.degree ||
+        item.startMontYear ||
+        item.endMontYear
+    )
       ? resume.sectionTitles.educations
       : null;
 
   const referencesSectionTitle =
     resume?.sectionTitles.references &&
-      resume.sectionTitles.references !== "Untitled" &&
-      resume.references.find(
-        (item) => item.name || item.company || item.email || item.phone
-      )
+    resume.sectionTitles.references !== "Untitled" &&
+    resume.references.find(
+      (item) => item.name || item.company || item.email || item.phone
+    )
       ? resume.sectionTitles.references
       : null;
 
@@ -178,7 +178,6 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
       flexDirection: "row",
       gap: "10px",
       alignItems: "center",
-      // marginLeft: "-25px",
     },
     icon: styleSydney.common.icon,
 
@@ -266,7 +265,8 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
   return (
     <Document>
       <Page style={styles.container}>
-        <View style={{ ...styles.header, alignItems: "center" }}>
+        <View
+          style={{ ...styles.header, alignItems: "center", padding: "10px" }}>
           {resume.avatar.url && (
             <Image style={styles.imageAva} src={resume.avatar.url} />
           )}
@@ -295,11 +295,13 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
           <View style={styles.headerViewTwo}>
             <View>
               <View style={styles.headerIcon}>
-              {professionalSummarySectionTitle &&(<Image
-                  style={styles.icon}
-                  src="https://i.ibb.co/DYGJf39/account.png"
-                />)}
-                
+                {professionalSummarySectionTitle && (
+                  <Image
+                    style={styles.icon}
+                    src="https://i.ibb.co/DYGJf39/account.png"
+                  />
+                )}
+
                 {professionalSummarySectionTitle && (
                   <Text style={styles.sectionTitles}>
                     {professionalSummarySectionTitle}
@@ -312,10 +314,12 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
             </View>
             <View>
               <View style={styles.headerIcon}>
-                {workExperienceSectionTitle && (<Image
-                  style={styles.icon}
-                  src="https://i.ibb.co/WGX4jFD/suitcase.png"
-                />)}
+                {workExperienceSectionTitle && (
+                  <Image
+                    style={styles.icon}
+                    src="https://i.ibb.co/WGX4jFD/suitcase.png"
+                  />
+                )}
 
                 {workExperienceSectionTitle && (
                   <Text style={styles.workExperienceStyle}>
@@ -462,7 +466,7 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
                         <Text style={styles.refCom}>{item.company}</Text>
                       )}
                     </Text>
-                    <Text style={{marginBottom:'5px'}}>
+                    <Text style={{ marginBottom: "5px" }}>
                       {item.email && (
                         <Text style={styles.refEmail}>{item.email}</Text>
                       )}
@@ -633,14 +637,13 @@ const SydneyPDF: React.FC<ISydney> = ({ resume }) => {
                       }}>
                       {skill.label}
                     </Text>
-                    {!skillLevelHide && (<View
-                      style={{
-                        ...styleCommon.bar,
-                        width: `${skill.level}%`,
-                      }}>
-
-                      </View>)}
-                    
+                    {!skillLevelHide && (
+                      <View
+                        style={{
+                          ...styleCommon.bar,
+                          width: `${skill.level}%`,
+                        }}></View>
+                    )}
                   </View>
                 ))}
               </View>

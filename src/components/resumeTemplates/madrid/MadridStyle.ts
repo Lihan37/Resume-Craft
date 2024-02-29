@@ -11,22 +11,19 @@ const styleMadrid = {
       display: "flex",
       gap: "15px",
       // padding: "0px 24px 10px 0px",
-      alignItems:'center',
+      alignItems: "center",
     },
 
-
     headerDivOne: {
-      width: "213.3px"
-   
-      
+      width: "213.3px",
     },
     headerDivTwo: {
       width: "100%",
     },
-    styleSkill:{
-      display:"flex", 
-      gap:"4px",
-       flexWrap:"wrap"
+    styleSkill: {
+      display: "flex",
+      gap: "4px",
+      flexWrap: "wrap",
     },
 
     // personalInfoEmail: {
@@ -34,7 +31,6 @@ const styleMadrid = {
     // },
 
     body: {
-      
       gap: "15px",
       padding: "5px 40px 0px 40px",
     },
@@ -48,17 +44,16 @@ const styleMadrid = {
       marginTop: "2px",
       marginBottom: "2px",
     },
-    flex:{
+    flex: {
       display: "flex",
     },
     sectionTitle: {
-      backgroundColor: "#9AEBFE",
       padding: "2px 2px",
       // display: "inline-block",
-      
+
       textColor: "white",
     },
-    
+
     personalInfoLabel: {
       color: "#002B18",
       fontFamily: "Nunito Sans",

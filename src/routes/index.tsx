@@ -25,9 +25,7 @@ import ForgotPassword from "../pages/auth/ForgotPassword";
 import NewPassword from "../pages/auth/NewPassword";
 import Account from "../pages/dashboard/user/account/Account";
 import UpdateBlog from "../pages/dashboard/admin/blog/UpdateBlog";
-import AthensPDF from "../components/resumeTemplates/athens/AthensPDF";
-import { PDFViewer } from "@react-pdf/renderer";
-import Athens from "../components/resumeTemplates/athens/Athens";
+import ShareView from "../pages/share/ShareView";
 
 const router = createBrowserRouter([
   {
@@ -126,16 +124,6 @@ const router = createBrowserRouter([
     ],
   },
   {
-
-    path: "athens",
-    element: <PDFViewer width={1000} height={800}><AthensPDF></AthensPDF></PDFViewer>,
-  },
-  {
-
-    path: "athenss",
-    element: <Athens></Athens>,
-  },
-  {
     path: "admin",
     element: <DashBoardWrapper />,
     children: [
@@ -156,6 +144,10 @@ const router = createBrowserRouter([
         element: <UpdateBlog />,
       },
     ],
+  },
+  {
+    path: "/share/view/:id",
+    element: <ShareView />,
   },
 ]);
 

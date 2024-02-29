@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useTitleSet from "../../hooks/useTitleSet";
-// import { images } from "../../constant";
-import { data } from "../../constant";
 import { Container } from "../../components/common/Container";
 import BlogCard from "../../components/common/BlogCard";
 import { IoArrowForward } from "react-icons/io5";
-import Pagination from "../../components/common/Pagination";
+import { useAppDispatch } from "../../app/store";
+import { useSelector } from "react-redux";
+import { selectBlogs } from "../../services/blogs/blogSelector";
+import { getAllBlogs } from "../../services/blogs/blogApi";
+import createArrayUpToNumber from "../../utils/createArrayUpToNumber";
+import BlogsSkeleton from "../../components/skeleton/BlogsSkeleton";
 
 const Blog: React.FC = () => {
   useTitleSet("Blogs");
+  const [page, setPage] = useState<number>(1);
+  const dispatch = useAppDispatch();
+  const { blogs, loading, total, page: PrevPage } = useSelector(selectBlogs);
+
+  useEffect(() => {
+    if (blogs.length === 0 || PrevPage !== page) {
+      dispatch(getAllBlogs({ page }));
+    }
+  }, [page]);
 
   return (
     <Container>
@@ -53,11 +65,61 @@ const Blog: React.FC = () => {
             Latest Posts
           </h1>
           <div className="grid gap-8 md:gap-5 lg:gap-8 grid-cols-1 md:grid-cols-3 justify-between my-10">
-            {data.blogs.map((blog) => (
-              <BlogCard key={blog.id} blog={blog}></BlogCard>
-            ))}
+            {loading ? (
+              <BlogsSkeleton />
+            ) : (
+              blogs.map((blog) => (
+                <BlogCard key={blog._id} blog={blog}></BlogCard>
+              ))
+            )}
           </div>
-          <Pagination></Pagination>
+          <div className=" flex justify-center items-center ">
+            <ul className="flex">
+              <button
+                onClick={() => {
+                  if (page === 1) {
+                    return;
+                  }
+                  setPage((prev) => prev - 1);
+                }}
+                disabled={page === 1}
+                className={` ${
+                  page === 1
+                    ? " text-gray-500"
+                    : "hover:bg-c-primary hover:text-gray-200 "
+                } mx-1 px-3 flex items-center py-2 bg-blue-50  rounded-lg`}>
+                <span className="mx-1">previous</span>
+              </button>
+              {createArrayUpToNumber(Math.ceil(total / 6)).map((item) => {
+                const isActive = item === page;
+                return (
+                  <li
+                    onClick={() => {
+                      setPage(item);
+                    }}
+                    key={item}
+                    className={` ${
+                      isActive && "bg-c-primary text-white"
+                    } mx-1 cursor-pointer px-3 py-2 bg-blue-50 text-gray-700 hover:bg-c-primary hover:text-gray-200 rounded-lg`}>
+                    {item}
+                  </li>
+                );
+              })}
+
+              <button
+                onClick={() => {
+                  setPage((prev) => prev + 1);
+                }}
+                disabled={total / 6 === page || blogs.length !== 6}
+                className={` ${
+                  total / 6 === page || blogs.length !== 6
+                    ? " text-gray-500"
+                    : "hover:bg-c-primary hover:text-gray-200 "
+                } mx-1 px-3 flex items-center py-2 bg-blue-50  rounded-lg`}>
+                <span className="mx-1">Next</span>
+              </button>
+            </ul>
+          </div>
         </div>
       </div>
     </Container>

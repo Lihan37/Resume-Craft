@@ -1,3 +1,5 @@
+import styleSydney2 from "./Sydney2/Sydney2Style";
+import styleAthens from "./athens/AthensStyle";
 import styleMadrid from "./madrid/MadridStyle";
 import styleStockholm from "./stockholm/StockholmStyle";
 import styleSydney from "./sydney/SydneyStyle";
@@ -10,6 +12,8 @@ const resumeStyle = {
   sydney01: { id: "sydney01", style: styleSydney },
   vienna01: { id: "vienna01", style: styleVienna },
   madrid01: { id: "madrid01", style: styleMadrid },
+  sydney02: { id: "sydney02", style: styleSydney2 },
+  athens01: { id: "athens01", style: styleAthens },
 };
 
 export default resumeStyle;

@@ -106,7 +106,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
         height: resume?.size.height,
         width: resume?.size.width,
         transformOrigin:
-          parseFloat(resume.size.height.slice(0, -2)) > 1190.14 ? "bottom" : "",
+          parseFloat(resume.size.height.slice(0, -2)) > 792 ? "bottom" : "",
         transition: "transform 0.5s",
         backgroundColor: "#ffff",
       }}>
@@ -226,6 +226,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
                     .textAlign as any,
                   ...styleCommon.sectionTitle,
                   ...styleCommon.margin,
+                  backgroundColor: resume.style.theme,
                 }}>
                 {personalInfoSectionTitle}:
               </h1>
@@ -326,6 +327,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
                     .textAlign as any,
                   ...styleCommon.sectionTitle,
                   ...styleCommon.margin,
+                  backgroundColor: resume.style.theme,
                 }}>
                 {professionalSummarySectionTitle}:
               </h1>
@@ -352,6 +354,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
                     .textAlign as any,
                   ...styleCommon.margin,
                   ...styleCommon.sectionTitle,
+                  backgroundColor: resume.style.theme,
                 }}>
                 {educationsSectionTitle}:
               </h1>
@@ -527,6 +530,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
                     .textAlign as any,
                   ...styleCommon.margin,
                   ...styleCommon.sectionTitle,
+                  backgroundColor: resume.style.theme,
                 }}>
                 {workExperienceSectionTitle}:
               </h1>
@@ -706,6 +710,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
                   textAlign: style.sectionTitles.skillsStyle.textAlign as any,
                   ...styleCommon.margin,
                   ...styleCommon.sectionTitle,
+                  backgroundColor: resume.style.theme,
                 }}>
                 {skillSectionTitle} :
               </h1>
@@ -752,6 +757,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
                     .textAlign as any,
                   ...styleCommon.margin,
                   ...styleCommon.sectionTitle,
+                  backgroundColor: resume.style.theme,
                 }}>
                 {languageSectionTitle} :
               </h1>
@@ -792,6 +798,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
                     .textAlign as any,
                   ...styleCommon.margin,
                   ...styleCommon.sectionTitle,
+                  backgroundColor: resume.style.theme,
                 }}>
                 {socialProfilesSectionTitle} :
               </h1>
@@ -826,6 +833,7 @@ const Madrid: React.ForwardRefRenderFunction<HTMLDivElement, IMadrid> = (
                     .textAlign as any,
                   ...styleCommon.margin,
                   ...styleCommon.sectionTitle,
+                  backgroundColor: resume.style.theme,
                 }}>
                 {referencesSectionTitle}:
               </h1>

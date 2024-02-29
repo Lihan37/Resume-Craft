@@ -34,8 +34,23 @@ const resumeTemplates = [
   },
   {
     template: {
+      templateId: "athens01",
+      img: "https://i.ibb.co/g3HhkmQ/Screenshot-9.png",
+      style: { ...resumeStyle["athens01"].style.require },
+    },
+    tags: [
+      "professional",
+      "ats-friendly",
+      "modern",
+      "creative",
+      "most-popular",
+    ],
+    name: "Civil Engineer",
+  },
+  {
+    template: {
       templateId: "madrid01",
-      img: images.resume1,
+      img: "https://i.ibb.co/YT2ckZX/Screenshot-8.png",
       style: { ...resumeStyle["madrid01"].style.require },
     },
     tags: [
@@ -49,9 +64,9 @@ const resumeTemplates = [
   },
   {
     template: {
-      templateId: "stockholm01",
-      img: images.resume2,
-      style: { ...resumeStyle["stockholm01"].style.require },
+      templateId: "sydney02",
+      img: "https://i.ibb.co/j36pPQt/Screenshot-7.png",
+      style: { ...resumeStyle["sydney02"].style.require },
     },
     tags: [
       "professional",
@@ -60,8 +75,9 @@ const resumeTemplates = [
       "creative",
       "most-popular",
     ],
-    name: "Civil Engineer",
+    name: "Engineer",
   },
+
   {
     template: {
       templateId: "stockholm01",
