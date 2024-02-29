@@ -11,22 +11,20 @@ const App: React.FC = () => {
   const user = useSelector(selectUser);
   const [loading, setLoading] = useState<boolean>(true);
   const dispatch = useDispatch();
-  // console.log(loading);
 
   const refreshAccessToken = async () => {
     try {
-      setLoading(true);
       const response = await fetch(`${baseUrl}/auth/v1/refresh`, {
         method: "GET",
         credentials: "include",
       });
       const data = await response.json();
-      if (data.user || data.message) {
-        setLoading(false);
-      }
+
       dispatch(setUser({ user: data.user, accessToken: data.accessToken }));
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
