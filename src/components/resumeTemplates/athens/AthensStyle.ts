@@ -12,8 +12,8 @@ const styleAthens = {
   require: {
     theme: "#EF8E38",
     themeOptions: ["#EF8E38", "#64AA3A", "#8989D1", "#5F8CC9"],
-    skillLevel: true,
-    skillLevelDisabled: true,
+    skillLevel: false,
+    skillLevelDisabled: false,
     personalInfo: {
       jobTitle: {
         color: "",

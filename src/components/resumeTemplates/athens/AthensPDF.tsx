@@ -249,7 +249,7 @@ const AthensPDF: React.FC = () => {
                 <View
                   style={{ marginBottom: !marginBottom ? "8px" : "0px" }}
                   key={item._id}>
-                  <Text style={{ lineHeight: "12px" }}>
+                  <Text >
                     {item.jobTitle && (
                       <Text
                         style={{
@@ -332,7 +332,7 @@ const AthensPDF: React.FC = () => {
                 item.startMontYear ||
                 item.endMontYear) && (
                 <View key={item._id}>
-                  <Text style={{ lineHeight: "12px" }}>
+                  <Text >
                     {item.degree && (
                       <Text
                         style={{
@@ -408,7 +408,7 @@ const AthensPDF: React.FC = () => {
           {resume.references.map((item) => {
             return (
               <View key={item._id}>
-                <Text style={{ lineHeight: "12px" }}>
+                <Text >
                   {item.name && (
                     <Text
                       style={{
@@ -456,7 +456,7 @@ const AthensPDF: React.FC = () => {
         <View
           style={{
             minHeight: resume?.size.height,
-            maxHeight: resume?.size.height,
+            maxHeight: "100%",
             paddingRight: "40px",
             paddingTop: "40px",
             paddingLeft: "40px",
@@ -633,7 +633,7 @@ const AthensPDF: React.FC = () => {
                     style={{
                       ...style.skills.label,
                       textAlign: style.skills.label.textAlign as any,
-                      lineHeight: skillLevelHide ? "12px" : "18px",
+                     
                     }}>
                     {item.label}
                   </Text>
@@ -643,6 +643,7 @@ const AthensPDF: React.FC = () => {
                         width: "100%",
                         height: "3px",
                         display: "flex",
+                        flexDirection:'row',
                         gap: "2px",
                         marginTop: "4px",
                       }}>
