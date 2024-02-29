@@ -90,6 +90,7 @@ const LondonPDF: React.FC<ISydney> = ({ coverLetter }) => {
       ...style.address,
       textAlign: style.address.textAlign as any,
       marginTop: "12px",
+      width: "100%",
     },
 
     companyName: {
@@ -149,6 +150,7 @@ const LondonPDF: React.FC<ISydney> = ({ coverLetter }) => {
           <View
             style={{
               minWidth: "180px",
+              maxWidth: "180px",
               paddingTop: "10px",
               paddingRight: "10px",
             }}>
