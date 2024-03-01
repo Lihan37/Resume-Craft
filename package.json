@@ -12,6 +12,8 @@
   "dependencies": {
     "@react-pdf/renderer": "^3.3.8",
     "@reduxjs/toolkit": "^2.1.0",
+    "@stripe/react-stripe-js": "^2.5.1",
+    "@stripe/stripe-js": "^3.0.6",
     "axios": "^1.6.5",
     "firebase": "^10.7.2",
     "framer-motion": "^10.18.0",

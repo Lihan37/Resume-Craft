@@ -26,6 +26,7 @@ import NewPassword from "../pages/auth/NewPassword";
 import Account from "../pages/dashboard/user/account/Account";
 import UpdateBlog from "../pages/dashboard/admin/blog/UpdateBlog";
 import ShareView from "../pages/share/ShareView";
+import Payment from "../pages/payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,8 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
       },
+
+      { path: "payment", element: <Payment /> },
 
       {
         path: "/resumes-template",

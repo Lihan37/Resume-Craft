@@ -1,30 +1,64 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface IUser {
+interface Plan {
+  type: string;
+  downloadLimit: number;
+  checkoutDate: number;
+  timeLimit: number;
+}
+
+interface UserData {
   _id: string;
   name: string;
   email: string;
-  role: string;
   avatar: {
     url: string;
     public_id: string;
   };
+  role: string;
+  socialLogin: boolean;
+  plan: Plan;
 }
 
+const initialUserData: UserData = {
+  _id: "",
+  name: "",
+  email: "",
+  avatar: {
+    url: "",
+    public_id: "",
+  },
+  role: "",
+  socialLogin: false,
+  plan: {
+    type: "",
+    downloadLimit: 0,
+    checkoutDate: 0,
+    timeLimit: 0,
+  },
+};
 interface InitialState {
-  user: IUser;
+  user: UserData;
   loading: boolean;
   accessToken: string;
 }
+
 const initialState: InitialState = {
   user: {
     _id: "",
     name: "",
     email: "",
-    role: "",
     avatar: {
       url: "",
       public_id: "",
+    },
+    role: "",
+    socialLogin: false,
+    plan: {
+      type: "",
+      downloadLimit: 0,
+      checkoutDate: 0,
+      timeLimit: 0,
     },
   },
   accessToken: "",
@@ -41,9 +75,16 @@ const authSlice = createSlice({
         name: action.payload.user.name || "",
         email: action.payload.user.email || "",
         role: action.payload.user.role || "",
+        socialLogin: action.payload.user.socialLogin || false,
         avatar: {
           url: action.payload.user?.avatar?.url || "",
           public_id: action.payload.user?.avatar?.public_id || "",
+        },
+        plan: {
+          type: action.payload.user?.plan?.type || "",
+          downloadLimit: action.payload.user?.plan?.downloadLimit || 0,
+          checkoutDate: action.payload.user?.plan?.checkoutDate || 0,
+          timeLimit: action.payload.user?.plan?.timeLimit || 0,
         },
       };
       state.accessToken = action.payload.accessToken || state.accessToken;
@@ -52,16 +93,7 @@ const authSlice = createSlice({
       state.loading = action.payload;
     },
     removeUser(state) {
-      state.user = {
-        _id: "",
-        name: "",
-        email: "",
-        role: "",
-        avatar: {
-          url: "",
-          public_id: "",
-        },
-      };
+      state.user = initialUserData;
     },
     changeUser(state, action) {
       state.user = {
