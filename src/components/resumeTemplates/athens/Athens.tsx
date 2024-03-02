@@ -3,16 +3,17 @@ import React, { forwardRef } from "react";
 import { IResumeData } from "../../../services/resumeEditor/resumeEditorSlice";
 import styleAthens from "./AthensStyle";
 import useDisplay from "../../../hooks/useDisplay";
+import { resume } from "../resume";
 
 export interface IAthens {
   resume: IResumeData;
 }
 
 const Athens: React.ForwardRefRenderFunction<HTMLDivElement, IAthens> = (
-  { resume },
+  {  },
   ref
 ) => {
-  const style = resume?.style;
+  const style = styleAthens.require;
   const styleCommon = styleAthens.common;
 
   const [windowWidth] = useDisplay();
@@ -93,7 +94,7 @@ const Athens: React.ForwardRefRenderFunction<HTMLDivElement, IAthens> = (
     )
       ? resume.sectionTitles.references
       : null;
-  const skillLevelHide = resume.style.skillLevel;
+      const skillLevelHide = resume.style.skillLevel;
 
   return (
     <div

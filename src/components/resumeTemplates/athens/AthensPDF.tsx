@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { resume } from "../resume";
+
 
 import React from "react";
 import {
@@ -22,6 +22,9 @@ import {
   Poppins,
   Roboto,
 } from "../../../utils/font";
+import styleAthens from "./AthensStyle";
+import { resume } from "../resume";
+
 
 Font.register({
   family: "Advent Pro",
@@ -63,7 +66,7 @@ Font.register({
   fonts: PlayfairDisplay,
 });
 const AthensPDF: React.FC = () => {
-  const style = resume?.style;
+  const style = styleAthens.require
   const personalInfoSectionTitle =
     resume?.sectionTitles.personalInfo &&
     resume.sectionTitles.personalInfo !== "Untitled" &&
@@ -244,7 +247,7 @@ const AthensPDF: React.FC = () => {
                 <View
                   style={{ marginBottom: !marginBottom ? "8px" : "0px" }}
                   key={item._id}>
-                  <Text style={{ lineHeight: "12px" }}>
+                  <Text >
                     {item.jobTitle && (
                       <Text
                         style={{
@@ -327,7 +330,7 @@ const AthensPDF: React.FC = () => {
                 item.startMontYear ||
                 item.endMontYear) && (
                 <View key={item._id}>
-                  <Text style={{ lineHeight: "12px" }}>
+                  <Text >
                     {item.degree && (
                       <Text
                         style={{
@@ -403,7 +406,7 @@ const AthensPDF: React.FC = () => {
           {resume.references.map((item) => {
             return (
               <View key={item._id}>
-                <Text style={{ lineHeight: "12px" }}>
+                <Text >
                   {item.name && (
                     <Text
                       style={{
@@ -451,10 +454,10 @@ const AthensPDF: React.FC = () => {
         <View
           style={{
             minHeight: resume?.size.height,
-            maxHeight: resume?.size.height,
+            maxHeight: "100%",
             paddingRight: "40px",
             paddingTop: "40px",
-            paddingLeft: "40px",
+            paddingLeft: "25px",
             width: "230px",
             backgroundColor: "#082A4D",
           }}>
@@ -510,11 +513,11 @@ const AthensPDF: React.FC = () => {
           </Text>
           {resume.personalInfo.email && (
             <Text
-              style={{
+             >
+              <Link style={{
                 ...style.personalInfo.email,
                 textAlign: style.personalInfo.email.textAlign as any,
-              }}>
-              <Link href={`mailto:${resume.personalInfo.email}`}>
+              }} href={`mailto:${resume.personalInfo.email}`}>
                 {resume.personalInfo.email}
               </Link>
             </Text>
@@ -536,7 +539,7 @@ const AthensPDF: React.FC = () => {
                   color: "#FFFFFF",
                   fontFamily: "Nunito Sans",
                   fontWeight: 600,
-                  fontSize: "14px",
+                  fontSize: "12px",
                 }}>
                 Nationality :
               </Text>
@@ -557,7 +560,7 @@ const AthensPDF: React.FC = () => {
                   color: "#FFFFFF",
                   fontFamily: "Nunito Sans",
                   fontWeight: 600,
-                  fontSize: "14px",
+                  fontSize: "12px",
                 }}>
                 Place Of Birth :
               </Text>
@@ -577,7 +580,7 @@ const AthensPDF: React.FC = () => {
                   color: "#FFFFFF",
                   fontFamily: "Nunito Sans",
                   fontWeight: 600,
-                  fontSize: "14px",
+                  fontSize: "12px",
                 }}>
                 Date Of Birth :
               </Text>
@@ -597,7 +600,7 @@ const AthensPDF: React.FC = () => {
                   color: "#FFFFFF",
                   fontFamily: "Nunito Sans",
                   fontWeight: 600,
-                  fontSize: "14px",
+                  fontSize: "12px",
                 }}>
                 Driving License :
               </Text>
@@ -628,26 +631,28 @@ const AthensPDF: React.FC = () => {
                     style={{
                       ...style.skills.label,
                       textAlign: style.skills.label.textAlign as any,
-                      lineHeight: skillLevelHide ? "12px" : "18px",
+                     
                     }}>
                     {item.label}
                   </Text>
                   {!skillLevelHide && (
-                    <Text
+                    <View
                       style={{
                         width: "100%",
                         height: "3px",
                         display: "flex",
+                        flexDirection:'row',
                         gap: "2px",
                         marginTop: "4px",
+                        backgroundColor: "#888",
                       }}>
-                      <Text
+                      <View
                         style={{
                           width: `${item.level}%`,
                           backgroundColor: "#FFFFFF",
                           height: "100%",
-                        }}></Text>
-                    </Text>
+                        }}></View>
+                    </View>
                   )}
                 </View>
               )
