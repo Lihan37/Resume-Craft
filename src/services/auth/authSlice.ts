@@ -2,9 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface Plan {
   type: string;
-  downloadLimit: number;
+  downloadlimite: number;
   checkoutDate: number;
-  timeLimit: number;
+  timeLimite: number;
 }
 
 interface UserData {
@@ -32,9 +32,9 @@ const initialUserData: UserData = {
   socialLogin: false,
   plan: {
     type: "",
-    downloadLimit: 0,
+    downloadlimite: 0,
     checkoutDate: 0,
-    timeLimit: 0,
+    timeLimite: 0,
   },
 };
 interface InitialState {
@@ -56,9 +56,9 @@ const initialState: InitialState = {
     socialLogin: false,
     plan: {
       type: "",
-      downloadLimit: 0,
+      downloadlimite: 0,
       checkoutDate: 0,
-      timeLimit: 0,
+      timeLimite: 0,
     },
   },
   accessToken: "",
@@ -82,9 +82,9 @@ const authSlice = createSlice({
         },
         plan: {
           type: action.payload.user?.plan?.type || "",
-          downloadLimit: action.payload.user?.plan?.downloadLimit || 0,
+          downloadlimite: action.payload.user?.plan?.downloadlimite || 0,
           checkoutDate: action.payload.user?.plan?.checkoutDate || 0,
-          timeLimit: action.payload.user?.plan?.timeLimit || 0,
+          timeLimite: action.payload.user?.plan?.timeLimite || 0,
         },
       };
       state.accessToken = action.payload.accessToken || state.accessToken;
