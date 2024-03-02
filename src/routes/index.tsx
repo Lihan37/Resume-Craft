@@ -26,7 +26,7 @@ import NewPassword from "../pages/auth/NewPassword";
 import Account from "../pages/dashboard/user/account/Account";
 import UpdateBlog from "../pages/dashboard/admin/blog/UpdateBlog";
 import ShareView from "../pages/share/ShareView";
-import Payment from "../pages/payment/Payment";
+import Payment from "../pages/pricing/payment/Payment";
 
 const router = createBrowserRouter([
   {

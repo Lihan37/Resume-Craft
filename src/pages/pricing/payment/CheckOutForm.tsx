@@ -2,7 +2,7 @@ import React from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
-import { selectUser } from "../../services/auth/authSelector";
+import { selectUser } from "../../../services/auth/authSelector";
 
 const CheckoutForm: React.FC = () => {
   const user = useSelector(selectUser);
