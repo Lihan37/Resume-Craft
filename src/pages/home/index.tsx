@@ -9,9 +9,11 @@ import Companies from "./Companies";
 import BlogsSection from "./BlogsSection";
 import Action from "./Action";
 import useTitleSet from "../../hooks/useTitleSet";
+import { useGetPriceQuery } from "../../services/api/api";
 
 export const Home: React.FC = () => {
   useTitleSet("Home");
+  useGetPriceQuery("price");
   return (
     <>
       <HeroSection />
