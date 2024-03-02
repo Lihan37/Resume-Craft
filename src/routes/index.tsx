@@ -26,7 +26,8 @@ import NewPassword from "../pages/auth/NewPassword";
 import Account from "../pages/dashboard/user/account/Account";
 import UpdateBlog from "../pages/dashboard/admin/blog/UpdateBlog";
 import ShareView from "../pages/share/ShareView";
-import Payment from "../pages/pricing/payment/Payment";
+import AccountContainer from "../pages/dashboard/user/account/AccountContainer";
+import PaymentHistory from "../pages/dashboard/user/account/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -67,12 +68,22 @@ const router = createBrowserRouter([
         path: "/account",
         element: (
           <PrivateRoutes>
-            <Account />
+            <AccountContainer>
+              <Account />
+            </AccountContainer>
           </PrivateRoutes>
         ),
       },
-
-      { path: "payment", element: <Payment /> },
+      {
+        path: "/payment-history",
+        element: (
+          <PrivateRoutes>
+            <AccountContainer>
+              <PaymentHistory />
+            </AccountContainer>
+          </PrivateRoutes>
+        ),
+      },
 
       {
         path: "/resumes-template",

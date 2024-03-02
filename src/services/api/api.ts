@@ -12,6 +12,9 @@ const apiSlice = createApi({
     getPrice: builder.query({
       query: () => `/payment/v1/single`,
     }),
+    getPaymentHistory: builder.query({
+      query: () => `/payment/v1/history`,
+    }),
     createPayment: builder.mutation({
       query: (data) => ({
         url: "/payment/v1/history/create",
@@ -32,6 +35,10 @@ const apiSlice = createApi({
   }),
 });
 
-export const { useGetPriceQuery, useCreatePaymentMutation } = apiSlice;
+export const {
+  useGetPriceQuery,
+  useCreatePaymentMutation,
+  useGetPaymentHistoryQuery,
+} = apiSlice;
 
 export default apiSlice;

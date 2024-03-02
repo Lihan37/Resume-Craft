@@ -81,7 +81,9 @@ const Navbar: React.FC = () => {
                 windowWidth < 769 &&
                 "absolute  bg-gradient-to-r  from-blue-50 to-violet-100 "
               } ${
-                (pathname === "/dashboard" || pathname === "/account") &&
+                (pathname === "/dashboard" ||
+                  pathname === "/account" ||
+                  pathname === "/payment-history") &&
                 "hidden"
               } top-20 right-10 py-5 rounded-xl lg:rounded-none w-72 lg:w-fit  uppercase flex flex-col lg:flex-row z-50 justify-start items-center gap-4 xl:gap-12 font-semibold text-lg text-c-dark font-mono`}>
               <div className="lg:hidden px-5 text-3xl w-full ">
@@ -107,7 +109,9 @@ const Navbar: React.FC = () => {
             </div>
           )}
 
-          {pathname === "/dashboard" || pathname === "/account" ? (
+          {pathname === "/dashboard" ||
+          pathname === "/account" ||
+          pathname === "/payment-history" ? (
             <div ref={accountRef} className="relative">
               <div
                 onClick={() => setIsOpenAccount((prev) => !prev)}

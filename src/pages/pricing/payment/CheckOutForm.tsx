@@ -108,6 +108,7 @@ const CheckoutForm: React.FC<ICheckoutForm> = ({
         timeLimite: data.timeLimite,
         amount: data.price,
         transactionId: paymentIntent.id,
+        price: data.price,
       };
 
       createPayment(paymentData);
