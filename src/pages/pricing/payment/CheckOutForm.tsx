@@ -62,27 +62,38 @@ const CheckoutForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <CardElement
-        options={{
-          style: {
-            base: {
-              fontSize: "16px",
-              color: "#424770",
-              "::placeholder": {
-                color: "#aab7c4",
-              },
-            },
-            invalid: {
-              color: "#9e2146",
-            },
-          },
-        }}
-      />
-      <button type="submit" disabled={!stripe}>
-        Pay
+      <CardElement options={{ iconStyle: "solid", ...CARD_OPTIONS }} />
+      <button
+        type="submit"
+        disabled={!stripe}
+        className="bg-white my-5 mb-1 hover:opacity-90 transition-opacity text-indigo-600 font-semibold w-full py-2 rounded">
+        Payment!
       </button>
     </form>
   );
 };
 
 export default CheckoutForm;
+
+const CARD_OPTIONS = {
+  style: {
+    base: {
+      iconColor: "#fff",
+      color: "#fff",
+      fontWeight: 500,
+      fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
+      fontSize: "16px",
+      fontSmoothing: "antialiased",
+      ":-webkit-autofill": {
+        color: "#fff",
+      },
+      "::placeholder": {
+        color: "#fff",
+      },
+    },
+    invalid: {
+      iconColor: "#ffc7ee",
+      color: "#ffc7ee",
+    },
+  },
+};

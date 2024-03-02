@@ -10,7 +10,9 @@ const Payment: React.FC = () => {
   return (
     <div className="w-full flex justify-center items-center">
       <div className="w-full max-w-[700px] break-words border border-dashed bg-clip-border rounded-2xl border-stone-200 bg-light/30 p-8">
-        <span className="text-2xl font-bold">PAYMENT</span>
+        <h1 className="text-2xl my-3 mt-0 font-bold text-center w-full">
+          PAYMENT
+        </h1>
         <Elements stripe={stripePromise}>
           <CheckoutForm />
         </Elements>

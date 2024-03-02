@@ -3,6 +3,8 @@ import useTitleSet from "../../hooks/useTitleSet";
 import { Container } from "../../components/common/Container";
 import SectionHeader from "../../components/common/SectionHeader";
 import TextGradient from "../../components/common/TextGradient";
+import Modal from "../../components/common/Modal";
+import Payment from "./payment/Payment";
 
 interface IPrice {
   premium: number;
@@ -13,6 +15,7 @@ const Pricing: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>("monthly");
   useTitleSet("Pricing");
   const [prices, setPrice] = useState<IPrice>({ premium: 13, enterprise: 31 });
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedOption(event.target.value);
@@ -209,7 +212,9 @@ const Pricing: React.FC = () => {
                               Per{" "}
                               {selectedOption === "monthly" ? "Month" : "Year"}
                             </h2>
-                            <button className="py-1 w-fit px-5 md:px-3 bg-white text-c-dark  text-base md:text-xs lg:text-base font-semibold  border-2 rounded-full md:border-c-dark ">
+                            <button
+                              onClick={() => setIsOpen(true)}
+                              className="py-1 w-fit px-5 md:px-3 bg-white text-c-dark  text-base md:text-xs lg:text-base font-semibold  border-2 rounded-full md:border-c-dark ">
                               Get Started
                             </button>
                           </div>
@@ -245,6 +250,14 @@ const Pricing: React.FC = () => {
           </div>
         </Container>
       </div>
+      <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
+        <Payment />
+        <button
+          onClick={() => setIsOpen(false)}
+          className="bg-transparent mt-5 hover:bg-white/10 transition-colors text-white font-semibold w-full py-2 rounded">
+          Nah, go back
+        </button>
+      </Modal>
       <div className=" h-[1750px] md:h-[400px] lg:h-[500px] xl:h-[500px] "></div>
     </div>
   );
