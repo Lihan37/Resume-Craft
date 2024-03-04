@@ -12,7 +12,7 @@ const Pricing: React.FC = () => {
         <h1 className="text-4xl text-c-dark-light font-bold ">Pricing</h1>;
         <Create />
       </div>
-      <div className="p-6 overflow-scroll h-[800px] ">
+      <div className="p-6 overflow-scroll h-[700px] ">
         <table className="mt-4 w-full min-w-max table-auto text-left ">
           <thead>
             <tr>
