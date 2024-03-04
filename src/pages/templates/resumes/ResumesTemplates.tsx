@@ -1,7 +1,6 @@
 import React from "react";
 import useTitleSet from "../../../hooks/useTitleSet";
 import HeaderResume from "../Shared/Header";
-import Search from "../Shared/Search";
 import Popular from "../Shared/Popular";
 import { images } from "../../../constant";
 import Catagories from "../Shared/Catagories";
@@ -57,7 +56,6 @@ const ResumesTemplates: React.FC = () => {
       </div>
 
       <Container>
-        <Search />
         <Popular data={mostPopular} type="resume" />
 
         {catagories.map((item, index) => {
