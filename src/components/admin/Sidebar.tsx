@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { FaHome } from "react-icons/fa";
-import { MdArticle } from "react-icons/md";
+import { MdArticle, MdOutlinePriceChange } from "react-icons/md";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { IoIosCreate } from "react-icons/io";
-import { GrHistory } from "react-icons/gr";
 import { images } from "../../constant";
 
 const Sidebar: React.FC = () => {
@@ -27,6 +26,11 @@ const Sidebar: React.FC = () => {
       link: "/admin",
     },
     {
+      icon: <MdOutlinePriceChange />,
+      label: "Pricing",
+      link: "/admin/payment-add",
+    },
+    {
       icon: <MdArticle />,
       label: "Blogs",
       link: "/admin/blog",
@@ -35,11 +39,6 @@ const Sidebar: React.FC = () => {
       icon: <IoIosCreate />,
       label: "Create Blog",
       link: "/admin/create-blog",
-    },
-    {
-      icon: <GrHistory />,
-      label: "History",
-      link: "/admin/history",
     },
   ];
 

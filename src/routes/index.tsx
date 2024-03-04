@@ -28,6 +28,7 @@ import UpdateBlog from "../pages/dashboard/admin/blog/UpdateBlog";
 import ShareView from "../pages/share/ShareView";
 import AccountContainer from "../pages/dashboard/user/account/AccountContainer";
 import PaymentHistory from "../pages/dashboard/user/account/PaymentHistory";
+import PricingAdmin from "../pages/dashboard/admin/payment/Pricing";
 
 const router = createBrowserRouter([
   {
@@ -148,6 +149,10 @@ const router = createBrowserRouter([
       {
         path: "blog",
         element: <Blogs />,
+      },
+      {
+        path: "payment-add",
+        element: <PricingAdmin />,
       },
       {
         path: "create-blog",

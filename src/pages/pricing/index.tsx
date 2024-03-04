@@ -105,6 +105,12 @@ const Pricing: React.FC = () => {
                                     htmlFor="monthly">
                                     Monthly billing
                                   </label>
+                                  {initialData.monthly.discount.amount > 0 && (
+                                    <span className=" px-2 text-base bg-red-100 rounded-xl">
+                                      Save {initialData.monthly.discount.amount}
+                                      %
+                                    </span>
+                                  )}
                                 </div>
                                 <div className=" flex justify-start items-center gap-2 ">
                                   <input
@@ -121,9 +127,11 @@ const Pricing: React.FC = () => {
                                     htmlFor="Yearly">
                                     Yearly billing
                                   </label>
-                                  <span className=" px-2 text-base bg-red-100 rounded-xl">
-                                    Save 25%
-                                  </span>
+                                  {initialData.yearly.discount.amount > 0 && (
+                                    <span className=" px-2 text-base bg-red-100 rounded-xl">
+                                      Save {initialData.yearly.discount.amount}%
+                                    </span>
+                                  )}
                                 </div>
                               </div>
                             </div>
@@ -364,11 +372,6 @@ const Pricing: React.FC = () => {
           <Payment>
             <CheckoutForm data={paymentData} setIsOpen={setIsOpen} />
           </Payment>
-          <button
-            onClick={() => setIsOpen(false)}
-            className="bg-transparent mt-5 hover:bg-white/10 transition-colors text-white font-semibold w-full py-2 rounded">
-            Nah, go back
-          </button>
         </Modal>
         <div className=" h-[1750px] md:h-[400px] lg:h-[500px] xl:h-[500px] "></div>
       </div>

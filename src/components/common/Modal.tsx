@@ -28,6 +28,11 @@ const Modal: React.FC<IModal> = ({
             onClick={(e) => e.stopPropagation()}
             className="bg-gradient-to-br from-violet-600 to-indigo-600 text-white p-6 rounded-lg w-full max-w-lg shadow-xl cursor-default relative overflow-hidden">
             {children}
+            <button
+              onClick={() => setIsOpen(false)}
+              className="bg-transparent mt-5 hover:bg-white/10 transition-colors text-white font-semibold w-full py-2 rounded">
+              Nah, go back
+            </button>
           </motion.div>
         </motion.div>
       )}
