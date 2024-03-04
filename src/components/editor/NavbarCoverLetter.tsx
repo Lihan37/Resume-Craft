@@ -59,7 +59,7 @@ const NavbarCoverLetter: React.FC = () => {
       : null;
 
   useEffect(() => {
-    if (!(allHistory.length > 0)) {
+    if (!allHistory) {
       appDispatch(userHistory());
     }
   }, []);

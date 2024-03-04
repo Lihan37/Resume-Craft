@@ -20,8 +20,11 @@ const Pricing: React.FC = () => {
   useTitleSet("Pricing");
 
   const { data, isSuccess } = useGetPriceQuery("price");
-  const initialData = isSuccess && data?.payment;
+
+  const initialData = isSuccess && data.payment;
+
   const [isOpen, setIsOpen] = useState(false);
+
   const [paymentData, setPaymentDAta] = useState<IPaymentData>({
     paymentId: "",
     price: 0,
@@ -44,7 +47,7 @@ const Pricing: React.FC = () => {
     plan: string;
   }) => {
     const paymentData = {
-      paymentId: initialData._id,
+      paymentId: initialData?._id,
       price: price,
       plan: plan,
       timeLimite: selectedOption === "monthly" ? 30 : 360,

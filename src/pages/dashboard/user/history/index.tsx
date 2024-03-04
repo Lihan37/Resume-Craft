@@ -38,7 +38,7 @@ const UserDashboard: React.FC = () => {
   useTitleSet("History");
 
   useEffect(() => {
-    if (!(allHistory.length > 0)) {
+    if (!allHistory) {
       appDispatch(userHistory());
     }
   }, []);
@@ -102,7 +102,7 @@ const UserDashboard: React.FC = () => {
                   value: activeTab,
                   label: buttonLabels[activeTab],
                 }}
-                data={history}
+                data={history || []}
               />
             </motion.div>
           </AnimatePresence>

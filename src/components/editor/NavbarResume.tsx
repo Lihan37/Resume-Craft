@@ -62,7 +62,7 @@ const EditorNavbar: React.FC = () => {
   const allHistory = useSelector(selectAllHistory);
 
   useEffect(() => {
-    if (!(allHistory.length > 0)) {
+    if (!allHistory) {
       appDispatch(userHistory());
     }
   }, []);

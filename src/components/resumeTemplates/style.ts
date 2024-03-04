@@ -14,6 +14,7 @@ const resumeStyle = {
   madrid01: { id: "madrid01", style: styleMadrid },
   sydney02: { id: "sydney02", style: styleSydney2 },
   athens01: { id: "athens01", style: styleAthens },
+  athens02: { id: "athens02", style: styleAthens },
 };
 
 export default resumeStyle;

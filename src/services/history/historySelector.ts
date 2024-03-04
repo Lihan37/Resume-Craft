@@ -6,9 +6,9 @@ export const selectHistoryLoading = (state: RootState) =>
 export const selectHistoryError = (state: RootState) => state.history.error;
 
 export const selectHistory = (state: RootState, type: string) =>
-  state.history.history.filter((item) => item.type === type);
+  state.history.history?.filter((item) => item.type === type);
 
 export const selectSingleHistory = (state: RootState, id: string | number) =>
-  state.history.history.find((item) => item.templateId === id);
+  state.history.history?.find((item) => item.templateId === id);
 
 export const selectAllHistory = (state: RootState) => state.history.history;

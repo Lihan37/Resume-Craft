@@ -24,13 +24,13 @@ export interface ISingleUserHistory {
 interface IHistory {
   isLoading: boolean;
   error: null | string;
-  history: ISingleUserHistory[];
+  history: ISingleUserHistory[] | null;
 }
 
 const initialState: IHistory = {
   isLoading: false,
   error: null,
-  history: [],
+  history: null,
 };
 
 const historySlice = createSlice({
@@ -41,7 +41,7 @@ const historySlice = createSlice({
       state.isLoading = true;
     },
     changeTitle: (state, action: PayloadAction<ISingleUserHistory>) => {
-      state.history.map((item) => {
+      state.history?.map((item) => {
         if (item._id === action.payload._id) {
           return {
             ...item,
@@ -62,7 +62,7 @@ const historySlice = createSlice({
         createUserHistory.fulfilled,
         (state, action: PayloadAction<ISingleUserHistory>) => {
           state.isLoading = false;
-          state.history = [...state.history, action.payload];
+          state.history = state.history && [...state.history, action.payload];
         }
       )
       .addCase(createUserHistory.rejected, (state, action) => {
@@ -84,38 +84,44 @@ const historySlice = createSlice({
 
       .addCase(updateHistoryThumbnail.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.history = state.history.map((item) => {
-          if (item._id === action.payload._id) {
-            return {
-              ...item,
-              thumbnail: {
-                ...action.payload.thumbnail,
-              },
-            };
-          }
-          return item;
-        });
+        state.history =
+          state.history &&
+          state.history?.map((item) => {
+            if (item._id === action.payload._id) {
+              return {
+                ...item,
+                thumbnail: {
+                  ...action.payload.thumbnail,
+                },
+              };
+            }
+            return item;
+          });
       })
       .addCase(updateUserHistory.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.history = state.history.map((item) => {
-          if (item._id === action.payload._id) {
-            return {
-              ...item,
-              title: action.payload.title,
-            };
-          }
-          return item;
-        });
+        state.history =
+          state.history &&
+          state.history?.map((item) => {
+            if (item._id === action.payload._id) {
+              return {
+                ...item,
+                title: action.payload.title,
+              };
+            }
+            return item;
+          });
       })
       .addCase(deleteUserHistory.pending, (state) => {
         state.error = null;
       })
       .addCase(deleteUserHistory.fulfilled, (state, action) => {
-        const filterData = state.history.filter(
+        const filterData = state.history?.filter(
           (item) => item._id !== action.payload.id
         );
-        state.history = action.payload.success ? filterData : state.history;
+        state.history = action.payload.success
+          ? filterData || null
+          : state?.history;
         state.error = action.payload.success ? null : "some thing wrong";
       })
       .addCase(deleteUserHistory.rejected, (state) => {

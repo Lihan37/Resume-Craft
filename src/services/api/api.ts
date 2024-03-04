@@ -1,16 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setUser } from "../auth/authSlice";
-interface PaymentHistory {
-  _id: string;
-  user: string;
-  type: string;
-  downloadLimit: number;
-  timeLimit: number;
-  transactionId: string;
-  price: string;
-  createdAt: string;
-  updatedAt: string;
-}
 
 const apiSlice = createApi({
   reducerPath: "api",
@@ -19,11 +8,12 @@ const apiSlice = createApi({
     credentials: "include",
   }),
 
-  tagTypes: ["paymentHistory"],
+  tagTypes: ["paymentHistory", "price"],
 
   endpoints: (builder) => ({
-    getPrice: builder.query<PaymentHistory[], void>({
+    getPrice: builder.query({
       query: () => `/payment/v1/single`,
+      providesTags: ["price"],
     }),
     getPaymentHistory: builder.query({
       query: () => `/payment/v1/history`,

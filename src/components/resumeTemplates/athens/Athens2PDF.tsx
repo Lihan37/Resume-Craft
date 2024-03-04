@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
-
 import React from "react";
 import {
   Page,
@@ -22,9 +20,7 @@ import {
   Poppins,
   Roboto,
 } from "../../../utils/font";
-import styleAthens from "./AthensStyle";
-import { resume } from "../resume";
-
+import { IResumeData } from "../../../services/resumeEditor/resumeEditorSlice";
 
 Font.register({
   family: "Advent Pro",
@@ -65,8 +61,13 @@ Font.register({
   family: "Playfair Display",
   fonts: PlayfairDisplay,
 });
-const AthensPDF: React.FC = () => {
-  const style = styleAthens.require
+
+export interface IAthens {
+  resume: IResumeData;
+}
+
+const AthensPDF2: React.FC<IAthens> = ({ resume }) => {
+  const style = resume.style;
   const personalInfoSectionTitle =
     resume?.sectionTitles.personalInfo &&
     resume.sectionTitles.personalInfo !== "Untitled" &&
@@ -247,7 +248,7 @@ const AthensPDF: React.FC = () => {
                 <View
                   style={{ marginBottom: !marginBottom ? "8px" : "0px" }}
                   key={item._id}>
-                  <Text >
+                  <Text>
                     {item.jobTitle && (
                       <Text
                         style={{
@@ -330,7 +331,7 @@ const AthensPDF: React.FC = () => {
                 item.startMontYear ||
                 item.endMontYear) && (
                 <View key={item._id}>
-                  <Text >
+                  <Text>
                     {item.degree && (
                       <Text
                         style={{
@@ -406,7 +407,7 @@ const AthensPDF: React.FC = () => {
           {resume.references.map((item) => {
             return (
               <View key={item._id}>
-                <Text >
+                <Text>
                   {item.name && (
                     <Text
                       style={{
@@ -512,12 +513,13 @@ const AthensPDF: React.FC = () => {
             )}
           </Text>
           {resume.personalInfo.email && (
-            <Text
-             >
-              <Link style={{
-                ...style.personalInfo.email,
-                textAlign: style.personalInfo.email.textAlign as any,
-              }} href={`mailto:${resume.personalInfo.email}`}>
+            <Text>
+              <Link
+                style={{
+                  ...style.personalInfo.email,
+                  textAlign: style.personalInfo.email.textAlign as any,
+                }}
+                href={`mailto:${resume.personalInfo.email}`}>
                 {resume.personalInfo.email}
               </Link>
             </Text>
@@ -631,7 +633,6 @@ const AthensPDF: React.FC = () => {
                     style={{
                       ...style.skills.label,
                       textAlign: style.skills.label.textAlign as any,
-                     
                     }}>
                     {item.label}
                   </Text>
@@ -641,7 +642,7 @@ const AthensPDF: React.FC = () => {
                         width: "100%",
                         height: "3px",
                         display: "flex",
-                        flexDirection:'row',
+                        flexDirection: "row",
                         gap: "2px",
                         marginTop: "4px",
                         backgroundColor: "#888",
@@ -724,4 +725,4 @@ const AthensPDF: React.FC = () => {
   );
 };
 
-export default AthensPDF;
+export default AthensPDF2;

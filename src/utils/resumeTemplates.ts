@@ -1,5 +1,4 @@
 import resumeStyle from "../components/resumeTemplates/style";
-import { images } from "../constant";
 
 const resumeTemplates = [
   {
@@ -16,6 +15,21 @@ const resumeTemplates = [
       "most-popular",
     ],
     name: "Web Developer",
+  },
+  {
+    template: {
+      templateId: "athens02",
+      img: "https://i.ibb.co/0ctqyfh/Screenshot-13.png",
+      style: { ...resumeStyle["athens01"].style.require },
+    },
+    tags: [
+      "professional",
+      "ats-friendly",
+      "modern",
+      "creative",
+      "most-popular",
+    ],
+    name: "Civil Engineer",
   },
   {
     template: {
@@ -47,6 +61,7 @@ const resumeTemplates = [
     ],
     name: "Civil Engineer",
   },
+
   {
     template: {
       templateId: "madrid01",
@@ -76,22 +91,6 @@ const resumeTemplates = [
       "most-popular",
     ],
     name: "Engineer",
-  },
-
-  {
-    template: {
-      templateId: "stockholm01",
-      img: images.resume2,
-      style: { ...resumeStyle["stockholm01"].style.require },
-    },
-    tags: [
-      "professional",
-      "ats-friendly",
-      "modern",
-      "creative",
-      "most-popular",
-    ],
-    name: "Civil Engineer",
   },
 ];
 
