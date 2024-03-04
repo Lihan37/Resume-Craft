@@ -1,4 +1,7 @@
-function addDaysToTimestamp(timestamp: number, daysToAdd: number): string {
+function addDaysToTimestamp(
+  timestamp: number | string,
+  daysToAdd: number
+): string {
   const date = new Date(timestamp);
 
   date.setDate(date.getDate() + daysToAdd);

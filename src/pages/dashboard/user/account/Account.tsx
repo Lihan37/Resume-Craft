@@ -5,6 +5,7 @@ import useTitleSet from "../../../../hooks/useTitleSet";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../../../services/auth/authSelector";
 import addDaysToTimestamp from "../../../../utils/addDaysToTimestamp";
+import { Link } from "react-router-dom";
 
 const Account: React.FC = () => {
   useTitleSet("Account");
@@ -21,9 +22,11 @@ const Account: React.FC = () => {
           </span>
 
           {user.plan.downloadlimite === 0 ? (
-            <button className=" text-xl font-semibold text-c-primary">
+            <Link
+              to="/pricing"
+              className=" text-xl font-semibold text-c-primary">
               Upgrade
-            </button>
+            </Link>
           ) : (
             <span className="text-base font-semibold text-red-400">
               Validation{" "}
