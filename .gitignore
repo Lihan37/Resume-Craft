@@ -25,3 +25,4 @@ info.txt
 .env.local
 yarn.lock
 package-lock.json
+.env
