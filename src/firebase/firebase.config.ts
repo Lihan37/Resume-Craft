@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBjDjlA-ej4LdZd8H4QirDkauWGQSMEe_w",
-  authDomain: "resumecraft-f2b45.firebaseapp.com",
-  projectId: "resumecraft-f2b45",
-  storageBucket: "resumecraft-f2b45.appspot.com",
-  messagingSenderId: "104209902639",
-  appId: "1:104209902639:web:547d56baf0c100773eeada",
+  apiKey: import.meta.env.VITE_BASE_apiKey,
+  authDomain: import.meta.env.VITE_BASE_authDomain,
+  projectId: import.meta.env.VITE_BASE_projectId,
+  storageBucket: import.meta.env.VITE_BASE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_BASE_messagingSenderId,
+  appId: import.meta.env.VITE_BASE_appId,
 };
 
 const app = initializeApp(firebaseConfig);

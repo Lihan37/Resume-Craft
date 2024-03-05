@@ -22,6 +22,6 @@ info.txt
 *.njsproj
 *.sln
 *.sw?
-
+.env
 yarn.lock
 package-lock.json
