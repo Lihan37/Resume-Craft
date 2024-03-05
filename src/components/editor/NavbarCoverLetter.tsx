@@ -30,6 +30,10 @@ import { CoverLettersTemplatesType } from "../coverLetterTemplates/template";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import Share from "./Share";
 import useOutsideClick from "../../hooks/useOutsideClick";
+import { setUser } from "../../services/auth/authSlice";
+import { selectUser } from "../../services/auth/authSelector";
+import { Link } from "react-router-dom";
+const baseUrl = import.meta.env.VITE_BASE_URL_API;
 
 const NavbarCoverLetter: React.FC = () => {
   const appDispatch = useAppDispatch();
@@ -40,6 +44,8 @@ const NavbarCoverLetter: React.FC = () => {
   const coverLetter = useSelector(selectCoverLetter);
   const [isShare, setIsShare] = useState<boolean>(false);
   const shareRef = useRef(null);
+  const user = useSelector(selectUser);
+
   useOutsideClick(
     shareRef,
     () => {
@@ -90,6 +96,19 @@ const NavbarCoverLetter: React.FC = () => {
     return () => clearTimeout(timerId);
   }, [title]);
 
+  const handleDownload = async () => {
+    try {
+      const response = await fetch(`${baseUrl}/user/v1/download`, {
+        method: "GET",
+        credentials: "include",
+      });
+      const data = await response.json();
+      dispatch(setUser({ user: data.user }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="border-b-2">
       <div className=" max-w-[1800px] mx-auto  py-5 pr-3">
@@ -136,14 +155,24 @@ const NavbarCoverLetter: React.FC = () => {
           </div>
 
           <div className=" flex justify-start items-center gap-5 xl:gap-10">
-            {Template && (
-              <PDFDownloadLink
-                className="text-c-dark font-semibold flex justify-start  items-center lg:gap-2 lg:px-4 p-2 lg:py-2 bg-gray-100 rounded-full text-base lg:text-xl"
-                document={<Template coverLetter={coverLetter} />}
-                fileName="resumeCraft.pdf">
+            {user.plan.downloadlimite === 0 ? (
+              <Link
+                to="/pricing"
+                className="text-c-dark font-semibold flex justify-start  items-center lg:gap-2 lg:px-4 p-2 lg:py-2 bg-gray-100 rounded-full text-base lg:text-xl">
                 <FiDownload />
                 <span className=" hidden lg:block">Download</span>
-              </PDFDownloadLink>
+              </Link>
+            ) : (
+              Template && (
+                <PDFDownloadLink
+                  onClick={handleDownload}
+                  className="text-c-dark font-semibold flex justify-start  items-center lg:gap-2 lg:px-4 p-2 lg:py-2 bg-gray-100 rounded-full text-base lg:text-xl"
+                  document={<Template coverLetter={coverLetter} />}
+                  fileName="resumeCraft.pdf">
+                  <FiDownload />
+                  <span className=" hidden lg:block">Download</span>
+                </PDFDownloadLink>
+              )
             )}
             <div ref={shareRef} className="relative">
               <button

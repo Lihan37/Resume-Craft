@@ -17,6 +17,7 @@ const apiSlice = createApi({
       query: () => `/payment/v1/single`,
       providesTags: ["price"],
     }),
+
     getPaymentHistory: builder.query({
       query: () => `/payment/v1/history`,
       providesTags: ["paymentHistory"],

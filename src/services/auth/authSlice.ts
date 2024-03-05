@@ -71,11 +71,11 @@ const authSlice = createSlice({
   reducers: {
     setUser(state, action) {
       state.user = {
-        _id: action.payload.user._id || "",
-        name: action.payload.user.name || "",
-        email: action.payload.user.email || "",
-        role: action.payload.user.role || "",
-        socialLogin: action.payload.user.socialLogin || false,
+        _id: action.payload.user?._id || "",
+        name: action.payload.user?.name || "",
+        email: action.payload.user?.email || "",
+        role: action.payload.user?.role || "",
+        socialLogin: action.payload.user?.socialLogin || false,
         avatar: {
           url: action.payload.user?.avatar?.url || "",
           public_id: action.payload.user?.avatar?.public_id || "",
@@ -87,7 +87,7 @@ const authSlice = createSlice({
           timeLimite: action.payload.user?.plan?.timeLimite || 0,
         },
       };
-      state.accessToken = action.payload.accessToken || state.accessToken;
+      state.accessToken = action.payload?.accessToken || state.accessToken;
     },
     setLoading(state, action) {
       state.loading = action.payload;
