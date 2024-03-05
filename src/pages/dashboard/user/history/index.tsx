@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { Container } from "../../../../components/common/Container";
 import TabSection from "./TabSection";
 import Button from "../../../../components/common/Button";
@@ -35,6 +36,7 @@ const UserDashboard: React.FC = () => {
   const loading = useSelector(selectHistoryLoading);
   const [createCoverLetter] = useCreateCoverLetter();
   const [createResume] = useCreateResume();
+
   useTitleSet("History");
 
   useEffect(() => {
@@ -46,7 +48,6 @@ const UserDashboard: React.FC = () => {
   const buttonLabels: Record<string, string> = {
     resume: "Add Resume",
     coverletter: "Add Cover Letter",
-    portfolio: "Add Portfolio",
   };
 
   const createNew = (value: string) => {

@@ -7,6 +7,9 @@ import Modal from "../../components/common/Modal";
 import Payment from "./payment/Payment";
 import CheckoutForm from "./payment/CheckOutForm";
 import { useGetPriceQuery } from "../../services/api/api";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../services/auth/authSelector";
+import { useNavigate } from "react-router-dom";
 
 export interface IPaymentData {
   paymentId: string;
@@ -20,6 +23,8 @@ const Pricing: React.FC = () => {
   useTitleSet("Pricing");
 
   const { data, isSuccess } = useGetPriceQuery("price");
+  const user = useSelector(selectUser);
+  const navigate = useNavigate();
 
   const initialData = isSuccess && data.payment;
 
@@ -46,6 +51,11 @@ const Pricing: React.FC = () => {
     downloadlimite: number;
     plan: string;
   }) => {
+    if (!user._id) {
+      navigate("/auth/login");
+      return;
+    }
+
     const paymentData = {
       paymentId: initialData?._id,
       price: price,
@@ -391,13 +401,6 @@ const packagePlans = [
   {
     name: "Cover-letter",
     free: "Yes",
-    premium: "Yes",
-    enterprise: "Yes",
-  },
-
-  {
-    name: "Portfolio",
-    free: "No",
     premium: "Yes",
     enterprise: "Yes",
   },
