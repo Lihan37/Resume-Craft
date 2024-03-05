@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { FaHome } from "react-icons/fa";
 import { MdArticle, MdOutlinePriceChange } from "react-icons/md";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { IoIosCreate } from "react-icons/io";
@@ -21,14 +20,9 @@ const Sidebar: React.FC = () => {
 
   const sideMenu: SideMenuItem[] = [
     {
-      icon: <FaHome />,
-      label: "Home",
-      link: "/admin",
-    },
-    {
       icon: <MdOutlinePriceChange />,
       label: "Pricing",
-      link: "/admin/payment-add",
+      link: "/admin",
     },
     {
       icon: <MdArticle />,

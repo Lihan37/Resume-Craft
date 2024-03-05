@@ -44,7 +44,6 @@ const Avatar: React.FC = () => {
           }
         );
         const data = await response.json();
-        console.log(data);
         if (!data.success) {
           setLoading(false);
           Swal.fire({

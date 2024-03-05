@@ -42,7 +42,6 @@ const Login: React.FC = () => {
       }
       if (data.success) {
         setLoading(false);
-        console.log(data);
         dispatch(setUser({ user: data.user, accessToken: data.accessToken }));
         if (data.user.role === "user") {
           navigate("/dashboard");

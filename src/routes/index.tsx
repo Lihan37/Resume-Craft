@@ -14,7 +14,6 @@ import ResumeEditor from "../pages/editor/ResumeEditor";
 import Pricing from "../pages/pricing";
 import AuthWrapper from "../layouts/AuthWrapper";
 import UserDashboard from "../pages/dashboard/user/history";
-import AdminDashboard from "../pages/dashboard/admin";
 import BlogDetails from "../pages/blog/BlogDetails";
 import Blogs from "../pages/dashboard/admin/blog";
 import CreateBlog from "../pages/dashboard/admin/blog/CreateBlog";
@@ -144,15 +143,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <AdminDashboard />,
+        element: <PricingAdmin />,
       },
       {
         path: "blog",
         element: <Blogs />,
-      },
-      {
-        path: "payment-add",
-        element: <PricingAdmin />,
       },
       {
         path: "create-blog",

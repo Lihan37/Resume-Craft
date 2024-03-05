@@ -97,7 +97,6 @@ const CheckoutForm: React.FC<ICheckoutForm> = ({
       });
 
     if (confirmError) {
-      console.log("confirm error");
       setLoading(false); // Set loading to false if there is a confirmation error
     }
 
