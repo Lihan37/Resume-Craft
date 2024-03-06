@@ -143,16 +143,17 @@ const CoverLetter: React.FC = () => {
           </div>
 
           {/* Editor Dashboard  */}
+
           <div
             style={{ height: hight }}
             id="resumeEditorDashboard"
             className={`${
               editorDashboardIsOpen ? "block" : " hidden"
-            } w-full lg:flex overflow-auto justify-center items-center bg-zinc-100 `}>
+            } w-full lg:flex flex-col  justify-start items-center bg-zinc-100 overflow-scroll  `}>
             <div
               className={`${
                 zoom > 1 && "w-[1600px] h-[1300px] pt-[250px] "
-              }  flex justify-center items-center`}>
+              }  flex flex-col justify-center items-center gap-4 py-3`}>
               {Template && (
                 <Template ref={templateRef} coverLetter={editor.coverLetter} />
               )}
