@@ -64,7 +64,7 @@ const Blog: React.FC = () => {
           <h1 className="text-xl md:text-2xl lg:text-4xl font-bold mb-8">
             Latest Posts
           </h1>
-          <div className="grid gap-8 md:gap-5 lg:gap-8 grid-cols-1 md:grid-cols-3 justify-between my-10">
+          <div className="grid gap-8 md:gap-5 lg:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between my-10">
             {loading ? (
               <BlogsSkeleton />
             ) : (
