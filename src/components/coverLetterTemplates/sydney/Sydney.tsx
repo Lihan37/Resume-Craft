@@ -74,40 +74,45 @@ const Sydney: React.ForwardRefRenderFunction<HTMLDivElement, ISydney> = (
             </h1>
           </div>
         </div>
-        <h1
-          style={{
-            ...commonStyle.nameAndCompany,
-            backgroundColor: style.theme,
-          }}>
-          TO :{" "}
-          <span
+        {(coverLetter.managerName || coverLetter.companyName) && (
+          <h1
             style={{
-              ...style.managerName,
-              textAlign: style.managerName.textAlign as any,
-              // lineHeight: "20px",
+              ...commonStyle.nameAndCompany,
+              backgroundColor: style.theme,
             }}>
-            {coverLetter.managerName}
-          </span>{" "}
-          <span
+            TO :{" "}
+            <span
+              style={{
+                ...style.managerName,
+                textAlign: style.managerName.textAlign as any,
+                // lineHeight: "20px",
+              }}>
+              {coverLetter.managerName}
+            </span>{" "}
+            <span
+              style={{
+                ...style.companyName,
+                textAlign: style.companyName.textAlign as any,
+                // lineHeight: "20px",
+              }}>
+              {coverLetter.companyName}
+            </span>
+          </h1>
+        )}
+
+        {coverLetter.details && (
+          <div
             style={{
-              ...style.companyName,
-              textAlign: style.companyName.textAlign as any,
-              // lineHeight: "20px",
+              ...style.details,
+              textAlign: style.details.textAlign as any,
+              marginTop: "10px",
+              paddingTop: "10px",
+              borderTopWidth: "4px",
+              borderColor: style.theme,
             }}>
-            {coverLetter.companyName}
-          </span>
-        </h1>
-        <div
-          style={{
-            ...style.details,
-            textAlign: style.details.textAlign as any,
-            marginTop: "10px",
-            paddingTop: "10px",
-            borderTopWidth: "4px",
-            borderColor: style.theme,
-          }}>
-          {coverLetter.details}
-        </div>
+            {coverLetter.details}
+          </div>
+        )}
       </div>
     </div>
   );

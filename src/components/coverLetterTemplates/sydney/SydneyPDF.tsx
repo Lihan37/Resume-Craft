@@ -148,12 +148,17 @@ const SydneyPDF: React.FC<ISydney> = ({ coverLetter }) => {
             <Text style={styles.address}>{coverLetter.address}</Text>
           </View>
         </View>
-        <View style={styles.nameAndCompany}>
-          <Text>TO :</Text>
-          <Text style={styles.managerName}>{coverLetter.managerName}</Text>
-          <Text style={styles.companyName}>{coverLetter.companyName}</Text>
-        </View>
-        <Text style={styles.details}>{coverLetter.details}</Text>
+        {(coverLetter.managerName || coverLetter.companyName) && (
+          <View style={styles.nameAndCompany}>
+            <Text>TO :</Text>
+            <Text style={styles.managerName}>{coverLetter.managerName}</Text>
+            <Text style={styles.companyName}>{coverLetter.companyName}</Text>
+          </View>
+        )}
+
+        {coverLetter.details && (
+          <Text style={styles.details}>{coverLetter.details}</Text>
+        )}
       </Page>
     </Document>
   );
