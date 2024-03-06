@@ -20,8 +20,8 @@ const data = [
   },
   {
     id: 3,
-    title: "Craft your your portfolio Easy And Fast",
-    doc: "Crafting visually stunning portfolios swiftly. Showcase your skills effortlessly with our easy and fast portfolio creation service. Elevate your profile!",
+    title: "Share Your Resume & Cover-Letter Easy",
+    doc: "Effortlessly share your resume and cover letter with our intuitive feature, streamlining the job application process for users. ",
     icon: <MdAutoAwesome />,
   },
 ];
